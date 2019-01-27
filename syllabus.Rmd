@@ -161,7 +161,7 @@ regard. That being said, here is a rough hierarchy of how I much I refer to them
 ***
 
 
-
+<!--
 # Evaluation
 
 ## Weekly Problem Sets 10%
@@ -179,11 +179,11 @@ practice, instead of evaluative tools used by the instructor to assign grades.
 * While you may do them in advance if you are curious, it is most definitely not required. Note that the DataCamp schedule may change, with certain courses dropped/added.
 * Jenny will talk more about DataCamp during Lab 2.
 
-<!--
+
 * Taking notes based on what you cover is not required, but please do so if you feel you will benefit. 
 * I *expect* most people to take no more than 4 hours per DataCamp assignment.
 * Please note retention of the material will not be perfect the first time through. The only way to really retain the material is via lots of practice/doing. For now, think of this as a introduction.
--->
+
 
 ## Quizzes 5%
 
@@ -289,6 +289,9 @@ this principle:
 don't know what your voice sounds like.
 * Submitting a problem set that has code or content that is copied from or is
 only a slightly modified version of your peers' work.
+
+
+-->
 
 
 

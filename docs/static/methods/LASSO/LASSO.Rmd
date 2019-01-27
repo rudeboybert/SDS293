@@ -1,3 +1,4 @@
+
 ---
 title: "LASSO Regularization"
 author: "Albert Y. Kim"
@@ -16,10 +17,6 @@ library(stringr)
 ```
 
 **Note**: The source code for this Shiny app is available on <a target="_blank" class="page-link" href="https://github.com/rudeboybert/MATH218/blob/gh-pages/assets/regularization/regularization_ROC.Rmd">GitHub</a>.
-
-
-
-
 
 
 
