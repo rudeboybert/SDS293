@@ -7,6 +7,8 @@ output: html_document
 runtime: shiny
 ---
 
+The source `.Rmd` file for this Shiny app can be found downloaded <a href="https://rudeboybert.github.io/SDS293/static/methods/ROC/ROC.Rmd" download>here</a>.
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
@@ -17,7 +19,7 @@ set.seed(76)
 ## Background
 
 ```{r, echo=FALSE, message=FALSE}
-values <- read_csv("https://rudeboybert.github.io/STAT495/static/ROC_curves_shiny_app/example.csv") %>% 
+values <- read_csv("https://rudeboybert.github.io/SDS293/static/methods/ROC/example.csv") %>% 
   tibble::rownames_to_column(var="ID")
 ```
 

@@ -1,0 +1,208 @@
+---
+title: "Midterms"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 2
+    toc_float:
+      collapsed: no
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, eval=FALSE, 
+                      cache=TRUE, fig.width=16/2, fig.height=9/2)
+# Set seed value of random number generator to get "replicable" random numbers.
+# Why 76? Because of https://www.youtube.com/watch?v=xjJ7FheCkCU
+set.seed(76)
+```
+
+<style>
+h1{font-weight: 400;}
+</style>
+
+
+
+***
+
+
+
+# Midterm I {#midtermI}
+
+## Administrative notes
+
+* **Friday 3/1 5pm through Sunday 3/3 11:55pm**.
+* Self-scheduled exam [instructions](https://drive.google.com/file/d/1MXlZEf9UrQfFjUX6d9iglwDCZbn02cbj/view){target="_blank"}. In particular:
+    + Only print from macOS computers.
+    + At some point you'll need to wait 5-10 seconds for a "paper is held in queue" pop-up box to appear before you can print.
+
+<!--
+
+* You must submit your midterm by 11:55pm on Sunday.
+* If you have never taken a Self-Scheduled exam, please read the instructions [here](https://drive.google.com/file/d/10mkwAnJVTbOiz_g-bUDrrUL_S-6j-8ul/view){target="_blank"}
+* You will be given 120 mins to complete it (including transit time to writing area), however I try to time it so that it will take much less than that. In other words, you should have plenty of time to complete it without rushing.
+* Closed-book, no internet, and individually completed.
+* Please bring colored pens.
+* Extra help:
+    + Jenny office hours, still lots of Wednesday slots! [Book here](https://jennysmetzer.youcanbook.me/){target="_blank"}.
+    + Albert extra office hours Thursday 2-4pm in McConnell 215.
+* Read cover page:
+
+![](static/exams/midterm_I_cover_page.png){ width=600px }   
+
+
+## Topics
+    
+* Topics: Lectures 1-7. In other words everything up to and including data visualizations
+* What to study
+    + Before Wednesday's lecture, do the practice midterm questions.
+    + Your hand-written course notes first: they are the "executive summaries" of topics.
+    + The material on the course webpage chronologically, in particular the ModernDive readings.
+    + You will not write code for the midterm, but you may need to understand code.
+    + No questions from DataCamp will be asked.
+* Practice midterm questions [PDF](static/exams/Midterm-I_practice.pdf){target="_blank"}. I **do not** have a PDF of solutions, we'll cover these in class on Wednesday. Note this is a compilation of a few midterms, so its length is longer than what you can expect on the midterm. Do the following questions:
+    + Q1 Short Answer - Part b)
+    + Q4 Gapminder - All parts. Hint for Part b): Read ModernDive Chapter 12.1.2 on log10-transformations
+    + Q5 Family income by city - All parts.
+    + Q1 America Runs on Starbucks: Parts a) and c)
+
+
+## Practice questions discussion {#midtermIdiscussion}
+
+**Note about Question 4.b)** Both the following plots show the relationship between life expectancy and GDP per capita in 2007 in the `gapminder` data, but the right one has GDP per capita (USD) on the x-axis on a $\log10$-scale using `scale_x_log10()`. Thus:
+
+* Left plot: the white grid lines on the x-axis denote **additive** differences of $+10000$ 
+* Right plot: the white grid lines on the x-axis denote **multiplicative** differences of $\times 10$
+
+
+**Note about Question 5.f)** Counterexample. Both these datasets have 11 values and the same quartiles as Nashville (32K, 60K, and 100K), but have different proportions greater than 80K:
+
+```{r, echo = FALSE, eval = FALSE}
+data_frame(
+  data1 = c(16, 17, 32, 33, 54, 60, 61, 62, NA, NA, 100, 110, 115),
+  data2 = c(16, 17, 32, 33, 54, 60, NA, NA, 98, 99, 100, 110, 115)
+) %>% 
+  t() %>% 
+  kable()
+```
+
+| Dataset    |   |   |  |   |   |   |   |   |   |   |  |    |    |
+|:-----|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|---:|---:|---:|
+|Data 1 | 16| 17| **32** | 33| 54| **60**| 61| 62| | | **100**| 110| 115|
+|Data 2 | 16| 17| **32** | 33| 54| **60**| | | 98| 99| **100**| 110| 115|
+
+
+
+## Midterm I Distribution
+
+![](static/exams/midterm_I_distribution.png){ width=600px } 
+-->
+
+
+
+***
+
+
+
+# Midterm II {#midtermII}
+
+## Administrative notes
+
+* **Friday 4/12 5pm through Sunday 4/14 11:55pm**. 
+    
+<!--
+
+* Closed-book, no internet, and individually completed.
+
+* You must take it no more than 120 minutes (including transit time) to complete it and submit it by 11:55pm on Sunday. Timestamps will be verified and any exam with timestamps indicating more than 120 minutes will be docked 50%.
+* Please bring:
+    + Colored pens
+    + A calculator: TI-84 type calculators acceptable, mobile phone apps are not. 
+* Extra help:
+    + Jenny office hours. Book appointments [here](https://jennysmetzer.youcanbook.me/){target="_blank"}.
+    + Albert extra office hours Friday 11/2 2:30-4pm in McConnell 215.
+* Read cover page (slightly different from last time):
+
+![](static/exams/midterm_II_cover_page.png){ width=600px }   
+
+
+## Topics
+
+* Topics:
+    1. Lectures 1-18. Yes it is cummulative in that topics build on top of each other, but focus is on Lec 8-18 on Data Wrangling and Basic Regression with one explanatory variable (no Multiple Regression with more than one explanatory variable).
+    1. The corresponding "chalk talk" notes and ModernDive readings in Chapter 1 through 6.
+* Types of questions:
+    + Before Wednesday, do the practice midterm questions [PDF](static/exams/Midterm-II_practice.pdf){target="_blank"}. I **do not** have a PDF of solutions, we'll cover these in class on Wednesday. Note this is a compilation of a few midterms, so its length is not reflective of what you can expect on the midterm. Do the following questions:
+        1. Question 3 - Life Expectancy: All.
+        1. Question 1 - Short Answer: Parts a) 1-4, b), d), e)
+        1. Question 2 - Teaching Evaluations (optional). If you can do this multiple regression question, you'll be in good shape for understanding basic regression
+    + Go over all problem sets and solutions.
+    + Data Wrangling:
+        1. Be able to understand data wrangling actual code, be able to write data wrangling pseudocode. 
+        1. Jenny's [Data Wrangling Lab](index.html#lab1) on Thu 10/18 + Tue 10/23. Solutions now posted.
+    + Data Modeling: Go over [Modeling with Data in the Tidyverse](https://www.datacamp.com/teach/repositories/1575/branches/master){target="_blank"} Chapters 1 and 2.
+
+
+## Midterm II Distribution
+
+![](static/exams/midterm_II_distribution.png){ width=600px } 
+-->
+
+
+
+***
+
+
+
+# Midterm III {#midtermIII}
+
+## Administrative notes
+
+* **TBD: during finals week**. 
+
+<!--
+* Self-scheduled exam [instructions](https://drive.google.com/file/d/1MXlZEf9UrQfFjUX6d9iglwDCZbn02cbj/view){target="_blank"}. In particular:
+    + Only print from macOS computers.
+    + At some point you'll need to wait 5-10 seconds for a "paper is held in queue" pop-up box to appear before you can print.
+* Closed-book, no internet, and individually completed.
+
+* You must take it no more than 120 minutes (including transit time) to complete it and submit it by 11:55pm on Sunday. Timestamps will be verified and any exam with timestamps indicating more than 120 minutes will be docked 50%.
+* Please bring:
+    + Colored pens
+    + A calculator: TI-84 type calculators acceptable, mobile phone apps are not. 
+* Extra help:
+    + Jenny office hours. Book appointments [here](https://jennysmetzer.youcanbook.me/){target="_blank"}.
+    + Albert extra office hours TBD.
+* Read cover page (slightly different from last time):
+
+
+## Topics
+
+* Topics:
+    1. Lectures 1-28 but not the "tacticle resampling simulation". Yes it is cummulative in that topics build on top of each other, but focus is on Lec 19-28 on multiple regression and sampling.
+    1. The corresponding "chalk talk" notes and ModernDive readings in Chapter 1 through 8.
+* Types of questions:
+    + Before Wednesday, do the practice midterm questions [PDF](static/exams/Midterm-III_practice.pdf){target="_blank"}. I **do not** have a PDF of solutions, we'll cover these in class on Wednesday. Note this is a compilation of a few midterms, so its length is not reflective of what you can expect on the midterm. Do the following questions:
+        1. Question 1 - Obama polling: Parts a), b), c), d), e), 
+        1. Question 2 - Teaching evaluations: All parts. Note this question was also included in practice midterm II.
+        1. Question 2 - Sampling: Parts a), b), c), d), e), f), g), h)
+        1. Question 4 - Pennies: Parts a), c), e), f).
+    + Data Modeling: Go over [Modeling with Data in the Tidyverse](https://www.datacamp.com/teach/repositories/1575/branches/master){target="_blank"} Chapters 3 and 4.
+    + Go over all problem sets and solutions. Note PS10 solutions will be posted right after lecture on Wed 11/28.
+    
+
+## Midterm III Distribution
+
+![](static/exams/midterm_III_distribution.png){ width=600px } 
+
+Note about Question 3.b) from the Wikipedia page for the [Kinsey Reports](https://en.wikipedia.org/wiki/Kinsey_Reports){target="_blank"}:
+
+In 1948, the same year as the original publication, a committee of the American Statistical Association, including notable statisticians such as John Tukey, condemned the sampling procedure. Tukey was perhaps the most vocal critic, saying, 
+
+> "A random selection of three people would have been better than a group of 300 chosen by Mr. Kinsey."
+
+Psychologist Abraham Maslow asserted that Kinsey did not consider "volunteer bias".
+-->
+
+
+
+

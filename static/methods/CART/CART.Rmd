@@ -2,15 +2,18 @@
 ---
 title: "CART tuning parameter"
 author: "Albert Y. Kim"
-date: "2017-10-30"
+date: "Last updated on `r Sys.Date()`"
 output: html_document
 runtime: shiny
 ---
 
-The source `.Rmd` file for this Shiny app can be found [here](https://github.com/rudeboybert/STAT495/blob/master/static/CART_shiny_app/CART_shiny_app.Rmd).
+The source `.Rmd` file for this Shiny app can be found downloaded <a href="https://rudeboybert.github.io/SDS293/static/methods/CART/CART.Rmd" download>here</a>.
+
 
 ```{r, message=FALSE, warning=FALSE}
-library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(shiny)
 library(rpart)
 iris <- iris %>%
   as_tibble() %>%

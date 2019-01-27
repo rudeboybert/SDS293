@@ -7,6 +7,8 @@ output: html_document
 runtime: shiny
 ---
 
+The source `.Rmd` file for this Shiny app can be found downloaded <a href="https://rudeboybert.github.io/SDS293/static/methods/knn/knn.Rmd" download>here</a>.
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
@@ -15,9 +17,6 @@ library(class)
 
 
 ## Background
-
-**Note**: The source code for this Shiny app is available on <a target="_blank" class="page-link" href="https://github.com/rudeboybert/STAT495/blob/master/static/kNN/knn_shiny.Rmd">GitHub</a>.
-
 
 
 ```{r, echo=FALSE, message=FALSE}

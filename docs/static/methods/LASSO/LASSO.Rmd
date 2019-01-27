@@ -7,6 +7,9 @@ output: html_document
 runtime: shiny
 ---
 
+The source `.Rmd` file for this Shiny app can be found downloaded <a href="https://rudeboybert.github.io/SDS293/static/methods/LASSO/LASSO.Rmd" download>here</a>.
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(glmnet)
@@ -15,9 +18,6 @@ library(broom)
 library(plotly)
 library(stringr)
 ```
-
-**Note**: The source code for this Shiny app is available on <a target="_blank" class="page-link" href="https://github.com/rudeboybert/MATH218/blob/gh-pages/assets/regularization/regularization_ROC.Rmd">GitHub</a>.
-
 
 
 ## Data
