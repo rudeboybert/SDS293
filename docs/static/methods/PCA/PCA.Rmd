@@ -1,0 +1,260 @@
+
+---
+title: "Principal Components Analysis"
+author: "Albert Y. Kim"
+date: "10/17/2017"
+output:
+  html_document:
+    df_print: kable
+---
+
+```{r, message=FALSE, echo=FALSE}
+options(digits = 3)
+```
+
+## 1. Data
+
+The data consists of SAT scores for the 50 states in 1994-1995:
+
+```{r, message=FALSE}
+library(tidyverse)
+SAT <- read_csv("http://people.reed.edu/~jones/141/sat.csv") %>% 
+  select(State, salary, expend)
+head(SAT)
+X <- SAT %>% 
+  select(salary, expend)
+```
+
+Let `X` be of dimension $n \times p = 50 \times 2$, where our observations
+$\vec{X} = (X_1, X_2)$ are
+
+* $X_1$ `salary`: estimated average annual salary of teachers in public
+elementary and secondary schools (in $1000 of USD)
+* $X_2$ `expend`: expenditure per pupil in average daily attendance in public
+elementary and secondary schools (in $1000 of USD)
+
+
+The two variables `salary` and `expend` are highly correlated ($\rho=$ 
+`r cor(SAT$salary, SAT$expend) %>% round(3)`). You can think of them as being
+redundant; once you know one variable, the other variable doesn't provide you
+with all that more information. This is very apparent in the plot below (with
+the regression line being dashed):
+
+```{r fig.width=10, fig.height=5, echo=FALSE}
+ggplot(data=X, aes(x=salary, y=expend)) +
+  geom_text(label=state.abb) +
+  geom_smooth(method="lm", se=FALSE, linetype="dashed", size=0.5, col="black") +
+  labs(x="X1: Salary", y="X2: Expenditure")
+```
+
+Note such *collinear* variables are a problem in a regression setting, because
+they "steal" each other's effect, so it becomes difficult to isolate the effect
+of one vs the other. In other words, you have very unstable estimates of their
+$\beta$ coefficients/slopes.
+
+
+
+## 2. Recentering Covariates
+
+We first recenter both `salary` and `expenditure` to each have mean 0 by
+subtracting their sample means $(\overline{x}_1, \overline{x}_2) = (
+`r mean(X$salary) %>% round(3)`, `r mean(X$expend) %>% round(3)`)$ respectively:
+
+```{r}
+X_recenter <- X %>% 
+  mutate(
+    salary = salary - mean(salary),
+    expend = expend - mean(expend)
+  )
+```
+
+We plot the two variables recentered at $(0, 0)$.
+
+```{r fig.width=10, fig.height=5, echo=FALSE}
+base_plot_X <- ggplot(data=X_recenter, aes(x=salary, y=expend)) +
+  geom_text(label=state.abb) +
+  geom_smooth(method="lm", se=FALSE, linetype="dashed", size=0.5, col="black") +
+  labs(x="X1: Salary (recentered)", y="X2: Expenditure (recentered)") +
+  coord_fixed(ylim=c(-4, 6))
+base_plot_X
+```
+
+We compute the *sample/empirical* $2 \times 2$ covariance matrix for both `X` 
+and `X_recenter` (Note for students who have taken MATH310 Probability: they are
+identical since variances/covariances are invariant to linear transformations):
+
+```{r}
+cov(X) %>% round(3)
+cov(X_recenter) %>% round(3)
+```
+
+
+
+## 3. Principal Components
+
+Using R's built-in linear algebra functionlity, we
+
+* Compute the first and second principal components. Linear algebra fact: they 
+are the first and second *eigenvectors* $\vec{\gamma}_1$ &
+$\vec{\gamma}_2$ of the covariance matrix.
+* Plot them in red and blue respectively.
+
+```{r echo=TRUE}
+eigen <- cov(X_recenter) %>% eigen()
+eigen_vals <- eigen$values
+Gamma <- eigen$vectors
+```
+
+```{r fig.width=10, fig.height=5, echo=FALSE}
+# Eigenvectors have length 1. Let's increase their length to be 3 so that
+# they are more visible on the plot
+eigen_vec_1 <- Gamma[, 1]
+eigen_vec_2 <- Gamma[, 2]
+length <- 3
+PC1_orig <- data_frame(
+  salary = c(0, length*eigen_vec_1[1]),
+  expend = c(0, length*eigen_vec_1[2])
+  )
+PC2_orig <- data_frame(
+  salary = c(0, length*eigen_vec_2[1]),
+  expend = c(0, length*eigen_vec_2[2])
+  )
+base_plot_X +
+  geom_line(data=PC1_orig, arrow = arrow(length=unit(0.30,"cm"), ends="first", type = "closed"), col="red") + 
+  geom_line(data=PC2_orig, arrow = arrow(length=unit(0.30,"cm"), type = "closed"), col="blue")
+```
+
+Notice:
+
+* How the first principal component (in red) is in fact the regression line. Of 
+all the components (arrows) you can draw on this plot, this one 
+*captures/explains the most variability in $(X_1, X_2)$*. Intuitively speaking, 
+most of the action of the 50 points is along the red arrow.
+* How the second principal component (in blue) *captures/explains the 
+variability in $(X_1, X_2)$ leftover after the first principal component*. 
+Intuitively speaking, there is less action along the blue arrow.
+* The two principal components are perpendicular to each other. Linear algebra 
+fact: not only do they form a *spanning set* AKA are *linearly independent*, 
+they form an *orthogonal basis*.
+
+
+
+## 4. Transformation to Principal Component Space
+
+For any point $\vec{X} = (X_1, X_2)$, we can transform it (AKA convert it) to 
+principal components space $\vec{Y} = (Y_1, Y_2)$ by applying the matrix
+multiplication:
+
+$$
+(Y_1, Y_2) = (X_1 - \overline{x}_1, X_2 - \overline{x}_2) \left(
+\vec{\gamma}_1, \vec{\gamma}_2
+\right)
+$$
+
+```{r echo=TRUE}
+# Transform n x p matrix of observations to new principal components space:
+Y <- as.matrix(X_recenter) %*% Gamma %>% 
+  as_data_frame() %>% 
+  rename(Y1 = V1, Y2 = V2)
+```
+
+In other words the first 5 rows of `X`
+
+```{r, echo=FALSE}
+head(X, 5)
+```
+
+become
+
+```{r, echo=FALSE}
+head(Y, 5) %>% 
+  round(3)
+```
+
+Let's visualize the 50 points in original space $(X_1, X_2)$ with how they look in
+principal components space $(Y_1, Y_2)$:
+
+```{r fig.width=10, fig.height=5, echo=FALSE}
+# Transform arrows to new principal components space:
+PC1 <- as.matrix(PC1_orig) %*% Gamma %>% 
+  as_data_frame() %>% 
+  rename(
+    Y1 = V1,
+    Y2 = V2
+  )
+PC2 <- as.matrix(PC2_orig) %*% Gamma %>% 
+  as_data_frame() %>% 
+  rename(
+    Y1 = V1,
+    Y2 = V2
+  )
+base_plot_X +
+  geom_line(data=PC1_orig, arrow = arrow(length=unit(0.30,"cm"), ends="first", type = "closed"), col="red") + 
+  geom_line(data=PC2_orig, arrow = arrow(length=unit(0.30,"cm"), type = "closed"), col="blue") +
+  labs(title="Original Space")
+ggplot(Y, aes(x=Y1, y=Y2))+
+  geom_text(label=state.abb) + 
+  geom_smooth(method="lm", se=FALSE, linetype="dashed", size=0.5, col="black") +
+  geom_line(data=PC1, arrow = arrow(length=unit(0.30,"cm"), type = "closed"), col="red") + 
+  geom_line(data=PC2, arrow = arrow(length=unit(0.30,"cm"), type = "closed"), col="blue") +
+  coord_equal(ylim=c(-4, 6)) +
+  labs(xlab="Y1: Principal Component 1", ylab="Y2: Principal Component 2", title="Principal Components Space")
+```
+
+Notice:
+
+* The principal components space is simply a rotation of the original space.
+* The dashed regression line now lies flat!
+* `CT` and `MS` were at the negative and positive extremes of the first 
+principal component (in red) in the original space. This is reflected in the 
+principal components space. Same go for `NJ` and `CA` along the second principal
+component (in blue). In other words: *the rankings are preserved*.
+* *Mostly importantly*: In principal components space $Y_1$ and $Y_2$ are
+*uncorrelated* to each other.
+
+
+
+## 5. Who cares?
+
+Let's compare the sample covariance matrices of the 50 points in both spaces:
+
+```{r fig.width=10, fig.height=8}
+cov(X) %>% round(3)
+cov(Y) %>% round(3)
+```
+
+Notice:
+
+* The sum of the variances of the $\vec{X}$ equals the sum of the variances of 
+the $\vec{Y}$ (the sum along the diagonals = `r diag(cov(X)) %>% sum() %>% round(3)`).
+*In other words, the total variability of the 50 points is the same in both spaces*.
+* The off-diagonals in principal component space, however, are all 0. In other 
+words, $Y_1$ and $Y_2$ are uncorrelated.
+* Linear algebra fact: the diagonal of `cov(Y)` are in fact the *eigenvalues* 
+corresponding to the above mentioned eigenvectors, and are guaranteed to be in 
+order of largest to smallest.
+
+Let's look at the variances of $Y_1$ and $Y_2$ and their cummulative proportion:
+
+```{r, echo=TRUE}
+var_Y <- cov(Y) %>% diag()
+var_Y
+cumsum(var_Y)/sum(var_Y)
+```
+
+**Moral of the Story**: We observe that 98.8% of the variability of the salary and
+expenditure variables is explained by the first principal component!  So one
+would be inclined to use the single variable $Y_1$ and call it "school funding."
+
+**Occam's Razor**: If 98.8% of the total variability in salary and expenditure
+can be explained with this single variable "school funding", why not use only 
+this single variable? Remember: all other things being equal, simpler models
+are better.
+
+**Caveat**: Unfortuately the interpretation of $Y_1$ is hard to make sense of. 
+They do seem to represent $1000 USD, but money corresponding to what exactly?
+This is one of the downsides of PCA, a loss of interpretability. 
+
+**Note**: This method generalizes to any dimensional space of predictors
+$\vec{X}$ for $p\geq2$. We don't do that here because its hard to visualize once
+$p$ gets large.

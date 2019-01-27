@@ -1,0 +1,79 @@
+
+---
+title: "CART tuning parameter"
+author: "Albert Y. Kim"
+date: "2017-10-30"
+output: html_document
+runtime: shiny
+---
+
+The source `.Rmd` file for this Shiny app can be found [here](https://github.com/rudeboybert/STAT495/blob/master/static/CART_shiny_app/CART_shiny_app.Rmd).
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(rpart)
+iris <- iris %>%
+  as_tibble() %>%
+  # Add ID column:
+  mutate(ID = 1:n()) %>% 
+  select(ID, Species, Sepal.Length, Sepal.Width)
+model_formula <- as.formula(Species ~ Sepal.Length + Sepal.Width)
+```
+
+
+
+## Tuning parameter
+
+Recall for a given tuning parameter $\alpha$, we want to find the subtree that 
+minimizes the following:
+
+$$
+\sum_{m=1}^{|T|}\sum_{x_i \in R_m} \left(y_i - \widehat{y}_{R_m}\right)^2 + \alpha |T|
+$$
+
+where $|T|$ use the "cardinality" mathematical notation; it denotes the
+"complexity" of the tree as measured by the number of terminal nodes. $\alpha$ 
+is represented by the argument `cp` in `rpart.control()`. For example using
+$\alpha$ = `cp=0.01`, which is the default value (see `?rpart.control`), the code is:
+
+```{r, eval=FALSE}
+# Define tree
+tree_parameters <- rpart.control(maxdepth = 3, cp=0.01)
+model_CART <- rpart(model_formula, data = iris, control=tree_parameters)
+
+# Plot
+plot(model_CART, margin=0.25)
+text(model_CART, use.n = TRUE)
+title("Predicting iris species using sepal length & width")
+box()
+```
+
+
+## Varying the tuning parameter
+
+Let's vary the tuning parameter $\alpha$ using the slider below:
+
+```{r, echo=FALSE}
+inputPanel(
+  sliderInput("cp", label = "Tuning parameter alpha:", min = 0, max = 0.5, value = 0.1, step = 0.001)
+)
+```
+
+
+Notice how the actual splits at each fork don't change, but rather only the
+depth of the tree changes for different values of the "knob" $\alpha$ AKA the
+tuning parameter that controls the complexity of the model. 
+
+```{r, echo=FALSE}
+renderPlot({
+  # Create tree
+  tree_parameters <- rpart.control(maxdepth = 3, cp=input$cp)
+  model_CART <- rpart(model_formula, data = iris, control=tree_parameters)
+  
+  # Plot
+  plot(model_CART, margin=0.25)
+  text(model_CART, use.n = TRUE)
+  title("Predicting iris species using sepal length & width")
+  box()
+}, height=900/2, width=1600/2)
+```

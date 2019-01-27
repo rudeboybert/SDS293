@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Midterms</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
+<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
+<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">SDS/CSC 293</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="https://sds-csc-293-2019-jan.slack.com/">
+    <span class="fa fa-slack fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="quickstart.html">Quickstart</a>
+</li>
+<li>
+  <a href="shiny.html">Shiny Apps</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="PS.html">Problem Sets</a>
+</li>
+<li>
+  <a href="midterms.html">Midterms</a>
+</li>
+<li>
+  <a href="term_project.html">Term Project</a>
+</li>
+<li>
+  <a href="syllabus.html">Syllabus</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Midterms</h1>
+
+</div>
+
+
+<style>
+h1{font-weight: 400;}
+</style>
+<hr />
+<div id="midtermI" class="section level1">
+<h1>Midterm I</h1>
+<div id="administrative-notes" class="section level2">
+<h2>Administrative notes</h2>
+<ul>
+<li><strong>Friday 3/1 5pm through Sunday 3/3 11:55pm</strong>.</li>
+<li>Self-scheduled exam <a href="https://drive.google.com/file/d/1MXlZEf9UrQfFjUX6d9iglwDCZbn02cbj/view" target="_blank">instructions</a>. In particular:
+<ul>
+<li>Only print from macOS computers.</li>
+<li>At some point you’ll need to wait 5-10 seconds for a “paper is held in queue” pop-up box to appear before you can print.</li>
+</ul></li>
+</ul>
+<!--
+
+* You must submit your midterm by 11:55pm on Sunday.
+* If you have never taken a Self-Scheduled exam, please read the instructions [here](https://drive.google.com/file/d/10mkwAnJVTbOiz_g-bUDrrUL_S-6j-8ul/view){target="_blank"}
+* You will be given 120 mins to complete it (including transit time to writing area), however I try to time it so that it will take much less than that. In other words, you should have plenty of time to complete it without rushing.
+* Closed-book, no internet, and individually completed.
+* Please bring colored pens.
+* Extra help:
+    + Jenny office hours, still lots of Wednesday slots! [Book here](https://jennysmetzer.youcanbook.me/){target="_blank"}.
+    + Albert extra office hours Thursday 2-4pm in McConnell 215.
+* Read cover page:
+
+![](static/exams/midterm_I_cover_page.png){ width=600px }   
+
+
+## Topics
+    
+* Topics: Lectures 1-7. In other words everything up to and including data visualizations
+* What to study
+    + Before Wednesday's lecture, do the practice midterm questions.
+    + Your hand-written course notes first: they are the "executive summaries" of topics.
+    + The material on the course webpage chronologically, in particular the ModernDive readings.
+    + You will not write code for the midterm, but you may need to understand code.
+    + No questions from DataCamp will be asked.
+* Practice midterm questions [PDF](static/exams/Midterm-I_practice.pdf){target="_blank"}. I **do not** have a PDF of solutions, we'll cover these in class on Wednesday. Note this is a compilation of a few midterms, so its length is longer than what you can expect on the midterm. Do the following questions:
+    + Q1 Short Answer - Part b)
+    + Q4 Gapminder - All parts. Hint for Part b): Read ModernDive Chapter 12.1.2 on log10-transformations
+    + Q5 Family income by city - All parts.
+    + Q1 America Runs on Starbucks: Parts a) and c)
+
+
+## Practice questions discussion {#midtermIdiscussion}
+
+**Note about Question 4.b)** Both the following plots show the relationship between life expectancy and GDP per capita in 2007 in the `gapminder` data, but the right one has GDP per capita (USD) on the x-axis on a $\log10$-scale using `scale_x_log10()`. Thus:
+
+* Left plot: the white grid lines on the x-axis denote **additive** differences of $+10000$ 
+* Right plot: the white grid lines on the x-axis denote **multiplicative** differences of $\times 10$
+
+
+**Note about Question 5.f)** Counterexample. Both these datasets have 11 values and the same quartiles as Nashville (32K, 60K, and 100K), but have different proportions greater than 80K:
+
+
+
+| Dataset    |   |   |  |   |   |   |   |   |   |   |  |    |    |
+|:-----|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|---:|---:|---:|
+|Data 1 | 16| 17| **32** | 33| 54| **60**| 61| 62| | | **100**| 110| 115|
+|Data 2 | 16| 17| **32** | 33| 54| **60**| | | 98| 99| **100**| 110| 115|
+
+
+
+## Midterm I Distribution
+
+![](static/exams/midterm_I_distribution.png){ width=600px } 
+-->
+<hr />
+</div>
+</div>
+<div id="midtermII" class="section level1">
+<h1>Midterm II</h1>
+<div id="administrative-notes-1" class="section level2">
+<h2>Administrative notes</h2>
+<ul>
+<li><strong>Friday 4/12 5pm through Sunday 4/14 11:55pm</strong>.</li>
+</ul>
+<!--
+
+* Closed-book, no internet, and individually completed.
+
+* You must take it no more than 120 minutes (including transit time) to complete it and submit it by 11:55pm on Sunday. Timestamps will be verified and any exam with timestamps indicating more than 120 minutes will be docked 50%.
+* Please bring:
+    + Colored pens
+    + A calculator: TI-84 type calculators acceptable, mobile phone apps are not. 
+* Extra help:
+    + Jenny office hours. Book appointments [here](https://jennysmetzer.youcanbook.me/){target="_blank"}.
+    + Albert extra office hours Friday 11/2 2:30-4pm in McConnell 215.
+* Read cover page (slightly different from last time):
+
+![](static/exams/midterm_II_cover_page.png){ width=600px }   
+
+
+## Topics
+
+* Topics:
+    1. Lectures 1-18. Yes it is cummulative in that topics build on top of each other, but focus is on Lec 8-18 on Data Wrangling and Basic Regression with one explanatory variable (no Multiple Regression with more than one explanatory variable).
+    1. The corresponding "chalk talk" notes and ModernDive readings in Chapter 1 through 6.
+* Types of questions:
+    + Before Wednesday, do the practice midterm questions [PDF](static/exams/Midterm-II_practice.pdf){target="_blank"}. I **do not** have a PDF of solutions, we'll cover these in class on Wednesday. Note this is a compilation of a few midterms, so its length is not reflective of what you can expect on the midterm. Do the following questions:
+        1. Question 3 - Life Expectancy: All.
+        1. Question 1 - Short Answer: Parts a) 1-4, b), d), e)
+        1. Question 2 - Teaching Evaluations (optional). If you can do this multiple regression question, you'll be in good shape for understanding basic regression
+    + Go over all problem sets and solutions.
+    + Data Wrangling:
+        1. Be able to understand data wrangling actual code, be able to write data wrangling pseudocode. 
+        1. Jenny's [Data Wrangling Lab](index.html#lab1) on Thu 10/18 + Tue 10/23. Solutions now posted.
+    + Data Modeling: Go over [Modeling with Data in the Tidyverse](https://www.datacamp.com/teach/repositories/1575/branches/master){target="_blank"} Chapters 1 and 2.
+
+
+## Midterm II Distribution
+
+![](static/exams/midterm_II_distribution.png){ width=600px } 
+-->
+<hr />
+</div>
+</div>
+<div id="midtermIII" class="section level1">
+<h1>Midterm III</h1>
+<div id="administrative-notes-2" class="section level2">
+<h2>Administrative notes</h2>
+<ul>
+<li><strong>TBD: during finals week</strong>.</li>
+</ul>
+<!--
+* Self-scheduled exam [instructions](https://drive.google.com/file/d/1MXlZEf9UrQfFjUX6d9iglwDCZbn02cbj/view){target="_blank"}. In particular:
+    + Only print from macOS computers.
+    + At some point you'll need to wait 5-10 seconds for a "paper is held in queue" pop-up box to appear before you can print.
+* Closed-book, no internet, and individually completed.
+
+* You must take it no more than 120 minutes (including transit time) to complete it and submit it by 11:55pm on Sunday. Timestamps will be verified and any exam with timestamps indicating more than 120 minutes will be docked 50%.
+* Please bring:
+    + Colored pens
+    + A calculator: TI-84 type calculators acceptable, mobile phone apps are not. 
+* Extra help:
+    + Jenny office hours. Book appointments [here](https://jennysmetzer.youcanbook.me/){target="_blank"}.
+    + Albert extra office hours TBD.
+* Read cover page (slightly different from last time):
+
+
+## Topics
+
+* Topics:
+    1. Lectures 1-28 but not the "tacticle resampling simulation". Yes it is cummulative in that topics build on top of each other, but focus is on Lec 19-28 on multiple regression and sampling.
+    1. The corresponding "chalk talk" notes and ModernDive readings in Chapter 1 through 8.
+* Types of questions:
+    + Before Wednesday, do the practice midterm questions [PDF](static/exams/Midterm-III_practice.pdf){target="_blank"}. I **do not** have a PDF of solutions, we'll cover these in class on Wednesday. Note this is a compilation of a few midterms, so its length is not reflective of what you can expect on the midterm. Do the following questions:
+        1. Question 1 - Obama polling: Parts a), b), c), d), e), 
+        1. Question 2 - Teaching evaluations: All parts. Note this question was also included in practice midterm II.
+        1. Question 2 - Sampling: Parts a), b), c), d), e), f), g), h)
+        1. Question 4 - Pennies: Parts a), c), e), f).
+    + Data Modeling: Go over [Modeling with Data in the Tidyverse](https://www.datacamp.com/teach/repositories/1575/branches/master){target="_blank"} Chapters 3 and 4.
+    + Go over all problem sets and solutions. Note PS10 solutions will be posted right after lecture on Wed 11/28.
+    
+
+## Midterm III Distribution
+
+![](static/exams/midterm_III_distribution.png){ width=600px } 
+
+Note about Question 3.b) from the Wikipedia page for the [Kinsey Reports](https://en.wikipedia.org/wiki/Kinsey_Reports){target="_blank"}:
+
+In 1948, the same year as the original publication, a committee of the American Statistical Association, including notable statisticians such as John Tukey, condemned the sampling procedure. Tukey was perhaps the most vocal critic, saying, 
+
+> "A random selection of three people would have been better than a group of 300 chosen by Mr. Kinsey."
+
+Psychologist Abraham Maslow asserted that Kinsey did not consider "volunteer bias".
+-->
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

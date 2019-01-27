@@ -1,0 +1,12 @@
+name: roc_curves_shiny_app
+title: ROC_curves_shiny_app
+username: aykim
+account: aykim
+server: rsconnect.amherst.edu
+hostUrl: https://rsconnect.amherst.edu/__api__
+appId: 13
+bundleId: 33
+url: https://rsconnect.amherst.edu:443/content/13/
+when: 1508240052.47609
+asMultiple: FALSE
+asStatic: FALSE

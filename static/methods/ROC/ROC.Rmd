@@ -1,0 +1,174 @@
+
+---
+title: "ROC Curves Shiny App"
+author: "Albert Y. Kim"
+date: "Last updated on `r Sys.Date()`"
+output: html_document
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+set.seed(76)
+```
+
+
+## Background
+
+```{r, echo=FALSE, message=FALSE}
+values <- read_csv("https://rudeboybert.github.io/STAT495/static/ROC_curves_shiny_app/example.csv") %>% 
+  tibble::rownames_to_column(var="ID")
+```
+
+In our data set of `r nrow(values)` individuals, 24116 are women and 35827 are
+women. Let's take a look at a random sample of 10 rows of our data that we'll
+input data to our "Receiver Operating Characteristic" ROC curve:
+
+```{r, echo=FALSE, message=FALSE}
+values %>% 
+  sample_n(10) %>% 
+  knitr::kable()
+```
+
+We see that we have 
+
+* An identication variable `ID`
+* The binary truth: $y$ is 0 (male) or 1 (female)
+* The fitted probability $\widehat{p}$ which are values between 0 & 1.
+
+**Decision rule**: If $\widehat{p} > p^*$, then predict $\widehat{y} = 1$.
+
+
+
+## ROC Curve as a Function of $p^*$
+
+An ROC Curve does *not* plot a function $(x, f(x))$, but rather a 
+*parametric curve* $\left(x\left(p^*\right), y\left(p^*\right)\right)$ as a function of parameter $p^*$ where:
+
+* $x\left(p^* \right)$: Resulting False Positive Rate $\mbox{FPR}(p^*)$
+* $y\left(p^* \right)$: Resulting True Positive Rate $\mbox{TPR}(p^*)$
+
+Play around with different thresholds $p^*$ to see the resulting confusion
+matrix/continency table below:
+
+```{r eruptions, echo=FALSE}
+inputPanel(
+  sliderInput("p_star", label = "Prob Threshold p* (Red Dot):", min = 0, max = 1, value = 0.5, step = 0.01)
+)
+
+renderPlot({
+  ROC_data <- values %>% 
+    group_by(p_hat) %>%
+    summarise(
+      Positive = sum(y),
+      Negative = n() - sum(y)
+    ) %>%
+    arrange(-p_hat) %>%
+    mutate(
+      TPR = cumsum(Positive) / sum(Positive),
+      FPR = cumsum(Negative) / sum(Negative)
+    )
+  
+  AUC <- ROC_data %>% 
+    summarise(AUC = sum(diff(FPR) * na.omit(lead(TPR) + TPR)) / 2)
+  
+  current <- ROC_data %>% 
+    mutate(
+      diff_p = abs(p_hat - input$p_star)
+    ) %>% 
+    arrange(diff_p) %>% 
+    slice(1)
+  
+  ggplot(ROC_data, aes(FPR, TPR)) +
+    geom_line() +
+    geom_abline(lty = 2) +
+    labs(
+      x = expression(paste("False Positive Rate(", p, "*)")),
+      y = expression(paste("True Positive Rate(", p, "*)")), 
+      title = paste("ROC Curve as a Parametric Function of p*. Area Under Curve = ", round(AUC,3), sep="")
+    ) +
+    geom_point(data=current, size=8, col="red")
+})
+
+renderTable({
+  if(input$p_star == 0){
+    output <- 
+      data_frame(
+        truth = as.factor(c(0, 0, 1, 1)),
+        predicted = as.factor(c(0, 1, 0, 1)),
+        n = as.integer(c(0, sum(values$y == 0), 0, sum(values$y == 1)))
+      )
+  } else if(input$p_star == 1){
+    output <- 
+      data_frame(
+        truth = as.factor(c(0, 0, 1, 1)),
+        predicted = as.factor(c(0, 1, 0, 1)),
+        n = as.integer(c(sum(values$y == 0), 0, sum(values$y == 1), 0))
+      )
+  } else {
+    output <- values %>% 
+      mutate(y_hat = ifelse(p_hat>input$p_star, 1, 0)) %>% 
+      select(y, y_hat) %>% 
+      rename(truth=y, predicted=y_hat) %>% 
+      mutate(
+        truth = as.factor(truth),
+        predicted=as.factor(predicted)
+      ) %>% 
+      group_by(truth, predicted) %>% 
+      count()
+  }
+  blah <- output$n %>% matrix(nrow=2) %>% as.data.frame()
+  rownames(blah) <- c("<strong>Predict y=0</strong>", "<strong>Predict y=1</strong>")
+  colnames(blah) <- c("Truth: y=0", "Truth: y=1")
+  blah
+}, rownames = TRUE, sanitize.text.function=function(x){x})
+
+
+renderUI({
+  withMathJax()
+  
+  if(input$p_star == 0){
+    output <- 
+      data_frame(
+        truth = as.factor(c(0, 0, 1, 1)),
+        predicted = as.factor(c(0, 1, 0, 1)),
+        n = as.integer(c(0, sum(values$y == 0), 0, sum(values$y == 1)))
+      )
+  } else if(input$p_star == 1){
+    output <- 
+      data_frame(
+        truth = as.factor(c(0, 0, 1, 1)),
+        predicted = as.factor(c(0, 1, 0, 1)),
+        n = as.integer(c(sum(values$y == 0), 0, sum(values$y == 1), 0))
+      )
+  } else {
+    output <- values %>% 
+      mutate(y_hat = ifelse(p_hat>input$p_star, 1, 0)) %>% 
+      select(y, y_hat) %>% 
+      rename(truth=y, predicted=y_hat) %>% 
+      mutate(
+        truth = as.factor(truth),
+        predicted=as.factor(predicted)
+      ) %>% 
+      group_by(truth, predicted) %>% 
+      count()
+  }
+  
+  TN <- output$n[1]
+  FP <- output$n[2]
+  FN <- output$n[3]
+  TP <- output$n[4]
+  
+  TPR <- TP/(TP+FN)
+  FPR <- FP/(FP+TN)
+  
+  str1 <- paste("False positive rate (rate at which men are predicted to be women) = ", FP, "/(", FP, "+", TN, ") = ", round(FPR,3), sep="")
+  str2 <- paste( "True positive rate (rate at which women are predicted to be women) =", TP, "/(", TP, "+", FN, ") = ", round(TPR,3), sep="")
+  str <- paste( "$$\\mbox{False Positive Rate} = \\frac{", FP, "}{", FP, "+", TN, "} = \\thinspace ", round(FPR,3), "\\mbox{ & }","\\thinspace \\mbox{True Positive Rate} = \\frac{", TP, "}{", TP, "+", FN, "} = ", round(TPR,3),"$$", sep="")
+  HTML(paste(str1, str2, sep = '<br/>'))
+})
+```
+
+
+

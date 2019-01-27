@@ -1,0 +1,166 @@
+---
+title: "STAT/MATH 495: Advanced Data Analysis"
+author: "Albert Y. Kim"
+date: "Last updated on `r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 1
+    toc_float: true
+---
+
+<style>
+h1{font-weight: 400;}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning = FALSE)
+library(tidyverse)
+library(broom)
+library(knitr)
+library(modelr)
+library(lubridate)
+library(forcats)
+```
+
+```{r, eval=FALSE, echo=FALSE}
+# Run this separately to have slide output:
+rmarkdown::render("index.Rmd", output_format = c("ioslides_presentation"), output_file = "slides.html")
+```
+
+
+
+***
+
+
+
+# X.X
+
+## Thu X/X
+
+Announcements:
+
+* Problem set 0X feedback and example solutions given [below](#PS0X).
+
+
+## Chalk talk
+
+X.X
+
+
+
+
+***
+
+
+
+# X.X 
+
+## Tue X/X
+
+Announcements:
+
+* Problem set 0X presentations listed [below](#PS0X).
+
+
+## Chalk talk
+
+X.X
+
+
+
+
+
+***
+
+
+
+
+
+# Problem set X {#PS05X}
+
+## Information
+
+*Assigned on Tue 10/3, due on Wed 10/11 (Monday schedule) 9am at which point there will be synchronized pull requests.*
+
+<a href="https://www.kaggle.com/c/bike-sharing-demand">
+<img border="0" alt="bike" src="images/bike.png" width="600">
+</a>
+
+You will enter the [Bike Sharing
+Demand](https://www.kaggle.com/c/bike-sharing-demand) Kaggle competition and fit
+a linear regression model to predict the number of rentals per hour, however
+*using only 3 predictor variables*. Fork a copy of the [PS05
+repo](https://github.com/2017-09-Amherst-STAT495/PS05) in the course GitHub
+Organization and then clone it in whatever version of RStudio you like. The
+focus of this exercise is to argue to decision makers why your 3 chosen
+variables provide the most "bang for your buck" in predicting bikeshare demand.
+
+* Teams: 2-3 people at your choosing. Once you've selected your group designate one person as team leader *who has not previously been a team leader*, who will:
+    + Create a Slack DM that includes Albert, Andrew Kim (TA), and all team members. So far:
+        + Team A: Jonathan, Sarah T, Timothy
+        + Team B: Harrison, Christien
+    + Submit a single pull request on behalf of the group.
+    + Submit a single submission to Kaggle on behalf of the group.
+* Deliverables: One ready to submit *pull request* to the [PS05
+repo](https://github.com/2017-09-Amherst-STAT495/PS05) (recall the GitHub
+[submission
+process](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process)).
+At the very least, the following files should be modified/added:
+    1. `PS05.Rmd`: This should
+        + Be well-commented and completely reproducible.
+        + Involve an *exploratory data analysis* arguing why you chose the three
+        variables you did.
+    1. `PS05.html`: The output of `PS05.Rmd`. This will be the presentation file
+    for a randomly chosen set of groups on Wed 10/11.
+    1. `README.md`: Change `rudeboybert` in the URL to the GitHub ID of the team
+    leader so that you can open your team's version of `PS05.html` in a browser
+    on Tuesday morning.
+    1. `submission.csv`
+    1. `screen_shot.png` or `screen_shot.jpg`: A screenshot of your Kaggle ranking.
+* Feedback will be delivered by Thursday 10/12 9am. Your group can resubmit your work by Friday 10/13 at 5pm.
+* Tips:
+    + Think about the projection onto the sheet exercise. What variables provide
+    the most "bang for your buck" for understanding what's behind the sheet, in
+    this case, the mechanism that determines bikeshare demand.
+    + Again, do not worry about your score. This problem set is more about
+    process than product.
+    + Your decision process for determining which 3 to use can be based
+    exclusively on your EDA. However, if you are looking for something "less
+    unsystematic", you can use the approaches in the ISLR readings for Chapter 6
+    listed above; this kind of approach is strictly optional.
+
+
+## Presentations
+
+
+
+## Example solutions
+
+
+
+
+***
+
+
+
+# X.X
+
+## Mon X/X
+
+Announcements:
+
+
+
+## Chalk talk
+
+X.X
+
+
+
+***
+
+
+
+
+

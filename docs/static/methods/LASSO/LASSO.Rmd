@@ -1,0 +1,406 @@
+---
+title: "LASSO Regularization"
+author: "Albert Y. Kim"
+date: "Last updated on `r Sys.Date()`"
+output: html_document
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(glmnet)
+library(tidyverse)
+library(broom)
+library(plotly)
+library(stringr)
+```
+
+**Note**: The source code for this Shiny app is available on <a target="_blank" class="page-link" href="https://github.com/rudeboybert/MATH218/blob/gh-pages/assets/regularization/regularization_ROC.Rmd">GitHub</a>.
+
+
+
+
+
+
+
+## Data
+
+Let's consider data for $i=1, \ldots, 400$ individuals (alas, I don't have sampling information)
+
+* $y_i$: Credit card balance
+* $x_{1,i}$: Income in $10K
+* $x_{2,i}$: Credit limit in $
+
+Here is a random sample of 10 of the 400 rows:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
+credit <- read_csv("http://www-bcf.usc.edu/~gareth/ISL/Credit.csv") %>%
+  select(-X1) %>%
+  select(Balance, Income, Limit)
+credit %>% 
+  sample_n(10) %>% 
+  knitr::kable()
+```
+
+Let's view the points in an interactive 3D plot:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
+base_plot <-
+  plot_ly(showlegend=FALSE) %>%
+  add_markers(
+    x = credit$Income,
+    y = credit$Limit,
+    z = credit$Balance,
+    hoverinfo = 'text',
+    text = ~paste("x1 - Income: ", credit$Income, "</br> x2 - Limit: ", credit$Limit, "</br> y - Balance: ", credit$Balance)
+  ) %>%
+  layout(
+    scene = list(
+      xaxis = list(title = "x1 - Income (in $10K)"),
+      yaxis = list(title = "x2 - Limit ($)"),
+      zaxis = list(title = "y - Balance ($)")
+    )
+  )
+base_plot
+```
+
+
+
+
+
+
+
+## Two Simple Models
+
+Let's now consider two models:
+
+1. **Naive Model**: Uses no predictor information (in this case Income and Limit)
+1. **Regression Model**: Fits a linear regression
+
+#### 1. Naive Model
+
+The average balance in this data set is $\overline{y}$ = \$`r mean(credit$Balance) %>% round(2)`. So for
+any point $(x_1, x_2)$ we would predict \$`r mean(credit$Balance) %>% round(2)`. Let's view this in an interactive 3D plot:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
+x_grid <- seq(from=min(credit$Income), to=max(credit$Income), length=100)
+y_grid <- seq(from=min(credit$Limit), to=max(credit$Limit), length=200)
+z_grid <- expand.grid(x_grid, y_grid) %>%
+  tbl_df() %>%
+  rename(
+    x_grid = Var1,
+    y_grid = Var2
+  ) %>%
+  mutate(z = mean(credit$Balance)) %>%
+  .[["z"]] %>%
+  matrix(nrow=length(x_grid)) %>%
+  t()
+
+plot_ly(showscale=FALSE) %>%
+  add_markers(
+    x = credit$Income,
+    y = credit$Limit,
+    z = credit$Balance,
+    hoverinfo = 'text',
+    text = ~paste("x1 - Income: ", credit$Income, "</br> x2 - Limit: ", credit$Limit, "</br> y - Balance: ", credit$Balance)
+  ) %>%
+  layout(
+    scene = list(
+      xaxis = list(title = "x1 - Income (in $10K)"),
+      yaxis = list(title = "x2 - Limit ($)"),
+      zaxis = list(title = "y - Balance ($)")
+    )
+  ) %>%
+  add_surface(
+    x = x_grid,
+    y = y_grid,
+    z = z_grid
+  )
+```
+
+
+#### 2. Regression Model
+
+Let's now fit a linear regression 
+
+$$
+y = \beta_0 + \beta_1 x_1 + \beta_2 x_2\\
+\mbox{Balance} = \beta_0 + \beta_1\mbox{Income} + \beta_2\mbox{Limit}
+$$
+
+using `lm(Balance ~ Income + Limit)`. The *least-squares estimates* of the three
+$\beta$ *coefficients* (the intercept and the two slopes) are:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
+model_formula <- as.formula("Balance ~ Income + Limit")
+model_lm <- credit %>% 
+  # mutate(
+  #   Income = Income - mean(Income),
+  #   Limit = Limit - mean(Limit)
+  #   ) %>% 
+  lm(model_formula , data=.)
+tidy(model_lm) %>%
+  select(term, estimate) %>% 
+  knitr::kable(digits=2)
+```
+
+Hence we can computed fitted values:
+
+$$
+\widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1x_1 + \widehat{\beta}_2x_2\\
+\widehat{\mbox{Balance}} = \widehat{\beta}_0 + \widehat{\beta}_1\mbox{Income} + \widehat{\beta}_2\mbox{Limit}\\
+\widehat{\mbox{Balance}} = -385.18 - 7.66 \times \mbox{Income} + 0.26\times\mbox{Limit}\\
+$$
+
+Note:
+
+* Where as in simple linear regression based on observations $(x_i, y_i)$ with a
+single predictor yielding a line
+* We are now dealing with multiple linear regression based on observations $(x_{1,i}, x_{2,i}, y_i)$ with two predictors
+yielding a plane. The plane corresponds to our fitted values. Let's view these in an interactive 3D plot:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
+x_grid <- seq(from=min(credit$Income), to=max(credit$Income), length=100)
+y_grid <- seq(from=min(credit$Limit), to=max(credit$Limit), length=200)
+z_grid <- expand.grid(x_grid, y_grid) %>%
+  tbl_df() %>%
+  rename(
+    x_grid = Var1,
+    y_grid = Var2
+  ) %>%
+  mutate(z = coef(model_lm)[1] + coef(model_lm)[2]*x_grid + coef(model_lm)[3]*y_grid) %>%
+  .[["z"]] %>%
+  matrix(nrow=length(x_grid)) %>%
+  t()
+
+base_plot %>%
+  add_surface(
+    x = x_grid,
+    y = y_grid,
+    z = z_grid
+    )
+```
+
+
+
+
+
+
+
+
+
+## Shrinking $\beta$ Coefficients via LASSO
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, cache=TRUE}
+X <- model.matrix(model_formula, data = credit)[, -1]
+y <- credit$Balance
+lambda_values <- 10^seq(-3, 10, by=0.05)
+model_ridge <- glmnet(X, y, alpha = 1, lambda = lambda_values)
+  coefficients <-
+    model_ridge %>%
+    tidy() %>%
+    tbl_df() %>%
+    # lambda's on x-axis are better viewed on a log-scale:
+    mutate(log10_lambda = log10(lambda)) %>%
+    select(term, estimate, log10_lambda)
+```
+
+**Recall**: 
+
+We now set up a search range of $\lambda$ values to consider in the slider for the Shiny app. Note 
+however we don't vary things on a $\lambda$-scale, but rather a $\log_{10}(\lambda)$-scale. Here
+is our search range:
+
+* Values of $\log_{10}$ in between $(-3, 10)$
+* i.e. Values of $\lambda$ in between $(10^{-3}, 10^{10})$ = (0.001, 10,000,000,000)
+
+**Observe**: As we vary $\log_{10}(\lambda)$, we see that the
+LASSO $\beta$ coefficients change. Note the plot does not show how the intercept $\beta_0$ varies, but
+the table does.
+
+```{r,echo=FALSE}
+inputPanel(
+  sliderInput("lambda", label = "log10(lambda)", min = -3, max = 10, value = 1, step = 0.05)
+)
+```
+
+```{r,echo=FALSE}
+renderPlot({
+  coefficients %>% 
+    filter(term != "(Intercept)") %>% 
+    ggplot(aes(x=log10_lambda, y=estimate, col=term)) +
+    geom_line() +
+    geom_vline(xintercept = input$lambda, linetype="dashed") +
+    labs(x="log10(lambda)", y="estimate of coefficient")
+})
+
+renderTable({
+  coefficients %>% 
+    mutate(dist = abs(log10_lambda - input$lambda)) %>% 
+    filter(dist == min(dist)) %>% 
+    rename(`LASSO Estimate` = estimate) %>% 
+    left_join(tidy(model_lm), by="term") %>% 
+    rename(`lm Estimate` = estimate) %>% 
+    select(term, `LASSO Estimate`, `lm Estimate`)
+  
+}, rownames = FALSE)
+```
+
+**Question**: When we penalize the coefficients very strictly via a high value 
+of $\lambda$, note that both slope coefficients $\beta_1$ and $\beta_2$ get
+shrunk to 0. What does the value of intercept coefficient $\beta_0$ correspond
+to? Hint: We are using no predictor information when $\beta_1=0$ and $\beta_2=0$.
+
+
+
+
+
+## What Happens at a Particular $\lambda$?
+
+For example at $\log_{10}(\lambda) = 1$, or equivalently at $\lambda = 10^1 = 10$, we have:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, cache=TRUE}
+lambda_knob <- 1
+
+coefficents2 <- coefficients %>% 
+  filter(log10_lambda == lambda_knob) %>%
+  select(term, estimate)
+
+coefficents2 %>% 
+  knitr::kable(digits=2)
+```
+
+and hence we obtain fitted values using:
+
+$$
+\widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1x_1 + \widehat{\beta}_2x_2\\
+\widehat{\mbox{Balance}} = -348.11 - 6.29 \times \mbox{Income} + 0.24\times\mbox{Limit}\\
+$$
+
+
+But where did $\left(\widehat{\beta}_0, \widehat{\beta}_1, \widehat{\beta}_2 
+\right) = \left(-348.11, -6.29, 0.24\right)$ come from? How was this computed?
+Recall the main optimization problem for the LASSO:
+
+$$
+\begin{align}
+&\min_{\beta_0, \ldots, \beta_p} \left( \sum_{i=1}^n \left(y_i -\widehat{y}_i\right)^2 + \lambda \sum_{j=1}^p \left|\beta_j\right| \right)\\
+\mbox{AKA } &\min_{\beta_0, \ldots, \beta_p} \left( \mbox{RSS} + \mbox{shrinkage penalty} \right)
+\end{align}
+$$
+
+In other words and in our case, we want to find the $\left(\widehat{\beta}_0, \widehat{\beta}_1,
+\widehat{\beta}_2\right)$ combination such that the following value is minimized (let's call it Total):
+
+$$
+\mbox{Total} = \sum_{i=1}^{n} \left(\mbox{Balance}_i -\widehat{\mbox{Balance}}_i\right)^2 + \lambda \left( \left|\widehat{\beta}_1\right| + \left|\widehat{\beta}_2\right|\right)\\
+$$
+
+where
+
+$$
+\widehat{\mbox{Balance}}_i = \widehat{\beta}_0 + \widehat{\beta}_1\mbox{Income}_i + \widehat{\beta}_2\mbox{Limit}_i\\
+$$
+
+How does `glmnet()` find these values? It uses *numerical optimization* 
+techniques, but they are beyond the scope of this class. If you are interested 
+in learning these however, take Prof. Michaela Kubacki's MATH228 Introduction to
+Numerical Analysis. We will however do something much clumsier! We will
+
+* Take a bunch of different combinations of coefficients $\left(\widehat{\beta}_0,
+\widehat{\beta}_1,  \widehat{\beta}_2\right)$
+* Compute Total for each combination
+* Plot these values, but with Total on a $\log_{10}$-scale
+* Observe which combination of coefficients yields the minimal value of Total
+
+We unfortunately cannot plot how Total varies as a function of all 3 coefficients as this 
+is four variables. Let's instead just show how Total varies as a function of the
+two slope coefficients $\widehat{\beta}_1$ and $\widehat{\beta}_2$ corresponding
+to Income and Limit in an interactive 3D plot:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, cache=TRUE}
+coefficients2 <- coefficents2 %>% 
+  spread(term, estimate) %>%
+  rename(
+    beta_Intercept = `(Intercept)`,
+    beta_Income = Income,
+    beta_Limit = Limit
+  )
+
+beta_Income_grid <- seq(from=coefficients2$beta_Income - 100, to=coefficients2$beta_Income + 100, length=200)
+beta_Limit_grid <- seq(from=coefficients2$beta_Limit - 2, to=coefficients2$beta_Limit + 2, length=200)
+
+# if(FALSE){
+#   beta_grid <- expand.grid(beta_Income_grid, beta_Limit_grid) %>%
+#     tbl_df() %>%
+#     rename(
+#       beta_Income_grid = Var1,
+#       beta_Limit_grid = Var2
+#     ) %>%
+#     mutate(
+#       beta_Intercept = coefficients2$beta_Intercept
+#     ) %>%
+#     dplyr::select(beta_Intercept, everything())
+#   
+#   RSS_vector <- rep(0, nrow(beta_grid))
+#   X <- as.matrix(model.matrix(model_formula, data = credit))
+#   for(i in 1:nrow(beta_grid)){
+#     beta <- beta_grid[i, ]
+#     predictions <- X %*% t(as.matrix(beta))
+#     
+#     RSS_vector[i] <- credit %>%
+#       mutate(
+#         yhat = predictions,
+#         resid = Balance-yhat
+#       ) %>%
+#       summarise(RSS = sum(resid^2)) %>%
+#       .[["RSS"]]
+#   }
+#   
+#   beta_grid <- beta_grid %>%
+#     mutate(
+#       RSS = RSS_vector,
+#       sum_beta_sq = abs(beta_Income_grid) + abs(beta_Limit_grid),
+#       penalty = sum_beta_sq*lambda_knob,
+#       total = RSS + penalty
+#     )
+#   save(beta_grid, file = "assets/regularization/beta_grid.RData")
+# }
+load(url("https://github.com/rudeboybert/MATH218/raw/gh-pages/assets/regularization/beta_grid.RData"))
+z <- log10(beta_grid$total) %>% matrix(nrow=200) %>% t()
+
+# ggplot(beta_grid, aes(x=beta_Income_grid, y=beta_Limit_grid, z=log(total))) +
+#   geom_contour(aes(colour = ..level..)) +
+#   geom_vline(xintercept = coefficients2$beta_Income, linetype="dashed") +
+#   geom_hline(yintercept = coefficients2$beta_Limit, linetype="dashed") +
+#   scale_color_gradient(low="red", high="white") +
+#   theme_minimal() +
+#   labs(x="Beta Income", y="Beta Limit")
+
+plot_ly(
+  x = as.vector(beta_Income_grid), 
+  y = as.vector(beta_Limit_grid), 
+  z = z) %>%
+  add_surface() %>%
+  layout(scene = list(xaxis = list(title = 'Beta1: Income'),
+                      yaxis = list(title = 'Beta2: Limit'),
+                      zaxis = list(title = 'log10(Total)')))
+```
+
+**Question**: For what values of $(\beta_1, \beta_2)$ is Total minimized? Where have we seen this prior?
+
+
+
+
+
+
+
+## Why Are We Doing This?
+
+**Question**: Why are we using such a complicated scheme? Why don't we just use the linear
+regression results, as they are super easy to interpret?
+
+**Answer**: Go over the solutions to `PS06`!
+
+
+

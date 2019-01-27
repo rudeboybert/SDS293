@@ -1,0 +1,30 @@
+name: sds293
+output_dir: docs
+output:
+  html_document:
+    toc: yes
+    toc_float: yes
+    toc_depth: 2
+    theme: cosmo
+    highlight: tango
+    df_print: paged
+    lib_dir: site_libs
+    self_contained: no
+navbar:
+  title: "SDS/CSC 293"
+  left:
+  - icon: fa-slack fa-lg
+    href: https://sds-csc-293-2019-jan.slack.com/
+  - text: Quickstart
+    href: quickstart.html
+  - text: Shiny Apps
+    href: shiny.html
+  right:
+  - text: Problem Sets
+    href: PS.html
+  - text: Midterms
+    href: midterms.html
+  - text: Term Project
+    href: term_project.html
+  - text: Syllabus
+    href: syllabus.html

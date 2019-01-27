@@ -1,0 +1,67 @@
+---
+title: "Shiny Apps"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: 2
+    toc_float:
+      collapsed: no
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, eval=FALSE, 
+                      cache=TRUE, fig.width=16/2, fig.height=9/2)
+# Set seed value of random number generator to get "replicable" random numbers.
+# Why 76? Because of https://www.youtube.com/watch?v=xjJ7FheCkCU
+set.seed(76)
+```
+
+<style>
+h1{font-weight: 400;}
+</style>
+
+
+
+***
+
+
+# Classification and regression trees
+
+* [Shiny app](https://beta.rstudioconnect.com/connect/#/apps/2692/access){target="_blank"}
+* <a href="static/methods/CART/CART.Rmd" download>`CART.Rmd`</a> Shiny app source code.
+
+
+
+***
+
+
+
+# LASSO regularization
+
+* [Shiny app](https://beta.rstudioconnect.com/connect/#/apps/2692/access){target="_blank"}
+* <a href="static/methods/LASSO/LASSO.Rmd" download>`LASSO.Rmd`</a> Shiny app source code.
+
+
+
+***
+
+
+
+# k-nearest neighbors
+
+* [Shiny app](https://beta.rstudioconnect.com/connect/#/apps/2692/access){target="_blank"}
+* <a href="static/methods/knn/knn.Rmd" download>`knn.Rmd`</a> Shiny app source code.
+
+
+
+***
+
+
+
+# ROC curves
+
+* [Shiny app](https://beta.rstudioconnect.com/connect/#/apps/2692/access){target="_blank"}
+* <a href="static/methods/ROC/ROC.Rmd" download>`ROC.Rmd`</a> Shiny app source code.
+
+
