@@ -35,7 +35,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -48,11 +48,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -341,9 +343,6 @@ div.tocify {
      
   </a>
 </li>
-<li>
-  <a href="quickstart.html">Quickstart</a>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -383,15 +382,28 @@ h1{font-weight: 400;}
 </div>
 <div id="lec-1-mon-127" class="section level1">
 <h1>Lec 1: Mon 1/27</h1>
+<div id="what-is-machine-learning" class="section level2">
+<h2>What is machine learning?</h2>
+<p>Slides for Lec01…</p>
+<!--
+Click on slides:
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Thanks <a href="https://twitter.com/chadtopaz?ref_src=twsrc%5Etfw">@chadtopaz</a> for hosting me in your <a href="https://twitter.com/WilliamsCollege?ref_src=twsrc%5Etfw">@WilliamsCollege</a> &quot;Intro to Data Science&quot; course! The slides for my &quot;Self-Driving Cars &amp; Forest Ecology: Modeling for Machine Learning&quot; talk are here: <a href="https://t.co/z9Xzc6Dd64">https://t.co/z9Xzc6Dd64</a> <a href="https://t.co/zePbJMPDgS">pic.twitter.com/zePbJMPDgS</a></p>&mdash; Albert Y. Kim (@rudeboybert) <a href="https://twitter.com/rudeboybert/status/1084873481202921472?ref_src=twsrc%5Etfw">January 14, 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+-->
+</div>
 <div id="annoucements" class="section level2">
 <h2>Annoucements</h2>
 <ul>
-<li>Please go over the following <a href="https://docs.google.com/document/d/1NfWkoyeiovkVyMmgmKFGxCMusyxBMYHVvsAUjEZv_fU/" target="_blank">Google Doc</a> with important information about the course and steps you should complete to get setup, in particular the Intro Survey. The whole process should take about 20 minutes.</li>
+<li>If you haven’t already, please go over the following <a href="https://docs.google.com/document/d/1NfWkoyeiovkVyMmgmKFGxCMusyxBMYHVvsAUjEZv_fU/" target="_blank">Google Doc</a> with important information about the course and steps you should complete to get setup, in particular the Intro Survey. The whole process should take about 20 minutes.</li>
 <li><strong>Added on Sun 1/27 6PM</strong>: Create an account on Kaggle.com using your Smith (or Five College) email address.</li>
 </ul>
 </div>
-<div id="for-the-next-lecture" class="section level2">
-<h2>For the next lecture</h2>
+<div id="discussion-on-background" class="section level2">
+<h2>Discussion on background</h2>
+</div>
+<div id="prepartion-for-lec02" class="section level2">
+<h2>Prepartion for Lec02</h2>
 <p>I <strong>highly</strong> recommend you start these steps as soon as you can, so that you’ll have two chances to go to the Spinelli tutoring hours if you need help before Wednesday’s lecture. Note the Spinelli tutoring hours are Sun-Thurs 7-9pm in Sabin-Reed 301.</p>
 <ol style="list-style-type: decimal">
 <li>Have R and RStudio installed on your laptops.</li>
@@ -402,7 +414,7 @@ h1{font-weight: 400;}
 </ul></li>
 <li>Install the standard versions of the <code>tidyverse</code> and <code>devtools</code> packages as you normally would.</li>
 <li>Install the <em>development version</em> of the <code>moderndive</code> package by running: <code>devtools::install_github(&quot;moderndive/moderndive&quot;)</code></li>
-<li>Run the following code. If you get no errors and a file <code>submission.csv</code> gets saved to your computer, you’re ready for Lec02!</li>
+<li>Run the code below. If you get no errors and a file <code>submission.csv</code> gets saved to your computer, you’re ready for Lec02!</li>
 </ol>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(moderndive)</a>

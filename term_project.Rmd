@@ -309,7 +309,7 @@ ggplot(house_prices, aes(x = log10_price)) +
   labs(x = "log10(House price)", title = "Seattle house prices") 
 ```
 
-```{r, message=FALSE, warning=FALSE, eval=TRUE, echo=FALSE, fig.height=8/2, cache=TRUE}
+```{r, message=FALSE, warning=FALSE, eval=FALSE, echo=FALSE, fig.height=8/2, cache=TRUE}
 # log10() transformations
 house_prices <- house_prices %>%
   mutate(

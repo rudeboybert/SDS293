@@ -1,127 +1,433 @@
----
-title: "SDS/CSC 293: Machine Learning"
-author: "Albert Y. Kim"
-date: "Last updated on `r Sys.Date()`"
-output:
-  html_document:
-    toc: true
-    toc_depth: 2
-    toc_float: true
-#    df_print: kable
----
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Albert Y. Kim" />
+
+
+<title>SDS/CSC 293: Machine Learning</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">SDS/CSC 293</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="https://sds-csc-293-2019-jan.slack.com/">
+    <span class="fa fa-slack fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="syllabus.html">Syllabus</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">SDS/CSC 293: Machine Learning</h1>
+<h4 class="author"><em>Albert Y. Kim</em></h4>
+<h4 class="date"><em>Last updated on 2019-01-28</em></h4>
+
+</div>
+
 
 <style>
 h1{font-weight: 400;}
 </style>
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, eval=FALSE, 
-                      cache=TRUE, fig.width=16/2, fig.height=9/2)
-library(tidyverse)
-library(broom)
-library(knitr)
-library(modelr)
-library(lubridate)
-library(forcats)
-library(nycflights13)
-library(gridExtra)
-library(okcupiddata)
-# devtools::install_github("hadley/emo")
-library(emo)
-
-# Set seed value of random number generator to get "replicable" random numbers.
-# Why 76? Because of https://www.youtube.com/watch?v=xjJ7FheCkCU
-set.seed(76)
-```
-
-```{r, eval=FALSE, echo=FALSE}
-# Run this separately to have slide output:
-rmarkdown::render("index.Rmd", output_format = c("ioslides_presentation"), output_file = "slides.html")
-```
-
 <style>
 h1{font-weight: 400;}
 </style>
-
-
-
-***
-
-
-
-# Schedule 
-
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vToPV6gfDlIq5ni1qezMcPy3ZdyIN1MtSSKZ3GABeBvf9LYu3_1XE7DOEQh4Dg02bKG5YF0XpSFO_-B/pubhtml?gid=1068367544&amp;single=true&amp;widget=true&amp;headers=false" width="100%" height="520"></iframe>
-
+<hr />
+<div id="schedule" class="section level1">
+<h1>Schedule</h1>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vToPV6gfDlIq5ni1qezMcPy3ZdyIN1MtSSKZ3GABeBvf9LYu3_1XE7DOEQh4Dg02bKG5YF0XpSFO_-B/pubhtml?gid=1068367544&amp;single=true&amp;widget=true&amp;headers=false" width="100%" height="520">
+</iframe>
 <!--
 {target="_blank"}
 -->
-
-
-
-***
-
-
-# Lec 1: Mon 1/27
-
-## What is machine learning?
-
-Slides for Lec01...
-
+<hr />
+</div>
+<div id="lec-1-mon-127" class="section level1">
+<h1>Lec 1: Mon 1/27</h1>
+<div id="what-is-machine-learning" class="section level2">
+<h2>What is machine learning?</h2>
+<p>Slides for Lec01…</p>
 <!--
 Click on slides:
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Thanks <a href="https://twitter.com/chadtopaz?ref_src=twsrc%5Etfw">@chadtopaz</a> for hosting me in your <a href="https://twitter.com/WilliamsCollege?ref_src=twsrc%5Etfw">@WilliamsCollege</a> &quot;Intro to Data Science&quot; course! The slides for my &quot;Self-Driving Cars &amp; Forest Ecology: Modeling for Machine Learning&quot; talk are here: <a href="https://t.co/z9Xzc6Dd64">https://t.co/z9Xzc6Dd64</a> <a href="https://t.co/zePbJMPDgS">pic.twitter.com/zePbJMPDgS</a></p>&mdash; Albert Y. Kim (@rudeboybert) <a href="https://twitter.com/rudeboybert/status/1084873481202921472?ref_src=twsrc%5Etfw">January 14, 2019</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 -->
-
-## Annoucements 
-
-* If you haven't already, please go over the following [Google Doc](https://docs.google.com/document/d/1NfWkoyeiovkVyMmgmKFGxCMusyxBMYHVvsAUjEZv_fU/){target="_blank"} with important information about the course and steps you should complete to get setup, in particular the Intro Survey. The whole process should take about 20 minutes.
-* **Added on Sun 1/27 6PM**: Create an account on Kaggle.com using your Smith (or Five College) email address. 
-
-
-## Discussion on background
-
-
-
-## Prepartion for Lec02
-
-I **highly** recommend you start these steps as soon as you can, so that you'll have two chances to go to the Spinelli tutoring hours if you need help before Wednesday's lecture. Note the Spinelli tutoring hours are Sun-Thurs 7-9pm in Sabin-Reed 301.
-
-1. Have R and RStudio installed on your laptops. 
-1. Install some extra tools:
-    + macOS users: Go to Apple's [developer page](https://developer.apple.com/download/more/){target="_blank"} and install the appropriate version of Command Line Tools. Hint: Google "How do I know what version of macOS I have?"
-    + Windows users: Install [`Rtools35.exe`](https://cran.r-project.org/bin/windows/Rtools/){target="_blank"}.
-1. Install the standard versions of the `tidyverse` and `devtools` packages as you normally would.
-1. Install the *development version* of the `moderndive` package by running: `devtools::install_github("moderndive/moderndive")`
-1. Run the code below. If you get no errors and a file `submission.csv` gets saved to your computer, you're ready for Lec02!
-
-```{r}
-library(tidyverse)
-library(moderndive)
-
-# 1. Load in training and test data
-train <- read_csv("https://rudeboybert.github.io/SDS293/static/train.csv")
-test <- read_csv("https://rudeboybert.github.io/SDS293/static/test.csv")
-
-# 2. Fit model on training data
-house_model <- lm(SalePrice ~ YrSold, data = train)
-
-# 3. Apply fitted model to get predictions for test data
-submission <- get_regression_points(house_model, newdata = test, ID = "Id") %>% 
-  select(Id, SalePrice = SalePrice_hat)
-
-# 4. Output predictions to CSV
-write_csv(submission, "submission.csv")
-```
-
-
-
-***
-
-
-
+</div>
+<div id="administrative-notes" class="section level2">
+<h2>Administrative notes</h2>
+<ul>
+<li>If you haven’t already, please go over the following <a href="https://docs.google.com/document/d/1NfWkoyeiovkVyMmgmKFGxCMusyxBMYHVvsAUjEZv_fU/" target="_blank">Google Doc</a> with important information about the course and steps you should complete to get setup, in particular the Intro Survey. The whole process should take about 20 minutes.</li>
+<li><strong>Added on Sun 1/27 6PM</strong>: Create an account on Kaggle.com using your Smith (or Five College) email address.</li>
+<li>Discussion on assumed background for this course.</li>
+</ul>
+</div>
+<div id="prepartion-for-lec02" class="section level2">
+<h2>Prepartion for Lec02</h2>
+<p>I <strong>highly</strong> recommend you start these steps as soon as you can, so that you’ll have two chances to go to the Spinelli tutoring hours if you need help before Wednesday’s lecture. Note the Spinelli tutoring hours are Sun-Thurs 7-9pm in Sabin-Reed 301.</p>
+<ol style="list-style-type: decimal">
+<li>Have R and RStudio installed on your laptops.</li>
+<li>Install some extra tools:
+<ul>
+<li>macOS users: Go to Apple’s <a href="https://developer.apple.com/download/more/" target="_blank">developer page</a> and install the appropriate version of Command Line Tools. Hint: Google “How do I know what version of macOS I have?”</li>
+<li>Windows users: Install <a href="https://cran.r-project.org/bin/windows/Rtools/" target="_blank"><code>Rtools35.exe</code></a>.</li>
+</ul></li>
+<li>Install the standard versions of the <code>tidyverse</code> and <code>devtools</code> packages as you normally would.</li>
+<li>Install the <em>development version</em> of the <code>moderndive</code> package by running: <code>devtools::install_github(&quot;moderndive/moderndive&quot;)</code></li>
+<li>Run the code below. If you get no errors and a file <code>submission.csv</code> gets saved to your computer, you’re ready for Lec02!</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(moderndive)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co"># 1. Load in training and test data</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">train &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://rudeboybert.github.io/SDS293/static/train.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">test &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://rudeboybert.github.io/SDS293/static/test.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co"># 2. Fit model on training data</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">house_model &lt;-<span class="st"> </span><span class="kw">lm</span>(SalePrice <span class="op">~</span><span class="st"> </span>YrSold, <span class="dt">data =</span> train)</a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co"># 3. Apply fitted model to get predictions for test data</span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">submission &lt;-<span class="st"> </span><span class="kw">get_regression_points</span>(house_model, <span class="dt">newdata =</span> test, <span class="dt">ID =</span> <span class="st">&quot;Id&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="st">  </span><span class="kw">select</span>(Id, <span class="dt">SalePrice =</span> SalePrice_hat)</a>
+<a class="sourceLine" id="cb1-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="co"># 4. Output predictions to CSV</span></a>
+<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="kw">write_csv</span>(submission, <span class="st">&quot;submission.csv&quot;</span>)</a></code></pre></div>
+<hr />
 <!--
 
 
@@ -562,7 +868,8 @@ Speaking of dinosaurs...
 
 ## Code demo
 
-```{r, eval=FALSE}
+
+```r
 library(tidyverse)
 iris <- iris %>%
   as_tibble() %>%
@@ -629,10 +936,9 @@ Announcements:
 
 Play around with different $k = 1, \ldots, 150$:
 
-```{r, echo=FALSE}
-data("iris")
-```
-```{r, eval=FALSE}
+
+
+```r
 library(tidyverse)
 library(caret)
 library(gridExtra)
@@ -718,7 +1024,8 @@ when outcome variable is categorical.
 
 ## Code demo
 
-```{r, eval=FALSE}
+
+```r
 library(MLmetrics)
 
 # Possible output 1: Majority rules vote winner ---------------------------
@@ -794,7 +1101,8 @@ Setosa            |  Versicolor |  Virginica
 
 ### Data in R
 
-```{r}
+
+```r
 library(tidyverse)
 iris %>%
   as_tibble() %>% 
@@ -971,28 +1279,12 @@ truth. What value do you need?
 
 ### Solutions {#Lec3_2_solutions}
 
-```{r, echo=FALSE}
-library(okcupiddata)
-profiles <- profiles %>%
-  as_tibble() %>%
-  # Create binary outcome variable y:
-  mutate(y = ifelse(sex=="f", 1, 0)) %>%
-  # Remove heights below 50 inches:
-  filter(height>50) %>%
-  # Add ID column:
-  mutate(ID = 1:n()) %>%
-  select(ID, sex, y, height) %>%
-  # Remove all rows with NA missing values:
-  na.omit()
-profiles_train <- profiles %>% 
-  sample_frac(0.5)
-profiles_test <- profiles %>% 
-  anti_join(profiles_train, by="ID")
-```
+
 
 **Question 1.a)**: Histograms of male and female heights using a binwidth of 1 inch:
 
-```{r, echo=TRUE}
+
+```r
 ggplot(profiles, aes(x=height)) +
   geom_histogram(binwidth = 1) +
   facet_wrap(~sex, nrow=2) +
@@ -1002,7 +1294,8 @@ ggplot(profiles, aes(x=height)) +
 **Question 1.b)**: "Going from shorter to taller, at what height would you
 start guessing that an individual is male?"
 
-```{r, echo=TRUE}
+
+```r
 proportion_female <- profiles %>% 
   # For each (height x sex) combo, return count
   group_by(height, sex) %>% 
@@ -1020,7 +1313,8 @@ ggplot(proportion_female, aes(x=height, y=prop)) +
 Why is this so variable, especially at shorter and taller heights? Because of
 the small sample size. Let's also mark the number of women for each height:
 
-```{r, echo=TRUE}
+
+```r
 ggplot(proportion_female, aes(x=height, y=prop)) +
   geom_line(alpha=0.2) + 
   geom_text(aes(label=n), size=5) +
@@ -1029,7 +1323,8 @@ ggplot(proportion_female, aes(x=height, y=prop)) +
 
 Let's add a horizontal line at 40.2%:
 
-```{r, echo=TRUE}
+
+```r
 ggplot(proportion_female, aes(x=height, y=prop)) +
   geom_line(alpha=0.2) + 
   geom_text(aes(label=n), size=5) +
@@ -1051,7 +1346,8 @@ $(-\infty, \infty)$. To convert back to probability space, we need to apply the
 **Question 3**: Values for contingency table/confusion matrix. To compute this,
 we need a decision threshold $p^*$:
 
-```{r, echo=TRUE, cache=TRUE}
+
+```r
 p_star <- 0.5
 model_logistic <- glm(y~height, data=profiles_train, family="binomial")
 model_logistic %>% 
@@ -1113,32 +1409,7 @@ $$
 $$
 
 
-```{r, echo=FALSE}
-eps <- 0.0001
-values <- data_frame(
-  p = seq(from=eps, to=1-eps, length=1000),
-  y = log(p/(1-p))
-)
-points <- data_frame(
-  p = c(eps, 1-eps, 0.5),
-  y = log(p/(1-p)),
-  group = factor(1:3)
-)
 
-plot1 <- ggplot(values, aes(p, y)) +
-  geom_line() +
-  geom_hline(yintercept = 0,  alpha=0.5) +
-  geom_vline(xintercept = 0.5, alpha=0.5) +
-  # geom_vline(xintercept = 0, linetype="dashed", alpha=0.5) +
-  # geom_vline(xintercept = 1, linetype="dashed", alpha=0.5) +
-  geom_point(data=points, aes(col=group), size=5) + 
-  theme(legend.position="none") +
-  labs(x="Probability p", y="log-odds", title="log-odds over probability")
-plot2 <- plot1 +
-  coord_flip() + 
-  labs(x="Probability p", y="log-odds", title="probability over log-odds")
-grid.arrange(plot1, plot2, nrow=1)
-```
 
 
 ## Chalk talk
@@ -1396,60 +1667,7 @@ Let's look at:
 * There is no new sample of points being collected nor crossvalidation going on here; just take the points and fit a model.
 
 
-```{r, echo=FALSE, fig.width=8, fig.height=8}
-# From https://gist.github.com/rudeboybert/752f7aa1e42faa2174822dd29bfaf959
-set.seed(76)
-df_values <- c(2, 25, 50)
-f <- function(x){
-  f_x <- 0.2*x^11*(10*(1-x))^6+10*(10*x)^3*(1-x)^10
-  return(f_x)
-}
-values <- data_frame(
-  x = seq(from=0, to=1, length=100),
-  f_x = f(x),
-  epsilon = rnorm(100, 0, sd = 2),
-  y = f_x + epsilon
-)
-overall <- NULL
-for(df in df_values){
-  overall <- smooth.spline(values$x, values$y, df=df) %>%
-    augment() %>%
-    mutate(df=df) %>%
-    bind_rows(overall)
-}
-overall <- overall %>% 
-  as_tibble()
 
-plot1 <- overall %>% 
-  filter(df == 2) %>% 
-  ggplot(aes(x=x)) +
-  geom_point(aes(y=y), size=0.75) +
-  geom_line(aes(y=.fitted), col="blue", size=0.5) +
-  labs(title="Plot 1: Splines with df = 2")
-
-plot2 <- overall %>% 
-  filter(df == 25) %>% 
-  ggplot(aes(x=x)) +
-  geom_point(aes(y=y), size=0.75) +
-  geom_line(aes(y=.fitted), col="blue", size=0.5) +
-  labs(title="Plot 2: Splines with df = 25")
-
-plot3 <- overall %>% 
-  filter(df == 50) %>% 
-  ggplot(aes(x=x)) +
-  geom_point(aes(y=y), size=0.75) +
-  geom_line(aes(y=.fitted), col="blue", size=0.5) +
-  labs(title="Plot 3: Splines with df = 50")
-
-plot4 <- overall %>% 
-  filter(df == 50) %>% 
-  ggplot(aes(x=x)) +
-  geom_line(aes(y=y), col="blue", size=0.5) +
-  geom_point(aes(y=y), size=0.75) +
-  labs(title="Plot 4: Extreme case")
-
-grid.arrange(plot1, plot2, plot3, plot4, nrow=2)
-```
 
 ## Chalk talk
 
@@ -1502,7 +1720,8 @@ Announcements:
     + More information [here](static/StatsGradSchoolInfoOct2017.pdf).
 * Plotly example
 
-```{r}
+
+```r
 library(tidyverse)
 library(plotly)
 library(nycflights13)
@@ -1525,7 +1744,8 @@ ggplotly(delays_plot)
 Look at the image for [Problem set 3](#PS03), and then answer these two questions
 with your seatmates.
 
-```{r, eval=FALSE}
+
+```r
 library(tidyverse)
 
 mtcars <- mtcars %>% 
@@ -1635,7 +1855,8 @@ card balance. Alas, no sampling information is provided, so we can't make any st
 * $x_{5,i}$: Number of credit cards
 * $x_{6,i}$: Years of education
 
-```{r, eval=FALSE}
+
+```r
 library(tidyverse)
 credit <- read_csv("http://www-bcf.usc.edu/~gareth/ISL/Credit.csv") %>%
   select(-X1) %>%
@@ -1726,8 +1947,8 @@ Before class:
     for all 336K domestic flights that left an NYC airport in 2013 (JFK, EWR, or
     LGA)
 * AC students: Start networking! Have your name and LinkedIn profile appear on 
-the [Amherst website](https://www.amherst.edu/academiclife/departments/mathematics-statistics/alumni/alumni-links) by filling out this [Google Form](https://docs.google.com/forms/d/1LW1E50wXVGW3-I0949pvRnqrm7M8E5nfADQWlx1YCPc/edit). Recruiters pay `r emo::ji("dollar")``r emo::ji("money")``r emo::ji("currency")` to LinkedIn to be able to do 
-targeted `r emo::ji("search")`s of potential hires!
+the [Amherst website](https://www.amherst.edu/academiclife/departments/mathematics-statistics/alumni/alumni-links) by filling out this [Google Form](https://docs.google.com/forms/d/1LW1E50wXVGW3-I0949pvRnqrm7M8E5nfADQWlx1YCPc/edit). Recruiters pay 💵💸💱 to LinkedIn to be able to do 
+targeted 🔍s of potential hires!
 
 Announcements:
 
@@ -1758,7 +1979,8 @@ details) and plot:
 * x-axis: movie budget (in 2013-inflation adjusted US dollars)
 * y-axis: domestic gross (in 2013-inflation adjusted US dollars)
 
-```{r, fig.height=9/2.5, fig.width=16/2.5}
+
+```r
 library(tidyverse)
 library(fivethirtyeight)
 bechdel_2000 <- bechdel %>% 
@@ -1775,7 +1997,8 @@ lower-end of the budget scale. Let's unskew both variables and compare not
 *absolute* differences, but rather, *relative* differences i.e. differences in
 "order of magnitude" using a `log10()` transformation:
 
-```{r, fig.height=9/2.5, fig.width=16/2.5}
+
+```r
 ggplot(bechdel_2000, aes(x=log10(budget_2013), y=log10(domgross_2013))) +
   geom_point() +
   labs(x="log10(Budget)", y="log10(Domestic Gross)")
@@ -1787,7 +2010,8 @@ at $x=7$, this corresponds to movies with a budget of $10^7 = 10,000,000$
 dollars. So instead, let's *rescale* both axes so that they display the data in
 their original units.
 
-```{r, fig.height=9/2.5, fig.width=16/2.5}
+
+```r
 ggplot(bechdel_2000, aes(x=budget_2013, y=domgross_2013)) +
   geom_point() +
   scale_x_log10() +
@@ -1827,7 +2051,8 @@ on 1000 randomly sampled flights whose (x,y) values aren't missing. Commands:
 * Fit a model: `loess(y~x, data)` (Note there is also a `lowess()` command, but AFAIK there is no convenient `predict()` function).
 * Predict based on a model: `predict(model_loess, newdata)`
 
-```{r, eval=FALSE}
+
+```r
 # Install this package:
 library(tidyverse)
 library(nycflights13)
@@ -1890,7 +2115,8 @@ flights_sample_test %>%
 Look at the help file `?ggplot2::stat_smooth` under `method`: default for n<1000
 is `loess`. 
 
-```{r, eval=FALSE}
+
+```r
 # When more than 1000 obs, geom_smooth uses another method
 dim(flights_sample)
 ggplot(flights_sample, aes(x=temp, y=dep_delay)) +
@@ -2020,37 +2246,7 @@ Let's call the following example "Scenario D) Splines". Recall from our [Intro t
 fitted models based on different degrees of freedom (i.e. different numbers of
 knots). 
 
-```{r, echo=FALSE}
-# From https://gist.github.com/rudeboybert/752f7aa1e42faa2174822dd29bfaf959
-set.seed(76)
-df_values <- c(2, 10, 25, 50)
-f <- function(x){
-  f_x <- 0.2*x^11*(10*(1-x))^6+10*(10*x)^3*(1-x)^10
-  return(f_x)
-}
-values <- data_frame(
-  x = seq(from=0, to=1, length=500),
-  f_x = f(x),
-  epsilon = rnorm(500, 0, sd = 2),
-  y = f_x + epsilon
-)
-overall <- NULL
-for(df in df_values){
-  overall <- smooth.spline(values$x, values$y, df=df) %>%
-    augment() %>%
-    mutate(df=df) %>%
-    bind_rows(overall)
-}
-overall <- overall %>% 
-  as_tibble()
-multiple_df <- overall %>% 
-  ggplot(aes(x=x)) +
-  geom_point(aes(y=y), size=0.5) +
-  geom_line(aes(y=.fitted), col="blue", size=1) +
-  facet_wrap(~df, nrow=2) +
-  labs(title="Splines fit w/ different degrees of freedom")
-multiple_df
-```
+
 
 
 
@@ -2071,12 +2267,7 @@ Let's define a notion of "score" to evaluate how good the above fits are: *mean 
 
 Here are the Root Mean Squared Errors for the plot above. `df=50` has lowest RMSE. Is `df=50` for out-of-sample prediction? What did the Texas Sharpshooter Fallacy say in the machine learning case?
 
-```{r, echo=FALSE}
-overall %>% 
-  group_by(df) %>% 
-  summarise(RMSE = sqrt(mean(.resid^2))) %>% 
-  knitr::kable(digits=3)
-```
+
 
 
 
@@ -2189,7 +2380,8 @@ You will enter the [Sberbank Russian Housing Market](https://www.kaggle.com/c/sb
     + Do not [spin your wheels](https://youtu.be/VrS14wLmVhY?t=12s)!
 * Hints:
 
-```{r, fig.height=3, fig.width=5}
+
+```r
 library(tidyverse)
 library(broom)
 data(cars)
@@ -2253,7 +2445,8 @@ you're curious, the code that created `multiple_df`, `exercise`, `fitted`, and
 `truth` are available on lines 1-86 of <https://bit.ly/rudeboybert_splines>;
 these were run behind the scences to keep the code below simple.)
 
-```{r, eval=FALSE}
+
+```r
 library(tidyverse)
 library(broom)
 # Load some pre-computed data
@@ -2471,7 +2664,8 @@ Topics:
 * Run the code block below to load/inspect the [Titanic data](https://www.kaggle.com/c/titanic/data) from Kaggle (which I've uploaded to the course webpage)
 * Chalk talk: 1.2 Kaggle data
 
-```{r, eval=FALSE}
+
+```r
 library(tidyverse)
 train <- read_csv("https://rudeboybert.github.io/STAT495/static/Titanic/train.csv")
 test <- read_csv("https://rudeboybert.github.io/STAT495/static/Titanic/test.csv")
@@ -2490,7 +2684,8 @@ View(submission)
 
 The predictions are based on the sex of the passengers.
 
-```{r, eval=FALSE}
+
+```r
 test %>% 
   left_join(submission, by="PassengerId") %>% 
   select(PassengerId, Sex, Survived)
@@ -2635,10 +2830,38 @@ Thursday 2-5pm to help out if you are stuck.
 
 
 -->
+</div>
+</div>
 
 
 
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
 
 
+</script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
+</body>
+</html>

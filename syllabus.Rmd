@@ -26,7 +26,7 @@ h1{font-weight: 400;}
 * **Instructor:** [Albert Y. Kim](https://rudeboybert.rbind.io/) - Assistant Professor of Statistical & Data Sciences
 * **~~Email:~~ Slack team**: Click hashtag icon in navbar for the browser interface or use the [desktop app](https://slack.com/downloads/){target="_blank"}.
 * **Meeting locations/times:** 
-    + **Lectures**: MW 1:00-2:30 - McConnell Hall 103
+    + **Lectures**: MW 1:10-2:30 - McConnell Hall 103
 * **Outside help**:
     + The `#questions` channel on Slack.
     + Spinelli Center for Quantitative Learning [Tutoring](https://www.smith.edu/qlc/tutoring.html?colStats=open#PanelStats){target="_blank"}: Sunday thru Thursday 7-9pm in Sabin-Reed 301. 
@@ -61,6 +61,7 @@ Ask yourself:
     + *"Am I attending lectures consistently?"*
     + *"Am I actually running the code and studying the outputs in R during in-class exercises, or am I just going through the motions?"*
     + *"During in-class exercises, am I taking full advantage that I'm in the same place at the same time with the instructor, the lab assistants, and most importantly your peers, or am I browsing the web/texting the whole time?"*
+    + *"Have I been doing the associated readings for each lecture?"*
 * **Problem sets, DataCamp, and coding:**
     + *"Am I actually doing the problem sets?"*
     + *"Have I been attempting a good faith balance between to push myself during DataCamp exercises while not banging my head on the wall, or am I just taking the hints/solutions without any effort?"*
@@ -98,14 +99,15 @@ We will cover the topics below; the schedule and associated readings can be foun
 
 1. Background
     * The modeling framework
+    * The machine learning framework
     * Baby's first model: splines
     * Out-of-sample prediction, sampling vs resampling, crossvalidation
-    * Bias-variance tradeoff
+    * Bias-variance tradeoff?
 1. Continuous outcome models part I
     * Multiple regression for prediction
 1. Categorical outcome models AKA classification
     * Logistic regression for prediction
-    * ROC curves
+    * ROC curves for evaluating binary classifiers
     * k-Nearest Neighbors
     * Classification and regression trees
 1. Continuous outcome models part II
@@ -114,7 +116,7 @@ We will cover the topics below; the schedule and associated readings can be foun
 1. Unsupervised learning (no outcome variable)
     * Principal components analysis
     * k-Means clustering
-1. Other methods
+1. More methods
     * Neural nets
     * Ensemble methods: random forests
 
@@ -157,6 +159,8 @@ regard. That being said, here is a rough hierarchy of how I much I refer to them
 
 
 # Evaluation
+
+
 
 <!--
 ## Weekly Problem Sets 10%
@@ -254,7 +258,7 @@ don't know what your voice sounds like.
 * Submitting a problem set that has code or content that is copied from or is
 only a slightly modified version of your peers' work.
 
--->
+
 
 ## Policies
 
@@ -274,6 +278,7 @@ in particular all external sources must be cited in your submissions.
     + Timestamps for all midterms will be strictly enforced.
 1. **Grading**: I reserve the right to not discuss any grading issues in class and instead direct you to office hours. 
 
+-->
 
 
 ***
