@@ -160,6 +160,39 @@ regard. That being said, here is a rough hierarchy of how I much I refer to them
 
 # Evaluation
 
+## DataCamp assignments 5% {#datacamp}
+
+* DataCamp is meant to be low stakes-practice, so the only thing that matters for your grade is whether you complete the course. So while things like the number of hints/solutions taken don't factor into your grade, it is important to make a good faith effort to answer these questions the best you can.
+* While you may do them in advance if you are curious, it is most definitely not required. Note that the DataCamp schedule may change, with certain courses dropped/added.
+
+
+## Engagement 10% {#engagement}
+
+It is difficult to explicit codify what constitutes "an engaged student," so
+instead I present the following rough principle I will follow: *you'll only get
+out of this class as much as you put in*. That being said, here are multiple
+pathways for you to stay engaged in this class:
+
+* Asking and answering questions in class.
+* Coming to office hours.
+* Posting questions on Slack. Even better, responding to questions on Slack.
+* Your peer evaluations for your mini-projects.
+
+
+## Midterms 35%
+
+* Two midterms during the semester
+* Lower score weighted 15% and higher score weighted 20%.
+
+
+## Five mini-projects 50%
+
+* Mini-project 1: 5% - Groups of 2 selected by instructor.
+* Mini-project 2: 7.5% - Groups of 2 selected by yourselves, must be a new partner.
+* Mini-project 3: 10% - Groups of 2 selected by instructor, you'll be assigned a new partner.
+* Mini-project 4: 12.5% - Groups of 2 selected by yourselves, must be a new partner.
+* Mini-project 5: 15% - Groups of 2-3 freely chosen by yourselves.
+
 
 
 <!--

@@ -64,9 +64,20 @@ h1{font-weight: 400;}
 
 # Lec 1: Mon 1/27
 
-## What is machine learning?
+## Annoucements 
 
-Slides for Lec01...
+* If you haven't already, please go over the following [Google Doc](https://docs.google.com/document/d/1NfWkoyeiovkVyMmgmKFGxCMusyxBMYHVvsAUjEZv_fU/){target="_blank"} with important information about the course and steps you should complete to get setup, in particular the Intro Survey. The whole process should take about 20 minutes.
+* **Added on Sun 1/27 6PM**: Create an account on Kaggle.com using your Smith (or Five College) email address. 
+
+
+
+## Todays Topics/Activities       
+
+### 1. Chalk Talk
+
+*Why chalk talks? Read the [Field Notes](https://twitter.com/FieldNotesBrand){target="_blank"} slogan.*
+
+Lec01 slides + 3 chalk talks
 
 <!--
 Click on slides:
@@ -75,17 +86,15 @@ Click on slides:
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 -->
 
-## Annoucements 
+### 2. Background I will assume
 
-* If you haven't already, please go over the following [Google Doc](https://docs.google.com/document/d/1NfWkoyeiovkVyMmgmKFGxCMusyxBMYHVvsAUjEZv_fU/){target="_blank"} with important information about the course and steps you should complete to get setup, in particular the Intro Survey. The whole process should take about 20 minutes.
-* **Added on Sun 1/27 6PM**: Create an account on Kaggle.com using your Smith (or Five College) email address. 
+1. You have seen multiple regression before (not necessarily taken a class on it).
+1. The `tidyverse` suite of R packages for data science, in particular `ggplot2` and `dplyr`.
 
-
-## Discussion on background
-
+For more information about what level you should know this, please see the [Google Doc](https://docs.google.com/document/d/1NfWkoyeiovkVyMmgmKFGxCMusyxBMYHVvsAUjEZv_fU/){target="_blank"} -> Email from December.
 
 
-## Prepartion for Lec02
+### 3. Prepartion for Lec02
 
 I **highly** recommend you start these steps as soon as you can, so that you'll have two chances to go to the Spinelli tutoring hours if you need help before Wednesday's lecture. Note the Spinelli tutoring hours are Sun-Thurs 7-9pm in Sabin-Reed 301.
 
