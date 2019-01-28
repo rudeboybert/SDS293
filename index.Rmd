@@ -53,36 +53,6 @@ h1{font-weight: 400;}
 
 <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vToPV6gfDlIq5ni1qezMcPy3ZdyIN1MtSSKZ3GABeBvf9LYu3_1XE7DOEQh4Dg02bKG5YF0XpSFO_-B/pubhtml?gid=1068367544&amp;single=true&amp;widget=true&amp;headers=false" width="100%" height="520"></iframe>
 
-
-<!--
-{target="_blank"}
--->
-
-
-
-
-* **Lecture numbering**: The lectures are numbered according to the following
-rough topic outline:
-    1. Background
-        * Intro to modeling 
-        * Simple case with univariate predictors to start: splines
-        * Sampling/resampling, out-of-sample prediction, crossvalidation
-        * Bias-variance tradeoff
-    1. Continuous outcomes I
-        * LOESS smoother
-        * Regression for prediction
-    1. Categorical outcomes i.e. classification
-        * Logistic regression for prediction + ROC curves
-        * k-Nearest Neighbors
-        * Classification and regression trees (CART)
-    1. Continuous outcome II
-        * Regularization/shrinkage methods: LASSO and ridge regression
-    1. Unsupervised learning
-        * k-Means Clustering
-        * Principal components analysis
-    1. ~~Other methods: Boosting and bagging, random forests, neural nets~~ 
-
-
 <!--
 {target="_blank"}
 -->
@@ -94,7 +64,42 @@ rough topic outline:
 
 # Lec 1: Mon 1/27
 
-* Please go over the following [Google Doc](https://docs.google.com/document/d/1NfWkoyeiovkVyMmgmKFGxCMusyxBMYHVvsAUjEZv_fU/){target="_blank"} with important information about the course and steps you should complete to get setup, in particular the Intro Survey. The whole process should take about 20 minutes. 
+## Annoucements
+
+* Please go over the following [Google Doc](https://docs.google.com/document/d/1NfWkoyeiovkVyMmgmKFGxCMusyxBMYHVvsAUjEZv_fU/){target="_blank"} with important information about the course and steps you should complete to get setup, in particular the Intro Survey. The whole process should take about 20 minutes.
+* **Added on Sun 1/27 6PM**: Create an account on Kaggle.com using your Smith (or Five College) email address. 
+
+
+## For the next lecture
+
+I **highly** recommend you start these steps as soon as you can, so that you'll have two chances to go to the Spinelli tutoring hours if you need help before Wednesday's lecture. Note the Spinelli tutoring hours are Sun-Thurs 7-9pm in Sabin-Reed 301.
+
+1. Have R and RStudio installed on your laptops. 
+1. Install some extra tools:
+    + macOS users: Go to Apple's [developer page](https://developer.apple.com/download/more/){target="_blank"} and install the appropriate version of Command Line Tools. Hint: Google "How do I know what version of macOS I have?"
+    + Windows users: Install [`Rtools35.exe`](https://cran.r-project.org/bin/windows/Rtools/){target="_blank"}.
+1. Install the standard versions of the `tidyverse` and `devtools` packages as you normally would.
+1. Install the *development version* of the `moderndive` package by running: `devtools::install_github("moderndive/moderndive")`
+1. Run the following code. If you get no errors and a file `submission.csv` gets saved to your computer, you're ready for Lec02!
+
+```{r}
+library(tidyverse)
+library(moderndive)
+
+# 1. Load in training and test data
+train <- read_csv("https://rudeboybert.github.io/SDS293/static/train.csv")
+test <- read_csv("https://rudeboybert.github.io/SDS293/static/test.csv")
+
+# 2. Fit model on training data
+house_model <- lm(SalePrice ~ YrSold, data = train)
+
+# 3. Apply fitted model to get predictions for test data
+submission <- get_regression_points(house_model, newdata = test, ID = "Id") %>% 
+  select(Id, SalePrice = SalePrice_hat)
+
+# 4. Output predictions to CSV
+write_csv(submission, "submission.csv")
+```
 
 
 

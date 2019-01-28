@@ -26,5 +26,5 @@ navbar:
 #    href: midterms.html
 #  - text: Term Project
 #    href: term_project.html
-#  - text: Syllabus
-#    href: syllabus.html
+  - text: Syllabus
+    href: syllabus.html

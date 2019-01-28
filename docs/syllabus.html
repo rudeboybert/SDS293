@@ -283,7 +283,9 @@ div.tocify {
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="syllabus.html">Syllabus</a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -313,8 +315,9 @@ h1{font-weight: 400;}
 </ul></li>
 <li><strong>Outside help</strong>:
 <ul>
-<li>Spinelli Center for Quantitative Learning <a href="https://www.smith.edu/qlc/tutoring.html?colStats=open#PanelStats" target="_blank">Tutoring</a>: Sunday thru Thursday 7-9pm - Location TBD.</li>
-<li>Albert’s office hours: TBD - McConnell Hall 215</li>
+<li>The <code>#questions</code> channel on Slack.</li>
+<li>Spinelli Center for Quantitative Learning <a href="https://www.smith.edu/qlc/tutoring.html?colStats=open#PanelStats" target="_blank">Tutoring</a>: Sunday thru Thursday 7-9pm in Sabin-Reed 301.</li>
+<li>Albert’s office hours in McConnell Hall 215: Mon &amp; Wed 2:45-4:00 and by <a href="https://calendar.google.com/calendar/selfsched?sstoken=UVBidEVzZlJ3a2dYfGRlZmF1bHR8NmExNDk4OGM5ZWZiYWNmOWYxYWRkZDM0NmU3ZGRmMzE" target="_blank">apppointment</a>.</li>
 </ul></li>
 </ul>
 <div id="instructor-work-life-balance" class="section level2">
@@ -336,7 +339,7 @@ h1{font-weight: 400;}
 <ul>
 <li><em>“Am I asking questions in class?”</em></li>
 <li><em>“Am I asking questions on Slack in <code>#questions</code>?”</em> Even better: <em>“Am I answering my peers’ questions on Slack?”</em></li>
-<li><em>“Having I been going to the Spinelli tutoring center?”</em></li>
+<li><em>“Having I been going to the Spinelli tutoring center for help on R and the tidyverse?”</em></li>
 <li><em>“Have I been coming to office hours?”</em></li>
 </ul></li>
 <li><strong>Lectures, labs, and readings:</strong>
@@ -344,7 +347,7 @@ h1{font-weight: 400;}
 <li><em>“Am I staying on top Slack notifications sent between lectures?”</em> If you need help developing a notification strategy that best suits your lifestyle, please speak to me.</li>
 <li><em>“Am I attending lectures consistently?”</em></li>
 <li><em>“Am I actually running the code and studying the outputs in R during in-class exercises, or am I just going through the motions?”</em></li>
-<li><em>“During in-class exercises and lab time, am I taking full advantage that I’m in the same place at the same time with the instructor, the lab assistants, and most importantly your peers, or am I browsing the web/texting the whole time?”</em></li>
+<li><em>“During in-class exercises, am I taking full advantage that I’m in the same place at the same time with the instructor, the lab assistants, and most importantly your peers, or am I browsing the web/texting the whole time?”</em></li>
 </ul></li>
 <li><strong>Problem sets, DataCamp, and coding:</strong>
 <ul>
@@ -358,74 +361,70 @@ h1{font-weight: 400;}
 <h1>Course Description &amp; Objectives</h1>
 <ul>
 <li><strong>Official course description</strong>: On <a href="https://www.smith.edu/academics/academic-program/curriculum/course-search?term=Spring+2019&amp;dept=&amp;instr=Albert+Y.+Kim&amp;credits=&amp;course_numb=293&amp;course_keywd=&amp;op=Submit&amp;form_build_id=form-denY7g_Jg58ti6JEd7MQqOj4CvHwIw6awhXG9B0jLHs&amp;form_id=campus_course_search_basic_search_form" target="_blank">Smith College Course Search</a>.</li>
-<li><strong>Unofficial course description</strong>: A course on the theoretical underpinnings of machine learning. Fundamental concepts of machine learning, such as crossvalidation and the bias-variance tradeoff, will be viewed through both statistical and mathematical lenses. As much of the coursework will center around participation in <a href="https://www.kaggle.com/">Kaggle competitions</a>, there will be greater emphasis on supervised learning techniques including regression, smoothing methods, classification, and regularization/shrinkage methods. To this end, there will be a large computational component to the course, in particular the use of tools for data visualization, data wrangling, and data modeling. Furthermore, to encourage engagement with the open-source statistics, data science, and machine learning communities, work and collaboration will center around the use of GitHub.</li>
-<li><strong>Objectives</strong>: This semester you will
-<ol style="list-style-type: decimal">
-<li>Synthesize what you’ve learned in your statistics, data science, mathematics, and computer science courses in a less structured setting than a typical course.</li>
-<li>Learn to communicate empathetically when doing group/collaborative work.</li>
-<li>Develop your presentation skills and ability to think on your feet.</li>
-<li>Implement the ideas behind a <a href="https://en.wikipedia.org/wiki/Lean_startup#Definitions">“minimum viable product”</a> into your workflow.</li>
-<li>Empower yourselves to actively participate in the open-source code/data ecosystem, necessitating understanding of GitHub pull requests.</li>
-</ol></li>
+<li><strong>Unofficial course description</strong>: A course on the theoretical underpinnings of machine learning. Fundamental concepts of machine learning, such as crossvalidation and the bias-variance tradeoff, will be viewed through both statistical and mathematical lenses. As much of the coursework will center around participation in <a href="https://www.kaggle.com/">Kaggle competitions</a>, there will be greater emphasis on supervised learning techniques including regression, smoothing methods, classification, and regularization/shrinkage methods. To this end, there will be a large computational component to the course, in particular the use of tools for data visualization, data wrangling, and data modeling.</li>
 </ul>
 <hr />
 </div>
 <div id="topicschedule" class="section level1">
 <h1>Topic Schedule and Readings</h1>
-<p>Roughly speaking we will cover the following topics. A more detailed outline and corresponding readings can be found.</p>
+<p>We will cover the topics below; the schedule and associated readings can be found on the <a href="index.html">main page</a> of this course webpage.</p>
 <ol style="list-style-type: decimal">
 <li>Background
 <ul>
-<li>Intro to modeling</li>
-<li>Simple case to start: splines</li>
-<li>Out-of-sample prediction, sampling/resampling, crossvalidation</li>
+<li>The modeling framework</li>
+<li>Baby’s first model: splines</li>
+<li>Out-of-sample prediction, sampling vs resampling, crossvalidation</li>
 <li>Bias-variance tradeoff</li>
 </ul></li>
-<li>Continuous outcomes I
+<li>Continuous outcome models part I
 <ul>
-<li>LOESS smoother</li>
-<li>Regression for prediction</li>
+<li>Multiple regression for prediction</li>
 </ul></li>
-<li>Categorical outcomes i.e. classification
+<li>Categorical outcome models AKA classification
 <ul>
-<li>Logistic regression for prediction + ROC curves</li>
+<li>Logistic regression for prediction</li>
+<li>ROC curves</li>
 <li>k-Nearest Neighbors</li>
-<li>Classification and regression trees (CART)</li>
+<li>Classification and regression trees</li>
 </ul></li>
-<li>Continuous outcome II
+<li>Continuous outcome models part II
 <ul>
 <li>Regularization/shrinkage methods: Ridge regression and LASSO</li>
+<li>Classification and regression trees</li>
+</ul></li>
+<li>Unsupervised learning (no outcome variable)
+<ul>
+<li>Principal components analysis</li>
+<li>k-Means clustering</li>
 </ul></li>
 <li>Other methods
 <ul>
-<li>Boosting and bagging</li>
-<li>Random forests</li>
 <li>Neural nets</li>
-</ul></li>
-<li>Unsupervised learning (time permitting)
-<ul>
-<li>Principal components analysis</li>
-<li>k-Means Clustering</li>
+<li>Ensemble methods: random forests</li>
 </ul></li>
 </ol>
-<p>A rough topic schedule and corresponding readings are posted below on the <a href="index.html">main page</a> of this course webpage. We will draw from the following sources:</p>
+<p>We will draw from the following sources:</p>
 <ol style="list-style-type: decimal">
 <li><a href="http://www-bcf.usc.edu/~gareth/ISL/" target="_blank">An Introduction to Statistical Learning with Applications in R</a>.</li>
 <li>DataCamp: an online interactive environment for learning data science currently via R and Python. On top of the DataCamp courses we’ll cover this semester, you have free access to <a href="https://www.datacamp.com/courses/all" target="_blank">all their courses</a> for 6 months.</li>
 </ol>
-<p>We will use chiefly use the following available textbooks:</p>
-<ol style="list-style-type: decimal">
-<li><a href="http://happygitwithr.com/">“Happy Git and GitHub for the useR”</a> by Jenny Bryan.</li>
-<li><a href="http://www-bcf.usc.edu/~gareth/ISL/">“An Introduction to Statistical Learning”</a> by James, Witten, Hastie, and Tibshirani. We’ll refer to this as “ISLR.”&quot;</li>
-<li><a href="https://web.stanford.edu/~hastie/CASI/">“Computer Age Statistical Inference”</a> by Efron and Tibshirani. We’ll refer to this as “CASI.”</li>
-<li><a href="https://web.stanford.edu/~hastie/ElemStatLearn/">“The Elements of Statitiscal Learning”</a> by Hastie, Tibshirani, and Friedman. We’ll refer to this as “ESL.”</li>
-</ol>
-<p>The latter three are all supplemental resources: use these if you find chalk talks and the course main page are lacking in any regard. That being said, here is a rough hierarchy of how I much I refer to them:</p>
-<ol style="list-style-type: decimal">
-<li>ISLR: Most of my notes center around this text, which is targeted at undergraduates.</li>
-<li>ESL: This is the graduate version of ISLR, and predates ISLR by a few years.</li>
-<li>CASI: A 30,000 foot overview of the past, present, and future of statistics/data science/machine learning. We’ll refer to this occationally.</li>
-</ol>
+<!--
+
+We will use chiefly use the following available textbooks:
+
+1. ["Happy Git and GitHub for the useR"](http://happygitwithr.com/) by Jenny Bryan.
+1. ["An Introduction to Statistical Learning"](http://www-bcf.usc.edu/~gareth/ISL/) by James, Witten, Hastie, and Tibshirani. We'll refer to this as "ISLR.""
+1. ["Computer Age Statistical Inference"](https://web.stanford.edu/~hastie/CASI/) by Efron and Tibshirani. We'll refer to this as "CASI."
+1. ["The Elements of Statitiscal Learning"](https://web.stanford.edu/~hastie/ElemStatLearn/) by Hastie, Tibshirani, and Friedman. We'll refer to this as "ESL."
+
+The latter three are all supplemental resources: use these if you find chalk talks and the course main page are lacking in any
+regard. That being said, here is a rough hierarchy of how I much I refer to them:
+
+1. ISLR: Most of my notes center around this text, which is targeted at undergraduates.
+1. ESL: This is the graduate version of ISLR, and predates ISLR by a few years.
+1. CASI: A 30,000 foot overview of the past, present, and future of statistics/data science/machine learning. We'll refer to this occationally.
+
+-->
 <div id="policies" class="section level2">
 <h2>Policies</h2>
 <ul>
@@ -436,9 +435,11 @@ h1{font-weight: 400;}
 <li>However, you are responsible for asking your peers for what you missed. For example, makeup lectures will not be held during office hours.</li>
 </ul>
 <hr />
+</div>
+</div>
+<div id="evaluation" class="section level1">
+<h1>Evaluation</h1>
 <!--
-# Evaluation
-
 ## Weekly Problem Sets 10%
 
 * Total of 10 problem sets: assigned during Tuesday labs, due the following week.
@@ -447,69 +448,6 @@ h1{font-weight: 400;}
 practice, instead of evaluative tools used by the instructor to assign grades.
 **Each problem set is worth 1% of your final grade**.
 
-## DataCamp Assignments 5% {#datacamp}
-
-* Assigned during Tuesday labs, due the following week.
-* DataCamp is meant to be low stakes-practice, so the only thing that matters for your grade is whether you complete the course. So while things like the number of hints/solutions taken don't factor into your grade, it is important to make a good faith effort to answer these questions the best you can.
-* While you may do them in advance if you are curious, it is most definitely not required. Note that the DataCamp schedule may change, with certain courses dropped/added.
-* Jenny will talk more about DataCamp during Lab 2.
-
-
-* Taking notes based on what you cover is not required, but please do so if you feel you will benefit. 
-* I *expect* most people to take no more than 4 hours per DataCamp assignment.
-* Please note retention of the material will not be perfect the first time through. The only way to really retain the material is via lots of practice/doing. For now, think of this as a introduction.
-
-
-## Quizzes 5%
-
-There will be 2-3 quizzes assigned during the course of the semester. They will always be announced the lecture before. 
-
-## Term Project 25% {#termproject}
-
-See [Term Project](term_project.html) page.
-
-## Three Midterms: 45%
-
-* There will be three self-scheduled midterms, including one during finals week. See the [Midterms](midterms.html) page.
-* Lowest score weighted 10%, middle score weighted 15%, and highest score weighted 20%.
-
-## Engagement 5% {#engagement}
-
-It is difficult to explicit codify what constitutes "an engaged student," so
-instead I present the following rough principle I will follow: *you'll only get
-out of this class as much as you put in*. That being said, here are multiple
-pathways for you to stay engaged in this class:
-
-* Asking and answering question in class.
-* Coming to office hours.
-* Posting questions on Slack. Even better, responding to questions on Slack.
-* Getting good peer evaluations for your term project.
-
-## Policies
-
-1. **Collaboration**: While I encourage you to work with your peers for problem
-sets and labs, you must submit your own answers and not simple rewordings of
-another's work. Furthermore, all collaborations must be explicitly acknowledged
-in your submissions.
-1. **Honor Code**: All your work must follow the [Smith College Academic Honor
-Code Statement](https://www.smith.edu/sao/handbook/socialconduct/honorcode.php){target="_blank"};
-in particular all external sources must be cited in your submissions.
-1. **Problem sets**:
-    + No extensions will be granted without a dean's note.
-    + To receive full credit, you must show your work and explain your reasoning in your solutions. 
-    + All written problem sets must be handed in at the start of lecture. No emailed submissions will be accepted; if you can't make it to class ask a classmate to turn it in for you. They must be stapled with the fringe/perf from any spiral notebook paper removed. 
-1. **Midterms/quizzes**:
-    + No make-up quizzes or midterms will be allowed without a dean's note. 
-    + Timestamps for all midterms will be strictly enforced.
-1. **Grading**: I reserve the right to not discuss any grading issues in class and instead direct you to office hours. 
-
-
-
-***
-
-
-
-# Evaluation old
 
 ## Weekly Problem Sets 20% {#problem_sets}
 
@@ -538,7 +476,28 @@ your own answers and not simple rewordings of another's work.
 * No extensions for problem sets will be granted. 
 
 
-## Three Midterms 40%
+## DataCamp Assignments 5% {#datacamp}
+
+* Assigned during Tuesday labs, due the following week.
+* DataCamp is meant to be low stakes-practice, so the only thing that matters for your grade is whether you complete the course. So while things like the number of hints/solutions taken don't factor into your grade, it is important to make a good faith effort to answer these questions the best you can.
+* While you may do them in advance if you are curious, it is most definitely not required. Note that the DataCamp schedule may change, with certain courses dropped/added.
+* Jenny will talk more about DataCamp during Lab 2.
+
+
+* Taking notes based on what you cover is not required, but please do so if you feel you will benefit. 
+* I *expect* most people to take no more than 4 hours per DataCamp assignment.
+* Please note retention of the material will not be perfect the first time through. The only way to really retain the material is via lots of practice/doing. For now, think of this as a introduction.
+
+
+## Term Project 25% {#termproject}
+
+See [Term Project](term_project.html) page.
+
+
+## Three Midterms: 45%
+
+* There will be three self-scheduled midterms, including one during finals week. See the [Midterms](midterms.html) page.
+* Lowest score weighted 10%, middle score weighted 15%, and highest score weighted 20%.
 
 There will be three midterms: two during the semester, one during finals week (dates posted under [Basic information](#basicinfo)).
 
@@ -552,7 +511,18 @@ cases if documentation is provided (e.g. a dean's note):
     *after* the rest of the class.
 * There will be no extra-credit work to improve midterm scores after the fact.
 
-## Engagement 10% {#engagement}
+
+## Engagement 5% {#engagement}
+
+It is difficult to explicit codify what constitutes "an engaged student," so
+instead I present the following rough principle I will follow: *you'll only get
+out of this class as much as you put in*. That being said, here are multiple
+pathways for you to stay engaged in this class:
+
+* Asking and answering question in class.
+* Coming to office hours.
+* Posting questions on Slack. Even better, responding to questions on Slack.
+* Getting good peer evaluations for your term project.
 
 It is difficult to explicit codify what constitutes "an engaged student," so 
 instead I present the following rough principle I will follow: *you'll only get
@@ -565,8 +535,25 @@ don't know what your voice sounds like.
 * Submitting a problem set that has code or content that is copied from or is
 only a slightly modified version of your peers' work.
 
-
 -->
+<div id="policies-1" class="section level2">
+<h2>Policies</h2>
+<ol style="list-style-type: decimal">
+<li><strong>Collaboration</strong>: While I encourage you to work with your peers for problem sets and labs, you must submit your own answers and not simple rewordings of another’s work. Furthermore, all collaborations must be explicitly acknowledged in your submissions.</li>
+<li><strong>Honor Code</strong>: All your work must follow the <a href="https://www.smith.edu/sao/handbook/socialconduct/honorcode.php" target="_blank">Smith College Academic Honor Code Statement</a>; in particular all external sources must be cited in your submissions.</li>
+<li><strong>Problem sets</strong>:
+<ul>
+<li>No extensions will be granted without a dean’s note.</li>
+<li>To receive full credit, you must show your work and explain your reasoning in your solutions.</li>
+<li>All written problem sets must be handed in at the start of lecture. No emailed submissions will be accepted; if you can’t make it to class ask a classmate to turn it in for you. They must be stapled with the fringe/perf from any spiral notebook paper removed.</li>
+</ul></li>
+<li><strong>Midterms/quizzes</strong>:
+<ul>
+<li>No make-up midterms will be allowed without a dean’s note.</li>
+<li>Timestamps for all midterms will be strictly enforced.</li>
+</ul></li>
+<li><strong>Grading</strong>: I reserve the right to not discuss any grading issues in class and instead direct you to office hours.</li>
+</ol>
 <hr />
 </div>
 </div>
