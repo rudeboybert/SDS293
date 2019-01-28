@@ -77,14 +77,8 @@ h1{font-weight: 400;}
 
 *Why chalk talks? Read the [Field Notes](https://twitter.com/FieldNotesBrand){target="_blank"} slogan.*
 
-Lec01 slides + 3 chalk talks
+[Lec01 slides](http://rudeboybert.rbind.io/talk/2019-01-13-Williams.pdf){target="_blank"} + 2 chalk talks. 
 
-<!--
-Click on slides:
-
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Thanks <a href="https://twitter.com/chadtopaz?ref_src=twsrc%5Etfw">@chadtopaz</a> for hosting me in your <a href="https://twitter.com/WilliamsCollege?ref_src=twsrc%5Etfw">@WilliamsCollege</a> &quot;Intro to Data Science&quot; course! The slides for my &quot;Self-Driving Cars &amp; Forest Ecology: Modeling for Machine Learning&quot; talk are here: <a href="https://t.co/z9Xzc6Dd64">https://t.co/z9Xzc6Dd64</a> <a href="https://t.co/zePbJMPDgS">pic.twitter.com/zePbJMPDgS</a></p>&mdash; Albert Y. Kim (@rudeboybert) <a href="https://twitter.com/rudeboybert/status/1084873481202921472?ref_src=twsrc%5Etfw">January 14, 2019</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
--->
 
 ### 2. Background I will assume
 
