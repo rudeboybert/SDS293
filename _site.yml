@@ -15,8 +15,8 @@ navbar:
   left:
   - icon: fa-slack fa-lg
     href: https://sds-csc-293-2019-jan.slack.com/
-#  - text: Quickstart
-#    href: quickstart.html
+  - text: Code
+    href: code.html
 #  - text: Shiny Apps
 #    href: shiny.html
   right:
