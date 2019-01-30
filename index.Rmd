@@ -75,6 +75,14 @@ h1{font-weight: 400;}
 * Recap of Lec02.
 
 
+### 2. Screencast on splines
+
+The code this screencast was based on can be found [here](http://bit.ly/rudeboybert_splines){target="_blank"}.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bESJ81dyYro" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
 ***
 
 
