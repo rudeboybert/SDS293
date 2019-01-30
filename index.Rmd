@@ -62,6 +62,22 @@ h1{font-weight: 400;}
 ***
 
 
+# Lec 3: Mon 2/4
+
+## Annoucements 
+
+* Slack: Go over `#questions`.
+
+## Todays Topics/Activities  
+
+### 1. Chalk Talk
+
+* Recap of Lec02.
+
+
+***
+
+
 # Lec 2: Wed 1/30
 
 ## Annoucements 
@@ -85,6 +101,7 @@ h1{font-weight: 400;}
 * Based on code for `Lec02` posted in [Code](code.html) tab of menu bar for course webpage.
 * Check out [
 House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques){target="_blank"} Kaggle competition.
+* **Added after lecture**: Link to ModernDive chapter with an example on [logarithmic transformations](https://moderndive.netlify.com/12-thinking-with-data.html#log10-transformations){target="_blank"}. You'll also be seeing log-transformations in this week's DataCamp assignment!
 
 ### 2. Tweet of the day
 
