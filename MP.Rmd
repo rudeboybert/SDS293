@@ -1,5 +1,5 @@
 ---
-title: "Problem Sets"
+title: "Mini-Projects"
 output:
   html_document:
     toc: yes
@@ -24,13 +24,62 @@ h1{font-weight: 400;}
 ***
 
 
+# Mini-project 1 {#MP1}
 
-# Problem set 1 {#PS01}
+## Administrative notes
 
-*Assigned Tue 1/29, due Tue 2/5 at XXXpm Eastern Time*
+* **Due Wednesday 2/13 5pm on Moodle**. 
+
+
+***
+
+
+# Mini-project 2 {#MP2}
+
+## Administrative notes
+
+* **Due Wednesday 3/6 5pm on Moodle**. 
+
+
+***
+
+
+# Mini-project 3 {#MP3}
+
+## Administrative notes
+
+* **Due Wednesday 3/27 5pm on Moodle**. 
+
+
+***
+
+
+# Mini-project 4 {#MP4}
+
+## Administrative notes
+
+* **Due Wednesday 4/17 5pm on Moodle**. 
+
+
+***
+
+
+# Mini-project 5 {#MP5}
+
+## Administrative notes
+
+* **Due Thursday 5/2 5pm on Moodle**. 
+
+
+
+***
+
+
 
 
 <!--
+
+*Assigned Tue 1/29, due Tue 2/5 at XXXpm Eastern Time*
 
 
 # Problem set 12 {#PS12}

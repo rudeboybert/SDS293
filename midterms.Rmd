@@ -30,7 +30,7 @@ h1{font-weight: 400;}
 
 ## Administrative notes
 
-* **Friday 3/1 5pm through Sunday 3/3 11:55pm**.
+* **Friday 2/22 5pm through Sunday 2/24 11:55pm**.
 * Self-scheduled exam [instructions](https://drive.google.com/file/d/1MXlZEf9UrQfFjUX6d9iglwDCZbn02cbj/view){target="_blank"}. In particular:
     + Only print from macOS computers.
     + At some point you'll need to wait 5-10 seconds for a "paper is held in queue" pop-up box to appear before you can print.
@@ -73,6 +73,28 @@ h1{font-weight: 400;}
 * Left plot: the white grid lines on the x-axis denote **additive** differences of $+10000$ 
 * Right plot: the white grid lines on the x-axis denote **multiplicative** differences of $\times 10$
 
+```{r, echo = FALSE, fig.height = 7/2, eval = FALSE}
+gapminder2007 <- gapminder %>% 
+  filter(year == 2007)
+
+# Simple plot -------------------------------------------------------------
+base <- ggplot(gapminder2007, aes(x = gdpPercap, y = lifeExp, col = continent, size = pop)) + 
+  geom_point() + 
+  labs(
+    y = "Life expectancy (years)", 
+    color = "Continent", size = "Population"
+  ) +
+  theme(legend.position="none", panel.grid.minor = element_blank())
+  
+p1 <- base +
+  labs(x = "GDP per capita", title = "Regular scale x-axis") +
+  scale_x_continuous(labels = scales::dollar_format())
+p2 <- base +
+  labs(x = "GDP per capita (log10-scale)", title = "log10 scale x-axis") + 
+  scale_x_log10(breaks = c(100, 1000, 10000, 100000), limits = c(NA, 10^5), labels = scales::dollar_format())
+p1 + p2
+```
+
 
 **Note about Question 5.f)** Counterexample. Both these datasets have 11 values and the same quartiles as Nashville (32K, 60K, and 100K), but have different proportions greater than 80K:
 
@@ -107,7 +129,7 @@ data_frame(
 
 ## Administrative notes
 
-* **Friday 4/12 5pm through Sunday 4/14 11:55pm**. 
+* **Friday 4/5 5pm through Sunday 4/7 11:55pm**. 
     
 <!--
 
@@ -145,8 +167,6 @@ data_frame(
 ## Midterm II Distribution
 
 ![](static/exams/midterm_II_distribution.png){ width=600px } 
--->
-
 
 
 ***
@@ -159,7 +179,7 @@ data_frame(
 
 * **TBD: during finals week**. 
 
-<!--
+
 * Self-scheduled exam [instructions](https://drive.google.com/file/d/1MXlZEf9UrQfFjUX6d9iglwDCZbn02cbj/view){target="_blank"}. In particular:
     + Only print from macOS computers.
     + At some point you'll need to wait 5-10 seconds for a "paper is held in queue" pop-up box to appear before you can print.
