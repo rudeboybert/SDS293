@@ -67,6 +67,7 @@ h1{font-weight: 400;}
 ## Annoucements 
 
 * Slack: Go over `#questions`.
+* Syllabus finalized
 
 <!--
 * Mini-project 1 groups.

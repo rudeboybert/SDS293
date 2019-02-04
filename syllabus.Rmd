@@ -30,7 +30,7 @@ h1{font-weight: 400;}
 * **Outside help**:
     + The `#questions` channel on Slack.
     + Spinelli Center for Quantitative Learning [Tutoring](https://www.smith.edu/qlc/tutoring.html?colStats=open#PanelStats){target="_blank"}: Sunday thru Thursday 7-9pm in Sabin-Reed 301. 
-    + Albert's office hours in McConnell Hall 215: Mon & Wed 2:45-4:00 and by apppointment (click [here](https://calendar.google.com/calendar/selfsched?sstoken=UVBidEVzZlJ3a2dYfGRlZmF1bHR8NmExNDk4OGM5ZWZiYWNmOWYxYWRkZDM0NmU3ZGRmMzE){target="_blank"} to book).
+    + Albert's office hours in McConnell Hall 215: Mon & Wed 2:45-4:00 and by apppointment (click [here](https://calendar.google.com/calendar/selfsched?sstoken=UVBidEVzZlJ3a2dYfGRlZmF1bHR8NmExNDk4OGM5ZWZiYWNmOWYxYWRkZDM0NmU3ZGRmMzE){target="_blank"} to book). **If you're having R or RStudio issues, please have your computer and RStudio loaded and ready to go.**
     + Spinelli Center Data Counselor Vahab Khademi in Seelye 207: By [appointment](https://www.smith.edu/qlc/tutoring.html?colDataCnslr=open#PanelDataCnslr){target="_blank"}.
     
 
@@ -193,6 +193,22 @@ pathways for you to stay engaged in this class:
 * Mini-project 4: 12.5% - Groups of 2 selected by yourselves, must be a new partner.
 * Mini-project 5: 15% - Groups of 2-3 freely chosen by yourselves.
 
+
+## Policies
+
+1. **Collaboration**: While I encourage you to work with your peers for problem
+sets and labs, you must submit your own answers and not simple rewordings of
+another's work. Furthermore, all collaborations must be explicitly acknowledged
+in your submissions.
+1. **Honor Code**: All your work must follow the [Smith College Academic Honor
+Code Statement](https://www.smith.edu/sao/handbook/socialconduct/honorcode.php){target="_blank"};
+in particular all external sources must be cited in your submissions.
+1. **Mini-projects and DataCamp**:
+    + No extensions will be granted without a dean's note.
+1. **Midterms/quizzes**:
+    + No make-up quizzes or midterms will be allowed without a dean's note. 
+    + Timestamps for all midterms will be strictly enforced.
+1. **Grading**: I reserve the right to not discuss any grading issues in class and instead direct you to office hours. 
 
 
 <!--
