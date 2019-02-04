@@ -62,8 +62,8 @@ Ask yourself:
     + *"Am I actually running the code and studying the outputs in R during in-class exercises, or am I just going through the motions?"*
     + *"During in-class exercises, am I taking full advantage that I'm in the same place at the same time with the instructor, the lab assistants, and most importantly your peers, or am I browsing the web/texting the whole time?"*
     + *"Have I been doing the associated readings for each lecture?"*
-* **Problem sets, DataCamp, and coding:**
-    + *"Am I actually doing the problem sets?"*
+* **Mini-Projects and DataCamp:**
+    + *"Am I actually contributing in my mini-project work?"*
     + *"Have I been attempting a good faith balance between to push myself during DataCamp exercises while not banging my head on the wall, or am I just taking the hints/solutions without any effort?"*
 
 
