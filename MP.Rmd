@@ -20,6 +20,10 @@ h1{font-weight: 400;}
 </style>
 
 
+<!--
+{target="_blank"}
+-->
+
 
 ***
 
@@ -29,6 +33,8 @@ h1{font-weight: 400;}
 ## Administrative notes
 
 * **Due Wednesday 2/13 5pm on Moodle**. 
+* Groups: Posted on [Moodle](https://moodle.smith.edu/course/view.php?id=33108){target="_blank"}.
+
 
 
 ***
