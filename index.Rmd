@@ -68,17 +68,16 @@ h1{font-weight: 400;}
 
 * Slack: Go over `#questions`.
 * Syllabus finalized
+* Explanation of readings in schedule above.
+* Mini-project 1 groups posted. See [Mini-Projects](MP.html) page.
 
-<!--
-* Mini-project 1 groups.
-
--->
 
 ## Todays Topics/Activities  
 
 ### 1. Chalk Talk
 
 * Recap of Lec02.
+* Splines
 
 
 ### 2. Screencast on splines
@@ -113,8 +112,7 @@ The code this screencast was based on can be found [here](http://bit.ly/rudeboyb
 
 * Recap of Lec01: $f(\vec{x})$ and $\hat{f}(\vec{x})$
 * Based on code for `Lec02` posted in [Code](code.html) tab of menu bar for course webpage.
-* Check out [
-House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques){target="_blank"} Kaggle competition.
+* Check out [House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques){target="_blank"} Kaggle competition.
 * **Added after lecture**: Link to ModernDive chapter with an example on [logarithmic transformations](https://moderndive.netlify.com/12-thinking-with-data.html#log10-transformations){target="_blank"}. You'll also be seeing log-transformations in this week's DataCamp assignment!
 
 ### 2. Tweet of the day

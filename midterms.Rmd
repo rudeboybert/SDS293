@@ -37,6 +37,9 @@ h1{font-weight: 400;}
 
 <!--
 
+Update with this: http://www.science.smith.edu/self-scheduled-exam-printing/
+
+
 * You must submit your midterm by 11:55pm on Sunday.
 * If you have never taken a Self-Scheduled exam, please read the instructions [here](https://drive.google.com/file/d/10mkwAnJVTbOiz_g-bUDrrUL_S-6j-8ul/view){target="_blank"}
 * You will be given 120 mins to complete it (including transit time to writing area), however I try to time it so that it will take much less than that. In other words, you should have plenty of time to complete it without rushing.
