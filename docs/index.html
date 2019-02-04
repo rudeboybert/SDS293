@@ -35,7 +35,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -48,11 +48,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -366,7 +368,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">SDS/CSC 293: Machine Learning</h1>
 <h4 class="author"><em>Albert Y. Kim</em></h4>
-<h4 class="date"><em>Last updated on 2019-01-31</em></h4>
+<h4 class="date"><em>Last updated on 2019-02-04</em></h4>
 
 </div>
 
@@ -393,11 +395,10 @@ h1{font-weight: 400;}
 <h2>Annoucements</h2>
 <ul>
 <li>Slack: Go over <code>#questions</code>.</li>
+<li>Syllabus finalized</li>
+<li>Explanation of readings in schedule above.</li>
+<li>Mini-project 1 groups posted; see <a href="MP.html">Mini-Projects</a> page. MP1 on splines itself will be assigned on Wednesday after we cover crossvalidation.</li>
 </ul>
-<!--
-* Mini-project 1 groups.
-
--->
 </div>
 <div id="todays-topicsactivities" class="section level2">
 <h2>Todays Topics/Activities</h2>
@@ -405,10 +406,16 @@ h1{font-weight: 400;}
 <h3>1. Chalk Talk</h3>
 <ul>
 <li>Recap of Lec02.</li>
+<li>Splines are piecewise continuous cubic polynomials with <a href="https://en.wikipedia.org/wiki/Smoothness">smoothness</a> constraints (1<sup>st</sup> and 2<sup>nd</sup> derivatives are 0 at all knots) See bottom-left plot):<br />
+<img src="static/images/splines.png" width="700" /></li>
+<li>Optional reading only if you’re curious: How are splines fit? Linear algebra! See page 93-94 of this <a href="static/methods/splines/splines_notes.pdf" target="_blank">PDF</a></li>
 </ul>
 </div>
+<div id="in-class-exercise" class="section level3">
+<h3>2. In-class exercise</h3>
+</div>
 <div id="screencast-on-splines" class="section level3">
-<h3>2. Screencast on splines</h3>
+<h3>3. Screencast on splines</h3>
 <p>The code this screencast was based on can be found <a href="http://bit.ly/rudeboybert_splines" target="_blank">here</a>.</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bESJ81dyYro" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>

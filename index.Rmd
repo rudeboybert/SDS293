@@ -69,7 +69,7 @@ h1{font-weight: 400;}
 * Slack: Go over `#questions`.
 * Syllabus finalized
 * Explanation of readings in schedule above.
-* Mini-project 1 groups posted. See [Mini-Projects](MP.html) page.
+* Mini-project 1 groups posted; see [Mini-Projects](MP.html) page. MP1 on splines itself will be assigned on Wednesday after we cover crossvalidation.
 
 
 ## Todays Topics/Activities  
@@ -77,10 +77,19 @@ h1{font-weight: 400;}
 ### 1. Chalk Talk
 
 * Recap of Lec02.
-* Splines
+* Splines are piecewise continuous cubic polynomials with [smoothness](https://en.wikipedia.org/wiki/Smoothness) constraints (1^st^ and 2^nd^ derivatives are 0 at all knots) See bottom-left plot):  
+![](static/images/splines.png){ width=700px }
+* Optional reading only if you're curious: How are splines fit? Linear algebra! See page 93-94 of this [PDF](static/methods/splines/splines_notes.pdf){target="_blank"}
 
 
-### 2. Screencast on splines
+### 2. In-class exercise
+
+
+
+
+
+
+### 3. Screencast on splines
 
 The code this screencast was based on can be found [here](http://bit.ly/rudeboybert_splines){target="_blank"}.
 
