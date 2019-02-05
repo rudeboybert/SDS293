@@ -66,24 +66,32 @@ h1{font-weight: 400;}
 
 ## Annoucements 
 
-* Slack messages.
-* Mini-project 1 assigned; see [Mini-Projects](MP.html) page.
-* Brittney Bailey talk + DataFest
+* [DataFest](http://www.science.smith.edu/datafest/){target="_blank"} is a weekend-long "data science" hackathon for teams of up to 5 students and is at UMass the weekend of March 29-31! [Info session](static/other/datafest2019.pdf){target="_blank"} by Prof. Randi Garcia today 7-8pm in Sabin-Reed 301!
+* "Multiple Imputation Methods in Cluster Randomzied Trials" talk by Prof. Brittney Bailey from Amherst College is tomorrow 12:10pm in McConnell B15. Free `r emo::ji("pizza")`!!!
+
+<center>
+![](static/other/bailey.png){ width=700px }
+</center>
 
 
 ## Todays Topics/Activities  
 
-### 1. Chalk Talk
+### 1. MP1
 
-* Recap of Lec03 + exercise solutions.
+* Mini-project 1 is now assigned; see [Mini-Projects](MP.html) page.
 * What are RStudio Project Files?
 
+### 2. Chalk Talk
 
-### 2. In-class exercise
+* Recap of Lec03 + exercise solutions.
+
+
+### 3. In-class exercise
 
 
 
 ***
+
 
 
 # Lec 3: Mon 2/4
