@@ -62,6 +62,30 @@ h1{font-weight: 400;}
 ***
 
 
+# Lec 4: Wed 2/6
+
+## Annoucements 
+
+* Slack messages.
+* Mini-project 1 assigned; see [Mini-Projects](MP.html) page.
+* Brittney Bailey talk + DataFest
+
+
+## Todays Topics/Activities  
+
+### 1. Chalk Talk
+
+* Recap of Lec03 + exercise solutions.
+* What are RStudio Project Files?
+
+
+### 2. In-class exercise
+
+
+
+***
+
+
 # Lec 3: Mon 2/4
 
 ## Annoucements 
@@ -83,12 +107,9 @@ h1{font-weight: 400;}
 ![](static/images/splines.png){ width=700px }
 
 
-
 ### 2. In-class exercise
 
-
-
-
+Go over code for Lec03 and do the exercises.
 
 
 ### 3. Screencast on splines

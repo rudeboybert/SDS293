@@ -32,8 +32,60 @@ h1{font-weight: 400;}
 
 ## Administrative notes
 
-* **Due Wednesday 2/13 5pm on Moodle**. 
-* Groups: Posted on [Moodle](https://moodle.smith.edu/course/view.php?id=33108){target="_blank"}.
+* Due Wednesday 2/13 5pm on Moodle.
+* Groups: Posted on [Moodle](https://moodle.smith.edu/course/view.php?id=33108){target="_blank"}. Whoever member \#1 is will be the group leader.  
+Ex: Group \#1's leader is LQ.
+* You will be given time to work on MP1 in class on Wednesday 2/13.
+
+## Working on your project
+
+* Download the `MP1.zip` archive file containing the MP1 RStudio Project.  
+* Whenever working on MP1, be sure to be in "RStudio Project mode" by looking for the RStudio Project icon. Either
+    1. Click the `MP1.Rproj` file
+    1. Selecting `MP1` from the drop-down menu of RStudio Projects in the top right of RStudio  
+    ![](static/images/Rproj.png){ width=150px }
+* Whenever you're not working on your project, click the RStudio Project icon in the top right of RStudio and select "Close Project".
+
+
+## What to submit
+
+* **Group leader only**: Submit a `MP1_Group_XX.zip` archive file of **all** the contents of your `MP1` RStudio Project folder.  
+Ex: Group \#1's leader LQ will submit a single file `MP1_Group_01.zip` on Moodle.
+* **Both group members**: Complete the following peer evaluation [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSc0F4X5s01LEfQ_-1ZJRnzL_jH6K9hnyjJVwLnfKq7tcqGo-A/viewform){target="_blank"}.  
+Ex: Both Group \#1's members LQ and EN must complete the Google Form to receive full credit.
+
+
+## Grading
+
+1. **Minimally viable product:** Grade: 8/10. Fit a splines model with an arbitrarily chosen numerical predictor variable $x$ and an arbitrarily chosen degrees of freedom $df$. Using this model make a submission to Kaggle that returns a valid $\text{RMLSE}$ score. Also:
+    + Complete the exploratory data analysis where all visualizations are as "stand-alone" as possible by having informative labels and titles.
+    + Remove all superfluous non-informative output from your report that only makes it more painful/tiresome to read.
+    + Both group member submit their peer evaluations. No extensions will be granted.
+1. **Due diligence:** Grade: 8.5/10. Choose your degrees of freedom $df$ in some non-arbitrary fashion. This could mean many things, including:
+    + Explicitly compare the $\text{RMLSE}$ for two values of $df$.
+    + Implement the validation set prediction framework you saw in [Chapter 4](https://campus.datacamp.com/courses/modeling-with-data-in-the-tidyverse/model-assessment-and-selection?ex=10){target="_blank"} of the Modeling with Data in the tidyverse DataCamp course.
+1. **Reaching for the stars:** Grade: 9/10. Fully implement a crossvalidation scheme from scratch in order to:
+    + Find the optimal "model complexity". In other words, find the optimal degrees of freedom $df^*$ in a systematic fashion.
+    + Get a good estimate $\widehat{\text{RMLSE}}$ of the $\text{RMLSE}$ that Kaggle will return for your submission.
+1. **Point of diminishing returns:** Grade: 9.5/10. Create a visualization like in [Lec01 slides \#36](http://rudeboybert.rbind.io/talk/2019-01-13-Williams.pdf#page=36){target="_blank"} that shows
+    + The relationship between "model complexity" set by $df$ and $\text{RMLSE}$ for both the training and test data.
+    + That the optimal $df^*$ is the "just right" balance point between underfitting and overfitting.
+1. **Polishing the cannonball:** Grade: 10/10. Try to get the highest Kaggle score in the class!
+
+
+## Suggestions
+
+**Always start simple!** Don't try to do things perfectly from the very beginning, but instead follow the [Build, Measure, Learn](http://theleanstartup.com/principles){target="_blank"} cycle espoused by certain individuals in the startup world:
+
+1. **Build**: Start by building a [minimially viable product](https://www.forbes.com/sites/quora/2018/02/27/what-is-a-minimum-viable-product-and-why-do-companies-need-them/#178bd8a2382c){target="_blank"}. 
+1. **Measure**: Collect feedback and perform assessments on your product.
+1. **Learn**: Learn from this data to figure out what improvements can be made, what complexity can be added, what should be removed in the next version of your product.
+
+Repeat the above and slowly **iterate** to perfection while keeping in mind that **done is better than perfect.** 
+
+<center>
+![](static/images/BML.png){ width=275px } ![](static/images/MVP.png){ width=525px }
+</center>
 
 
 
