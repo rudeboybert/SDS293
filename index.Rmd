@@ -77,9 +77,11 @@ h1{font-weight: 400;}
 ### 1. Chalk Talk
 
 * Recap of Lec02.
-* Splines are piecewise continuous cubic polynomials with [smoothness](https://en.wikipedia.org/wiki/Smoothness) constraints (1^st^ and 2^nd^ derivatives are 0 at all knots) See bottom-left plot):  
+* Splines are piecewise continuous cubic polynomials with [smoothness](https://en.wikipedia.org/wiki/Smoothness) constraints (1^st^ and 2^nd^ derivatives are 0 at all knots) See bottom-left plot below:
+* Optional reading only if you're curious: How are splines fit? Linear algebra! See page 93-94 of this [PDF](https://rudeboybert.github.io/SDS293/static/methods/splines/splines_notes.pdf){target="_blank"}
+
 ![](static/images/splines.png){ width=700px }
-* Optional reading only if you're curious: How are splines fit? Linear algebra! See page 93-94 of this [PDF](static/methods/splines/splines_notes.pdf){target="_blank"}
+
 
 
 ### 2. In-class exercise
