@@ -32,18 +32,20 @@ h1{font-weight: 400;}
 
 ## Administrative notes
 
+* **Executive summary**: You will be making a submission to the [House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques){target="_blank"} Kaggle competition based on a fitted spline model. The competition's score for leaderboard purposes is the "root mean squared logarithmic error" (RMSLE).
 * Due Wednesday 2/13 5pm on Moodle.
 * Groups: Posted on [Moodle](https://moodle.smith.edu/course/view.php?id=33108){target="_blank"}. Whoever member \#1 is will be the group leader.  
 Ex: Group \#1's leader is LQ.
 * You will be given time to work on MP1 in class on Wednesday 2/13.
 
+
 ## Working on your project
 
-* Download the `MP1.zip` archive file containing the MP1 RStudio Project.  
+* Download the `MP1.zip` archive file containing the MP1 RStudio Project (link to be posted by lecture time).  
 * Whenever working on MP1, be sure to be in "RStudio Project mode" by looking for the RStudio Project icon. Either
     1. Click the `MP1.Rproj` file
     1. Selecting `MP1` from the drop-down menu of RStudio Projects in the top right of RStudio  
-    ![](static/images/Rproj.png){ width=150px }
+    ![](static/images/rstudio_projects.png){ width=150px }
 * Whenever you're not working on your project, click the RStudio Project icon in the top right of RStudio and select "Close Project".
 
 
@@ -60,7 +62,7 @@ Ex: Both Group \#1's members LQ and EN must complete the Google Form to receive 
 1. **Minimally viable product:** Grade: 8/10. Fit a splines model with an arbitrarily chosen numerical predictor variable $x$ and an arbitrarily chosen degrees of freedom $df$. Using this model make a submission to Kaggle that returns a valid $\text{RMLSE}$ score. Also:
     + Complete the exploratory data analysis where all visualizations are as "stand-alone" as possible by having informative labels and titles.
     + Remove all superfluous non-informative output from your report that only makes it more painful/tiresome to read.
-    + Both group member submit their peer evaluations. No extensions will be granted.
+    + Both group members submit their peer evaluations. No extensions will be granted.
 1. **Due diligence:** Grade: 8.5/10. Choose your degrees of freedom $df$ in some non-arbitrary fashion. This could mean many things, including:
     + Explicitly compare the $\text{RMLSE}$ for two values of $df$.
     + Implement the validation set prediction framework you saw in [Chapter 4](https://campus.datacamp.com/courses/modeling-with-data-in-the-tidyverse/model-assessment-and-selection?ex=10){target="_blank"} of the Modeling with Data in the tidyverse DataCamp course.

@@ -312,9 +312,75 @@ h1{font-weight: 400;}
 <div id="administrative-notes" class="section level2">
 <h2>Administrative notes</h2>
 <ul>
-<li><strong>Due Wednesday 2/13 5pm on Moodle</strong>.</li>
-<li>Groups: Posted on <a href="https://moodle.smith.edu/course/view.php?id=33108" target="_blank">Moodle</a>.</li>
+<li><strong>Executive summary</strong>: You will be making a submission to the <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques" target="_blank">House Prices: Advanced Regression Techniques</a> Kaggle competition based on a fitted spline model. The competition’s score for leaderboard purposes is the “root mean squared logarithmic error” (RMSLE).</li>
+<li>Due Wednesday 2/13 5pm on Moodle.</li>
+<li>Groups: Posted on <a href="https://moodle.smith.edu/course/view.php?id=33108" target="_blank">Moodle</a>. Whoever member #1 is will be the group leader.<br />
+Ex: Group #1’s leader is LQ.</li>
+<li>You will be given time to work on MP1 in class on Wednesday 2/13.</li>
 </ul>
+</div>
+<div id="working-on-your-project" class="section level2">
+<h2>Working on your project</h2>
+<ul>
+<li>Download the <code>MP1.zip</code> archive file containing the MP1 RStudio Project (link to be posted by lecture time).<br />
+</li>
+<li>Whenever working on MP1, be sure to be in “RStudio Project mode” by looking for the RStudio Project icon. Either
+<ol style="list-style-type: decimal">
+<li>Click the <code>MP1.Rproj</code> file</li>
+<li>Selecting <code>MP1</code> from the drop-down menu of RStudio Projects in the top right of RStudio<br />
+<img src="static/images/rstudio_projects.png" width="150" /></li>
+</ol></li>
+<li>Whenever you’re not working on your project, click the RStudio Project icon in the top right of RStudio and select “Close Project”.</li>
+</ul>
+</div>
+<div id="what-to-submit" class="section level2">
+<h2>What to submit</h2>
+<ul>
+<li><strong>Group leader only</strong>: Submit a <code>MP1_Group_XX.zip</code> archive file of <strong>all</strong> the contents of your <code>MP1</code> RStudio Project folder.<br />
+Ex: Group #1’s leader LQ will submit a single file <code>MP1_Group_01.zip</code> on Moodle.</li>
+<li><strong>Both group members</strong>: Complete the following peer evaluation <a href="https://docs.google.com/forms/d/e/1FAIpQLSc0F4X5s01LEfQ_-1ZJRnzL_jH6K9hnyjJVwLnfKq7tcqGo-A/viewform" target="_blank">Google Form</a>.<br />
+Ex: Both Group #1’s members LQ and EN must complete the Google Form to receive full credit.</li>
+</ul>
+</div>
+<div id="grading" class="section level2">
+<h2>Grading</h2>
+<ol style="list-style-type: decimal">
+<li><strong>Minimally viable product:</strong> Grade: 8/10. Fit a splines model with an arbitrarily chosen numerical predictor variable <span class="math inline">\(x\)</span> and an arbitrarily chosen degrees of freedom <span class="math inline">\(df\)</span>. Using this model make a submission to Kaggle that returns a valid <span class="math inline">\(\text{RMLSE}\)</span> score. Also:
+<ul>
+<li>Complete the exploratory data analysis where all visualizations are as “stand-alone” as possible by having informative labels and titles.</li>
+<li>Remove all superfluous non-informative output from your report that only makes it more painful/tiresome to read.</li>
+<li>Both group members submit their peer evaluations. No extensions will be granted.</li>
+</ul></li>
+<li><strong>Due diligence:</strong> Grade: 8.5/10. Choose your degrees of freedom <span class="math inline">\(df\)</span> in some non-arbitrary fashion. This could mean many things, including:
+<ul>
+<li>Explicitly compare the <span class="math inline">\(\text{RMLSE}\)</span> for two values of <span class="math inline">\(df\)</span>.</li>
+<li>Implement the validation set prediction framework you saw in <a href="https://campus.datacamp.com/courses/modeling-with-data-in-the-tidyverse/model-assessment-and-selection?ex=10" target="_blank">Chapter 4</a> of the Modeling with Data in the tidyverse DataCamp course.</li>
+</ul></li>
+<li><strong>Reaching for the stars:</strong> Grade: 9/10. Fully implement a crossvalidation scheme from scratch in order to:
+<ul>
+<li>Find the optimal “model complexity”. In other words, find the optimal degrees of freedom <span class="math inline">\(df^*\)</span> in a systematic fashion.</li>
+<li>Get a good estimate <span class="math inline">\(\widehat{\text{RMLSE}}\)</span> of the <span class="math inline">\(\text{RMLSE}\)</span> that Kaggle will return for your submission.</li>
+</ul></li>
+<li><strong>Point of diminishing returns:</strong> Grade: 9.5/10. Create a visualization like in <a href="http://rudeboybert.rbind.io/talk/2019-01-13-Williams.pdf#page=36" target="_blank">Lec01 slides #36</a> that shows
+<ul>
+<li>The relationship between “model complexity” set by <span class="math inline">\(df\)</span> and <span class="math inline">\(\text{RMLSE}\)</span> for both the training and test data.</li>
+<li>That the optimal <span class="math inline">\(df^*\)</span> is the “just right” balance point between underfitting and overfitting.</li>
+</ul></li>
+<li><strong>Polishing the cannonball:</strong> Grade: 10/10. Try to get the highest Kaggle score in the class!</li>
+</ol>
+</div>
+<div id="suggestions" class="section level2">
+<h2>Suggestions</h2>
+<p><strong>Always start simple!</strong> Don’t try to do things perfectly from the very beginning, but instead follow the <a href="http://theleanstartup.com/principles" target="_blank">Build, Measure, Learn</a> cycle espoused by certain individuals in the startup world:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Build</strong>: Start by building a <a href="https://www.forbes.com/sites/quora/2018/02/27/what-is-a-minimum-viable-product-and-why-do-companies-need-them/#178bd8a2382c" target="_blank">minimially viable product</a>.</li>
+<li><strong>Measure</strong>: Collect feedback and perform assessments on your product.</li>
+<li><strong>Learn</strong>: Learn from this data to figure out what improvements can be made, what complexity can be added, what should be removed in the next version of your product.</li>
+</ol>
+<p>Repeat the above and slowly <strong>iterate</strong> to perfection while keeping in mind that <strong>done is better than perfect.</strong></p>
+<center>
+<img src="static/images/BML.png" width="275" /> <img src="static/images/MVP.png" width="525" />
+</center>
 <hr />
 </div>
 </div>

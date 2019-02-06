@@ -66,7 +66,7 @@ h1{font-weight: 400;}
 
 ## Annoucements 
 
-* [DataFest](http://www.science.smith.edu/datafest/){target="_blank"} is a weekend-long "data science" hackathon for teams of up to 5 students and is at UMass the weekend of March 29-31! [Info session](static/other/datafest2019.pdf){target="_blank"} by Prof. Randi Garcia today 7-8pm in Sabin-Reed 301!
+* [DataFest](http://www.science.smith.edu/datafest/){target="_blank"} is a weekend-long "data science hackathon" for teams of up to 5 students and is at UMass the weekend of March 29-31! [Info session](static/other/datafest2019.pdf){target="_blank"} by Prof. Randi Garcia today 7-8pm in Sabin-Reed 301!
 * "Multiple Imputation Methods in Cluster Randomzied Trials" talk by Prof. Brittney Bailey from Amherst College is tomorrow 12:10pm in McConnell B15. Free `r emo::ji("pizza")`!!!
 
 <center>
@@ -84,6 +84,16 @@ h1{font-weight: 400;}
 ### 2. Chalk Talk
 
 * Recap of Lec03 + exercise solutions.
+* Crossvalidation
+
+**Image 1: Validation set approach**:
+![](static/images/validation_set.png){ width=700px }
+
+**Image 2: k = 5 fold crossvalidation**:
+![](static/images/k-fold-CV.png){ width=700px }
+
+**Image 3: Leave-one-out crossvalidation (LOOCV)**:
+![](static/images/LOOCV.png){ width=700px }
 
 
 ### 3. In-class exercise

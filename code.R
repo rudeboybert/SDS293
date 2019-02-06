@@ -58,6 +58,8 @@ fitted_spline_model <- smooth.spline(x = training$humid, y = training$temp, df =
 # Extract data frame of info based on fitted model:
 fitted_spline_model_points <- fitted_spline_model %>%
   broom::augment()
+# Here x = predictor var = humid, y = outcome var = temp, ignore w, .fitted =
+# fitted/predicted value = temp_hat, .resid = residual = y - y_hat
 fitted_spline_model_points
 
 # Plot fitted model on training data:
@@ -83,6 +85,9 @@ test <- test %>%
 # Step 2: Make predictions on test data by applying fitted_spline_model
 predicted_points <- predict(fitted_spline_model, x = test$humid) %>%
   as_tibble()
+
+# Here x = predictor var = humid. y has a terrible name; it should be y_hat =
+# fitted/predicted value = temp_hat.
 predicted_points
 
 # Plot!
@@ -99,6 +104,66 @@ ggplot() +
 # fitted model do?
 # 3. What is the RMSE of your fitted model on June temperatures?
 # July temperatures? December temperatures.
+
+
+#------------------------------------------------------------------------------
+# Solutions:
+# 2. Redefine test data to be December
+test <-  weather %>%
+  filter(origin == "JFK", month == 12) %>%
+  select(time_hour, temp, humid)
+
+# Get predicted values:
+predicted_points <- predict(fitted_spline_model, x = test$humid) %>%
+  as_tibble()
+
+# Plot!
+ggplot() +
+  geom_point(data = test, aes(x = humid, y = temp)) +
+  geom_line(data = predicted_points, aes(x = x, y = y), col = "blue", size = 1) +
+  labs(title = "Trained on June, Tested on December")
+
+# Add column of predicted values temp_hat to test
+test <- test %>%
+  mutate(temp_hat = predicted_points$y)
+test
+
+# 3. Many ways to compute RMSE for December
+# From scratch
+test %>%
+  mutate(
+    residual = temp - temp_hat,
+    squared_residual = residual^2
+    ) %>%
+  summarize(mse = mean(squared_residual)) %>%
+  mutate(rmse = sqrt(mse))
+
+# Using existing functions:
+library(yardstick)
+test %>%
+  yardstick::rmse(truth = temp, estimate = temp_hat)
+
+library(MLmetrics)
+MLmetrics::RMSE(y_pred = test$temp_hat, y_true = test$temp)
+
+# 3. To compute RMSE for June, let's combine all the above steps into a
+# single dplyr chain:
+weather %>%
+  # Set test set to be June data
+  filter(origin == "JFK", month == 6) %>%
+  select(time_hour, temp, humid) %>%
+  # Get predicted values temp_hat:
+  mutate(
+    temp_hat = predict(fitted_spline_model, x = humid) %>% as_tibble() %>% pull(y)
+  ) %>%
+  # Compute RMSE:
+  mutate(
+    residual = temp - temp_hat,
+    squared_residual = residual^2
+  ) %>%
+  summarize(mse = mean(squared_residual)) %>%
+  mutate(rmse = sqrt(mse))
+
 
 
 
