@@ -39,11 +39,13 @@ Ex: Group \#1's leader is LQ.
 
 ## Working on your project
 
-* Download the `MP1.zip` archive file containing the MP1 RStudio Project.  
-* Whenever working on MP1, be sure to be in "RStudio Project mode" by looking for the RStudio Project icon. Either
-    1. Click the `MP1.Rproj` file
-    1. Selecting `MP1` from the drop-down menu of RStudio Projects in the top right of RStudio  
-    ![](static/images/Rproj.png){ width=150px }
+* Download the `MP1.zip` archive file containing the MP1 RStudio Project. 
+* Whenever working on MP1, be sure to be in "RStudio Project mode" by looking for the RStudio Project icon.  
+![](static/images/Rproj.png){ width=100px }  
+Get in "RStudio Project mode" either by:
+    1. Clicking the `MP1.Rproj` file
+    1. Selecting `MP1` from the drop-down menu of RStudio Projects in the top right of RStudio
+* Knit the `MP1.Rmd` file and read over everything once.
 * Whenever you're not working on your project, click the RStudio Project icon in the top right of RStudio and select "Close Project".
 
 
@@ -58,6 +60,7 @@ Ex: Both Group \#1's members LQ and EN must complete the Google Form to receive 
 ## Grading
 
 1. **Minimally viable product:** Grade: 8/10. Fit a splines model with an arbitrarily chosen numerical predictor variable $x$ and an arbitrarily chosen degrees of freedom $df$. Using this model make a submission to Kaggle that returns a valid $\text{RMLSE}$ score. Also:
+    + Your `MP1.Rmd` R Markdown "knits" correctly. In other words, an `.html` report gets created with no errors.
     + Complete the exploratory data analysis where all visualizations are as "stand-alone" as possible by having informative labels and titles.
     + Remove all superfluous non-informative output from your report that only makes it more painful/tiresome to read.
     + Both group member submit their peer evaluations. No extensions will be granted.
