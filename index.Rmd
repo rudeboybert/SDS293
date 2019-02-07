@@ -69,6 +69,34 @@ h1{font-weight: 400;}
 ***
 
 
+# Lec 5: Mon 2/11
+
+## Annoucements 
+
+* Introducing the `#mp1` channel in Slack for questions on mini-project 1.
+* Clarifications on what external sources you can use. 
+
+
+## Todays Topics/Activities  
+
+### 1. Chalk Talk
+
+* Recap of Lec04: crossvalidation
+* Discussion of solutions to Lec03 code exercises.
+* Why is it important to work in "RStudio Project" mode? Because of how you set your working directory using relative vs absolute file paths; see tweet below.
+
+
+### 2. Tweet of the day
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">The only two things that make <a href="https://twitter.com/JennyBryan?ref_src=twsrc%5Etfw">@JennyBryan</a> 😤😠🤯. Instead use projects + here::here() <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://t.co/GwxnHePL4n">pic.twitter.com/GwxnHePL4n</a></p>&mdash; Hadley Wickham (@hadleywickham) <a href="https://twitter.com/hadleywickham/status/940021008764846080?ref_src=twsrc%5Etfw">December 11, 2017</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+***
+
+
+
 # Lec 4: Wed 2/6
 
 ## Annoucements 
@@ -94,9 +122,6 @@ h1{font-weight: 400;}
     ![](static/images/k-fold-CV.png){ width=500px }
     + **Image 3: Leave-one-out crossvalidation (LOOCV)**:  
     ![](static/images/LOOCV.png){ width=500px }
-
-
-### 3. In-class exercise
 
 
 
