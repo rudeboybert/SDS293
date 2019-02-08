@@ -35,7 +35,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -48,13 +48,11 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -368,7 +366,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">SDS/CSC 293: Machine Learning</h1>
 <h4 class="author"><em>Albert Y. Kim</em></h4>
-<h4 class="date"><em>Last updated on 2019-02-07</em></h4>
+<h4 class="date"><em>Last updated on 2019-02-08</em></h4>
 
 </div>
 
@@ -389,7 +387,12 @@ h1{font-weight: 400;}
 -->
 <!--
 
-* What are RStudio Project Files?
+* Discussion of solutions to Lec03 code exercises.
+* Why is it important to work in "RStudio Project" mode? Because of how you set your working directory using relative vs absolute file paths; see tweet below.
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">The only two things that make <a href="https://twitter.com/JennyBryan?ref_src=twsrc%5Etfw">@JennyBryan</a> 😤😠🤯. Instead use projects + here::here() <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://t.co/GwxnHePL4n">pic.twitter.com/GwxnHePL4n</a></p>&mdash; Hadley Wickham (@hadleywickham) <a href="https://twitter.com/hadleywickham/status/940021008764846080?ref_src=twsrc%5Etfw">December 11, 2017</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 -->
 <hr />
@@ -409,17 +412,21 @@ h1{font-weight: 400;}
 <h3>1. Chalk Talk</h3>
 <ul>
 <li>Recap of Lec04: crossvalidation</li>
-<li>Discussion of solutions to Lec03 code exercises.</li>
-<li>Why is it important to work in “RStudio Project” mode? Because of how you set your working directory using relative vs absolute file paths; see tweet below.</li>
 </ul>
 </div>
 <div id="tweet-of-the-day" class="section level3">
 <h3>2. Tweet of the day</h3>
+<p>Shared with me by Dr. Smetzer. I agree with Ms. Damour’s opinion; you don’t have to, but her ideas are still worth thinking about. Relating to “points of diminishing returns” and “polishing the cannonball” as discussed for mini-project 1, here are some excerpts:</p>
+<ul>
+<li>Overqualified and overprepared, too many <em>insert whatever minority group</em> still hold back. <em>Insert whatever minority group</em> feel confident only when they are perfect.</li>
+<li>First, parents and teachers can stop praising inefficient overwork, even if it results in good grades.</li>
+<li>A colleague of mine likes to remind teenagers that in classes where any score above 90 counts as an A, the different between a 91 and a 99 is a life.</li>
+</ul>
 <blockquote class="twitter-tweet" data-lang="en">
 <p lang="en" dir="ltr">
-The only two things that make <a href="https://twitter.com/JennyBryan?ref_src=twsrc%5Etfw"><span class="citation">@JennyBryan</span></a> 😤😠🤯. Instead use projects + here::here() <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://t.co/GwxnHePL4n">pic.twitter.com/GwxnHePL4n</a>
+Girls need to become tactical about school, to figure out how to get the same good grades, while doing a little bit less <a href="https://t.co/Achouetew6">https://t.co/Achouetew6</a>
 </p>
-— Hadley Wickham (<span class="citation">@hadleywickham</span>) <a href="https://twitter.com/hadleywickham/status/940021008764846080?ref_src=twsrc%5Etfw">December 11, 2017</a>
+— NYT Opinion (<span class="citation">@nytopinion</span>) <a href="https://twitter.com/nytopinion/status/1093605420244049920?ref_src=twsrc%5Etfw">February 7, 2019</a>
 </blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <hr />
