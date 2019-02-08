@@ -93,7 +93,7 @@ h1{font-weight: 400;}
 
 Shared with me by Dr. Smetzer. I agree with Ms. Damour's opinion; you don't have to, but her ideas are still worth thinking about. Relating to "points of diminishing returns" and "polishing the cannonball" as discussed for mini-project 1, here are some excerpts:
 
-* Overqualified and overprepared, too many _insert whatever minority group_ still hold back. _Insert whatever minority group_ feel confident only when they are perfect.
+* Overqualified and overprepared, too many women still hold back. Women feel confident only when they are perfect. (IMO this applies to more demographic groups than just women.)
 * First, parents and teachers can stop praising inefficient overwork, even if it results in good grades.
 * A colleague of mine likes to remind teenagers that in classes where any score above 90 counts as an A, the different between a 91 and a 99 is a life.
 
