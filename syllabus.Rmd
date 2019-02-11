@@ -34,7 +34,7 @@ h1{font-weight: 400;}
     + Spinelli Center Data Counselor Vahab Khademi in Seelye 207: By [appointment](https://www.smith.edu/qlc/tutoring.html?colDataCnslr=open#PanelDataCnslr){target="_blank"}.
     
 
-## Instructor work-life balance
+## Instructor work-life balance {#work-life-balance}
 
 * I will respond to Slack messages sent during the week within 24h. I will respond to Slack messages sent during the weekend at my own discretion.
 * If possible, please only Slack me with briefer and administrative questions; I prefer having more substantive conversations in person as it takes me less energy to understand where you are at.

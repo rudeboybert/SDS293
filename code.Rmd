@@ -25,4 +25,18 @@ h1{font-weight: 400;}
 
 ***
 
+
+
+
+
+
+
+***
+
+
+
+# Splines
+
+Lec02 thru Lec03
+
 <script src="https://gist.github.com/rudeboybert/bddb68671234c9616defea1e8c2e36ac.js"></script>
