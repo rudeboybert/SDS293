@@ -60,13 +60,61 @@ h1{font-weight: 400;}
 
 <!--
 
-
-* Why is it important to work in "RStudio Project" mode? Because of how you set your working directory using relative vs absolute file paths; see tweet below.
+Why is it important to work in "RStudio Project" mode? Because of how you set your working directory using relative vs absolute file paths; see tweet below.
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">The only two things that make <a href="https://twitter.com/JennyBryan?ref_src=twsrc%5Etfw">@JennyBryan</a> 😤😠🤯. Instead use projects + here::here() <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://t.co/GwxnHePL4n">pic.twitter.com/GwxnHePL4n</a></p>&mdash; Hadley Wickham (@hadleywickham) <a href="https://twitter.com/hadleywickham/status/940021008764846080?ref_src=twsrc%5Etfw">December 11, 2017</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 -->
+
+
+
+***
+
+
+# Lec 6: Wed 2/13
+
+## Annoucements 
+
+Before Lec07 on Monday 2/18:  
+
+* I will post ~~solutions~~ one of many possible approaches to doing `MP1.Rmd` in the [Mini-Projects](MP.html) page by Friday afternoon. Please read these.
+* Delete the minimally viable `regression.Rmd` file I sent on Slack during Lec05 on Monday, replace it with this improved file <a href="static/methods/regression/regression_v2.Rmd" download>`regression_v2.Rmd`</a>, and please read it.
+
+Also, I fixed the error in Lec03 exercises solutions in [Code](code.html) page. The issue was inconsistent converting from &deg;F to &deg;C in all `training` and `test` sets; I commented all such code out. The correct visualization of a spline model "trained on June and predicting December temperatures" is below. Observe that the predictions (in blue) overpredict the actual December temperatures (black dots).
+
+![](static/images/train_june_test_december.png){ width=600px }
+
+Remember:
+
+> For your predictions to be valid, the data used to train your model must be at least somewhat representative of the test data you're making predictions on!
+
+In other words:
+
+If you only train your self-driving car here:  | Don't expect it to drive well here:
+:-------------------------:|:-------------------------:
+![](static/images/driving_in_circles.jpg){ height=1.71.7in }  |  ![](static/images/BOS_streets.png){ height=1.7}
+
+
+
+## Todays Topics/Activities  
+
+### 1. Chalk Talk
+
+Brief discussion on "looking at your data" inspired by tweet of the day below.
+
+### 2. Tweet of the day
+
+Why is important to `glimpse()` and `View()` your data frames? Because **looking at your data** is so deceptively simple that many people forget or ignore this step, even analysts/engineers with PhD's at Google! Before any modeling, you must getting a sense of:
+
+1. **What types of variables you have in your columns?** Numerical, categorical, text, dates?
+1. **What values you have in your cells?** Units of any measurements?
+1. **What is the quality of your data?** Do you have missing data? Are there crazy outliers?
+
+These are the most fundamental steps to take before any modeling or data analysis!  
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Shout-out to people like me who like taking a look at even huge tables of raw data before summarizing or transforming, to get a sense of what&#39;s in there and spot potential data quality issues. Step 1 in data exploration! <a href="https://t.co/wVLHWcVNWA">pic.twitter.com/wVLHWcVNWA</a></p>&mdash; Data Science Renee (@BecomingDataSci) <a href="https://twitter.com/BecomingDataSci/status/1095421569428529153?ref_src=twsrc%5Etfw">February 12, 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 
@@ -90,8 +138,6 @@ h1{font-weight: 400;}
 * Discussion of solutions to Lec03 code exercises.
 * Recap of Lec04: crossvalidation
 * Regression
-
-
 
 ### 2. Tweet of the day
 

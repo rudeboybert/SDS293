@@ -96,6 +96,10 @@ Repeat the above and slowly **iterate** to perfection while keeping in mind that
 </center>
 
 
+## One possible approach {#MP1-discussion}
+
+There is no one single "right "solution to this MP1. 
+
 
 ***
 

@@ -36,8 +36,8 @@ training <- weather %>%
 training
 
 # Optional: convert temperature from F to C
-training <- training %>%
-  mutate(temp = (temp-32)/1.8)
+# training <- training %>%
+#   mutate(temp = (temp-32)/1.8)
 
 # Always do an exploratory data analysis first!
 
@@ -58,8 +58,6 @@ fitted_spline_model <- smooth.spline(x = training$humid, y = training$temp, df =
 # Extract data frame of info based on fitted model:
 fitted_spline_model_points <- fitted_spline_model %>%
   broom::augment()
-# Here x = predictor var = humid, y = outcome var = temp, ignore w, .fitted =
-# fitted/predicted value = temp_hat, .resid = residual = y - y_hat
 fitted_spline_model_points
 
 # Plot fitted model on training data:
@@ -77,17 +75,14 @@ test <-  weather %>%
 test
 
 # Optional: convert temperature from F to C
-test <- test %>%
-  mutate(temp = (temp-32)/1.8)
+# test <- test %>%
+#   mutate(temp = (temp-32)/1.8)
 
 
 #------------------------------------------------------------------------------
 # Step 2: Make predictions on test data by applying fitted_spline_model
 predicted_points <- predict(fitted_spline_model, x = test$humid) %>%
   as_tibble()
-
-# Here x = predictor var = humid. y has a terrible name; it should be y_hat =
-# fitted/predicted value = temp_hat.
 predicted_points
 
 # Plot!
@@ -105,13 +100,17 @@ ggplot() +
 # 3. What is the RMSE of your fitted model on June temperatures?
 # July temperatures? December temperatures.
 
-
 #------------------------------------------------------------------------------
 # Solutions:
-# 2. Redefine test data to be December
+# 2. Recall in example above training was June data, test was May data. Redefine
+# test data to be December
 test <-  weather %>%
   filter(origin == "JFK", month == 12) %>%
   select(time_hour, temp, humid)
+
+# Optional: convert temperature from F to C
+# test <- test %>%
+#   mutate(temp = (temp-32)/1.8)
 
 # Get predicted values:
 predicted_points <- predict(fitted_spline_model, x = test$humid) %>%
@@ -134,7 +133,7 @@ test %>%
   mutate(
     residual = temp - temp_hat,
     squared_residual = residual^2
-    ) %>%
+  ) %>%
   summarize(mse = mean(squared_residual)) %>%
   mutate(rmse = sqrt(mse))
 
@@ -163,7 +162,3 @@ weather %>%
   ) %>%
   summarize(mse = mean(squared_residual)) %>%
   mutate(rmse = sqrt(mse))
-
-
-
-
