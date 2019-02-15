@@ -72,7 +72,34 @@ Why is it important to work in "RStudio Project" mode? Because of how you set yo
 ***
 
 
-# Lec 6: Wed 2/13
+# # Lec 7: Mon 2/18
+
+## Annoucements 
+
+<!--
+* MP1 discussion
+* Midterm I discussion
+-->
+
+
+
+## Todays Topics/Activities  
+
+### 1. Chalk Talk
+
+
+
+### 2. Tweet of the day
+
+
+
+
+
+***
+
+
+
+Lec 6: Wed 2/13
 
 ## Annoucements 
 
