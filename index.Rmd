@@ -72,26 +72,19 @@ Why is it important to work in "RStudio Project" mode? Because of how you set yo
 ***
 
 
-# # Lec 7: Mon 2/18
+# Lec 7: Mon 2/18
 
 ## Annoucements 
 
-<!--
-* MP1 discussion
+* Wednesday 2/20 is Rally Day: no lecture nor office hours. 
+* Extra office hours Friday 2/22 3:00pm-4:15pm.
 * Midterm I discussion
--->
-
-
 
 ## Todays Topics/Activities  
 
 ### 1. Chalk Talk
 
-
-
-### 2. Tweet of the day
-
-
+* MP1 discussion
 
 
 
@@ -99,7 +92,7 @@ Why is it important to work in "RStudio Project" mode? Because of how you set yo
 
 
 
-Lec 6: Wed 2/13
+# Lec 6: Wed 2/13
 
 ## Annoucements 
 

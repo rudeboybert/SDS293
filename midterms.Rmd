@@ -31,96 +31,26 @@ h1{font-weight: 400;}
 ## Administrative notes
 
 * **Friday 2/22 5pm through Sunday 2/24 11:55pm**.
-* Self-scheduled exam [instructions](https://drive.google.com/file/d/1MXlZEf9UrQfFjUX6d9iglwDCZbn02cbj/view){target="_blank"}. In particular:
+* Self-scheduled exam [instructions](http://www.science.smith.edu/self-scheduled-exam-printing/){target="_blank"}. In particular:
     + Only print from macOS computers.
     + At some point you'll need to wait 5-10 seconds for a "paper is held in queue" pop-up box to appear before you can print.
-
-<!--
-
-Update with this: http://www.science.smith.edu/self-scheduled-exam-printing/
-
-
-* You must submit your midterm by 11:55pm on Sunday.
-* If you have never taken a Self-Scheduled exam, please read the instructions [here](https://drive.google.com/file/d/10mkwAnJVTbOiz_g-bUDrrUL_S-6j-8ul/view){target="_blank"}
-* You will be given 120 mins to complete it (including transit time to writing area), however I try to time it so that it will take much less than that. In other words, you should have plenty of time to complete it without rushing.
+* You will be given 140 mins to complete it (including transit time to writing area), however I try to time it so that it will take much less than that. In other words, you should have plenty of time to complete it without rushing.
+* **Timestamps will be strictly enforced. Any timestamps indicating than more than 140 minutes are subject to a 50% penalty and an honor board case.**
 * Closed-book, no internet, and individually completed.
-* Please bring colored pens.
-* Extra help:
-    + Jenny office hours, still lots of Wednesday slots! [Book here](https://jennysmetzer.youcanbook.me/){target="_blank"}.
-    + Albert extra office hours Thursday 2-4pm in McConnell 215.
-* Read cover page:
-
-![](static/exams/midterm_I_cover_page.png){ width=600px }   
 
 
 ## Topics
     
-* Topics: Lectures 1-7. In other words everything up to and including data visualizations
-* What to study
-    + Before Wednesday's lecture, do the practice midterm questions.
-    + Your hand-written course notes first: they are the "executive summaries" of topics.
-    + The material on the course webpage chronologically, in particular the ModernDive readings.
-    + You will not write code for the midterm, but you may need to understand code.
-    + No questions from DataCamp will be asked.
-* Practice midterm questions [PDF](static/exams/Midterm-I_practice.pdf){target="_blank"}. I **do not** have a PDF of solutions, we'll cover these in class on Wednesday. Note this is a compilation of a few midterms, so its length is longer than what you can expect on the midterm. Do the following questions:
-    + Q1 Short Answer - Part b)
-    + Q4 Gapminder - All parts. Hint for Part b): Read ModernDive Chapter 12.1.2 on log10-transformations
-    + Q5 Family income by city - All parts.
-    + Q1 America Runs on Starbucks: Parts a) and c)
+* Topics: All topics covered so far, but not regression.
+* What to study:
+    + Lec01 Slides: A minimally-viable explanation of machine learning in 60min.
+    + General modeling framework: $y = f(\vec{x}) + \epsilon$ vs $\hat{y} = \hat{f}(\vec{x})$ .See "Modeling with data in the tidyverse" DataCamp Chapter 1 videos for more info.
+    + Machine learning problem: underfitting/overfitting, measures of model complexity, training/test set splitting, cross-validation.
+    + Splines: describe qualitatively how model is fit.
+    + Class chalk talk notes
+    + `MP1_albert.Rmd`
+* No direct coding, but you will have to write pseudocode.
 
-
-## Practice questions discussion {#midtermIdiscussion}
-
-**Note about Question 4.b)** Both the following plots show the relationship between life expectancy and GDP per capita in 2007 in the `gapminder` data, but the right one has GDP per capita (USD) on the x-axis on a $\log10$-scale using `scale_x_log10()`. Thus:
-
-* Left plot: the white grid lines on the x-axis denote **additive** differences of $+10000$ 
-* Right plot: the white grid lines on the x-axis denote **multiplicative** differences of $\times 10$
-
-```{r, echo = FALSE, fig.height = 7/2, eval = FALSE}
-gapminder2007 <- gapminder %>% 
-  filter(year == 2007)
-
-# Simple plot -------------------------------------------------------------
-base <- ggplot(gapminder2007, aes(x = gdpPercap, y = lifeExp, col = continent, size = pop)) + 
-  geom_point() + 
-  labs(
-    y = "Life expectancy (years)", 
-    color = "Continent", size = "Population"
-  ) +
-  theme(legend.position="none", panel.grid.minor = element_blank())
-  
-p1 <- base +
-  labs(x = "GDP per capita", title = "Regular scale x-axis") +
-  scale_x_continuous(labels = scales::dollar_format())
-p2 <- base +
-  labs(x = "GDP per capita (log10-scale)", title = "log10 scale x-axis") + 
-  scale_x_log10(breaks = c(100, 1000, 10000, 100000), limits = c(NA, 10^5), labels = scales::dollar_format())
-p1 + p2
-```
-
-
-**Note about Question 5.f)** Counterexample. Both these datasets have 11 values and the same quartiles as Nashville (32K, 60K, and 100K), but have different proportions greater than 80K:
-
-```{r, echo = FALSE, eval = FALSE}
-data_frame(
-  data1 = c(16, 17, 32, 33, 54, 60, 61, 62, NA, NA, 100, 110, 115),
-  data2 = c(16, 17, 32, 33, 54, 60, NA, NA, 98, 99, 100, 110, 115)
-) %>% 
-  t() %>% 
-  kable()
-```
-
-| Dataset    |   |   |  |   |   |   |   |   |   |   |  |    |    |
-|:-----|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|---:|---:|---:|
-|Data 1 | 16| 17| **32** | 33| 54| **60**| 61| 62| | | **100**| 110| 115|
-|Data 2 | 16| 17| **32** | 33| 54| **60**| | | 98| 99| **100**| 110| 115|
-
-
-
-## Midterm I Distribution
-
-![](static/exams/midterm_I_distribution.png){ width=600px } 
--->
 
 
 

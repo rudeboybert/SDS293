@@ -316,71 +316,31 @@ h1{font-weight: 400;}
 <h2>Administrative notes</h2>
 <ul>
 <li><strong>Friday 2/22 5pm through Sunday 2/24 11:55pm</strong>.</li>
-<li>Self-scheduled exam <a href="https://drive.google.com/file/d/1MXlZEf9UrQfFjUX6d9iglwDCZbn02cbj/view" target="_blank">instructions</a>. In particular:
+<li>Self-scheduled exam <a href="http://www.science.smith.edu/self-scheduled-exam-printing/" target="_blank">instructions</a>. In particular:
 <ul>
 <li>Only print from macOS computers.</li>
 <li>At some point you’ll need to wait 5-10 seconds for a “paper is held in queue” pop-up box to appear before you can print.</li>
 </ul></li>
+<li>You will be given 140 mins to complete it (including transit time to writing area), however I try to time it so that it will take much less than that. In other words, you should have plenty of time to complete it without rushing.</li>
+<li><strong>Timestamps will be strictly enforced. Any timestamps indicating than more than 140 minutes are subject to a 50% penalty and an honor board case.</strong></li>
+<li>Closed-book, no internet, and individually completed.</li>
 </ul>
-<!--
-
-Update with this: http://www.science.smith.edu/self-scheduled-exam-printing/
-
-
-* You must submit your midterm by 11:55pm on Sunday.
-* If you have never taken a Self-Scheduled exam, please read the instructions [here](https://drive.google.com/file/d/10mkwAnJVTbOiz_g-bUDrrUL_S-6j-8ul/view){target="_blank"}
-* You will be given 120 mins to complete it (including transit time to writing area), however I try to time it so that it will take much less than that. In other words, you should have plenty of time to complete it without rushing.
-* Closed-book, no internet, and individually completed.
-* Please bring colored pens.
-* Extra help:
-    + Jenny office hours, still lots of Wednesday slots! [Book here](https://jennysmetzer.youcanbook.me/){target="_blank"}.
-    + Albert extra office hours Thursday 2-4pm in McConnell 215.
-* Read cover page:
-
-![](static/exams/midterm_I_cover_page.png){ width=600px }   
-
-
-## Topics
-    
-* Topics: Lectures 1-7. In other words everything up to and including data visualizations
-* What to study
-    + Before Wednesday's lecture, do the practice midterm questions.
-    + Your hand-written course notes first: they are the "executive summaries" of topics.
-    + The material on the course webpage chronologically, in particular the ModernDive readings.
-    + You will not write code for the midterm, but you may need to understand code.
-    + No questions from DataCamp will be asked.
-* Practice midterm questions [PDF](static/exams/Midterm-I_practice.pdf){target="_blank"}. I **do not** have a PDF of solutions, we'll cover these in class on Wednesday. Note this is a compilation of a few midterms, so its length is longer than what you can expect on the midterm. Do the following questions:
-    + Q1 Short Answer - Part b)
-    + Q4 Gapminder - All parts. Hint for Part b): Read ModernDive Chapter 12.1.2 on log10-transformations
-    + Q5 Family income by city - All parts.
-    + Q1 America Runs on Starbucks: Parts a) and c)
-
-
-## Practice questions discussion {#midtermIdiscussion}
-
-**Note about Question 4.b)** Both the following plots show the relationship between life expectancy and GDP per capita in 2007 in the `gapminder` data, but the right one has GDP per capita (USD) on the x-axis on a $\log10$-scale using `scale_x_log10()`. Thus:
-
-* Left plot: the white grid lines on the x-axis denote **additive** differences of $+10000$ 
-* Right plot: the white grid lines on the x-axis denote **multiplicative** differences of $\times 10$
-
-
-
-
-**Note about Question 5.f)** Counterexample. Both these datasets have 11 values and the same quartiles as Nashville (32K, 60K, and 100K), but have different proportions greater than 80K:
-
-
-
-| Dataset    |   |   |  |   |   |   |   |   |   |   |  |    |    |
-|:-----|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|---:|---:|---:|
-|Data 1 | 16| 17| **32** | 33| 54| **60**| 61| 62| | | **100**| 110| 115|
-|Data 2 | 16| 17| **32** | 33| 54| **60**| | | 98| 99| **100**| 110| 115|
-
-
-
-## Midterm I Distribution
-
-![](static/exams/midterm_I_distribution.png){ width=600px } 
--->
+</div>
+<div id="topics" class="section level2">
+<h2>Topics</h2>
+<ul>
+<li>Topics: All topics covered so far, but not regression.</li>
+<li>What to study:
+<ul>
+<li>Lec01 Slides: A minimally-viable explanation of machine learning in 60min.</li>
+<li>General modeling framework: <span class="math inline">\(y = f(\vec{x}) + \epsilon\)</span> vs <span class="math inline">\(\hat{y} = \hat{f}(\vec{x})\)</span> .See “Modeling with data in the tidyverse” DataCamp Chapter 1 videos for more info.</li>
+<li>Machine learning problem: underfitting/overfitting, measures of model complexity, training/test set splitting, cross-validation.</li>
+<li>Splines: describe qualitatively how model is fit.</li>
+<li>Class chalk talk notes</li>
+<li><code>MP1_albert.Rmd</code></li>
+</ul></li>
+<li>No direct coding, but you will have to write pseudocode.</li>
+</ul>
 <hr />
 </div>
 </div>
