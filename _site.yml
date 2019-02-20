@@ -20,6 +20,8 @@ navbar:
 #  - text: Shiny Apps
 #    href: shiny.html
   right:
+  - text: DataCamp
+    href: datacamp.html
   - text: Mini-Projects
     href: MP.html
   - text: Midterms
