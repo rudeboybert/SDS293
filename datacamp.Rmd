@@ -55,7 +55,8 @@ Hints:
 ![](static/images/purrr.jpg){ width=150px }
 * In Chapter 2 Dmitriy uses the `broom` package which we've seen a few times in class so far to take "fitted model objects" and return data frames of different types.  
 ![](static/images/broom.png){ width=150px }
-* The ideas in this course are very cleanly and compactly explained IMO. However, because they are so cleanly and compactly explained, the ideas are very dense. I highly recommend that you consider running code in bits and pieces instead of running the whole thing at once. For example in the image below I highlighted a small segment of code and ran it in the console by clicking command + enter (macOS) or control + enter if I were on Windows/unix/chromebook (open the image in a new tab if the font is too small). That way I can dissect all steps. 
+* The ideas in this course are very cleanly and compactly explained IMO. However, because they are so cleanly and compactly explained, the ideas are very dense. I highly recommend that you consider running code in bits and pieces instead of running the whole thing at once.
+* For example in the image below I highlighted a small segment of code and ran it in the console by clicking command + enter (macOS) or control + enter if I were on Windows/unix/chromebook. That way I can dissect all steps in producing the output; open the image in a new tab if the font is too small.
 ![](static/images/piece-by-piece.png){ width=700px }
 
 
