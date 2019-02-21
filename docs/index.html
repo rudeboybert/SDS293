@@ -35,7 +35,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -48,13 +48,11 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -390,38 +388,28 @@ h1{font-weight: 400;}
 <!--
 {target="_blank"}
 -->
-<!--
-
-Why is it important to work in "RStudio Project" mode? Because of how you set your working directory using relative vs absolute file paths; see tweet below.
-
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">The only two things that make <a href="https://twitter.com/JennyBryan?ref_src=twsrc%5Etfw">@JennyBryan</a> 😤😠🤯. Instead use projects + here::here() <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://t.co/GwxnHePL4n">pic.twitter.com/GwxnHePL4n</a></p>&mdash; Hadley Wickham (@hadleywickham) <a href="https://twitter.com/hadleywickham/status/940021008764846080?ref_src=twsrc%5Etfw">December 11, 2017</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
--->
 <hr />
 </div>
 <div id="lec-8-mon-225" class="section level1">
 <h1>Lec 8: Mon 2/25</h1>
-<div id="annoucements" class="section level2">
-<h2>Annoucements</h2>
+<div id="announcements" class="section level2">
+<h2>Announcements</h2>
 <ul>
-<li>For those of you with an interest in biostatistics, check out Dr. Emma Benn’s talk on Tuesday March 5, 5pm in Seelye Hall 106.</li>
+<li>For those of you with an interest in biostatistics, check out Dr. Emma Benn’s talk on Tuesday March 5, 5pm in Seelye Hall 106.<br />
+<img src="static/events/emma_benn.png" width="500" /></li>
 </ul>
-<center>
-<img src="static/events/emma_benn.png" width="500" />
-<center>
 </div>
 <div id="todays-topicsactivities" class="section level2">
 <h2>Todays Topics/Activities</h2>
 <div id="chalk-talk" class="section level3">
 <h3>1. Chalk Talk</h3>
 <ul>
-<li>M* TBD</li>
+<li></li>
 </ul>
 </div>
 <div id="tweet-of-the-day" class="section level3">
-<h3>Tweet of the day</h3>
-<p>Dr. Benn is excited to her talk at Smith College SDS! <strong>Are you?</strong></p>
+<h3>2. Tweet of the day</h3>
+<p>Dr. Benn is excited for her talk at Smith College SDS. <strong>Are you?</strong></p>
 <blockquote class="twitter-tweet" data-lang="en">
 <p lang="en" dir="ltr">
 Yessss!!! Definitely looking forward to speaking with and learning from the amazing <a href="https://twitter.com/SmithCollegeSDS?ref_src=twsrc%5Etfw"><span class="citation">@SmithCollegeSDS</span></a> faculty and students! 🤗💃🏾🤗💃🏾 <a href="https://t.co/te01giEvXv">https://t.co/te01giEvXv</a>
@@ -435,8 +423,8 @@ Yessss!!! Definitely looking forward to speaking with and learning from the amaz
 </div>
 <div id="lec-7-mon-218" class="section level1">
 <h1>Lec 7: Mon 2/18</h1>
-<div id="annoucements-1" class="section level2">
-<h2>Annoucements</h2>
+<div id="announcements-1" class="section level2">
+<h2>Announcements</h2>
 <ul>
 <li>Wednesday 2/20 is Rally Day: no lecture nor office hours.</li>
 <li>Extra office hours Friday 2/22 3:00pm-4:15pm.</li>
@@ -456,8 +444,8 @@ Yessss!!! Definitely looking forward to speaking with and learning from the amaz
 </div>
 <div id="lec-6-wed-213" class="section level1">
 <h1>Lec 6: Wed 2/13</h1>
-<div id="annoucements-2" class="section level2">
-<h2>Annoucements</h2>
+<div id="announcements-2" class="section level2">
+<h2>Announcements</h2>
 <p>Before Lec07 on Monday 2/18:</p>
 <ul>
 <li>I will post <del>solutions</del> one of many possible approaches to doing <code>MP1.Rmd</code> in the <a href="MP.html">Mini-Projects</a> page by Friday afternoon. Please read these.</li>
@@ -517,8 +505,8 @@ Shout-out to people like me who like taking a look at even huge tables of raw da
 </div>
 <div id="lec-5-mon-211" class="section level1">
 <h1>Lec 5: Mon 2/11</h1>
-<div id="annoucements-3" class="section level2">
-<h2>Annoucements</h2>
+<div id="announcements-3" class="section level2">
+<h2>Announcements</h2>
 <ul>
 <li>Slack <code>#general</code> announcement about new <code>#mp1</code> channel. It is your responsibility to stay on top of all messages sent in this channel.</li>
 <li>Added clarification on what external sources you can use in <a href="MP.html#MP1-working">MP1 project instructions</a>.</li>
@@ -556,8 +544,8 @@ Girls need to become tactical about school, to figure out how to get the same go
 </div>
 <div id="lec-4-wed-26" class="section level1">
 <h1>Lec 4: Wed 2/6</h1>
-<div id="annoucements-4" class="section level2">
-<h2>Annoucements</h2>
+<div id="announcements-4" class="section level2">
+<h2>Announcements</h2>
 <ul>
 <li><a href="http://www.science.smith.edu/datafest/" target="_blank">DataFest</a> is a weekend-long “data science hackathon” for teams of up to 5 students and is at UMass the weekend of March 29-31! <a href="static/other/datafest2019.pdf" target="_blank">Info session</a> by Prof. Randi Garcia today 7-8pm in Sabin-Reed 301!</li>
 <li>“Multiple Imputation Methods in Cluster Randomzied Trials” talk by Prof. Brittney Bailey from Amherst College is tomorrow 12:10pm in McConnell B15. Free 🍕!!!</li>
@@ -589,8 +577,8 @@ Girls need to become tactical about school, to figure out how to get the same go
 </div>
 <div id="lec-3-mon-24" class="section level1">
 <h1>Lec 3: Mon 2/4</h1>
-<div id="annoucements-5" class="section level2">
-<h2>Annoucements</h2>
+<div id="announcements-5" class="section level2">
+<h2>Announcements</h2>
 <ul>
 <li>Slack: Go over <code>#questions</code>.</li>
 <li>Syllabus finalized</li>
@@ -624,8 +612,8 @@ Girls need to become tactical about school, to figure out how to get the same go
 </div>
 <div id="lec-2-wed-130" class="section level1">
 <h1>Lec 2: Wed 1/30</h1>
-<div id="annoucements-6" class="section level2">
-<h2>Annoucements</h2>
+<div id="announcements-6" class="section level2">
+<h2>Announcements</h2>
 <ul>
 <li>Slack: Vote in two latest <code>#polls</code> and go over <code>#questions</code>.</li>
 <li>Go over updated schedule above, in particular “Important Dates”</li>
@@ -666,10 +654,9 @@ On campuses across America, the surge in student demand for computer science cou
 </div>
 <div id="lec-1-mon-127" class="section level1">
 <h1>Lec 1: Mon 1/27</h1>
-<div id="annoucements-7" class="section level2">
-<h2>Annoucements</h2>
+<div id="announcementsu-havent-already-please-go-over-the-following-google-doc-with-important-information-about-the-course-and-steps-you-should-complete-to-get-setup-in-particular-the-intro-survey.-the-whole-process-should-take-about-20-minutes." class="section level2">
+<h2>Announcementsu haven’t already, please go over the following <a href="https://docs.google.com/document/d/1NfWkoyeiovkVyMmgmKFGxCMusyxBMYHVvsAUjEZv_fU/" target="_blank">Google Doc</a> with important information about the course and steps you should complete to get setup, in particular the Intro Survey. The whole process should take about 20 minutes.</h2>
 <ul>
-<li>If you haven’t already, please go over the following <a href="https://docs.google.com/document/d/1NfWkoyeiovkVyMmgmKFGxCMusyxBMYHVvsAUjEZv_fU/" target="_blank">Google Doc</a> with important information about the course and steps you should complete to get setup, in particular the Intro Survey. The whole process should take about 20 minutes.</li>
 <li><strong>Added on Sun 1/27 6PM</strong>: Create an account on Kaggle.com using your Smith (or Five College) email address.</li>
 </ul>
 </div>
