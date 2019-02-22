@@ -298,14 +298,18 @@ This class is just part of a larger phenomenon of resources spread *very* thin:
 
 
 
-
-
 ***
+
+
+
+
 
 
 # Lec 1: Mon 1/27
 
-## Announcementsu haven't already, please go over the following [Google Doc](https://docs.google.com/document/d/1NfWkoyeiovkVyMmgmKFGxCMusyxBMYHVvsAUjEZv_fU/){target="_blank"} with important information about the course and steps you should complete to get setup, in particular the Intro Survey. The whole process should take about 20 minutes.
+## Announcements
+
+* If you haven’t already, please go over the following [Google Doc](https://docs.google.com/document/d/1NfWkoyeiovkVyMmgmKFGxCMusyxBMYHVvsAUjEZv_fU/){target="_blank"} with important information about the course and steps you should complete to get setup, in particular the Intro Survey. The whole process should take about 20 minutes.
 * **Added on Sun 1/27 6PM**: Create an account on Kaggle.com using your Smith (or Five College) email address. 
 
 
@@ -357,6 +361,4 @@ submission <- get_regression_points(house_model, newdata = test, ID = "Id") %>%
 # 4. Output predictions to CSV
 write_csv(submission, "submission.csv")
 ```
-
-
 
