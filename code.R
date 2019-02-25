@@ -1,4 +1,149 @@
 #------------------------------------------------------------------------------
+# Lec08: 2019/02/25
+#------------------------------------------------------------------------------
+library(tidyverse)
+library(broom)
+library(stringr)
+
+
+#------------------------------------------------------------------------------
+# Data for today
+# Read over the help file
+?mtcars
+
+# Data wrangling
+mtcars <- mtcars %>%
+  # Convert to tibble data frame:
+  as_tibble() %>%
+  # Add identification variable as first column:
+  mutate(ID = 1:n()) %>%
+  select(ID, everything()) %>%
+  # vs & am variables were recorded as numerical 0/1, but are really categorical
+  # so convert them
+  mutate(
+    vs = ifelse(vs == 0, "V-shaped", "straight"),
+    am = ifelse(am == 0, "automatic", "manual")
+  )
+
+# Set up validation set framework: create training and test set at random
+set.seed(76)
+mtcars_train <- mtcars %>%
+  sample_frac(0.75)
+mtcars_test <- mtcars %>%
+  anti_join(mtcars_train, by="ID")
+
+glimpse(mtcars_train)
+glimpse(mtcars_test)
+
+
+#------------------------------------------------------------------------------
+# Model 1:
+# y: fuel efficiency: measured in miles per gallon
+# x: engine horsepower: unit of power where 1hp = work needed to lift 75kg a
+# vertical distance of 1 meter in 1 second: https://en.wikipedia.org/wiki/Horsepower
+
+# 1. Fit model to training data
+model_1_formula <- as.formula("mpg ~ hp")
+model_1 <- lm(model_1_formula, data = mtcars_train)
+
+# 2.a) Extract regression table with confidence intervals
+model_1 %>%
+  broom::tidy(conf.int = TRUE)
+
+# 2.b) Extract point-by-point info of points used to fit model
+fitted_points_1 <- model_1 %>%
+  broom::augment()
+fitted_points_1
+
+# 2.c) Extract model summary info
+model_1 %>%
+  broom::glance()
+
+# 3. Make predictions on test data. Compare this to use of broom::augment()
+# for fitted_points()
+predicted_points_1 <- model_1 %>%
+  broom::augment(newdata = mtcars_test)
+predicted_points_1
+
+# 4. Visualize
+ggplot(NULL) +
+  # Training data with black points:
+  geom_point(data = fitted_points_1, aes(x = hp, y = mpg)) +
+  # Fitted simple linear regression model with blue line:
+  geom_line(data = fitted_points_1, aes(x = hp, y = .fitted), col = "blue") +
+  # Predictions for test set with red points
+  geom_point(data = predicted_points_1, aes(x = hp, y = .fitted), col = "red") +
+  labs(x = "Horse power", y = "Miles per gallon")
+
+
+#------------------------------------------------------------------------------
+# Model 2:
+# y: fuel efficiency: measured in miles per gallon
+# x: All numerical predictors
+
+# 1. Fit model to training data
+model_2_formula <- as.formula("mpg ~ cyl + disp + hp + drat + wt + qsec + gear + carb")
+model_2 <- lm(model_2_formula, data = mtcars_train)
+
+# 1. Here is a hint for generating the right-hand side (RHS) of formulas when
+# you have a lot of predictors. Note how I removed ID and mpg from RHS.
+names(mtcars) %>%
+  str_c(collapse = " + ")
+
+# 2.a) Extract regression table with confidence intervals
+model_2 %>%
+  broom::tidy(conf.int = TRUE)
+
+# 2.b) Extract point-by-point info of points used to fit model
+fitted_points_2 <- model_2 %>%
+  broom::augment()
+fitted_points_2
+
+# 2.c) Extract model summary info
+model_2 %>%
+  broom::glance()
+
+# 3. Make predictions on test data. Compare this to use of broom::augment()
+# for fitted_points()
+predicted_points_2 <- model_2 %>%
+  broom::augment(newdata = mtcars_test)
+predicted_points_2
+
+
+#------------------------------------------------------------------------------
+# Exercises
+
+# 1. What are the RMSEs of Models 1 & 2? Which is higher?
+
+# 2. What is the ratio of n/p for our trained Model 2. i.e. the number of points
+# in the training set vs the number of predictors
+
+# 3. Change the train/test validation ratio from 3:1 to 1:1. What are the RMSEs
+# of Models 1 & 2? Which is higher?
+
+# 4. What is the new ratio of n/p for our new trained Model 2?
+
+# 5. How does the difference in RMSE for Model 1 & 2 itself differ when the
+# train/test validation ratio went from 3:1 to 1:1
+
+# 6. Try a different combination of variables and see if you can lower your
+# RMSE.
+
+
+
+
+
+predicted_points_1 %>%
+  yardstick::rmse(truth = mpg, estimate = .fitted)
+predicted_points_2 %>%
+  yardstick::rmse(truth = mpg, estimate = .fitted)
+
+
+
+
+
+
+#------------------------------------------------------------------------------
 # Lec02: 2019/01/30
 #------------------------------------------------------------------------------
 library(tidyverse)

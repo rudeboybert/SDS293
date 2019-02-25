@@ -2,11 +2,9 @@
 title: "Code"
 output:
   html_document:
-    number_sections: yes
-    toc: no
+    toc: true
     toc_depth: 2
-    toc_float:
-      collapsed: no
+    toc_float: true
 ---
 
 ```{r, include=FALSE}
@@ -21,6 +19,15 @@ set.seed(76)
 h1{font-weight: 400;}
 </style>
 
+
+
+***
+
+# Regression
+
+Lec08
+
+<script src="https://gist.github.com/rudeboybert/3d5d983420fec2acb19981d7fbd85f3a.js"></script>
 
 
 
