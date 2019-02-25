@@ -113,7 +113,7 @@ predicted_points_2
 #------------------------------------------------------------------------------
 # Exercises
 
-# 1. What are the RMSEs of Models 1 & 2? Which is higher?
+# 1. What are the test set RMSEs of Models 1 & 2? Which is higher?
 
 # 2. What is the ratio of n/p for our trained Model 2. i.e. the number of points
 # in the training set vs the number of predictors
@@ -123,7 +123,7 @@ predicted_points_2
 
 # 4. What is the new ratio of n/p for our new trained Model 2?
 
-# 5. How does the difference in RMSE for Model 1 & 2 itself differ when the
+# 5. How does the difference in test set RMSE for Model 1 & 2 itself differ when the
 # train/test validation ratio went from 3:1 to 1:1
 
 # 6. Try a different combination of variables and see if you can lower your
