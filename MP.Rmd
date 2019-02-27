@@ -98,7 +98,7 @@ Repeat the above and slowly **iterate** to perfection while keeping in mind that
 
 ## One possible approach {#MP1-discussion}
 
-There is no one single "right "solution to this MP1. 
+There is no one single "right "solution to this MP1, but here is <a href="static/MP1_albert_MVP.Rmd" download>one possible approach</a> (copy this `.Rmd` file to your MP1 RStudio Project folder).
 
 
 ***
@@ -108,10 +108,65 @@ There is no one single "right "solution to this MP1.
 
 ## Administrative notes
 
+* **Executive summary**: You will be making a submission to the [House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques){target="_blank"} Kaggle competition based on a fitted ~~spline~~ multiple regression model. The competition's score for leaderboard purposes is the "root mean squared logarithmic error" (RMSLE).
 * **Due Wednesday 3/6 5pm on Moodle**. 
+* You will be given time to work on MP2 in class on Monday 3/4 and Wednesday 3/6.
+* Groups: You must work with a different partner than MP1
+    + **If you already have a group**: Designate a team leader and have them fill out this [Google Sheet](https://docs.google.com/spreadsheets/d/1YRlmq4pvrzmtq0iUha4uCwg2Xwiz3l1_e5ji-rWoqlc/){target="_blank"}.
+    + **If you need a group**: Please fill out this [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSeifexbjkXQNgm6d7bvSn0KcYoB6RVH5ab50o-RS6NfAS58AQ/viewform) and I'll assign one for you.
+
+
+## Working on your project {#MP2-working}
+
+* Join the `#mp2` Slack channel.
+* Download the `MP2.zip` archive file containing the MP2 RStudio Project by clicking <a href="static/MP2.zip" download>here</a>. 
+* **Windows users**: Be sure to "extract" the contents of `MP2.zip` to a folder on your machine.
+* Whenever working on MP2, be sure to be in "RStudio Project mode" either by:
+    1. Clicking the `MP2.Rproj` file
+    1. Selecting `MP2` from the drop-down menu of RStudio Projects in the top right of RStudio.
+* Knit the `MP2.Rmd` file and read over everything once.
+* Whenever you're not working on your project, click the RStudio Project icon in the top right of RStudio and select "Close Project".
+* Policies:
+    + You may use a function from a package to compute the RMLSE.
+    + You may not use a function from a packge to perform cross-validation; please code it up manually.
+    + Feel free to use external sources, but please cite them using R Markdown footnotes. For example adding `^[This is my [source](https://www.smith.edu/)]` at the end of a sentence in R Markdown will yield: ^[This is my [source](https://www.smith.edu/)]
+
+
+## What to submit
+
+* **Group leader only**: Submit a `MP2_Group_XX.zip` archive file of **all** the contents of your `MP2` RStudio Project folder.  
+* **Both group members**: Complete the following peer evaluation [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSf0a9F3_tZNtil3_IZBwPpvxuC2ubmWs54fDuFmmxYtcrhN-w/viewform){target="_blank"}.  
+Both group members must complete the Google Form to receive full credit.
+
+
+## Grading
+
+1. **Minimally viable product:** Grade: 8/10. Fit a splines model with an arbitrarily chosen numerical predictor variable $x$ and an arbitrarily chosen degrees of freedom $df$. Using this model make a submission to Kaggle that returns a valid $\text{RMLSE}$ score. Also:
+    + Your `MP1.Rmd` R Markdown "knits" correctly. In other words, an `.html` report gets created with no errors.
+    + Complete the exploratory data analysis where all visualizations are as "stand-alone" as possible by having informative labels and titles.
+    + Remove all superfluous non-informative output from your report that only makes it more painful/tiresome to read.
+    + Both group members submit their peer evaluations. No extensions will be granted.
+1. **Due diligence:** Grade: 8.5/10. Explore choices degrees of freedom $df$ in some non-arbitrary fashion. This could mean many things, including:
+    + Explicitly compare the $\text{RMLSE}$ for two values of $df$.
+    + Implement the validation set prediction framework you saw in [Chapter 4](https://campus.datacamp.com/courses/modeling-with-data-in-the-tidyverse/model-assessment-and-selection?ex=10){target="_blank"} of the Modeling with Data in the tidyverse DataCamp course.
+1. **Reaching for the stars:** Grade: 9/10. Fully implement a crossvalidation scheme from scratch in order to:
+    + Find the optimal "model complexity". In other words, find the optimal degrees of freedom $df^*$ in a systematic fashion.
+    + Get a good estimate $\widehat{\text{RMLSE}}$ of the $\text{RMLSE}$ that Kaggle will return for your submission.
+1. **Point of diminishing returns:** Grade: 9.5/10. Create a visualization like in [Lec01 slides \#36](http://rudeboybert.rbind.io/talk/2019-01-13-Williams.pdf#page=36){target="_blank"} that shows
+    + The relationship between "model complexity" set by $df$ and $\text{RMLSE}$ for both the training and test data.
+    + That the optimal $df^*$ is the "just right" balance point between underfitting and overfitting.
+1. **Polishing the cannonball:** Grade: 10/10. Try to get the highest Kaggle score in the class!
+
+
+## Suggestions
+
+* Start simple and slowly add complexity. If you start with the most complex model possible and something doesn't work, you'll have a harder time debugging.
+* 
+
 
 
 ***
+
 
 
 # Mini-project 3 {#MP3}
@@ -121,7 +176,9 @@ There is no one single "right "solution to this MP1.
 * **Due Wednesday 3/27 5pm on Moodle**. 
 
 
+
 ***
+
 
 
 # Mini-project 4 {#MP4}

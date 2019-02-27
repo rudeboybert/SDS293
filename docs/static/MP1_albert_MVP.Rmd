@@ -1,0 +1,341 @@
+---
+title: "SDS/CSC 293 Mini-Project 1: Splines"
+author: "Group XX: WRITE YOUR NAMES HERE"
+date: "Wednesday, February 13^th^, 2019"
+output:
+  html_document:
+    highlight: tango
+    theme: cosmo
+    toc: yes
+    toc_depth: 2
+    toc_float:
+      collapsed: true
+    df_print: kable
+---
+
+```{r setup, include=FALSE}
+# Load all your packages here:
+library(tidyverse)
+library(scales)
+
+# Set default behavior for all code chunks here:
+knitr::opts_chunk$set(
+  echo = TRUE, warning = FALSE, message = FALSE,
+  fig.width = 16/2, fig.height = 9/2
+)
+
+# Set seed value of random number generator here. This is in order to get
+# "replicable" randomness, so that any results based on random sampling or
+# resampling are replicable everytime you knit this file. Why use a seed value
+# of 76? For no other reason than:
+# https://www.youtube.com/watch?v=xjJ7FheCkCU
+set.seed(76)
+```
+
+You will be submiting an entry to Kaggle's [House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques/){target="_blank"} by fitting a **spline** model $\hat{f}(x)$ using a single numerical predictor $x$ of your choice. Note that splines are not a great model to use in practice since they only allow you to use one predictor variable at a time, however they are an excellent vehicle for thinking about the ideas behind crossvalidation.
+
+
+
+***
+
+
+
+# Data
+
+Read in data provided by Kaggle for this competition. They are organized in the `data/` folder of this RStudio project:
+
+```{r}
+training <- read_csv("data/train.csv")
+test <- read_csv("data/test.csv")
+sample_submission <- read_csv("data/sample_submission.csv")
+```
+
+Before performing any model fitting, you should always conduct an **exploratory data analysis** (EDA). This will help guide and inform your model fitting. 
+
+
+## Look at your data!
+
+Always, ALWAYS, **ALWAYS** start by looking at your raw data. This gives you visual sense of what information you have to help build your predictive models. To get a full description of each variable, read the data dictionary in the `data_description.txt` file in the `data/` folder.
+
+Note that the following code chunk has `eval = FALSE` meaning "don't evaluate this chunk with knitting" because `.Rmd` files won't knit if they include a `View()`:
+
+```{r, eval = FALSE}
+View(training)
+glimpse(training)
+
+View(test)
+glimpse(test)
+```
+
+In particular, pay close attention to the variables and variable types in the
+`sample_submission.csv`. Your submission must match this exactly.
+
+```{r}
+glimpse(sample_submission)
+```
+
+
+## Data wrangling
+
+Do any data wrangling/transforming here:
+
+I'm going to use `GrLivArea`
+
+```{r}
+training <- training %>% 
+  select(Id, GrLivArea, SalePrice)
+test <- test %>% 
+  select(Id, GrLivArea)
+```
+
+
+## Visualizations
+
+A univariate exploratory visualization of the outcome variable:
+
+```{r}
+ggplot(training, aes(x = SalePrice)) +
+  geom_histogram() +
+  labs(x = "Sale price in USD", title = "Outcome variable: sale price")
+```
+
+Given that the outcome variable:
+
+1. Is Very skewed
+1. Has to be greater than 0
+
+I will:
+
+1. Create a temporary outcome variable `log10_SalePrice` by running `log10(SalePrice)`. So a house that is one million dollars = 10^6^ will be 6.
+1. Do all model fitting and predictions.
+1. Return to the original outcome variable by "un-log10" the data
+
+```{r}
+training <- training %>% 
+  mutate(log10_SalePrice = log10(SalePrice))
+```
+
+```{r}
+ggplot(training, aes(x = log10_SalePrice)) +
+  geom_histogram() +
+  labs(x = "log10(Sale price in USD)", title = "Temporary outcome variable: log10(sale price)")
+```
+
+A univariate exploratory visualization of the predictor variable:
+
+```{r}
+ggplot(training, aes(x = GrLivArea)) +
+  geom_histogram() +
+  labs(x = "Above ground living area in square feet", title = "Predictor variable: living area")
+```
+
+This outcome variable is also very 
+
+```{r}
+training <- training %>% 
+  mutate(log10_GrLivArea = log10(GrLivArea))
+test <- test %>% 
+  mutate(log10_GrLivArea = log10(GrLivArea))
+```
+
+```{r}
+ggplot(training, aes(x = log10_GrLivArea)) +
+  geom_histogram() +
+  labs(x = "log10(Above ground living area in square feet)", title = "New predictor variable: log10(living area)")
+```
+
+A multivariate exploratory visualization of the *relationship* between the outcome and predictor variable.
+
+```{r}
+ggplot(training, aes(x = log10_GrLivArea, y = log10_SalePrice)) +
+  geom_point() +
+  labs(x = "log10(Above ground living area in square feet)", 
+       y = "log10(Sale price in USD)",
+       title = "Relationship of temporary outcome and predictor variable")
+```
+
+
+
+***
+
+
+
+# Explore choices of df
+
+This whole section relates to the **due diligence** and the **reaching for the stars** steps of the grading scheme: choosing the degrees of freedom $df$ in a non-arbitrary fashion.
+
+```{r}
+
+```
+
+## Crossvalidation from scratch
+
+Implement crossvalidation from scratch here. In other words, don't use an existing function, but rather program your own. 
+
+```{r}
+training <- training %>% 
+  sample_frac(1) %>% 
+  mutate(fold = rep(1:5, length = n())) %>% 
+  arrange(fold)
+
+df_RMLSE <- tibble(
+  df = c(2:50),
+  RMLSE = 0
+)
+  
+for(i in 1:nrow(df_RMLSE)){
+  df <- df_RMLSE$df[i]
+  
+  RMLSE <- rep(0, 5)
+  for(j in 1:5){
+    pretend_training <- training %>% 
+      filter(fold != j)
+    pretend_test <- training %>% 
+      filter(fold == j)
+    
+    # Fit model on pretend training
+    fitted_spline_model <- 
+      smooth.spline(x = pretend_training$log10_GrLivArea, 
+                    y = pretend_training$log10_SalePrice, df = df)
+
+    # Make predictions
+    predicted_points <- predict(fitted_spline_model, x = pretend_test$log10_GrLivArea) %>%
+      as_tibble()
+    
+    # Save predictions in pretend_test data frame
+    pretend_test <- pretend_test %>% 
+      mutate(
+        log10_SalePrice_hat = predicted_points$y,
+        SalePrice_hat = 10^log10_SalePrice_hat
+      )
+    
+    RMLSE[j] <- pretend_test %>% 
+      mutate(
+        residual = log(SalePrice + 1) - log(SalePrice_hat + 1),
+        residual_sq = residual^2
+      ) %>% 
+      summarize(
+        MLSE = mean(residual_sq),
+        RMLSE = sqrt(MLSE)
+      ) %>% 
+      pull(RMLSE)
+  }
+  
+  df_RMLSE$RMLSE[i] <- mean(RMLSE) 
+}
+```
+
+
+## Visualization justifying your choice of "optimal" df
+
+This subsection relates to the **point of diminishing returns** step of the grading scheme: a visualization like [Lec01 slides \#36](http://rudeboybert.rbind.io/talk/2019-01-13-Williams.pdf#page=36){target="_blank"} justifying your choice of optimal `df^*`. 
+
+```{r}
+ggplot(df_RMLSE, aes(x = df, y = RMLSE)) +
+  geom_line()
+```
+
+
+
+***
+
+
+
+# Make predictions based on chosen df
+
+Set `df_star` to be the degrees of freedom you'll use to make your predictions, arbitrarily chosen or not.
+
+```{r}
+df_RMLSE <- df_RMLSE %>% 
+  arrange(RMLSE)
+
+df_RMLSE %>% 
+  slice(1)
+  
+df_star <- df_RMLSE %>% 
+  slice(1) %>% 
+  pull(df)
+```
+
+
+## Visualize your model on training data
+
+Visualize your fitted splines model $\widehat{f}()$ with degrees of freedom `df_star` on the training data. Recall we can only create this plot for the training data because we only have the outcome variable $y$ for the training data.
+
+```{r}
+# Fit model on pretend training
+fitted_spline_model <- 
+  smooth.spline(x = training$log10_GrLivArea, y = training$log10_SalePrice, df = df_star)
+
+# Make predictions
+predicted_points <- predict(fitted_spline_model, x = training$log10_GrLivArea) %>%
+  as_tibble()
+
+# Save predictions in training data frame
+training <- training %>% 
+  mutate(
+    log10_SalePrice_hat = predicted_points$y,
+    SalePrice_hat = 10^log10_SalePrice_hat
+  )
+
+ggplot(training, aes(x = log10_GrLivArea, y = log10_SalePrice)) +
+  geom_point() +
+  geom_line(aes(y = log10_SalePrice_hat), col = "blue", size = 1)
+```
+
+
+## Make predictions on test data
+
+Make your predictions/get your predicted values $\widehat{y}$ on the test data. 
+
+```{r}
+predicted_points <- predict(fitted_spline_model, x = test$GrLivArea) %>%
+  as_tibble()
+
+# Save predictions in pretend_test data frame
+test <- test %>% 
+  mutate(
+    log10_SalePrice_hat = predicted_points$y,
+    SalePrice_hat = 10^log10_SalePrice_hat
+  )
+```
+
+
+
+***
+
+
+
+# Submission
+
+## Create your submission CSV
+
+The following code creates a submission where the predicted sale price for all houses in the test set is just the average sale price of the training data. Change the code so that you are submitted your spline model fitted predictions. 
+
+```{r}
+submission <- sample_submission %>% 
+  mutate(SalePrice = test$SalePrice_hat)
+
+write_csv(submission, path = "data/submission_albert.csv")
+```
+
+## Screenshot of your Kaggle score
+
+The "Root Mean Squared Logarithmic Error" score based on my example submission was 0.28782. Replace `score_screenshot.png` with a screenshot of your score. 
+
+![](https://rudeboybert.github.io/SDS293/static/images/score_screenshot_albert.png){ width=100% }
+
+
+## Comparing your estimated score to your Kaggle score
+
+Kaggle
+
+This section relates to the **reaching for the stars** step of the grading scheme: showing that your estimated $\widehat{\text{RMLSE}}$ you obtained from your implemented crossvalidation scheme is "close" to the real $\text{RMLSE}$ that Kaggle returns on the leaderboard. 
+
+```{r}
+df_RMLSE %>% 
+  slice(1)
+```
+
+
+

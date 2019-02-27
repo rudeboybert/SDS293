@@ -23,7 +23,7 @@ h1{font-weight: 400;}
 
 ***
 
-# Regression
+# Regression {#regression}
 
 Lec08
 

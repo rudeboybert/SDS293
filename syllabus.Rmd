@@ -145,7 +145,7 @@ regard. That being said, here is a rough hierarchy of how I much I refer to them
 
 
 
-## Policies
+## Policies {#policies}
 
 * Bring your laptop, a set of headphones, colored pens/pencils, and your paper notebook to every lecture.
 * You are expected to stay until the end of lecture. If you need to leave before the end of lecture, please confirm with me first.

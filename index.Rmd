@@ -62,6 +62,25 @@ h1{font-weight: 400;}
 ***
 
 
+# Lec 9: Wed 2/27
+
+## Announcements
+
+* As indicated in the [syllabus](syllabus.html#policies), even if you are done any in-class exercises early, please remain until the end of lecture. It is **very** disruptive to your peers if you pack up and leave early. 
+* MP2 posted.
+
+
+## Todays Topics/Activities  
+
+### 1. Chalk Talk
+
+* Logistic regression
+
+
+
+***
+
+
 
 # Lec 8: Mon 2/25
 
@@ -78,6 +97,7 @@ h1{font-weight: 400;}
 ### 1. Chalk Talk
 
 * Regression
+* See [code](code.html#regression)
 
 ### 2. Tweet of the day
 

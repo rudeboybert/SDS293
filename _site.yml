@@ -17,13 +17,11 @@ navbar:
     href: https://sds-csc-293-2019-jan.slack.com/
   - text: Code
     href: code.html
-#  - text: Shiny Apps
-#    href: shiny.html
   right:
   - text: DataCamp
     href: datacamp.html
   - text: Mini-Projects
-    href: MP.html
+    href: MP.html#MP2
   - text: Midterms
     href: midterms.html
   - text: Syllabus
