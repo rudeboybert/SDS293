@@ -66,7 +66,7 @@ h1{font-weight: 400;}
 
 ## Announcements
 
-* As indicated in the [syllabus](syllabus.html#policies), even if you are done any in-class exercises early, please remain until the end of lecture. It is **very** disruptive to your peers if you pack up and leave early. 
+* As indicated in the [syllabus](syllabus.html#policies), even if you are done any in-class exercises early, please remain until the end of lecture. It is very disruptive to the class if you pack up and leave early. 
 * MP2 posted.
 
 
