@@ -281,7 +281,7 @@ div.tocify {
   <a href="datacamp.html">DataCamp</a>
 </li>
 <li>
-  <a href="MP.html">Mini-Projects</a>
+  <a href="MP.html#MP2">Mini-Projects</a>
 </li>
 <li>
   <a href="midterms.html">Midterms</a>
@@ -392,7 +392,7 @@ Ex: Both Group #1’s members LQ and EN must complete the Google Form to receive
 </div>
 <div id="MP1-discussion" class="section level2">
 <h2>One possible approach</h2>
-<p>There is no one single “right”solution to this MP1.</p>
+<p>There is no one single “right”solution to this MP1, but here is <a href="static/MP1_albert_MVP.Rmd" download>one possible approach</a> (copy this <code>.Rmd</code> file to your MP1 RStudio Project folder).</p>
 <hr />
 </div>
 </div>
@@ -401,7 +401,94 @@ Ex: Both Group #1’s members LQ and EN must complete the Google Form to receive
 <div id="administrative-notes-1" class="section level2">
 <h2>Administrative notes</h2>
 <ul>
+<li><strong>Executive summary</strong>: You will be making a submission to the <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques" target="_blank">House Prices: Advanced Regression Techniques</a> Kaggle competition based on a fitted <del>spline</del> multiple regression model. The competition’s score for leaderboard purposes is the “root mean squared logarithmic error” (RMSLE).</li>
 <li><strong>Due Wednesday 3/6 5pm on Moodle</strong>.</li>
+<li>You will be given time to work on MP2 in class on Monday 3/4 and Wednesday 3/6.</li>
+<li>Groups: You must work with a different partner than MP1
+<ul>
+<li><strong>If you already have a group</strong>: Designate a team leader and have them fill out this <a href="https://docs.google.com/spreadsheets/d/1YRlmq4pvrzmtq0iUha4uCwg2Xwiz3l1_e5ji-rWoqlc/" target="_blank">Google Sheet</a>.</li>
+<li><strong>If you need a group</strong>: Please fill out this <a href="https://docs.google.com/forms/d/e/1FAIpQLSeifexbjkXQNgm6d7bvSn0KcYoB6RVH5ab50o-RS6NfAS58AQ/viewform">Google Form</a> and I’ll assign one for you.</li>
+</ul></li>
+</ul>
+</div>
+<div id="MP2-working" class="section level2">
+<h2>Working on your project</h2>
+<ul>
+<li>Join the <code>#mp2</code> Slack channel.</li>
+<li>Download the <code>MP2.zip</code> archive file containing the MP2 RStudio Project by clicking <a href="static/MP2.zip" download>here</a>.</li>
+<li><strong>Windows users</strong>: Be sure to “extract” the contents of <code>MP2.zip</code> to a folder on your machine.</li>
+<li>Whenever working on MP2, be sure to be in “RStudio Project mode” either by:
+<ol style="list-style-type: decimal">
+<li>Clicking the <code>MP2.Rproj</code> file</li>
+<li>Selecting <code>MP2</code> from the drop-down menu of RStudio Projects in the top right of RStudio.</li>
+</ol></li>
+<li>Knit the <code>MP2.Rmd</code> file and read over everything once.</li>
+<li>Whenever you’re not working on your project, click the RStudio Project icon in the top right of RStudio and select “Close Project”.</li>
+<li>Policies:
+<ul>
+<li>You may use a function from a package to compute the RMLSE.</li>
+<li>You may not use a function from a packge to perform cross-validation; please code it up manually.</li>
+<li>Feel free to use external sources, but please cite them using R Markdown footnotes. For example adding <code>^[This is my [source](https://www.smith.edu/)]</code> at the end of a sentence in R Markdown will yield: <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></li>
+</ul></li>
+</ul>
+</div>
+<div id="what-to-submit-1" class="section level2">
+<h2>What to submit</h2>
+<ul>
+<li><strong>Group leader only</strong>: Submit a <code>MP2_Group_XX.zip</code> archive file of <strong>all</strong> the contents of your <code>MP2</code> RStudio Project folder.<br />
+</li>
+<li><strong>Both group members</strong>: Complete the following peer evaluation <a href="https://docs.google.com/forms/d/e/1FAIpQLSf0a9F3_tZNtil3_IZBwPpvxuC2ubmWs54fDuFmmxYtcrhN-w/viewform" target="_blank">Google Form</a>.<br />
+Both group members must complete the Google Form to receive full credit.</li>
+</ul>
+</div>
+<div id="grading-1" class="section level2">
+<h2>Grading</h2>
+<ol style="list-style-type: decimal">
+<li><strong>Baseline:</strong> Projects that do not satisfy all “baseline” criteria should expect to get a grade of less than 8/10.
+<ul>
+<li>Your <code>MP2.Rmd</code> R Markdown file must absolutely “knit” correctly.</li>
+<li>Regardless of which model you fit, you must output a submission <code>.csv</code> file that returns a valid <span class="math inline">\(\text{RMLSE}\)</span> score on Kaggle. The grader will test this.</li>
+<li>All plots (if any) must be “stand-alone” as possible by having informative labels and titles.</li>
+<li>Remove all superfluous non-informative output from your report that only makes it more painful/tiresome to read.</li>
+<li>Both group members submit their peer evaluations. No extensions will be granted.</li>
+</ul></li>
+<li><strong>Minimally viable product:</strong> Grade: 8/10.
+<ul>
+<li>Satisfy all “baseline” criteria.</li>
+<li>Fit a regression model <span class="math inline">\(\widehat{f}_{1}\)</span> using one arbitrarily chosen numerical predictor and one arbitrarily chosen categorical predictor.</li>
+</ul></li>
+<li><strong>Due diligence:</strong> Grade: 8.5/10.
+<ul>
+<li>Satisfy all “baseline” and “minimally viable product” criteria.</li>
+<li>Using the model <span class="math inline">\(\widehat{f}_{1}\)</span>, obtain an estimate <span class="math inline">\(\widehat{\text{RMLSE}}\)</span> that closely matches the <span class="math inline">\(\text{RMLSE}\)</span> that Kaggle returns.</li>
+</ul></li>
+<li><strong>Reaching for the stars:</strong> Grade: 9/10.
+<ul>
+<li>Satisfy all “baseline”, “minimally viable product”, and “due diligence” criteria.</li>
+<li>Fit a regression model <span class="math inline">\(\widehat{f}_{2}\)</span> using <strong>three</strong> arbitrarily chosen numerical predictors and <strong>three</strong> arbitrarily chosen categorical predictors.</li>
+<li>Using this model <span class="math inline">\(\widehat{f}_{2}\)</span>, obtain an estimate <span class="math inline">\(\widehat{\text{RMLSE}}\)</span> that closely matches the <span class="math inline">\(\text{RMLSE}\)</span> that Kaggle returns.</li>
+<li>Compare the <span class="math inline">\(\widehat{\text{RMLSE}}\)</span> and <span class="math inline">\(\text{RMLSE}\)</span> you obtain for <span class="math inline">\(\widehat{f}_{2}\)</span> with the ones you obtained with <span class="math inline">\(\widehat{f}_{1}\)</span>.</li>
+</ul></li>
+<li><strong>Point of diminishing returns:</strong> Grade: 9.5/10.
+<ul>
+<li>Satisfy all “baseline”, “minimally viable product”, “due diligence”,and “reaching for the stars” criteria.</li>
+<li>Fit a regression model <span class="math inline">\(\widehat{f}_{3}\)</span> choosing your predictor variables in a non-arbitrary fashion using a method in Chapter 6.1 of the ISLR textbook.</li>
+<li>Using this model <span class="math inline">\(\widehat{f}_{3}\)</span>, obtain an estimate <span class="math inline">\(\widehat{\text{RMLSE}}\)</span> that closely matches the <span class="math inline">\(\text{RMLSE}\)</span> that Kaggle returns.<br />
+</li>
+<li>Compare the <span class="math inline">\(\widehat{\text{RMLSE}}\)</span> and <span class="math inline">\(\text{RMLSE}\)</span> you obtain for all three models <span class="math inline">\(\widehat{f}_{1}\)</span>, <span class="math inline">\(\widehat{f}_{2}\)</span>, and <span class="math inline">\(\widehat{f}_{3}\)</span></li>
+</ul></li>
+<li><strong>Polishing the cannonball:</strong> Grade: 10/10.
+<ul>
+<li>Satisfy all “baseline”, “minimally viable product”, “due diligence”, “reaching for the stars”, and “point of diminishing returns” criteria.</li>
+<li>Try to get the highest Kaggle score in the class!</li>
+</ul></li>
+</ol>
+</div>
+<div id="suggestions-1" class="section level2">
+<h2>Suggestions</h2>
+<ul>
+<li>Start simple and slowly add complexity. If you start with the most complex model possible and something doesn’t work, you’ll have a harder time debugging.</li>
+<li>In other words, add variables incrementally and build up your models. Don’t start with everything and build down to a working model.</li>
 </ul>
 <hr />
 </div>
@@ -940,6 +1027,7 @@ Download <a href="static/PS/PS02_solutions.R" download>`PS02_solutions.R`</a>.
 <hr />
 <ol>
 <li id="fn1"><p>This is my <a href="https://www.smith.edu/">source</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>This is my <a href="https://www.smith.edu/">source</a><a href="#fnref2" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 

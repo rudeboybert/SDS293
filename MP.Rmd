@@ -119,7 +119,7 @@ There is no one single "right "solution to this MP1, but here is <a href="static
 ## Working on your project {#MP2-working}
 
 * Join the `#mp2` Slack channel.
-* Download the `MP2.zip` archive file containing the MP2 RStudio Project by clicking <a href="static/MP2.zip" download>here</a>. 
+* Download the `MP2.zip` archive file containing the MP2 RStudio Project by clicking <a href="static/MP2.zip" download>here</a>.
 * **Windows users**: Be sure to "extract" the contents of `MP2.zip` to a folder on your machine.
 * Whenever working on MP2, be sure to be in "RStudio Project mode" either by:
     1. Clicking the `MP2.Rproj` file
@@ -141,28 +141,37 @@ Both group members must complete the Google Form to receive full credit.
 
 ## Grading
 
-1. **Minimally viable product:** Grade: 8/10. Fit a splines model with an arbitrarily chosen numerical predictor variable $x$ and an arbitrarily chosen degrees of freedom $df$. Using this model make a submission to Kaggle that returns a valid $\text{RMLSE}$ score. Also:
-    + Your `MP1.Rmd` R Markdown "knits" correctly. In other words, an `.html` report gets created with no errors.
-    + Complete the exploratory data analysis where all visualizations are as "stand-alone" as possible by having informative labels and titles.
+1. **Baseline:** Projects that do not satisfy all "baseline" criteria should expect to get a grade of less than 8/10.
+    + Your `MP2.Rmd` R Markdown file must absolutely "knit" correctly. 
+    + Regardless of which model you fit, you must output a submission `.csv` file that returns a valid $\text{RMLSE}$ score on Kaggle. The grader will test this.
+    + All plots (if any) must be "stand-alone" as possible by having informative labels and titles. 
     + Remove all superfluous non-informative output from your report that only makes it more painful/tiresome to read.
     + Both group members submit their peer evaluations. No extensions will be granted.
-1. **Due diligence:** Grade: 8.5/10. Explore choices degrees of freedom $df$ in some non-arbitrary fashion. This could mean many things, including:
-    + Explicitly compare the $\text{RMLSE}$ for two values of $df$.
-    + Implement the validation set prediction framework you saw in [Chapter 4](https://campus.datacamp.com/courses/modeling-with-data-in-the-tidyverse/model-assessment-and-selection?ex=10){target="_blank"} of the Modeling with Data in the tidyverse DataCamp course.
-1. **Reaching for the stars:** Grade: 9/10. Fully implement a crossvalidation scheme from scratch in order to:
-    + Find the optimal "model complexity". In other words, find the optimal degrees of freedom $df^*$ in a systematic fashion.
-    + Get a good estimate $\widehat{\text{RMLSE}}$ of the $\text{RMLSE}$ that Kaggle will return for your submission.
-1. **Point of diminishing returns:** Grade: 9.5/10. Create a visualization like in [Lec01 slides \#36](http://rudeboybert.rbind.io/talk/2019-01-13-Williams.pdf#page=36){target="_blank"} that shows
-    + The relationship between "model complexity" set by $df$ and $\text{RMLSE}$ for both the training and test data.
-    + That the optimal $df^*$ is the "just right" balance point between underfitting and overfitting.
-1. **Polishing the cannonball:** Grade: 10/10. Try to get the highest Kaggle score in the class!
+1. **Minimally viable product:** Grade: 8/10.
+    + Satisfy all "baseline" criteria.
+    + Fit a regression model $\widehat{f}_{1}$ using one arbitrarily chosen numerical predictor and one arbitrarily chosen categorical predictor.
+1. **Due diligence:** Grade: 8.5/10.
+    + Satisfy all "baseline" and "minimally viable product" criteria.
+    + Using the model $\widehat{f}_{1}$, obtain an estimate $\widehat{\text{RMLSE}}$ that closely matches the $\text{RMLSE}$ that Kaggle returns.
+1. **Reaching for the stars:** Grade: 9/10. 
+    + Satisfy all "baseline", "minimally viable product", and "due diligence" criteria.
+    + Fit a regression model $\widehat{f}_{2}$ using **three** arbitrarily chosen numerical predictors and **three** arbitrarily chosen categorical predictors.
+    + Using this model $\widehat{f}_{2}$, obtain an estimate $\widehat{\text{RMLSE}}$ that closely matches the $\text{RMLSE}$ that Kaggle returns.
+    + Compare the $\widehat{\text{RMLSE}}$ and $\text{RMLSE}$ you obtain for $\widehat{f}_{2}$ with the ones you obtained with $\widehat{f}_{1}$. 
+1. **Point of diminishing returns:** Grade: 9.5/10.
+    + Satisfy all "baseline", "minimally viable product", "due diligence",and "reaching for the stars" criteria.
+    + Fit a regression model $\widehat{f}_{3}$ choosing your predictor variables in a non-arbitrary fashion using a method in Chapter 6.1 of the ISLR textbook.
+    + Using this model $\widehat{f}_{3}$, obtain an estimate $\widehat{\text{RMLSE}}$ that closely matches the $\text{RMLSE}$ that Kaggle returns.  
+    + Compare the $\widehat{\text{RMLSE}}$ and $\text{RMLSE}$ you obtain for all three models $\widehat{f}_{1}$, $\widehat{f}_{2}$, and $\widehat{f}_{3}$
+1. **Polishing the cannonball:** Grade: 10/10.
+    + Satisfy all "baseline", "minimally viable product", "due diligence", "reaching for the stars", and "point of diminishing returns" criteria.
+    + Try to get the highest Kaggle score in the class!
 
 
 ## Suggestions
 
 * Start simple and slowly add complexity. If you start with the most complex model possible and something doesn't work, you'll have a harder time debugging.
-* 
-
+* In other words, add variables incrementally and build up your models. Don't start with everything and build down to a working model.
 
 
 ***

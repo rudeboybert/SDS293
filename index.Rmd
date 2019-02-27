@@ -74,7 +74,8 @@ h1{font-weight: 400;}
 
 ### 1. Chalk Talk
 
-* Logistic regression
+* Start MP2 today.
+* We'll go solutions to Lec 8 regression exercises and start logistic regression during the first half of Monday's lecture.
 
 
 
