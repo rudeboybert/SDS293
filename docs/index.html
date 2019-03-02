@@ -26,16 +26,15 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
-<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
-<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
-<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
+<style type="text/css" data-origin="pandoc">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -48,13 +47,11 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -95,7 +92,29 @@ code span.st { color: #4e9a06; } /* String */
 code span.va { color: #000000; } /* Variable */
 code span.vs { color: #4e9a06; } /* VerbatimString */
 code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
 </style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
@@ -158,6 +177,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -172,7 +194,6 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
-
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -192,6 +213,43 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -213,18 +271,77 @@ $(document).ready(function () {
 });
 </script>
 
-
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -371,7 +488,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">SDS/CSC 293: Machine Learning</h1>
 <h4 class="author"><em>Albert Y. Kim</em></h4>
-<h4 class="date"><em>Last updated on 2019-03-01</em></h4>
+<h4 class="date"><em>Last updated on 2019-03-02</em></h4>
 
 </div>
 
@@ -391,19 +508,66 @@ h1{font-weight: 400;}
 {target="_blank"}
 -->
 <hr />
+<!--
+# Lec 11: Wed 3/6
+
+## Announcements
+
+* Spinelli Center tutoring hours change tomorrow (Thursday 3/7) only: 4:30-6pm and not ~~7-9pm~~.
+
+## Todays Topics/Activities  
+
+### 1. Chalk Talk
+
+
+
+
+
+
+***
+-->
+</div>
+<div id="lec-10-mon-34" class="section level1">
+<h1>Lec 10: Mon 3/4</h1>
+<div id="announcements" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li>Reminder tomorrow is:</li>
+</ul>
+<center>
+<img src="static/events/emma_benn_2.png" width="650" />
+<center>
+<p><br></p>
+</div>
+<div id="todays-topicsactivities" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="chalk-talk" class="section level3">
+<h3>1. Chalk Talk</h3>
+<ul>
+<li>Intro to logistic regression</li>
+</ul>
+</div>
+<div id="in-class-exercise" class="section level3">
+<h3>2. In-class exercise</h3>
+<ul>
+<li>Work on MP2</li>
+</ul>
+<hr />
+</div>
+</div>
 </div>
 <div id="lec-9-wed-227" class="section level1">
 <h1>Lec 9: Wed 2/27</h1>
-<div id="announcements" class="section level2">
+<div id="announcements-1" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>As indicated in the <a href="syllabus.html#policies">syllabus</a>, even if you are done any in-class exercises early, please remain until the end of lecture. It is very disruptive to the class if you pack up and leave early.</li>
 <li>MP2 posted.</li>
 </ul>
 </div>
-<div id="todays-topicsactivities" class="section level2">
+<div id="todays-topicsactivities-1" class="section level2">
 <h2>Todays Topics/Activities</h2>
-<div id="chalk-talk" class="section level3">
+<div id="chalk-talk-1" class="section level3">
 <h3>1. Chalk Talk</h3>
 <ul>
 <li>Start MP2 today.</li>
@@ -415,7 +579,7 @@ h1{font-weight: 400;}
 </div>
 <div id="lec-8-mon-225" class="section level1">
 <h1>Lec 8: Mon 2/25</h1>
-<div id="announcements-1" class="section level2">
+<div id="announcements-2" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>MP1 grades on Wednesday</li>
@@ -424,9 +588,9 @@ h1{font-weight: 400;}
 <img src="static/events/emma_benn.png" width="500" /></li>
 </ul>
 </div>
-<div id="todays-topicsactivities-1" class="section level2">
+<div id="todays-topicsactivities-2" class="section level2">
 <h2>Todays Topics/Activities</h2>
-<div id="chalk-talk-1" class="section level3">
+<div id="chalk-talk-2" class="section level3">
 <h3>1. Chalk Talk</h3>
 <ul>
 <li>Regression</li>
@@ -449,7 +613,7 @@ Yessss!!! Definitely looking forward to speaking with and learning from the amaz
 </div>
 <div id="lec-7-mon-218" class="section level1">
 <h1>Lec 7: Mon 2/18</h1>
-<div id="announcements-2" class="section level2">
+<div id="announcements-3" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>Wednesday 2/20 is Rally Day: no lecture nor office hours.</li>
@@ -457,9 +621,9 @@ Yessss!!! Definitely looking forward to speaking with and learning from the amaz
 <li>Midterm I discussion</li>
 </ul>
 </div>
-<div id="todays-topicsactivities-2" class="section level2">
+<div id="todays-topicsactivities-3" class="section level2">
 <h2>Todays Topics/Activities</h2>
-<div id="chalk-talk-2" class="section level3">
+<div id="chalk-talk-3" class="section level3">
 <h3>1. Chalk Talk</h3>
 <ul>
 <li>MP1 discussion</li>
@@ -470,7 +634,7 @@ Yessss!!! Definitely looking forward to speaking with and learning from the amaz
 </div>
 <div id="lec-6-wed-213" class="section level1">
 <h1>Lec 6: Wed 2/13</h1>
-<div id="announcements-3" class="section level2">
+<div id="announcements-4" class="section level2">
 <h2>Announcements</h2>
 <p>Before Lec07 on Monday 2/18:</p>
 <ul>
@@ -503,9 +667,9 @@ Yessss!!! Definitely looking forward to speaking with and learning from the amaz
 </tbody>
 </table>
 </div>
-<div id="todays-topicsactivities-3" class="section level2">
+<div id="todays-topicsactivities-4" class="section level2">
 <h2>Todays Topics/Activities</h2>
-<div id="chalk-talk-3" class="section level3">
+<div id="chalk-talk-4" class="section level3">
 <h3>1. Chalk Talk</h3>
 <p>Brief discussion on “looking at your data” inspired by tweet of the day below.</p>
 </div>
@@ -531,7 +695,7 @@ Shout-out to people like me who like taking a look at even huge tables of raw da
 </div>
 <div id="lec-5-mon-211" class="section level1">
 <h1>Lec 5: Mon 2/11</h1>
-<div id="announcements-4" class="section level2">
+<div id="announcements-5" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>Slack <code>#general</code> announcement about new <code>#mp1</code> channel. It is your responsibility to stay on top of all messages sent in this channel.</li>
@@ -539,9 +703,9 @@ Shout-out to people like me who like taking a look at even huge tables of raw da
 <li>Wednesday’s lecture is devoted to working on MP1</li>
 </ul>
 </div>
-<div id="todays-topicsactivities-4" class="section level2">
+<div id="todays-topicsactivities-5" class="section level2">
 <h2>Todays Topics/Activities</h2>
-<div id="chalk-talk-4" class="section level3">
+<div id="chalk-talk-5" class="section level3">
 <h3>1. Chalk Talk</h3>
 <ul>
 <li>Discussion of solutions to Lec03 code exercises.</li>
@@ -570,7 +734,7 @@ Girls need to become tactical about school, to figure out how to get the same go
 </div>
 <div id="lec-4-wed-26" class="section level1">
 <h1>Lec 4: Wed 2/6</h1>
-<div id="announcements-5" class="section level2">
+<div id="announcements-6" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li><a href="http://www.science.smith.edu/datafest/" target="_blank">DataFest</a> is a weekend-long “data science hackathon” for teams of up to 5 students and is at UMass the weekend of March 29-31! <a href="static/other/datafest2019.pdf" target="_blank">Info session</a> by Prof. Randi Garcia today 7-8pm in Sabin-Reed 301!</li>
@@ -580,9 +744,9 @@ Girls need to become tactical about school, to figure out how to get the same go
 <img src="static/other/bailey.png" width="600" />
 </center>
 </div>
-<div id="todays-topicsactivities-5" class="section level2">
+<div id="todays-topicsactivities-6" class="section level2">
 <h2>Todays Topics/Activities</h2>
-<div id="chalk-talk-5" class="section level3">
+<div id="chalk-talk-6" class="section level3">
 <h3>1. Chalk Talk</h3>
 <ul>
 <li>Mini-project 1 is now assigned; see <a href="MP.html">Mini-Projects</a> page.</li>
@@ -603,7 +767,7 @@ Girls need to become tactical about school, to figure out how to get the same go
 </div>
 <div id="lec-3-mon-24" class="section level1">
 <h1>Lec 3: Mon 2/4</h1>
-<div id="announcements-6" class="section level2">
+<div id="announcements-7" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>Slack: Go over <code>#questions</code>.</li>
@@ -612,9 +776,9 @@ Girls need to become tactical about school, to figure out how to get the same go
 <li>Mini-project 1 groups posted; see <a href="MP.html">Mini-Projects</a> page. MP1 on splines itself will be assigned on Wednesday after we cover crossvalidation.</li>
 </ul>
 </div>
-<div id="todays-topicsactivities-6" class="section level2">
+<div id="todays-topicsactivities-7" class="section level2">
 <h2>Todays Topics/Activities</h2>
-<div id="chalk-talk-6" class="section level3">
+<div id="chalk-talk-7" class="section level3">
 <h3>1. Chalk Talk</h3>
 <ul>
 <li>Recap of Lec02.</li>
@@ -623,7 +787,7 @@ Girls need to become tactical about school, to figure out how to get the same go
 </ul>
 <p><img src="static/images/splines.png" width="700" /></p>
 </div>
-<div id="in-class-exercise" class="section level3">
+<div id="in-class-exercise-1" class="section level3">
 <h3>2. In-class exercise</h3>
 <p>Go over code for Lec03 and do the exercises.</p>
 </div>
@@ -638,7 +802,7 @@ Girls need to become tactical about school, to figure out how to get the same go
 </div>
 <div id="lec-2-wed-130" class="section level1">
 <h1>Lec 2: Wed 1/30</h1>
-<div id="announcements-7" class="section level2">
+<div id="announcements-8" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>Slack: Vote in two latest <code>#polls</code> and go over <code>#questions</code>.</li>
@@ -653,9 +817,9 @@ Girls need to become tactical about school, to figure out how to get the same go
 </ul></li>
 </ul>
 </div>
-<div id="todays-topicsactivities-7" class="section level2">
+<div id="todays-topicsactivities-8" class="section level2">
 <h2>Todays Topics/Activities</h2>
-<div id="chalk-talk-7" class="section level3">
+<div id="chalk-talk-8" class="section level3">
 <h3>1. Chalk Talk</h3>
 <ul>
 <li>Recap of Lec01: <span class="math inline">\(f(\vec{x})\)</span> and <span class="math inline">\(\hat{f}(\vec{x})\)</span></li>
@@ -680,16 +844,16 @@ On campuses across America, the surge in student demand for computer science cou
 </div>
 <div id="lec-1-mon-127" class="section level1">
 <h1>Lec 1: Mon 1/27</h1>
-<div id="announcements-8" class="section level2">
+<div id="announcements-9" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>If you haven’t already, please go over the following <a href="https://docs.google.com/document/d/1NfWkoyeiovkVyMmgmKFGxCMusyxBMYHVvsAUjEZv_fU/" target="_blank">Google Doc</a> with important information about the course and steps you should complete to get setup, in particular the Intro Survey. The whole process should take about 20 minutes.</li>
 <li><strong>Added on Sun 1/27 6PM</strong>: Create an account on Kaggle.com using your Smith (or Five College) email address.</li>
 </ul>
 </div>
-<div id="todays-topicsactivities-8" class="section level2">
+<div id="todays-topicsactivities-9" class="section level2">
 <h2>Todays Topics/Activities</h2>
-<div id="chalk-talk-8" class="section level3">
+<div id="chalk-talk-9" class="section level3">
 <h3>1. Chalk Talk</h3>
 <p><em>Why chalk talks? Read the <a href="https://twitter.com/FieldNotesBrand" target="_blank">Field Notes</a> slogan.</em></p>
 <p><a href="http://rudeboybert.rbind.io/talk/2019-01-13-Williams.pdf" target="_blank">Lec01 slides</a> + 2 chalk talks.</p>
