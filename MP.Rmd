@@ -130,7 +130,9 @@ There is no one single "right "solution to this MP1, but here is <a href="static
     + You may use a function from a package to compute the RMLSE.
     + You may not use a function from a packge to perform cross-validation; please code it up manually.
     + Feel free to use external sources, but please cite them using R Markdown footnotes. For example adding `^[This is my [source](https://www.smith.edu/)]` at the end of a sentence in R Markdown will yield: ^[This is my [source](https://www.smith.edu/)]
-
+* **Added Friday 3/1 5PM**:
+    + From the "Minimally viable product" phase, you can remove the `## Comparisons of estimated scores and Kaggle scores` subsection, as this is part of the following "Due diligence" phase
+    + From the "Due diligence" phase, you can remove the `## Model fitting`, `## Estimate of your Kaggle score`, `## Create your submission CSV`, and `## Screenshot of your Kaggle score` subsections, as those were part of the previous "Minimally viable product" phase.
 
 ## What to submit
 
