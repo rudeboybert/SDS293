@@ -61,6 +61,56 @@ h1{font-weight: 400;}
 
 ***
 
+<!--
+# Lec 11: Wed 3/6
+
+## Announcements
+
+* Spinelli Center tutoring hours change tomorrow (Thursday 3/7) only: 4:30-6pm and not ~~7-9pm~~.
+
+## Todays Topics/Activities  
+
+### 1. Chalk Talk
+
+
+
+
+
+
+***
+-->
+
+
+
+
+# Lec 10: Mon 3/4
+
+## Announcements
+
+* Reminder tomorrow is: 
+
+<center>
+![](static/events/emma_benn_2.png){ width=650px }
+<center> 
+
+<br>
+
+## Todays Topics/Activities  
+
+### 1. Chalk Talk
+
+* Intro to logistic regression
+
+
+### 2. In-class exercise
+
+* Work on MP2
+
+
+
+***
+
+
 
 # Lec 9: Wed 2/27
 
