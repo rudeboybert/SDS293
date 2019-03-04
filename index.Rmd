@@ -24,7 +24,8 @@ library(modelr)
 library(lubridate)
 library(forcats)
 library(nycflights13)
-library(gridExtra)
+# devtools::install_github("thomasp85/patchwork")
+library(patchwork)
 library(okcupiddata)
 # devtools::install_github("hadley/emo")
 library(emo)
@@ -100,6 +101,49 @@ h1{font-weight: 400;}
 ### 1. Chalk Talk
 
 * Intro to logistic regression
+* Transforming probability space to log-odds/logit space. The following two plots are the same but with the axes flipped. In other words:
+    + The left plot visualizes how we map from probability space $[0,1]$ to log-odds space $(-\infty, \infty)$
+    + The right plot visualizes how we map from log-odds space $(-\infty, \infty)$ back to probability space $[0,1]$
+
+<!--
+Here are the two equations:
+
+$$
+\begin{align}
+\mbox{left function} = \mbox{log-odds} = \mbox{logit}(p) &= \log\left(\frac{p}{1-p}\right) = \alpha\\
+\mbox{right function} = \mbox{inverse-logit}(\alpha) &= \frac{\exp(\alpha)}{\exp(\alpha) + 1} = \frac{1}{1+ \exp(-\alpha)} = p
+\end{align}
+$$
+--> 
+
+
+```{r, echo=FALSE, eval=TRUE}
+eps <- 0.0001
+values <- data_frame(
+  p = seq(from = eps, to = 1-eps, length = 1000),
+  y = log(p/(1-p))
+)
+points <- data_frame(
+  p = c(0.01, 1-0.01, 0.5),
+  y = log(p/(1-p)),
+  group = factor(1:3)
+)
+
+plot1 <- ggplot(values, aes(p, y)) +
+  geom_line() +
+  geom_hline(yintercept = 0,  alpha=0.5) +
+  geom_vline(xintercept = 0.5, alpha=0.5) +
+  # geom_vline(xintercept = 0, linetype="dashed", alpha=0.5) +
+  # geom_vline(xintercept = 1, linetype="dashed", alpha=0.5) +
+  geom_point(data=points, aes(col=group), size=5) + 
+  theme(legend.position="none") +
+  labs(x="Probability p", y="log-odds", title="log-odds over probability")
+plot2 <- plot1 +
+  coord_flip() + 
+  labs(x="Probability p", y="log-odds", title="probability over log-odds")
+plot1 + plot2
+```
+
 
 
 ### 2. In-class exercise

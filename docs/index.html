@@ -488,7 +488,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">SDS/CSC 293: Machine Learning</h1>
 <h4 class="author"><em>Albert Y. Kim</em></h4>
-<h4 class="date"><em>Last updated on 2019-03-02</em></h4>
+<h4 class="date"><em>Last updated on 2019-03-04</em></h4>
 
 </div>
 
@@ -545,7 +545,23 @@ h1{font-weight: 400;}
 <h3>1. Chalk Talk</h3>
 <ul>
 <li>Intro to logistic regression</li>
+<li>Transforming probability space to log-odds/logit space. The following two plots are the same but with the axes flipped. In other words:
+<ul>
+<li>The left plot visualizes how we map from probability space <span class="math inline">\([0,1]\)</span> to log-odds space <span class="math inline">\((-\infty, \infty)\)</span></li>
+<li>The right plot visualizes how we map from log-odds space <span class="math inline">\((-\infty, \infty)\)</span> back to probability space <span class="math inline">\([0,1]\)</span></li>
+</ul></li>
 </ul>
+<!--
+Here are the two equations:
+
+$$
+\begin{align}
+\mbox{left function} = \mbox{log-odds} = \mbox{logit}(p) &= \log\left(\frac{p}{1-p}\right) = \alpha\\
+\mbox{right function} = \mbox{inverse-logit}(\alpha) &= \frac{\exp(\alpha)}{\exp(\alpha) + 1} = \frac{1}{1+ \exp(-\alpha)} = p
+\end{align}
+$$
+-->
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="768" /></p>
 </div>
 <div id="in-class-exercise" class="section level3">
 <h3>2. In-class exercise</h3>
