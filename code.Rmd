@@ -25,7 +25,7 @@ h1{font-weight: 400;}
 
 # Regression {#regression}
 
-Lec08
+Lec08 on regression and Lec10 on logistic regression.
 
 <script src="https://gist.github.com/rudeboybert/3d5d983420fec2acb19981d7fbd85f3a.js"></script>
 

@@ -104,6 +104,7 @@ h1{font-weight: 400;}
 * Transforming probability space to log-odds/logit space. The following two plots are the same but with the axes flipped. In other words:
     + The left plot visualizes how we map from probability space $[0,1]$ to log-odds space $(-\infty, \infty)$
     + The right plot visualizes how we map from log-odds space $(-\infty, \infty)$ back to probability space $[0,1]$
+* [Code](code.html): Lines 
 
 <!--
 Here are the two equations:
@@ -149,6 +150,8 @@ plot1 + plot2
 ### 2. In-class exercise
 
 * Work on MP2
+
+
 
 
 
