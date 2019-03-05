@@ -25,9 +25,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
-<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
-<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
-<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 
 
@@ -87,6 +86,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -101,7 +103,6 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
-
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -121,6 +122,43 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -142,18 +180,77 @@ $(document).ready(function () {
 });
 </script>
 
-
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -430,10 +527,29 @@ Ex: Both Group #1’s members LQ and EN must complete the Google Form to receive
 <li>You may not use a function from a packge to perform cross-validation; please code it up manually.</li>
 <li>Feel free to use external sources, but please cite them using R Markdown footnotes. For example adding <code>^[This is my [source](https://www.smith.edu/)]</code> at the end of a sentence in R Markdown will yield: <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></li>
 </ul></li>
-<li><strong>Added Friday 3/1 5PM</strong>:
+<li><strong>Clarifications added Friday 3/1 5PM</strong>:
 <ul>
 <li>From the “Minimally viable product” phase, you can remove the <code>## Comparisons of estimated scores and Kaggle scores</code> subsection, as this is part of the following “Due diligence” phase</li>
 <li>From the “Due diligence” phase, you can remove the <code>## Model fitting</code>, <code>## Estimate of your Kaggle score</code>, <code>## Create your submission CSV</code>, and <code>## Screenshot of your Kaggle score</code> subsections, as those were part of the previous “Minimally viable product” phase.</li>
+</ul></li>
+<li><strong>Clarifications added Tuesday 3/5 8AM</strong>:
+<ul>
+<li>For the “point of diminishing returns” phase asking you to use a “subset selection” method from Chapter 6.1, don’t start with all 81 predictor variables, but rather start with only the 6 variables from the “reaching for the stars” phase. Think of it this way: you are “shopping” for variables to include in your model and want to pick the “best” ones to put in your shopping cart (your ultimate model). Your choice of variables to shop from are not ALL 81 predictors (since it would take forever to do an exploratory data analysis, clean, and make sure all variables work in a fitted model) rather your choice of variables to shop from are the 6 predictors from the “reaching for the stars” phase (since you already did an exploratory data analysis on, cleaned, and made sure all variables work in a fitted model). So after applying a “subset selection” method, you’ll end up with a model with either 0, 1, …, 5, or 6 of your “reaching for the stars” variables.<br />
+<strong>Why are we doing this?</strong> Later on, we’ll study an even MORE principled way to “shop” for variables than “subset selection” called LASSO regularization. For a preview see Chapter 6.2.2. in the ISLR textbook.</li>
+<li>For all three models <span class="math inline">\(\widehat{f}_{1}\)</span>, <span class="math inline">\(\widehat{f}_{2}\)</span>, <span class="math inline">\(\widehat{f}_{3}\)</span>, your estimate of <span class="math inline">\(\widehat{\text{RMLSE}}\)</span> <strong>must</strong> closely match the <span class="math inline">\(\text{RMLSE}\)</span> that Kaggle returns; the grader will be instructed to grade accordingly. By “closely match” it is generally meant that they must be of the same <a href="https://en.wikipedia.org/wiki/Order_of_magnitude" target="_blank">order of magnitude</a>.<br />
+<strong>Why are we doing this?</strong> Because in an active Kaggle competition, you are almost always limited in the number of submissions you can make in a day. For example, in the currently running <a href="https://www.kaggle.com/c/ga-customer-revenue-prediction/rules" target="_blank">Google Analytics Customer Revenue Prediction</a> competition, you can only make 5 submissions a day, hence only get 5 scores a day. If you’re serious about winning a competition however, you’ll definitely need to evaluate more than 5 models a day. So if you are limited in the number of “real” <span class="math inline">\(\text{RMLSE}\)</span> scores you can obtain in a day, what is the next best thing? Getting <em>estimates</em> of the score <span class="math inline">\(\widehat{\text{RMLSE}}\)</span>.</li>
+<li>You are not required to explicitly submit any exploratory visualizations for this MP. However you should still be making visualizations during your model fitting phase, just not invest the time to polish them. That being said, including a well polished visualization that argues why a particular predictor variable should be used can be a very effective way to provide insight and hence make your report stand out.</li>
+<li>What is meant by “remove all superfluous non-informative output”? Think of it this way: If two people present two R Markdown reports containing roughly the same amount of new insight and information, but one is 2 pages long and one is 20 pages long, which one do you think people will read? The answer is obvious. However, what precisely constitutes “non-informative output” is often a subjective and a non-obvious choice. You’ll often need to make a choice and <strong>own that choice</strong>. One example however of obvious “non-informative output” is including the entire contents of a 10k row data frame in your report; no human on earth can digest 10k rows of data.</li>
+</ul></li>
+<li><strong>Hints added Tuesday 3/5 8AM</strong>:
+<ul>
+<li>Crossvalidation does one thing and one thing only: it returns an estimate <span class="math inline">\(\widehat{\text{RMLSE}}\)</span> of the true <span class="math inline">\(\text{RMLSE}\)</span> when you don’t have access to the <span class="math inline">\(y\)</span>’s in the test set. But unlike the “validation set” approach, every observation gets predicted once, in other words every <span class="math inline">\(y\)</span> gets a turn at being predicted with a <span class="math inline">\(\widehat{y}\)</span>. Now, what you do with these estimates <span class="math inline">\(\widehat{\text{RMLSE}}\)</span> is another question. So for example in MP1, we used these estimates <span class="math inline">\(\widehat{\text{RMLSE}}\)</span> to choose the optimal complexity of the splines model as determined by the optimal <span class="math inline">\(df^*\)</span>; but choosing the optimal complexity of a model is not <em>inherently</em> part of crossvalidation; it merely <em>uses</em> the results of crossvalidation.</li>
+<li><em>“Help! I’m having a lot of trouble working with categorical variables!”</em> Good! That is the point of this MP! When you’re encountering such issues, start peeling away all the layers of abstraction and <strong>look at your data</strong>. Go inside the inputs and outputs of functions and <code>for</code> loops and look at the raw values, compute summary statistics, and create visualizations. You’ll almost always find the source of your error/issue somewhere in the data.</li>
+<li>Last but not least: <strong>start simple and build up, don’t start complex and build down</strong>. Compare these two approaches to model fitting:
+<ol style="list-style-type: decimal">
+<li>One model with predictors <span class="math inline">\(x_1, x_2\)</span> returns working predictions, but the next iteration of the model with predictors <span class="math inline">\(x_1, x_2, x_3\)</span> doesn’t return working predictions. What is the source of the problem?</li>
+<li>One model with predictors <span class="math inline">\(x_{1}, x_{2}, x_{3}, x_{4}, x_{5}, x_{6}, x_{7}, x_{8}, x_{9}, x_{10}, x_{11}, x_{12}, x_{13}, x_{14}, x_{15}, x_{16}, x_{17}, x_{18}, x_{19}, x_{20}, x_{21}, x_{22}, x_{23}, x_{24}, x_{25}, x_{26}, x_{27}, x_{28}, x_{29}, x_{30}, x_{31}, x_{32}, x_{33}, x_{34}, x_{35}, x_{36}, x_{37}, x_{38}, x_{39}, x_{40}, x_{41}, x_{42}, x_{43}, x_{44}, x_{45}, x_{46}, x_{47}, x_{48}, x_{49}, x_{50}, x_{51}, x_{52}, x_{53}, x_{54}, x_{55}, x_{56}, x_{57}, x_{58}, x_{59}, x_{60}, x_{61}, x_{62}, x_{63}, x_{64}, x_{65}, x_{66}, x_{67}, x_{68}, x_{69}, x_{70}, x_{71}, x_{72}, x_{73}, x_{74}, x_{75}, x_{76}, x_{77}, x_{78}, x_{79}, x_{80}, x_{81}\)</span> doesn’t return working predictions. What is the source of the problem?</li>
+</ol></li>
 </ul></li>
 </ul>
 </div>
@@ -476,8 +592,8 @@ Both group members must complete the Google Form to receive full credit.</li>
 </ul></li>
 <li><strong>Point of diminishing returns:</strong> Grade: 9.5/10.
 <ul>
-<li>Satisfy all “baseline”, “minimally viable product”, “due diligence”,and “reaching for the stars” criteria.</li>
-<li>Fit a regression model <span class="math inline">\(\widehat{f}_{3}\)</span> choosing your predictor variables in a non-arbitrary fashion using a method in Chapter 6.1 of the ISLR textbook.</li>
+<li>Satisfy all “baseline”, “minimally viable product”, “due diligence”, and “reaching for the stars” criteria.</li>
+<li>Fit a regression model <span class="math inline">\(\widehat{f}_{3}\)</span> choosing your predictor variables <strong>from the 6 your chose in the “reaching for the stars” phase</strong> in a non-arbitrary fashion using a method in Chapter 6.1 of the ISLR textbook.</li>
 <li>Using this model <span class="math inline">\(\widehat{f}_{3}\)</span>, obtain an estimate <span class="math inline">\(\widehat{\text{RMLSE}}\)</span> that closely matches the <span class="math inline">\(\text{RMLSE}\)</span> that Kaggle returns.<br />
 </li>
 <li>Compare the <span class="math inline">\(\widehat{\text{RMLSE}}\)</span> and <span class="math inline">\(\text{RMLSE}\)</span> you obtain for all three models <span class="math inline">\(\widehat{f}_{1}\)</span>, <span class="math inline">\(\widehat{f}_{2}\)</span>, and <span class="math inline">\(\widehat{f}_{3}\)</span></li>
