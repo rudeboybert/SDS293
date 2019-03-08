@@ -102,6 +102,7 @@ ggplot(data = fitted_points_logistic, aes(x = age, y = in_financial_distress)) +
 
 # 1. Using the visualization above, for what age would you say that there is a
 # 50% probability that an individual is in financial distress?
+# Maybe around 87?
 
 # 2. Compare the visualization above with a scatterplot with:
 # a) x = age
@@ -124,9 +125,29 @@ ggplot(data = fitted_points_logistic, aes(x = age, y = in_financial_distress)) +
 # 3. Change the offset in age to 10 and -50. What do you notice happens to:
 # a) the coefficient for age in the regression table.
 # b) the shape of the logistic curve of the fitted model?
+#
+# Offset 50:
+# a) Coefficient = 0.239
+# b) Shape: very S-like,
+
+# Offset 10:
+# a) Coefficient = 0.0132
+# b) Shape: less S-like
+
+# Offset -50:
+# a) Coefficient = -0.467
+# b) Shape: Very inverse S-like. (looks like a "Z" or "2" instead of "S")
 
 # 4. Challenge question: Change the offset in age to 6.9. Why is the logistic curve
 # flat? At what value is it?
+financial_distress %>%
+  group_by(in_financial_distress) %>%
+  summarize(avg_age = mean(age))
+# Both groups have the same mean age, so there is no information provided by
+# the variable age. The red line is at the total proportion of people in
+# financial distress irrespective of group = 0.0668 = 6.68%
+financial_distress %>%
+  summarize(overall_prop = mean(in_financial_distress))
 
 
 
@@ -161,7 +182,7 @@ mtcars <- mtcars %>%
 # Set up validation set framework: create training and test set at random
 set.seed(76)
 mtcars_train <- mtcars %>%
-  sample_frac(0.75)
+  sample_frac(0.5)
 mtcars_test <- mtcars %>%
   anti_join(mtcars_train, by="ID")
 
@@ -247,17 +268,31 @@ predicted_points_2
 # Exercises
 
 # 1. What are the test set RMSEs of Models 1 & 2? Which is higher?
+# Being sure to set.seed(76)
+predicted_points_1 %>%
+  yardstick::rmse(truth = mpg, estimate = .fitted)
+predicted_points_2 %>%
+  yardstick::rmse(truth = mpg, estimate = .fitted)
+# Model 1 = 5.38 < 9.05 = Model 2
 
 # 2. What is the ratio of n/p for our trained Model 2. i.e. the number of points
 # in the training set vs the number of predictors
+# n = 24, p = 8, thus n/p = 3
 
 # 3. Change the train/test validation ratio from 3:1 to 1:1. What are the RMSEs
 # of Models 1 & 2? Which is higher?
+# Being sure to set.seed(76)
+# Model 1 = 5.05 < 7.89 = Model 2
 
 # 4. What is the new ratio of n/p for our new trained Model 2?
+# n = 16, p = 8, thus n/p = 2
 
 # 5. How does the difference in test set RMSE for Model 1 & 2 itself differ when the
 # train/test validation ratio went from 3:1 to 1:1
+# 5.38 vs 9.05
+# 5.05 vs 7.89
+
+# Overfitting is less of a problem when the ratio n/p is smaller
 
 # 6. Try a different combination of variables and see if you can lower your
 # RMSE.
