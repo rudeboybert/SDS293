@@ -7,7 +7,6 @@ output: html_document
 runtime: shiny
 ---
 
-The source `.Rmd` file for this Shiny app can be found downloaded <a href="https://rudeboybert.github.io/SDS293/static/methods/ROC/ROC.Rmd" download>here</a>.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -19,12 +18,10 @@ set.seed(76)
 ## Background
 
 ```{r, echo=FALSE, message=FALSE}
-values <- read_csv("https://rudeboybert.github.io/SDS293/static/methods/ROC/example.csv") %>% 
-  tibble::rownames_to_column(var="ID")
+values <- read_csv("https://rudeboybert.github.io/SDS293/static/methods/ROC/example.csv")
 ```
 
-In our data set of `r nrow(values)` individuals, 24116 are women and 35827 are
-women. Let's take a look at a random sample of 10 rows of our data that we'll
+In our data set of `r nrow(values)` individuals, 24116 have $y$ = 1 and 35827 $y$ = 0. Let's take a look at a random sample of 10 rows of our data that we'll
 input data to our "Receiver Operating Characteristic" ROC curve:
 
 ```{r, echo=FALSE, message=FALSE}
