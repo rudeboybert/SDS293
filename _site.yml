@@ -23,6 +23,6 @@ navbar:
   - text: Mini-Projects
     href: MP.html#MP3
   - text: Midterms
-    href: midterms.html
+    href: midterms.html#midtermII
   - text: Syllabus
     href: syllabus.html
