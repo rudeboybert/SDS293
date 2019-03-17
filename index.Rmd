@@ -69,7 +69,7 @@ h1{font-weight: 400;}
 ## Announcements
 
 * Two events coming up:
-    + Fri 3/22 12:15-1:00pm in McConnell B05: Gina DelCorazon '04, Director of Data & Analytics at The National Math and Science Initiative
+    + Fri 3/22 12:15-1:00pm in McConnell B15: Gina DelCorazon '04, Director of Data & Analytics at The National Math and Science Initiative
     + Tue 3/26 12:15-1:05pm in Ford Hall Atrium: Presentation of SDS major
 
 <center>
