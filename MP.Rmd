@@ -25,7 +25,9 @@ h1{font-weight: 400;}
 -->
 
 
+
 ***
+
 
 
 # Mini-project 1 {#MP1}
@@ -101,7 +103,9 @@ Repeat the above and slowly **iterate** to perfection while keeping in mind that
 There is no one single "right "solution to this MP1, but here is <a href="static/MP1_albert_MVP.Rmd" download>one possible approach</a> (copy this `.Rmd` file to your MP1 RStudio Project folder).
 
 
+
 ***
+
 
 
 # Mini-project 2 {#MP2}
@@ -151,7 +155,6 @@ There is no one single "right "solution to this MP1, but here is <a href="static
         $x_{75}, x_{76}, x_{77}, x_{78}, x_{79}, x_{80}, x_{81}$  
         but get an error. What is the source of the problem?
 
-
 <!--
 library(tidyverse); str_c("x_{", 1:81, "}", sep = "") %>% str_c(collapse = ", ")
 -->
@@ -159,8 +162,7 @@ library(tidyverse); str_c("x_{", 1:81, "}", sep = "") %>% str_c(collapse = ", ")
 ## What to submit
 
 * **Group leader only**: Submit a `MP2_Group_XX.zip` archive file of **all** the contents of your `MP2` RStudio Project folder.  
-* **Both group members**: Complete the following peer evaluation [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSf0a9F3_tZNtil3_IZBwPpvxuC2ubmWs54fDuFmmxYtcrhN-w/viewform){target="_blank"}.  
-Both group members must complete the Google Form to receive full credit.
+* **Both group members**: Complete the following peer evaluation [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSf0a9F3_tZNtil3_IZBwPpvxuC2ubmWs54fDuFmmxYtcrhN-w/viewform){target="_blank"}. Both group members must complete the Google Form to receive full credit.
 
 
 ## Grading
@@ -198,6 +200,7 @@ Both group members must complete the Google Form to receive full credit.
 * In other words, add variables incrementally and build up your models. Don't start with everything and build down to a working model.
 
 
+
 ***
 
 
@@ -206,15 +209,64 @@ Both group members must complete the Google Form to receive full credit.
 
 ## Administrative notes
 
-
-
-## Administrative notes
-
-* **Executive summary**: You will be making a submission to the [House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques){target="_blank"} Kaggle competition based on a fitted ~~spline~~ multiple regression model. The competition's score for leaderboard purposes is the "root mean squared logarithmic error" (RMSLE).
+* **Executive summary**: You will be making a submission to the [blah](https://www.nhl.com/){target="_blank"} Kaggle competition based on a fitted logistic regression model. The competition's score for leaderboard purposes is the "" ().
 * **Due Wednesday 3/27 5pm on Moodle**. 
 * You will be given time to work on MP3 in class on Monday 3/25 and Wednesday 3/27.
 * Groups: Posted on [Moodle](https://moodle.smith.edu/course/view.php?id=33108){target="_blank"}. Whoever member \#1 is will be the group leader.  
-Ex: Group \#1's leader is LQ.
+Ex: Group \#1's leader is BT.
+
+
+## Working on your project {#MP2-working}
+
+I will post all clarifications and hints in this section.
+
+* Join the `#mp3` Slack channel.
+* Download the `MP3.zip` archive file containing the MP2 RStudio Project by clicking <a href="static/MP3.zip" download>here</a>.
+* **Windows users**: Be sure to "extract" the contents of `MP3.zip` to a folder on your machine.
+* Whenever working on MP3, be sure to be in "RStudio Project mode" either by:
+    1. Clicking the `MP3.Rproj` file
+    1. Selecting `MP3` from the drop-down menu of RStudio Projects in the top right of RStudio.
+* Knit the `MP3.Rmd` file and read over everything once.
+* Whenever you're not working on your project, click the RStudio Project icon in the top right of RStudio and select "Close Project".
+* Policies:
+    + You may use a function from a package to compute the relevant Kaggle leaderboard score.
+    + You may not use a function from a packge to perform cross-validation; please code it up manually.
+    + Feel free to use external sources, but please cite them using R Markdown footnotes. For example adding `^[This is my [source](https://www.smith.edu/)]` at the end of a sentence in R Markdown will yield: ^[This is my [source](https://www.smith.edu/)]
+
+
+## What to submit
+
+* **Group leader only**: Submit a `MP3_Group_XX.zip` archive file of **all** the contents of your `MP3` RStudio Project folder.  
+* **Both group members**: Complete the following peer evaluation [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSfIRbLHxWMzvKHiB0nd5iXQatrsNGek3lkkHl5JXD921F5tDg/viewform){target="_blank"}. Both group members must complete the Google Form to receive full credit.
+
+
+## Grading
+
+1. **Baseline:** Projects that do not satisfy all "baseline" criteria should expect to get a grade of less than 8/10.
+    + Your `MP3.Rmd` R Markdown file must absolutely "knit" correctly. 
+    + Regardless of which model you fit, you must output a submission `.csv` file that returns a valid score on Kaggle. The grader will test this.
+    + All plots (if any) must be "stand-alone" as possible by having informative labels and titles. 
+    + Remove all superfluous non-informative output from your report that only makes it more painful/tiresome to read.
+    + Both group members submit their peer evaluations. No extensions will be granted.
+1. **Minimally viable product:** Grade: 8/10.
+    + Satisfy all "baseline" criteria.
+    + 
+1. **Due diligence:** Grade: 8.5/10.
+    + Satisfy all "baseline" and "minimally viable product" criteria.
+    + 
+1. **Reaching for the stars:** Grade: 9/10. 
+    + Satisfy all "baseline", "minimally viable product", and "due diligence" criteria.
+    + 
+1. **Point of diminishing returns:** Grade: 9.5/10.
+    + Satisfy all "baseline", "minimally viable product", "due diligence", and "reaching for the stars" criteria.
+    + 
+1. **Polishing the cannonball:** Grade: 10/10.
+    + Satisfy all "baseline", "minimally viable product", "due diligence", "reaching for the stars", and "point of diminishing returns" criteria.
+    + Try to get the highest Kaggle score in the class!
+
+
+## Suggestions
+
 
 
 
