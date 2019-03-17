@@ -221,8 +221,6 @@ plot1 + plot2
 
 * MP1 grades on Wednesday
 * MP2 assigned on Wednesday. It will involve regression modeling on house price data again.
-* For those of you with an interest in biostatistics, check out Dr. Emma Benn's talk on Tuesday March 5, 5pm in Seelye Hall 106.  
-![](static/events/emma_benn.png){ width=500px }
 
 
 ## Todays Topics/Activities  
