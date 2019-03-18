@@ -95,6 +95,18 @@ h1{font-weight: 400;}
 
 * 
 
+### 3. Tweet of the Day
+
+Even though the `yardstick` package already existed, the developers of `tidyroc` know that they still learned a ton about R package developement. They will leverage these new skills for their next project! 
+
+**Moral of the story**: Turn your disappointments into your next success! From Dariya Sydykova's blog post:
+
+> In conclusion, I do not regret the time and effort it took me to work on `tidyroc`... As a believer in the growth mindset, I like to focus on the things that I have learned and on the ways that I have improved myself. I got to implement `devtools`, `usethis`, and `roxygen2` and to learn a little more about how these work.
+
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/ClausWilke?ref_src=twsrc%5Etfw">@ClausWilke</a> and I decided that we will not be developing <a href="https://twitter.com/hashtag/tidyroc?src=hash&amp;ref_src=twsrc%5Etfw">#tidyroc</a> any further. We were informed about an R package <a href="https://twitter.com/hashtag/yardstick?src=hash&amp;ref_src=twsrc%5Etfw">#yardstick</a> that calculates ROC curves, and it is integrated with the <a href="https://twitter.com/hashtag/tidyverse?src=hash&amp;ref_src=twsrc%5Etfw">#tidyverse</a>. See my blog post for more details:<a href="https://t.co/raWMstEZy6">https://t.co/raWMstEZy6</a></p>&mdash; Dariya Sydykova (@dariyasydykova) <a href="https://twitter.com/dariyasydykova/status/1105960285947523077?ref_src=twsrc%5Etfw">March 13, 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
 
 
 ***

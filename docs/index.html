@@ -34,7 +34,7 @@
 <style type="text/css" data-origin="pandoc">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -47,11 +47,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -488,7 +490,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">SDS/CSC 293: Machine Learning</h1>
 <h4 class="author"><em>Albert Y. Kim</em></h4>
-<h4 class="date"><em>Last updated on 2019-03-17</em></h4>
+<h4 class="date"><em>Last updated on 2019-03-18</em></h4>
 
 </div>
 
@@ -542,6 +544,21 @@ h1{font-weight: 400;}
 <ul>
 <li></li>
 </ul>
+</div>
+<div id="tweet-of-the-day" class="section level3">
+<h3>3. Tweet of the Day</h3>
+<p>Even though the <code>yardstick</code> package already existed, the developers of <code>tidyroc</code> know that they still learned a ton about R package developement. They will leverage these new skills for their next project!</p>
+<p><strong>Moral of the story</strong>: Turn your disappointments into your next success! From Dariya Sydykova’s blog post:</p>
+<blockquote>
+<p>In conclusion, I do not regret the time and effort it took me to work on <code>tidyroc</code>… As a believer in the growth mindset, I like to focus on the things that I have learned and on the ways that I have improved myself. I got to implement <code>devtools</code>, <code>usethis</code>, and <code>roxygen2</code> and to learn a little more about how these work.</p>
+</blockquote>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/ClausWilke?ref_src=twsrc%5Etfw"><span class="citation">@ClausWilke</span></a> and I decided that we will not be developing <a href="https://twitter.com/hashtag/tidyroc?src=hash&amp;ref_src=twsrc%5Etfw">#tidyroc</a> any further. We were informed about an R package <a href="https://twitter.com/hashtag/yardstick?src=hash&amp;ref_src=twsrc%5Etfw">#yardstick</a> that calculates ROC curves, and it is integrated with the <a href="https://twitter.com/hashtag/tidyverse?src=hash&amp;ref_src=twsrc%5Etfw">#tidyverse</a>. See my blog post for more details:<a href="https://t.co/raWMstEZy6">https://t.co/raWMstEZy6</a>
+</p>
+— Dariya Sydykova (<span class="citation">@dariyasydykova</span>) <a href="https://twitter.com/dariyasydykova/status/1105960285947523077?ref_src=twsrc%5Etfw">March 13, 2019</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <hr />
 </div>
 </div>
@@ -656,7 +673,7 @@ $$
 <li>See <a href="code.html#regression">code</a></li>
 </ul>
 </div>
-<div id="tweet-of-the-day" class="section level3">
+<div id="tweet-of-the-day-1" class="section level3">
 <h3>2. Tweet of the day</h3>
 <p>Dr. Benn is excited for her talk at Smith College SDS. <strong>Are you?</strong></p>
 <blockquote class="twitter-tweet" data-lang="en">
@@ -732,7 +749,7 @@ Yessss!!! Definitely looking forward to speaking with and learning from the amaz
 <h3>1. Chalk Talk</h3>
 <p>Brief discussion on “looking at your data” inspired by tweet of the day below.</p>
 </div>
-<div id="tweet-of-the-day-1" class="section level3">
+<div id="tweet-of-the-day-2" class="section level3">
 <h3>2. Tweet of the day</h3>
 <p>Why is important to <code>glimpse()</code> and <code>View()</code> your data frames? Because <strong>looking at your data</strong> is so deceptively simple that many people forget or ignore this step, even analysts/engineers with PhD’s at Google! Before any modeling, you must getting a sense of:</p>
 <ol style="list-style-type: decimal">
@@ -772,7 +789,7 @@ Shout-out to people like me who like taking a look at even huge tables of raw da
 <li>Regression</li>
 </ul>
 </div>
-<div id="tweet-of-the-day-2" class="section level3">
+<div id="tweet-of-the-day-3" class="section level3">
 <h3>2. Tweet of the day</h3>
 <p>Shared with me by Dr. Jenny Smetzer. I agree with Ms. Damour’s opinion. You don’t have to, but her ideas are still worth thinking about. They relate to “points of diminishing returns” and “polishing the cannonball” as discussed for mini-project 1. Here are some excerpts:</p>
 <ul>
@@ -887,7 +904,7 @@ Girls need to become tactical about school, to figure out how to get the same go
 <li><strong>Added after lecture</strong>: Link to ModernDive chapter with an example on <a href="https://moderndive.netlify.com/12-thinking-with-data.html#log10-transformations" target="_blank">logarithmic transformations</a>. You’ll also be seeing log-transformations in this week’s DataCamp assignment!</li>
 </ul>
 </div>
-<div id="tweet-of-the-day-3" class="section level3">
+<div id="tweet-of-the-day-4" class="section level3">
 <h3>2. Tweet of the day</h3>
 <p>This class is just part of a larger phenomenon of resources spread <em>very</em> thin:</p>
 <blockquote class="twitter-tweet" data-lang="en">
