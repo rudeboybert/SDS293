@@ -63,6 +63,26 @@ h1{font-weight: 400;}
 ***
 
 
+# Lec 13: Wed 3/20
+
+## Announcements
+
+* No office hours today
+
+
+
+## Todays Topics/Activities  
+
+### 1. Chalk Talk
+
+
+### 2. In-class exercise
+
+
+
+***
+
+
 
 # Lec 12: Mon 3/18
 
