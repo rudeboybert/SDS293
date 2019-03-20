@@ -652,13 +652,23 @@ Ex: Group #1’s leader is BT.</li>
 <li>You may not use a function from a packge to perform cross-validation; please code it up manually.</li>
 <li>Feel free to use external sources, but please cite them using R Markdown footnotes. For example adding <code>^[This is my [source](https://www.smith.edu/)]</code> at the end of a sentence in R Markdown will yield: <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></li>
 </ul></li>
+<li><strong>Added on Wed 3/20 1pm</strong>
+<ul>
+<li>On Moodle you’ll be submitting the contents of your <code>MP3</code> RStudio Project folder <strong>but not the data files! They are huge!</strong></li>
+<li>Predictor variables:
+<ol style="list-style-type: decimal">
+<li>For the “Reaching for the stars” step, you’ll be using the numerical predictor <code>teacher_number_of_previously_posted_projects</code>.</li>
+<li>For the “Point of diminishing returns” step, you’ll be using the categorical predictor <code>project_grade_category</code></li>
+</ol></li>
+<li>When creating all ROC plots using <code>yardstick::roc_curve()</code> and computing all “Areas under the ROC (AUC)” using <code>yardstick::roc_auc()</code>, the <code>truth</code> input needs to be a <code>factor()</code> categorical variable with the <code>levels</code> ordered so that the first level corresponds to <span class="math inline">\(y=1\)</span>. Click <a href="https://rudeboybert.github.io/SDS192/tips_and_tricks.html#how_do_i_reorder_bars_in_a_barplot" target="_blank">here</a> to see how to reoreder levels of a cateogorical variable.</li>
+<li>No crossvalidation necessary for this MP.</li>
+</ul></li>
 </ul>
 </div>
 <div id="what-to-submit-2" class="section level2">
 <h2>What to submit</h2>
 <ul>
-<li><strong>Group leader only</strong>: Submit a <code>MP3_Group_XX.zip</code> archive file of <strong>all</strong> the contents of your <code>MP3</code> RStudio Project folder.<br />
-</li>
+<li><strong>Group leader only</strong>: Submit a <code>MP3_Group_XX.zip</code> archive file with the contents of your <code>MP3</code> RStudio Project folder <strong>but not the data files! They are huge!</strong> You can assume I have them.</li>
 <li><strong>Both group members</strong>: Complete the following peer evaluation <a href="https://docs.google.com/forms/d/e/1FAIpQLSfIRbLHxWMzvKHiB0nd5iXQatrsNGek3lkkHl5JXD921F5tDg/viewform" target="_blank">Google Form</a>. Both group members must complete the Google Form to receive full credit.</li>
 </ul>
 </div>
@@ -676,27 +686,27 @@ Ex: Group #1’s leader is BT.</li>
 <li><strong>Minimally viable product:</strong> Grade: 8/10.
 <ul>
 <li>Satisfy all “baseline” criteria.</li>
-<li></li>
+<li>Fit a logistic regression model <span class="math inline">\(\widehat{f}_{1}\)</span> using <strong>no predictor variables</strong>, answer the stated question, get an estimate of your Kaggle score, make your predictions &amp; submit them.</li>
 </ul></li>
 <li><strong>Due diligence:</strong> Grade: 8.5/10.
 <ul>
 <li>Satisfy all “baseline” and “minimally viable product” criteria.</li>
-<li></li>
+<li>Plot the corresponding ROC curve such that the area under the curve is <span class="math inline">\(\geq 0.50\)</span></li>
 </ul></li>
 <li><strong>Reaching for the stars:</strong> Grade: 9/10.
 <ul>
 <li>Satisfy all “baseline”, “minimally viable product”, and “due diligence” criteria.</li>
-<li></li>
+<li>Fit a logistic regression model <span class="math inline">\(\widehat{f}_{2}\)</span> using the numerical predictor <code>teacher_number_of_previously_posted_projects</code>, create the single visualization with the 3 elements in it, get an estimate of your Kaggle score, make your predictions &amp; submit them, plot the corresponding ROC curve such that the area under the curve is <span class="math inline">\(\geq 0.50\)</span>.</li>
 </ul></li>
 <li><strong>Point of diminishing returns:</strong> Grade: 9.5/10.
 <ul>
 <li>Satisfy all “baseline”, “minimally viable product”, “due diligence”, and “reaching for the stars” criteria.</li>
-<li></li>
+<li>Fit a logistic regression model <span class="math inline">\(\widehat{f}_{3}\)</span> using the cateogorical predictor <code>project_grade_category</code>, create the single visualization with the 3 elements in it, get an estimate of your Kaggle score, make your predictions &amp; submit them, plot the corresponding ROC curve such that the area under the curve is <span class="math inline">\(\geq 0.50\)</span>.</li>
 </ul></li>
 <li><strong>Polishing the cannonball:</strong> Grade: 10/10.
 <ul>
 <li>Satisfy all “baseline”, “minimally viable product”, “due diligence”, “reaching for the stars”, and “point of diminishing returns” criteria.</li>
-<li>Try to get the highest Kaggle score in the class!</li>
+<li>Create an extended model <span class="math inline">\(\widehat{f}_{4}\)</span> by including other variables and try to get the highest Kaggle score in the class! Do this in a new section <code># Polishing the cannoball</code> whose structure is a copy of the <code># Point of diminishing returns</code> section’s structure. In other words, copy and paste the blank lines corresponding to <code># Point of diminishing returns</code> and rename it <code># Polishing the cannoball</code>.</li>
 </ul></li>
 </ol>
 </div>

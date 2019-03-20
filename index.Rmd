@@ -67,7 +67,8 @@ h1{font-weight: 400;}
 
 ## Announcements
 
-* No office hours today
+* No office hours today. I do however have appointments to book on Friday (see syllabus for link, appointment slots vary each week).
+* See added grading rbbric and clarifications for [MP3](MP.html#MP3)
 
 
 
@@ -111,11 +112,8 @@ h1{font-weight: 400;}
 
 * Scores/measures for binary outcome variables
 
-### 2. In-class exercise
 
-* 
-
-### 3. Tweet of the Day
+### 2. Tweet of the Day
 
 Even though the `yardstick` package already existed, the developers of `tidyroc` know that they still learned a ton about R package developement. They will leverage these new skills for their next project! 
 
