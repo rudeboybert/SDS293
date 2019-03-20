@@ -209,7 +209,7 @@ library(tidyverse); str_c("x_{", 1:81, "}", sep = "") %>% str_c(collapse = ", ")
 
 ## Administrative notes
 
-* **Executive summary**: You will be making a submission to the [blah](https://www.nhl.com/){target="_blank"} Kaggle competition based on a fitted logistic regression model. The competition's score for leaderboard purposes is the "" ().
+* **Executive summary**: You will be making a submission to the [DonorsChoose.org Application Screening: Predict whether teachers' project proposals are accepted](https://www.kaggle.com/c/donorschoose-application-screening/){target="_blank"} Kaggle competition based on a fitted logistic regression model. The competition's score for leaderboard purposes is the "" ().
 * **Due Wednesday 3/27 5pm on Moodle**. 
 * You will be given time to work on MP3 in class on Monday 3/25 and Wednesday 3/27.
 * Groups: Posted on [Moodle](https://moodle.smith.edu/course/view.php?id=33108){target="_blank"}. Whoever member \#1 is will be the group leader.  
