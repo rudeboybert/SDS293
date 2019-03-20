@@ -69,7 +69,7 @@ h1{font-weight: 400;}
 
 * No office hours today. I do however have appointments to book on Friday (see syllabus for link, appointment slots vary each week).
 * See added grading rbbric and clarifications for [MP3](MP.html#MP3)
-
+* Please download this updated version 2 of the ROC curve shiny app <a href="static/methods/ROC/ROC_v2.Rmd" download>here</a>
 
 
 ## Todays Topics/Activities  

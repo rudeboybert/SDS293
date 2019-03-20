@@ -48,8 +48,19 @@ An ROC Curve does *not* plot a function $(x, f(x))$, but rather a
 * $x\left(p^* \right)$: Resulting False Positive Rate $\mbox{FPR}(p^*)$
 * $y\left(p^* \right)$: Resulting True Positive Rate $\mbox{TPR}(p^*)$
 
-Play around with different thresholds $p^*$ to see the resulting confusion
-matrix/continency table below:
+Recall the following graph we saw on the ["Sensitivity & specificity"](https://en.wikipedia.org/wiki/Sensitivity_and_specificity){target="_blank"} Wikipedia page:
+
+![](https://rudeboybert.github.io/SDS293/static/images/contingency_table.png)
+
+
+Play around with different thresholds $p^*$ to see 
+
+1. The resulting continency table for that particular $p^*$ threshold
+1. The resulting
+    + "False Positive Rate" = $\frac{FP}{FP + TN}$ and
+    + "True Positive Rate" = $\frac{TP}{TP + FN}$
+1. Where this is marked in the ROC curve with a red dot. 
+
 
 ```{r eruptions, echo=FALSE}
 inputPanel(
@@ -130,8 +141,14 @@ renderUI({
   str1 <- paste("False positive rate (rate at which we incorrectly predict y = 1 when really y = 0) = ", FP, "/(", FP, "+", TN, ") = ", round(FPR,3), sep="")
   str2 <- paste( "True positive rate (rate at which we correctly predict y = 1 when really y = 1) =", TP, "/(", TP, "+", FN, ") = ", round(TPR,3), sep="")
   str <- paste( "$$\\mbox{False Positive Rate} = \\frac{", FP, "}{", FP, "+", TN, "} = \\thinspace ", round(FPR,3), "\\mbox{ & }","\\thinspace \\mbox{True Positive Rate} = \\frac{", TP, "}{", TP, "+", FN, "} = ", round(TPR,3),"$$", sep="")
-  HTML(paste(str1, str2, sep = '<br/>'))
+  HTML(paste(str1, '<br/>', str2, '<br/>'))
 })
+
+
+renderUI({
+  HTML('<br/>')
+})
+
 
 renderPlot({
   ROC_data <- values %>% 
