@@ -68,6 +68,7 @@ h1{font-weight: 400;}
 
 ## Announcements
 
+* Sit with your MP3 partner
 * Tomorrow 12:15-1:05pm in Ford Hall Atrium: Presentation of SDS major
 <center>
 ![](static/events/SDS_major.png){ width=650px }

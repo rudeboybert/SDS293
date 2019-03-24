@@ -29,9 +29,7 @@ h1{font-weight: 400;}
 
 Lec13 on CART
 
-<!--
-<script src="https://gist.github.com/rudeboybert/3d5d983420fec2acb19981d7fbd85f3a.js"></script>
--->
+<script src="https://gist.github.com/rudeboybert/0e9fafb4bdf15de9d0a4fe9e2fe0c6fd.js"></script>
 
 
 
