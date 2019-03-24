@@ -62,6 +62,29 @@ h1{font-weight: 400;}
 
 ***
 
+<!--
+
+# Lec 15: Wed 3/27
+
+## Announcements
+
+
+## Todays Topics/Activities  
+
+### 1. Chalk Talk
+
+
+
+
+### 2. In-class exercise
+
+* post solutions to last exercises
+
+
+***
+
+-->
+
 
 
 # Lec 14: Mon 3/25
@@ -112,7 +135,7 @@ Classification and Regression Trees (CART) are trees.
     + "Regression" when outcome variable $y$ is numerical
 
 
-### 2. In-class exercise
+### 3. In-class exercise
 
 * See [Code](code.html) for CART
 * 
