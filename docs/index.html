@@ -24,8 +24,6 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -523,15 +521,100 @@ h1{font-weight: 400;}
 </div>
 <div id="todays-topicsactivities" class="section level2">
 <h2>Todays Topics/Activities</h2>
+<div id="iris-dataset" class="section level3">
+<h3>1. iris dataset</h3>
+<p>The iris dataset is a cannonical dataset in statistics and machine learning (<a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">Wikipedia</a>). Introduced by Fisher in 1936 paper “The use of multiple measurements in taxonomic problems as an example of linear discriminant analysis.” For 150 iris flowers it has</p>
+<p><strong>Categorical outcome <span class="math inline">\(y\)</span></strong>: One of three species of iris flower</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Setosa</th>
+<th align="center">Versicolor</th>
+<th align="center">Virginica</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><img src="static/images/iris_setosa.png" alt="Drawing" style="width: 200px;"/></td>
+<td align="center"><img src="static/images/iris_versicolor.png" alt="Drawing" style="width: 200px;"/></td>
+<td align="center"><img src="static/images/iris_virginica.png" alt="Drawing" style="width: 200px;"/></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Four predictor variables <span class="math inline">\(\vec{X}\)</span></strong>: Sepal length, sepal width, petal length, and petal width, all in cm.</p>
+<center>
+<img src="static/images/petals_sepals.jpg" alt="Drawing" style="width: 200px;"/>
+</center>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">iris &lt;-<span class="st"> </span>iris <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="st">  </span><span class="co"># Convert to tibble data frame:</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="st">  </span><span class="co"># Add identification variable to uniquely identify each row:</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="st">  </span><span class="kw">rownames_to_column</span>(<span class="dt">var=</span><span class="st">&quot;ID&quot;</span>) </a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co"># Show random sample of 5 rows:</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">iris <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="st">  </span><span class="kw">sample_n</span>(<span class="dv">5</span>)</a></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">ID</th>
+<th align="right">Sepal.Length</th>
+<th align="right">Sepal.Width</th>
+<th align="right">Petal.Length</th>
+<th align="right">Petal.Width</th>
+<th align="left">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">94</td>
+<td align="right">5.0</td>
+<td align="right">2.3</td>
+<td align="right">3.3</td>
+<td align="right">1.0</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="even">
+<td align="left">110</td>
+<td align="right">7.2</td>
+<td align="right">3.6</td>
+<td align="right">6.1</td>
+<td align="right">2.5</td>
+<td align="left">virginica</td>
+</tr>
+<tr class="odd">
+<td align="left">64</td>
+<td align="right">6.1</td>
+<td align="right">2.9</td>
+<td align="right">4.7</td>
+<td align="right">1.4</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="even">
+<td align="left">15</td>
+<td align="right">5.8</td>
+<td align="right">4.0</td>
+<td align="right">1.2</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="left">69</td>
+<td align="right">6.2</td>
+<td align="right">2.2</td>
+<td align="right">4.5</td>
+<td align="right">1.5</td>
+<td align="left">versicolor</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div id="chalk-talk" class="section level3">
-<h3>1. Chalk Talk</h3>
-<ul>
-<li>Classification and Regression Trees (CART) are trees.
-<ul>
-<li>“Classification” when outcome variable <span class="math inline">\(y\)</span> is categorical</li>
-<li>“Regression” when outcome variable <span class="math inline">\(y\)</span> is numerical</li>
-</ul></li>
-</ul>
+<h3>2. Chalk Talk</h3>
+<p>Classification and Regression Trees (CART) are trees. + “Classification” when outcome variable <span class="math inline">\(y\)</span> is categorical + “Regression” when outcome variable <span class="math inline">\(y\)</span> is numerical</p>
 </div>
 <div id="in-class-exercise" class="section level3">
 <h3>2. In-class exercise</h3>
@@ -671,7 +754,7 @@ $$
 \end{align}
 $$
 -->
-<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="768" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="768" /></p>
 </div>
 <div id="in-class-exercise-3" class="section level3">
 <h3>2. In-class exercise</h3>
@@ -1004,22 +1087,22 @@ On campuses across America, the surge in student demand for computer science cou
 <li>Install the <em>development version</em> of the <code>moderndive</code> package by running: <code>devtools::install_github(&quot;moderndive/moderndive&quot;)</code></li>
 <li>Run the code below. If you get no errors and a file <code>submission.csv</code> gets saved to your computer, you’re ready for Lec02!</li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(moderndive)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co"># 1. Load in training and test data</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">train &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://rudeboybert.github.io/SDS293/static/train.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">test &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://rudeboybert.github.io/SDS293/static/test.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co"># 2. Fit model on training data</span></a>
-<a class="sourceLine" id="cb1-9" data-line-number="9">house_model &lt;-<span class="st"> </span><span class="kw">lm</span>(SalePrice <span class="op">~</span><span class="st"> </span>YrSold, <span class="dt">data =</span> train)</a>
-<a class="sourceLine" id="cb1-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co"># 3. Apply fitted model to get predictions for test data</span></a>
-<a class="sourceLine" id="cb1-12" data-line-number="12">submission &lt;-<span class="st"> </span><span class="kw">get_regression_points</span>(house_model, <span class="dt">newdata =</span> test, <span class="dt">ID =</span> <span class="st">&quot;Id&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="st">  </span><span class="kw">select</span>(Id, <span class="dt">SalePrice =</span> SalePrice_hat)</a>
-<a class="sourceLine" id="cb1-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="co"># 4. Output predictions to CSV</span></a>
-<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="kw">write_csv</span>(submission, <span class="st">&quot;submission.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">library</span>(moderndive)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co"># 1. Load in training and test data</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">train &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://rudeboybert.github.io/SDS293/static/train.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">test &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://rudeboybert.github.io/SDS293/static/test.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co"># 2. Fit model on training data</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">house_model &lt;-<span class="st"> </span><span class="kw">lm</span>(SalePrice <span class="op">~</span><span class="st"> </span>YrSold, <span class="dt">data =</span> train)</a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co"># 3. Apply fitted model to get predictions for test data</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12">submission &lt;-<span class="st"> </span><span class="kw">get_regression_points</span>(house_model, <span class="dt">newdata =</span> test, <span class="dt">ID =</span> <span class="st">&quot;Id&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="st">  </span><span class="kw">select</span>(Id, <span class="dt">SalePrice =</span> SalePrice_hat)</a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co"># 4. Output predictions to CSV</span></a>
+<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="kw">write_csv</span>(submission, <span class="st">&quot;submission.csv&quot;</span>)</a></code></pre></div>
 </div>
 </div>
 </div>

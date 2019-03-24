@@ -7,7 +7,7 @@ output:
     toc: true
     toc_depth: 2
     toc_float: true
-#    df_print: kable
+    df_print: kable
 ---
 
 <style>
@@ -77,11 +77,39 @@ h1{font-weight: 400;}
 
 ## Todays Topics/Activities  
 
-### 1. Chalk Talk
+### 1. iris dataset
 
-* Classification and Regression Trees (CART) are trees.
+The iris dataset is a cannonical dataset in statistics and machine learning ([Wikipedia](https://en.wikipedia.org/wiki/Iris_flower_data_set)). Introduced by Fisher in 1936 paper "The use of multiple measurements in taxonomic problems as an example of linear discriminant analysis." For 150 iris flowers it has
+
+**Categorical outcome $y$**: One of three species of iris flower
+
+Setosa            |  Versicolor |  Virginica
+:-------------------------:|:-------------------------:|:-------------------------:
+<img src="static/images/iris_setosa.png" alt="Drawing" style="width: 200px;"/>  |  <img src="static/images/iris_versicolor.png" alt="Drawing" style="width: 200px;"/>  |  <img src="static/images/iris_virginica.png" alt="Drawing" style="width: 200px;"/>
+
+**Four predictor variables $\vec{X}$**: Sepal length, sepal width, petal length, and petal width, all in cm.
+
+<center><img src="static/images/petals_sepals.jpg" alt="Drawing" style="width: 200px;"/></center>
+
+```{r, eval = TRUE}
+library(tidyverse)
+iris <- iris %>%
+  # Convert to tibble data frame:
+  as_tibble() %>% 
+  # Add identification variable to uniquely identify each row:
+  rownames_to_column(var="ID") 
+
+# Show random sample of 5 rows:
+iris %>% 
+  sample_n(5)
+```
+
+### 2. Chalk Talk
+
+Classification and Regression Trees (CART) are trees.
     + "Classification" when outcome variable $y$ is categorical
     + "Regression" when outcome variable $y$ is numerical
+
 
 ### 2. In-class exercise
 
