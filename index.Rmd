@@ -63,23 +63,52 @@ h1{font-weight: 400;}
 ***
 
 
-# Lec 13: Wed 3/20
+
+# Lec 14: Mon 3/25
 
 ## Announcements
 
-* No office hours today. I do however have appointments to book on Friday (see syllabus for link, appointment slots vary each week).
-* See added grading rbbric and clarifications for [MP3](MP.html#MP3)
-* Please
-    + Delete the `ROC.Rmd` file to generate the interactive Shiny App for ROC curves I shared over Slack on Monday 3/18.
-    + Replace it with this <a href="static/methods/ROC/ROC_v2.Rmd" download>`ROC_v2.Rmd`</a> updated-and-improved version!
+* Tomorrow 12:15-1:05pm in Ford Hall Atrium: Presentation of SDS major
+<center>
+![](static/events/SDS_major.png){ width=650px }
+<center>
+</br>
     
 
 ## Todays Topics/Activities  
 
 ### 1. Chalk Talk
 
+* Classification and Regression Trees (CART) are trees.
+    + "Classification" when outcome variable $y$ is categorical
+    + "Regression" when outcome variable $y$ is numerical
 
 ### 2. In-class exercise
+
+* See [Code](code.html) for CART
+* 
+
+
+***
+
+
+
+# Lec 13: Wed 3/20
+
+## Announcements
+
+* No office hours today. I do however have appointments to book on Friday (see syllabus for link, appointment slots vary each week).
+* ROC curve shiny app. Please:
+    + Delete the `ROC.Rmd` file to generate the interactive Shiny App for ROC curves I shared over Slack on Monday 3/18.
+    + Replace it with this <a href="static/methods/ROC/ROC_v2.Rmd" download>`ROC_v2.Rmd`</a> updated-and-improved version!
+    
+
+## Todays Topics/Activities  
+
+### 1. In-class exercise
+
+* Work on MP3
+* See added grading rubric and clarifications for [MP3](MP.html#MP3)
 
 
 
@@ -101,18 +130,13 @@ h1{font-weight: 400;}
 
 </br>
 
-<center>
-![](static/events/SDS_major.png){ width=650px }
-<center> 
-
-</br>
-
-
+ 
 ## Todays Topics/Activities  
 
 ### 1. Chalk Talk
 
 * Scores/measures for binary outcome variables
+* ROC curves
 
 
 ### 2. Tweet of the Day
@@ -125,7 +149,6 @@ Even though the `yardstick` package already existed, the developers of `tidyroc`
 
 <blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/ClausWilke?ref_src=twsrc%5Etfw">@ClausWilke</a> and I decided that we will not be developing <a href="https://twitter.com/hashtag/tidyroc?src=hash&amp;ref_src=twsrc%5Etfw">#tidyroc</a> any further. We were informed about an R package <a href="https://twitter.com/hashtag/yardstick?src=hash&amp;ref_src=twsrc%5Etfw">#yardstick</a> that calculates ROC curves, and it is integrated with the <a href="https://twitter.com/hashtag/tidyverse?src=hash&amp;ref_src=twsrc%5Etfw">#tidyverse</a>. See my blog post for more details:<a href="https://t.co/raWMstEZy6">https://t.co/raWMstEZy6</a></p>&mdash; Dariya Sydykova (@dariyasydykova) <a href="https://twitter.com/dariyasydykova/status/1105960285947523077?ref_src=twsrc%5Etfw">March 13, 2019</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
 
 
 
@@ -175,7 +198,7 @@ Even though the `yardstick` package already existed, the developers of `tidyroc`
 * Transforming probability space to log-odds/logit space. The following two plots are the same but with the axes flipped. In other words:
     + The left plot visualizes how we map from probability space $[0,1]$ to log-odds space $(-\infty, \infty)$
     + The right plot visualizes how we map from log-odds space $(-\infty, \infty)$ back to probability space $[0,1]$
-* [Code](code.html): Lines 
+* [Code](code.html)
 
 <!--
 Here are the two equations:

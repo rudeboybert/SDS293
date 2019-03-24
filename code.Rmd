@@ -23,9 +23,26 @@ h1{font-weight: 400;}
 
 ***
 
-# Regression {#regression}
 
-Lec08 on regression and Lec10 on logistic regression.
+
+# Classification and Regression Trees {#regression}
+
+Lec13 on CART
+
+<!--
+<script src="https://gist.github.com/rudeboybert/3d5d983420fec2acb19981d7fbd85f3a.js"></script>
+-->
+
+
+
+***
+
+
+
+# Multiple & Logistic Regression {#regression}
+
+* Code for Lec08 on regression and Lec10-11 on logistic regression below.
+* Shiny app explaining ROC curves: <a href="static/methods/ROC/ROC_v2.Rmd" download>`ROC_v2.Rmd`</a>
 
 <script src="https://gist.github.com/rudeboybert/3d5d983420fec2acb19981d7fbd85f3a.js"></script>
 
