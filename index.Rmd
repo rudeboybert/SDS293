@@ -103,7 +103,7 @@ h1{font-weight: 400;}
 
 ### 1. iris dataset
 
-The iris dataset is a cannonical dataset in statistics and machine learning ([Wikipedia](https://en.wikipedia.org/wiki/Iris_flower_data_set)). Introduced by Fisher in 1936 paper "The use of multiple measurements in taxonomic problems as an example of linear discriminant analysis." For 150 iris flowers it has
+The iris dataset is a canonical dataset in statistics and machine learning ([Wikipedia](https://en.wikipedia.org/wiki/Iris_flower_data_set)). Introduced by Fisher in his 1936 paper "The use of multiple measurements in taxonomic problems as an example of linear discriminant analysis." For 150 iris flowers it has
 
 **Categorical outcome $y$**: One of three species of iris flower
 
