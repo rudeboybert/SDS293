@@ -239,7 +239,7 @@ I will post all clarifications and hints in this section.
         1. For the "Point of diminishing returns" step, you'll be using the categorical predictor `project_grade_category`
     + When creating all ROC plots using `yardstick::roc_curve()` and computing all "Areas under the ROC (AUC)" using `yardstick::roc_auc()`, the `truth` input needs to be a `factor()` categorical variable with the `levels` ordered so that the first level corresponds to $y=1$. Click [here](https://rudeboybert.github.io/SDS192/tips_and_tricks.html#how_do_i_reorder_bars_in_a_barplot){target="_blank"} to see how to reoreder levels of a cateogorical variable. 
     + No crossvalidation necessary for this MP.
-* **Added on Tue 3/36 6:30pm** This code is a "minimally reproducible example" (AKA a [reprex](https://reprex.tidyverse.org/){target="_blank"}) of an AUC computation:
+* **Added on Tue 3/36 6:30pm** This code is a "minimally reproducible example" (AKA a [reprex](https://www.tidyverse.org/help/){target="_blank"}) of an AUC computation:
 ```{r, eval=FALSE}
 library(tidyverse)
 library(yardstick)
