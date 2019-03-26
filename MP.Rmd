@@ -239,6 +239,52 @@ I will post all clarifications and hints in this section.
         1. For the "Point of diminishing returns" step, you'll be using the categorical predictor `project_grade_category`
     + When creating all ROC plots using `yardstick::roc_curve()` and computing all "Areas under the ROC (AUC)" using `yardstick::roc_auc()`, the `truth` input needs to be a `factor()` categorical variable with the `levels` ordered so that the first level corresponds to $y=1$. Click [here](https://rudeboybert.github.io/SDS192/tips_and_tricks.html#how_do_i_reorder_bars_in_a_barplot){target="_blank"} to see how to reoreder levels of a cateogorical variable. 
     + No crossvalidation necessary for this MP.
+* **Added on Tue 3/36 6:30pm** This code is a "minimally reproducible example" (AKA a [reprex](https://reprex.tidyverse.org/){target="_blank"}) of an AUC computation:
+```{r, eval=FALSE}
+library(tidyverse)
+library(yardstick)
+library(broom)
+
+# Load example:
+example <- read_csv("https://rudeboybert.github.io/SDS293/static/binary_example.csv")
+
+# Input to glm() should be with y as a numerical variable. Do not convert
+# y into a factor yet.
+model <- glm(y ~ x_num, family = "binomial", data = example)
+
+# Compute fitted probabilities p-hat:
+fitted_points <- model %>%
+  augment() %>%
+  mutate(p_hat = 1/(1 + exp(-.fitted))) %>%
+  select(y, x_num, p_hat)
+
+# Plot with y as numerical so that we can compare it with p-hats. Do not convert
+# y into a factor yet.
+ggplot(fitted_points, aes(x = x_num)) +
+  geom_jitter(aes(y = y), height = 0.01, width = 0.05) +
+  geom_line(aes(y = p_hat), col = "red")
+
+# Get AUC via roc_auc()
+# -first argument (that is piped) is the data frame
+# -second is truth, which is the outcome variable
+# -third argument are the fitted probabilities corresponding to the binary
+# outcome of interest. Here that y = 1
+fitted_points %>%
+  roc_auc(truth = y, p_hat)
+
+# That doesn't work since y is numerical. So now:
+# -Convert y into a factor/categorical variable
+# -Set the first level of categorical variable to be "1" using fct_relevel()
+# from the forcats package (Note there are many ways to do this)
+fitted_points %>%
+  mutate(y_as_factor = factor(y)) %>%
+  mutate(y_as_factor = fct_relevel(y_as_factor, "1")) %>%
+  roc_auc(truth = y_as_factor, p_hat)
+
+```
+
+
+
 
 ## What to submit
 
