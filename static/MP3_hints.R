@@ -5,6 +5,8 @@ library(broom)
 # Newsflash! Your professors are not perfect! In my case, I don't even aspire to
 # be. I should've made you do this in MP3: Exploratory data analysis!
 
+example <- read_csv("https://rudeboybert.github.io/SDS293/static/binary_example.csv")
+
 # 0. Always look at your data first!
 glimpse(example)
 
