@@ -113,7 +113,7 @@ Setosa            |  Versicolor |  Virginica
 
 **Four predictor variables $\vec{X}$**: Sepal length, sepal width, petal length, and petal width, all in cm.
 
-<center><img src="static/images/petals_sepals.jpg" alt="Drawing" style="width: 200px;"/></center>
+<center><img src="static/images/petals_sepals.jpg" alt="Drawing" style="width: 400px;"/></center>
 
 ```{r, eval = TRUE}
 library(tidyverse)
