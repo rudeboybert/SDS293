@@ -62,40 +62,28 @@ h1{font-weight: 400;}
 
 ***
 
-<!--
-
-# Lec 15: Wed 3/27
-
-## Announcements
-
-
-## Todays Topics/Activities  
-
-### 1. Chalk Talk
-
-
-
-
-### 2. In-class exercise
-
-* post solutions to last exercises
-
-
-***
-
--->
 
 
 # Lec 15: Wed 3/27
 
 ## Announcements
 
+*
 
 ## Todays Topics/Activities  
 
 ### 1. Chalk Talk
 
+* Going over solutions for Lec 14 CART code exercises. These can be found in [Code](code.html) -> CART -> Lines 116-154.
+* What is multiclass logarithmic loss? A simple example
+* Shiny app illustrating how to control "complexity" of a tree <a href="static/methods/CART/CART.Rmd" download>`CART.Rmd`</a>
+* What is a "minimally **REPR**oducible **EX**ample" AKA a [reprex](https://www.tidyverse.org/help/){target="_blank"}?
+
+
 ### 2. In-class exercise
+
+* MP3 now due at 10pm (as well as MP4 & MP5). 
+* Note reprex of AUC computation on [MP3](MP.html#MP3-working) page.
 
 
 
@@ -155,7 +143,6 @@ Classification and Regression Trees (CART) are trees.
 ### 3. In-class exercise
 
 * See [Code](code.html) for CART
-* 
 
 
 ***

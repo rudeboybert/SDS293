@@ -32,7 +32,7 @@
 <style type="text/css" data-origin="pandoc">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -45,11 +45,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -148,7 +150,9 @@ h6 {
 </style>
 
 
+</head>
 
+<body>
 
 <style type = "text/css">
 .main-container {
@@ -266,6 +270,8 @@ $(document).ready(function () {
   menuAnchor.closest('li.dropdown').addClass('active');
 });
 </script>
+
+<div class="container-fluid main-container">
 
 <!-- tabsets -->
 
@@ -424,16 +430,6 @@ div.tocify {
 
 </style>
 
-
-
-</head>
-
-<body>
-
-
-<div class="container-fluid main-container">
-
-
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
 <div class="col-xs-12 col-sm-4 col-md-3">
@@ -491,8 +487,8 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">SDS/CSC 293: Machine Learning</h1>
-<h4 class="author">Albert Y. Kim</h4>
-<h4 class="date">Last updated on 2019-03-26</h4>
+<h4 class="author"><em>Albert Y. Kim</em></h4>
+<h4 class="date"><em>Last updated on 2019-03-27</em></h4>
 
 </div>
 
@@ -512,41 +508,32 @@ h1{font-weight: 400;}
 {target="_blank"}
 -->
 <hr />
-<!--
-
-# Lec 15: Wed 3/27
-
-## Announcements
-
-
-## Todays Topics/Activities  
-
-### 1. Chalk Talk
-
-
-
-
-### 2. In-class exercise
-
-* post solutions to last exercises
-
-
-***
-
--->
 </div>
 <div id="lec-15-wed-327" class="section level1">
 <h1>Lec 15: Wed 3/27</h1>
 <div id="announcements" class="section level2">
 <h2>Announcements</h2>
+<ul>
+<li></li>
+</ul>
 </div>
 <div id="todays-topicsactivities" class="section level2">
 <h2>Todays Topics/Activities</h2>
 <div id="chalk-talk" class="section level3">
 <h3>1. Chalk Talk</h3>
+<ul>
+<li>Going over solutions for Lec 14 CART code exercises. These can be found in <a href="code.html">Code</a> -&gt; CART -&gt; Lines 116-154.</li>
+<li>What is multiclass logarithmic loss? A simple example</li>
+<li>Shiny app illustrating how to control “complexity” of a tree <a href="static/methods/CART/CART.Rmd" download><code>CART.Rmd</code></a></li>
+<li>What is a “minimally <strong>REPR</strong>oducible <strong>EX</strong>ample” AKA a <a href="https://www.tidyverse.org/help/" target="_blank">reprex</a>?</li>
+</ul>
 </div>
 <div id="in-class-exercise" class="section level3">
 <h3>2. In-class exercise</h3>
+<ul>
+<li>MP3 now due at 10pm (as well as MP4 &amp; MP5).</li>
+<li>Note reprex of AUC computation on <a href="MP.html#MP3-working">MP3</a> page.</li>
+</ul>
 <hr />
 </div>
 </div>
@@ -665,7 +652,6 @@ h1{font-weight: 400;}
 <h3>3. In-class exercise</h3>
 <ul>
 <li>See <a href="code.html">Code</a> for CART</li>
-<li></li>
 </ul>
 <hr />
 </div>

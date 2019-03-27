@@ -216,7 +216,7 @@ library(tidyverse); str_c("x_{", 1:81, "}", sep = "") %>% str_c(collapse = ", ")
 Ex: Group \#1's leader is BT.
 
 
-## Working on your project {#MP2-working}
+## Working on your project {#MP3-working}
 
 I will post all clarifications and hints in this section.
 
