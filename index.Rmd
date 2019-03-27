@@ -60,8 +60,44 @@ h1{font-weight: 400;}
 
 
 
+
+
+
+
+
+
 ***
 
+<!--
+
+
+https://twitter.com/rudeboybert/status/1110897733177671680
+
+# Lec 16: Mon 4/1
+
+## Announcements
+
+*
+
+## Todays Topics/Activities  
+
+### 1. Chalk Talk
+
+
+
+### 2. In-class exercise
+
+
+
+
+***
+
+
+
+
+
+
+-->
 
 
 # Lec 15: Wed 3/27
