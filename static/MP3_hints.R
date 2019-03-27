@@ -139,4 +139,92 @@ fitted_points %>%
 
 
 
+library(tidyverse)
+library(yardstick)
+library(broom)
 
+# Load example:
+example <- read_csv("https://rudeboybert.github.io/SDS293/static/binary_example.csv")
+
+# Input to glm() should be with y as a numerical variable. Do not convert
+# y into a factor yet.
+model <- glm(y ~ x_num, family = "binomial", data = example)
+
+# Compute fitted probabilities p-hat:
+fitted_points <- model %>%
+  augment() %>%
+  mutate(p_hat = 1/(1 + exp(-.fitted))) %>%
+  select(y, x_num, p_hat)
+
+# Plot with y as numerical so that we can compare it with p-hats. Do not convert
+# y into a factor yet.
+ggplot(fitted_points, aes(x = x_num)) +
+  geom_jitter(aes(y = y), height = 0.01, width = 0.05) +
+  geom_line(aes(y = p_hat), col = "red")
+
+# Get AUC via roc_auc()
+# -first argument (that is piped) is the data frame
+# -second is truth, which is the outcome variable
+# -third argument are the fitted probabilities corresponding to the binary
+# outcome of interest
+fitted_points %>%
+  roc_auc(truth = y, p_hat)
+
+# That doesn't work since y is numerical. So now:
+# -Convert y into a factor/categorical variable
+# -Set the first level of categorical variable to be "1" using
+# fct_relevel() from the forcats package (Note there are many ways to do this)
+fitted_points %>%
+  mutate(
+    y_as_factor = factor(y),
+    y_as_factor = fct_relevel(y_as_factor, "1")
+  ) %>%
+  roc_auc(truth = y_as_factor, p_hat)
+
+
+
+
+library(yardstick)
+library(dplyr)
+data("two_class_example")
+two_class_example <- two_class_example %>%
+  as_tibble()
+
+options(yardstick.event_first = FALSE)
+
+# First factor level is assumed to be the event: Class1
+levels(two_class_example$truth)
+
+# AUC using Class1 probabilties
+two_class_example %>%
+  roc_auc(truth, Class1)
+
+# AUC using Class2 probabilties
+two_class_example %>%
+  roc_auc(truth, Class2)
+
+options(yardstick.event_first = TRUE)
+
+# First factor level is assumed to be the event: Class1
+levels(two_class_example$truth)
+
+# AUC using Class1 probabilties
+two_class_example %>%
+  roc_auc(truth, Class1, estimator = "binary")
+
+# AUC using Class2 probabilties
+two_class_example %>%
+  roc_auc(truth, Class2, estimator = "binary")
+
+
+
+
+
+
+# Change first factor level to be Class2
+two_class_example <- two_class_example %>%
+  mutate(truth = fct_relevel(truth, "Class2"))
+levels(two_class_example$truth)
+
+two_class_example %>%
+  roc_auc(truth, Class2)
