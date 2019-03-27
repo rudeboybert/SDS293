@@ -50,7 +50,8 @@ ggplot(example, aes(x = x_categ, fill = as.factor(y))) +
 # normalize the bar heights:
 ggplot(example, aes(x = x_categ, fill = as.factor(y))) +
   geom_bar(position = "fill") +
-  labs(x = "Categorical x", fill = "Outcome y")
+  labs(x = "Categorical x", fill = "Outcome y") +
+  geom_hline(yintercept = 0.397, col = "blue")
 
 # QUESTION: What proportion of 1's do we have for each category? In other words,
 # if we randomly selected someone from each category?, what is the probability
@@ -88,7 +89,8 @@ fitted_points <- model %>%
 
 y_vs_x_num_plot +
   geom_line(data = fitted_points, mapping = aes(y = fitted_prob), col = "red", size = 1) +
-  labs(x = "Numerical x", y = "Outcome y")
+  labs(x = "Numerical x", y = "Outcome y") +
+  geom_hline(yintercept = 0.397, col = "blue")
 
 # NOW ANSWER QUESTION: What proportion of 1's do we have for people with x = 70?
 # In other words, if we randomly selected someone with x = 70?, what is the
