@@ -321,7 +321,10 @@ fitted_points %>%
     + Create an extended model $\widehat{f}_{4}$ by including other variables and try to get the highest Kaggle score in the class! Do this in a new section `# Polishing the cannoball` whose structure is a copy of the `# Point of diminishing returns` section's structure. In other words, copy and paste the blank lines corresponding to `# Point of diminishing returns` and rename it `# Polishing the cannoball`.
 
 
-## Suggestions
+## Solutions {#MP3-solutions}
+
+* [`MP3_solutions.html`](static/MP3_solutions.html){target="_blank"}
+* <a href="static/MP3_solutions.Rmd" download>`MP3_solutions.Rmd`</a>
 
 
 

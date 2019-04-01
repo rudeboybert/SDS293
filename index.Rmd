@@ -68,17 +68,17 @@ h1{font-weight: 400;}
 
 ## Announcements
 
-* Midterm II this weekend
+* Midterm II this weekend. Review materials under [Midterms](midterms.html#midtermII)
 
 ## Todays Topics/Activities  
 
 ### 1. Chalk Talk
 
-* Midterm II review
+* [MP3 solutions](MP.html#MP3-solutions)
 * Wrapping up CART
-    + Going over solutions for Lec 14 CART code exercises. These can be found in [Code](code.html) -> CART -> Lines 116-154.
     + What is multiclass logarithmic loss? A simple example
     + Shiny app illustrating how to control "complexity" of a tree <a href="static/methods/CART/CART.Rmd" download>`CART.Rmd`</a>
+    + Please review on your own: Solutions for Lec 14 CART code exercises. These can be found in [Code](code.html) -> CART -> Lines 116-154.    
 
 
 ### 2. Tweet of the day

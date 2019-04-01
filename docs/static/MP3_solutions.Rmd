@@ -1,0 +1,429 @@
+---
+title: "SDS/CSC 293 Mini-Project 3: Logistic Regression"
+author: "Group XX: WRITE YOUR NAMES HERE"
+date: "Wednesday, March 27^th^, 2019"
+output:
+  html_document:
+    highlight: tango
+    theme: cosmo
+    toc: yes
+    toc_depth: 2
+    toc_float:
+      collapsed: true
+    df_print: kable
+---
+
+```{r setup, include=FALSE}
+# Load all your packages here:
+library(tidyverse)
+library(yardstick)
+
+# Set default behavior for all code chunks here:
+knitr::opts_chunk$set(
+  echo = TRUE, warning = FALSE, message = FALSE,
+  fig.width = 16/2, fig.height = 9/2
+)
+
+# Set seed value of random number generator here. This is in order to get
+# "replicable" randomness, so that any results based on random sampling or
+# resampling are replicable everytime you knit this file. Why use a seed value
+# of 76? For no other reason than 76 is one of my favorite numbers:
+# https://www.youtube.com/watch?v=xjJ7FheCkCU
+set.seed(76)
+```
+
+You will be submiting an entry to Kaggle's [DonorsChoose.org Application Screening: Predict whether teachers' project proposals are accepted](https://www.kaggle.com/c/donorschoose-application-screening/){target="_blank"} by fitting a **logistic regression** model $\hat{f}(x)$.
+
+
+
+***
+
+
+
+# EDA
+
+Read in data provided by Kaggle for this competition. They are organized in the `data/` folder of this RStudio project:
+
+```{r}
+training <- read_csv("data/train.csv")
+test <- read_csv("data/test.csv")
+sample_submission <- read_csv("data/sample_submission.csv")
+```
+
+Before performing any model fitting, you should always conduct an exploratory data analysis. This will help guide and inform your model fitting. 
+
+
+## Look at your data!
+
+Always, ALWAYS, **ALWAYS** start by looking at your raw data. This gives you visual sense of what information you have to help build your predictive models. To get a full description of each variable, read the data dictionary in the `data_description.txt` file in the `data/` folder.
+
+Note that the following code chunk has `eval = FALSE` meaning "don't evaluate this chunk with knitting" because `.Rmd` files won't knit if they include a `View()`:
+
+```{r, eval = FALSE}
+View(training)
+glimpse(training)
+
+View(test)
+glimpse(test)
+```
+
+In particular, pay close attention to the variables and variable types in the
+`sample_submission.csv`. Your submission must match this exactly.
+
+```{r}
+glimpse(sample_submission)
+```
+
+## Data wrangling
+
+As much as possible, try to do all your data wrangling here:
+
+```{r}
+
+```
+
+
+## Univariate explorations
+
+I should've explicitly assigned you to do this! EDA is important!
+
+**Categorical predictor**:
+
+```{r}
+ggplot(training, aes(x = project_grade_category)) +
+  geom_bar() + 
+  labs(x = "Project Grade Category", title = "Distribution of categorical variable")
+```
+
+**Numerical predictor**:
+
+```{r}
+ggplot(training, aes(x = teacher_number_of_previously_posted_projects)) +
+  geom_histogram() + 
+  labs(x = "Number of previously posted projects", title = "Distribution of numerical variable")
+```
+
+Whoa! A lot of 0's! 27.5% percent of rows have `teacher_number_of_previously_posted_projects == 0` in fact:
+
+```{r}
+training %>% 
+  summarize(proportion_zero = mean(teacher_number_of_previously_posted_projects == 0))
+```
+
+**Outcome variable**: `r emo::ji("eyes")` at your outcome variable using a bar chart! Note we need to convert our original ) vs 1 outcome variable to a categorical variable first!
+
+```{r}
+ggplot(training, aes(x = as.factor(project_is_approved))) +
+  geom_bar() + 
+  labs(x = "Approved", title = "Distribution of project approval")
+```
+
+`r emo::ji("thinking")`Hmm. About 4/5th's get approved? Let's compute exactly:
+
+```{r}
+training %>% 
+  summarize(prop_approved = mean(project_is_approved == 1))
+```
+
+84.8% get approved!
+
+
+## Bivariate explorations
+
+**Relationship of categorical predictor and outcome variable**:
+
+What proportion of *each* grade gets their project approved?
+
+```{r}
+ggplot(training, aes(x = project_grade_category, fill = as.factor(project_is_approved))) +
+  geom_bar(position = "dodge") +
+  labs(fill = "Approved", title = "Distribution of project approval split by grade")
+```
+
+Hard to tell above, let's create stacked barcharts instead!
+
+```{r}
+ggplot(training, aes(x = project_grade_category, fill = as.factor(project_is_approved))) +
+  geom_bar(position = "fill") +
+  labs(fill = "Approved", title = "Distribution of project approval split by grade")
+```
+
+Now let's add a line for the overall proportion 84.8% and zoom in between 80% and 90%! Let's call this Figure 1.
+
+```{r}
+ggplot(training, aes(x = project_grade_category, fill = as.factor(project_is_approved))) +
+  geom_bar(position = "fill") +
+  labs(fill = "Approved", title = "Figure 1: Distribution of project approval split by grade") +
+  geom_hline(yintercept = 0.848, col = "blue") +
+  coord_cartesian(ylim = c(0.8, 0.9))
+```
+
+
+**Relationship of numerical predictor and outcome variable**:
+
+```{r}
+ggplot(training, aes(x = teacher_number_of_previously_posted_projects, y = project_is_approved)) +
+  geom_point() +
+  labs(x = "Number of previous posted projects", y = "Approved", title = "Project approval over number of previous posted projects")
+```
+
+This plot suffers from overplotting. Let's use `geom_jitter` with an `alpha` transparency value
+
+```{r}
+ggplot(training, aes(x = teacher_number_of_previously_posted_projects, y = project_is_approved)) +
+  geom_jitter(alpha = 0.2, height = 0.025) +
+  labs(x = "Number of previous posted projects", y = "Approved", title = "Project approval over number of previous posted projects")
+```
+
+Of all instructors who have posted 0 previous projects, what proportion got approved?
+
+```{r}
+training %>% 
+  filter(teacher_number_of_previously_posted_projects == 0) %>% 
+  summarize(prop_approved = mean(project_is_approved == 1))
+```
+
+Of all instructors who have posted 1 previous projects, what proportion got approved?
+
+```{r}
+training %>% 
+  filter(teacher_number_of_previously_posted_projects == 1) %>% 
+  summarize(prop_approved = mean(project_is_approved == 1))
+```
+
+Let's do this for ALL x values and plot the results. 
+
+```{r}
+prop_approved_by_num_previous <- training %>% 
+  group_by(teacher_number_of_previously_posted_projects) %>% 
+  summarize(prop_approved = mean(project_is_approved == 1))
+
+ggplot(training, aes(x = teacher_number_of_previously_posted_projects, y = project_is_approved)) +
+  geom_jitter(alpha = 0.2, height = 0.025)  +
+  labs(x = "Number of previous posted projects", y = "Approved", title = "Project approval over number of previous posted projects") +
+  geom_line(data = prop_approved_by_num_previous, aes(x = teacher_number_of_previously_posted_projects, y = prop_approved), col = "orange")
+```
+
+Now let's add the overall proportion 84.8%. Let's call this Figure  2
+
+```{r}
+ggplot(training, aes(x = teacher_number_of_previously_posted_projects, y = project_is_approved)) +
+  geom_jitter(alpha = 0.2, height = 0.025)  +
+  labs(x = "Number of previous posted projects", y = "Approved", title = "Figure 2: Project approval over number of previous posted projects") +
+  geom_line(data = prop_approved_by_num_previous, aes(x = teacher_number_of_previously_posted_projects, y = prop_approved), col = "orange") +
+  geom_hline(yintercept = 0.848, col = "blue")
+```
+
+
+
+***
+
+
+
+# Minimally viable product
+
+## Fit model on training
+
+Fit a logistic regression model $\widehat{f}_1$ with only an intercept term on all the training data. In other words, your model will not use any predictor variables. Save this in `model_1`. What is the uniquely fitted probability?
+
+```{r}
+model_1 <- glm(project_is_approved ~ 1, family = "binomial", data = training)
+
+model_1_fitted_points <- model_1 %>%
+  broom::augment() %>% 
+  mutate(fitted_prob = 1/(1 + exp(-.fitted)))
+
+model_1_fitted_points$fitted_prob %>% unique()
+```
+
+
+## Estimate of your Kaggle score
+
+Use the `yardstick` package to get an estimate of your Kaggle score: the area under the ROC curve (AUC). Crossvalidation is not necessary as with no predictor variables, we are in very little danger of overfitting the model. 
+
+```{r}
+model_1_fitted_points %>% 
+  mutate(project_is_approved = factor(project_is_approved, levels = c(1, 0))) %>% 
+  yardstick::roc_auc(truth = project_is_approved, fitted_prob)
+```
+
+
+## Make predictions on test
+
+Apply your `model_1` fitted model to the test data. What is the uniquely predicted probability?
+
+```{r}
+model_1_predicted_points <- model_1 %>%
+  broom::augment(newdata = test) %>% 
+  mutate(fitted_prob = 1/(1 + exp(-.fitted)))
+
+model_1_predicted_points$fitted_prob %>% unique()
+```
+
+
+# Due diligence
+
+## Plot ROC curve
+
+Use the `yardstick` package to plot the ROC curve:
+
+```{r}
+model_1_fitted_points %>% 
+  mutate(project_is_approved = factor(project_is_approved, levels = c(1, 0))) %>% 
+  roc_curve(truth = project_is_approved, fitted_prob) %>% 
+  autoplot()
+```
+
+
+
+***
+
+
+
+# Reaching for the stars
+
+## Fit model on training
+
+Fit a logistic regression model $\widehat{f}_2$ using a single numerical predictor variable $x$ on all the training data. Save this in `model_2`. Then display a single visualization that shows:
+
+* The relationship between outcome variable $y$ and your numerical predictor variable $x$ with black points
+* The relationship between the fitted probabilities $\widehat{p}$ from model $\widehat{f}_2$ and your numerical predictor variable $x$ with a red curve
+* The fitted probabilities $\widehat{p}$ from model $\widehat{f}_1$ with a horizontal blue line
+
+at the same time. Let's call this Figure 3.  **Compare it with Figure 2!!!**
+
+```{r}
+model_2 <- glm(project_is_approved ~ teacher_number_of_previously_posted_projects, family = "binomial", data = training)
+
+model_2_fitted_points <- model_2 %>%
+  broom::augment() %>% 
+  mutate(fitted_prob = 1/(1 + exp(-.fitted)))
+
+ggplot(NULL) +
+  # Training data with black points:
+  geom_jitter(data = model_2_fitted_points, 
+             aes(x = teacher_number_of_previously_posted_projects, y = project_is_approved), 
+             alpha = 0.2,
+             height = 0.025) +
+  # Best fitting logistic curve in red:
+  geom_line(data = model_2_fitted_points, 
+            aes(x = teacher_number_of_previously_posted_projects, y = fitted_prob), col = "red", size = 1) +
+  labs(x = "Number of previously posted projects", y = "Project is approved?", title = "Figure 3: Fitted probabilities") +
+  geom_hline(yintercept = model_1_fitted_points$fitted_prob[1], col = "blue")
+```
+
+
+
+
+## Estimate of your Kaggle score
+
+Use the `yardstick` package to get an estimate of your Kaggle score: the area under the ROC curve (AUC). Crossvalidation is not necessary as with only 1 predictor variable and so many points, we are in very little danger of overfitting the model. 
+
+```{r}
+model_2_fitted_points %>% 
+  mutate(project_is_approved = factor(project_is_approved, levels = c(1, 0))) %>% 
+  yardstick::roc_auc(truth = project_is_approved, fitted_prob)
+```
+
+
+## Make predictions on test
+
+Apply your `model_2` fitted model to the test data and display a histogram of the predicted probabilities.
+
+```{r}
+model_2_predicted_points <- model_2 %>%
+  broom::augment(newdata = test) %>% 
+  mutate(fitted_prob = 1/(1 + exp(-.fitted)))
+
+ggplot(model_2_predicted_points, aes(x = fitted_prob)) +
+  geom_histogram()+
+  labs(x = "Predicted probabilities", title = "Test data")
+```
+
+
+
+## Plot ROC curve
+
+Use the `yardstick` package to plot the ROC curve:
+
+```{r}
+model_2_fitted_points %>% 
+  mutate(project_is_approved = factor(project_is_approved, levels = c(1, 0))) %>% 
+  roc_curve(truth = project_is_approved, fitted_prob) %>% 
+  autoplot()
+```
+
+
+
+***
+
+
+
+# Point of diminishing returns
+
+## Fit model on training
+
+Fit a logistic regression model $\widehat{f}_3$ using a single categorical predictor variable $x$ on all the training data. Save this in `model_3`. Then display a single visualization that shows:
+
+* The relationship between the fitted probabilities $\widehat{p}$ from model $\widehat{f}_3$ and your categorical predictor variable $x$
+* The fitted probabilities $\widehat{p}$ from model $\widehat{f}_1$ with a horizontal blue line
+
+at the same time. Let's call this Figure 4.  **Compare it with Figure 1!!!**
+
+```{r}
+model_3 <- glm(project_is_approved ~ project_grade_category, family = "binomial", data = training)
+
+model_3_fitted_points <- model_3 %>%
+  broom::augment() %>% 
+  mutate(fitted_prob = 1/(1 + exp(-.fitted)))
+
+ggplot(model_3_fitted_points, aes(x = project_grade_category, y = fitted_prob)) +
+  geom_boxplot() +
+  geom_hline(yintercept = model_1_fitted_points$fitted_prob[1], col = "blue") +
+  labs(x = "Project grade category", y = "Fitted probabilities", title = "Figure 4: Fitted probabilities")
+```
+
+
+## Estimate of your Kaggle score
+
+Use the `yardstick` package to get an estimate of your Kaggle score: the area under the ROC curve (AUC). Crossvalidation is not necessary as with only 1 predictor variable and so many points, we are in very little danger of overfitting the model. 
+
+```{r}
+model_3_fitted_points %>% 
+  mutate(project_is_approved = factor(project_is_approved, levels = c(1, 0))) %>% 
+  yardstick::roc_auc(truth = project_is_approved, fitted_prob)
+```
+
+
+## Make predictions on test
+
+Apply your `model_3` fitted model to the test data and display a histogram of the predicted probabilities.
+
+```{r}
+model_3_predicted_points <- model_3 %>%
+  broom::augment(newdata = test) %>% 
+  mutate(fitted_prob = 1/(1 + exp(-.fitted)))
+
+ggplot(model_3_predicted_points, aes(x = fitted_prob)) +
+  geom_histogram()+
+  labs(x = "Predicted probabilities", title = "Test data")
+```
+
+
+## Plot ROC curve
+
+Use the `yardstick` package to plot the ROC curve:
+
+```{r}
+model_3_fitted_points %>% 
+  mutate(project_is_approved = factor(project_is_approved, levels = c(1, 0))) %>% 
+  roc_curve(truth = project_is_approved, fitted_prob) %>% 
+  autoplot()
+```
+
+
+
+***
+
+
+

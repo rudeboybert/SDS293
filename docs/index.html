@@ -32,7 +32,7 @@
 <style type="text/css" data-origin="pandoc">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -45,11 +45,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -518,7 +520,7 @@ h1{font-weight: 400;}
 <div id="announcements" class="section level2">
 <h2>Announcements</h2>
 <ul>
-<li>Midterm II this weekend</li>
+<li>Midterm II this weekend. Review materials under <a href="midterms.html#midtermII">Midterms</a></li>
 </ul>
 </div>
 <div id="todays-topicsactivities" class="section level2">
@@ -526,12 +528,12 @@ h1{font-weight: 400;}
 <div id="chalk-talk" class="section level3">
 <h3>1. Chalk Talk</h3>
 <ul>
-<li>Midterm II review</li>
+<li><a href="MP.html#MP3-solutions">MP3 solutions</a></li>
 <li>Wrapping up CART
 <ul>
-<li>Going over solutions for Lec 14 CART code exercises. These can be found in <a href="code.html">Code</a> -&gt; CART -&gt; Lines 116-154.</li>
 <li>What is multiclass logarithmic loss? A simple example</li>
 <li>Shiny app illustrating how to control “complexity” of a tree <a href="static/methods/CART/CART.Rmd" download><code>CART.Rmd</code></a></li>
+<li>Please review on your own: Solutions for Lec 14 CART code exercises. These can be found in <a href="code.html">Code</a> -&gt; CART -&gt; Lines 116-154.</li>
 </ul></li>
 </ul>
 </div>

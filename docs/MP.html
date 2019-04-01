@@ -33,7 +33,7 @@
 <style type="text/css" data-origin="pandoc">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -46,11 +46,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -847,8 +849,12 @@ Ex: Group #1’s leader is BT.</li>
 </ul></li>
 </ol>
 </div>
-<div id="suggestions-2" class="section level2">
-<h2>Suggestions</h2>
+<div id="MP3-solutions" class="section level2">
+<h2>Solutions</h2>
+<ul>
+<li><a href="static/MP3_solutions.html" target="_blank"><code>MP3_solutions.html</code></a></li>
+<li><a href="static/MP3_solutions.Rmd" download><code>MP3_solutions.Rmd</code></a></li>
+</ul>
 <hr />
 </div>
 </div>
