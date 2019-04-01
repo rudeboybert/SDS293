@@ -30,3 +30,5 @@ ML_students <-
   clean_names() %>%
   select(first_name, last_name) %>%
   arrange(first_name)
+
+write_csv(ML_students, "static/ML_students.cs")
