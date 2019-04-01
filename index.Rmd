@@ -60,44 +60,36 @@ h1{font-weight: 400;}
 
 
 
-
-
-
-
-
-
 ***
 
-<!--
 
-
-https://twitter.com/rudeboybert/status/1110897733177671680
 
 # Lec 16: Mon 4/1
 
 ## Announcements
 
-*
+* Midterm II this weekend
 
 ## Todays Topics/Activities  
 
 ### 1. Chalk Talk
 
+* Midterm II review
+* Wrapping up CART
+    + Going over solutions for Lec 14 CART code exercises. These can be found in [Code](code.html) -> CART -> Lines 116-154.
+    + What is multiclass logarithmic loss? A simple example
+    + Shiny app illustrating how to control "complexity" of a tree <a href="static/methods/CART/CART.Rmd" download>`CART.Rmd`</a>
 
 
-### 2. In-class exercise
+### 2. Tweet of the day
 
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">👏Give me an E👏! ... E!<br>👏Give me a D👏! ... D!<br>👏Give me an A👏! ... A!<br>What does that spell? Exploratory data analysis! 👏👏👏 <a href="https://t.co/FuUKZxH0Vk">https://t.co/FuUKZxH0Vk</a></p>&mdash; Albert Y. Kim (@rudeboybert) <a href="https://twitter.com/rudeboybert/status/1110897733177671680?ref_src=twsrc%5Etfw">March 27, 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 
 ***
 
-
-
-
-
-
--->
 
 
 # Lec 15: Wed 3/27
@@ -110,9 +102,6 @@ https://twitter.com/rudeboybert/status/1110897733177671680
 
 ### 1. Chalk Talk
 
-* Going over solutions for Lec 14 CART code exercises. These can be found in [Code](code.html) -> CART -> Lines 116-154.
-* What is multiclass logarithmic loss? A simple example
-* Shiny app illustrating how to control "complexity" of a tree <a href="static/methods/CART/CART.Rmd" download>`CART.Rmd`</a>
 * What is a "minimally **REPR**oducible **EX**ample" AKA a [reprex](https://www.tidyverse.org/help/){target="_blank"}?
 
 
