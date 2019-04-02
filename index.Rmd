@@ -63,6 +63,61 @@ h1{font-weight: 400;}
 ***
 
 
+# Lec 17: Wed 4/2
+
+## Announcements
+
+
+## Todays Topics/Activities  
+
+### How CART partitions the predictor space, Take 2
+
+Recall from Lec14 Chalk Talk the drawings of regions R1, R2, R3, R4, and R5 based on splits t1, t2, t3, and t4 drawings? Those were a first attempt at illustrating the idea of "partitioning the predictor space", where in the drawings the predictor space (x1, x2) was two dimensional. 
+
+Those were a little abstract. Here is a second attempt where we 
+
+1. Show the tree first! Not second! Then
+1. Show the corresponding scatterplot where we make the two dimensional predictor space explicit:  (x1 = Sepal Length, x2 = Sepal Width). Notice how the color of the points in each of the 5 regions corresponds to the terminal nodes/leafs of the tree.
+
+![](static/methods/CART/CART.png){ width=500px }
+
+```{r, echo = FALSE, eval = TRUE, fig.width=6.5}
+# Pre-process iris dataset
+iris <- iris %>%
+  # Convert to tibble data frame:
+  as_tibble() %>%
+  # Add identification variable to uniquely identify each row:
+  rownames_to_column(var="ID")
+
+# Figure from Lec
+region_labels <- tibble(
+  Sepal.Length = c(4.5, 4.5, 7, 5.95, 5.7),
+  Sepal.Width = c(4.4, 2.1, 4.4, 4.4, 2.1),
+  label = c("R1", "R2", "R5", "R3", "R4")
+)
+
+ggplot(iris, aes(x=Sepal.Length, y = Sepal.Width)) +
+  geom_jitter(aes(col = Species)) +
+  annotate("segment", x = 5.45, xend = 5.45, y = 2, yend = 4.5, size = 1) +
+  annotate("segment", x = 4, xend = 5.45, y = 2.8, yend = 2.8, size = 1) +
+  annotate("segment", x = 6.15, xend = 6.15, y = 2, yend = 4.5, size = 1) +
+  annotate("segment", x = 6.15, xend = 5.45, y = 3.1, yend = 3.1, size = 1) +
+  geom_text(data = region_labels, aes(label = label), size = 10) +
+  labs(x = "x1: Sepal Length", y = "x2: Sepal Width",
+       title = "Jittered scatterplot of CART", col = "y: Species")
+```
+
+
+
+### 1. Chalk Talk
+
+
+
+
+
+***
+
+
 
 # Lec 16: Mon 4/1
 
@@ -294,11 +349,11 @@ $$
 
 ```{r, echo=FALSE, eval=TRUE}
 eps <- 0.0001
-values <- data_frame(
+values <- tibble(
   p = seq(from = eps, to = 1-eps, length = 1000),
   y = log(p/(1-p))
 )
-points <- data_frame(
+points <- tibble(
   p = c(0.01, 1-0.01, 0.5),
   y = log(p/(1-p)),
   group = factor(1:3)

@@ -156,6 +156,24 @@ p_hat_matrix_train %>%
 # predictions
 
 
+# Figure from Lec
+region_labels <- tibble(
+  Sepal.Length = c(4.5, 4.5, 7, 5.95, 5.7),
+  Sepal.Width = c(4.4, 2.1, 4.4, 4.4, 2.1),
+  label = c("R1", "R2", "R5", "R3", "R4")
+)
+
+ggplot(iris, aes(x=Sepal.Length, y = Sepal.Width)) +
+  geom_jitter(aes(col = Species)) +
+  annotate("segment", x = 5.45, xend = 5.45, y = 2, yend = 4.5, size = 1) +
+  annotate("segment", x = 4, xend = 5.45, y = 2.8, yend = 2.8, size = 1) +
+  annotate("segment", x = 6.15, xend = 6.15, y = 2, yend = 4.5, size = 1) +
+  annotate("segment", x = 6.15, xend = 5.45, y = 3.1, yend = 3.1, size = 1) +
+  geom_text(data = region_labels, aes(label = label), size = 10) +
+  labs(x = "x1: Sepal Length", y = "x2: Sepal Width",
+       title = "Jittered scatterplot of CART", col = "y: Species")
+
+ggsave("static/methods/CART/scatterplot.png", width = 16/1.8, height = 9/1.8)
 
 
 
