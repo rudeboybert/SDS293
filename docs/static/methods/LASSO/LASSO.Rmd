@@ -327,43 +327,39 @@ coefficients2 <- coefficents2 %>%
 beta_Income_grid <- seq(from=coefficients2$beta_Income - 100, to=coefficients2$beta_Income + 100, length=200)
 beta_Limit_grid <- seq(from=coefficients2$beta_Limit - 2, to=coefficients2$beta_Limit + 2, length=200)
 
-# if(FALSE){
-#   beta_grid <- expand.grid(beta_Income_grid, beta_Limit_grid) %>%
-#     tbl_df() %>%
-#     rename(
-#       beta_Income_grid = Var1,
-#       beta_Limit_grid = Var2
-#     ) %>%
-#     mutate(
-#       beta_Intercept = coefficients2$beta_Intercept
-#     ) %>%
-#     dplyr::select(beta_Intercept, everything())
-#   
-#   RSS_vector <- rep(0, nrow(beta_grid))
-#   X <- as.matrix(model.matrix(model_formula, data = credit))
-#   for(i in 1:nrow(beta_grid)){
-#     beta <- beta_grid[i, ]
-#     predictions <- X %*% t(as.matrix(beta))
-#     
-#     RSS_vector[i] <- credit %>%
-#       mutate(
-#         yhat = predictions,
-#         resid = Balance-yhat
-#       ) %>%
-#       summarise(RSS = sum(resid^2)) %>%
-#       .[["RSS"]]
-#   }
-#   
-#   beta_grid <- beta_grid %>%
-#     mutate(
-#       RSS = RSS_vector,
-#       sum_beta_sq = abs(beta_Income_grid) + abs(beta_Limit_grid),
-#       penalty = sum_beta_sq*lambda_knob,
-#       total = RSS + penalty
-#     )
-#   save(beta_grid, file = "assets/regularization/beta_grid.RData")
-# }
-load(url("https://github.com/rudeboybert/MATH218/raw/gh-pages/assets/regularization/beta_grid.RData"))
+beta_grid <- expand.grid(beta_Income_grid, beta_Limit_grid) %>%
+  tbl_df() %>%
+  rename(
+    beta_Income_grid = Var1,
+    beta_Limit_grid = Var2
+  ) %>%
+  mutate(
+    beta_Intercept = coefficients2$beta_Intercept
+  ) %>%
+  dplyr::select(beta_Intercept, everything())
+
+RSS_vector <- rep(0, nrow(beta_grid))
+X <- as.matrix(model.matrix(model_formula, data = credit))
+for(i in 1:nrow(beta_grid)){
+  beta <- beta_grid[i, ]
+  predictions <- X %*% t(as.matrix(beta))
+  
+  RSS_vector[i] <- credit %>%
+    mutate(
+      yhat = predictions,
+      resid = Balance-yhat
+    ) %>%
+    summarise(RSS = sum(resid^2)) %>%
+    .[["RSS"]]
+}
+
+beta_grid <- beta_grid %>%
+  mutate(
+    RSS = RSS_vector,
+    sum_beta_sq = abs(beta_Income_grid) + abs(beta_Limit_grid),
+    penalty = sum_beta_sq*lambda_knob,
+    total = RSS + penalty
+  )
 z <- log10(beta_grid$total) %>% matrix(nrow=200) %>% t()
 
 # ggplot(beta_grid, aes(x=beta_Income_grid, y=beta_Limit_grid, z=log(total))) +

@@ -68,7 +68,7 @@ h1{font-weight: 400;}
 ## Announcements
 
 * If you are interested in being hired to be a note taker for this class, please see the message in `#general` on Slack.
-* Extra office hours this Friday: 2:30pm-4:00pm
+* Extra office hours this Friday: 2:30pm-4:00pm.
 
 ## Todays Topics/Activities  
 

@@ -32,7 +32,7 @@
 <style type="text/css" data-origin="pandoc">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -45,11 +45,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -519,7 +521,7 @@ h1{font-weight: 400;}
 <h2>Announcements</h2>
 <ul>
 <li>If you are interested in being hired to be a note taker for this class, please see the message in <code>#general</code> on Slack.</li>
-<li>Extra office hours this Friday: 2:30pm-4:00pm</li>
+<li>Extra office hours this Friday: 2:30pm-4:00pm.</li>
 </ul>
 </div>
 <div id="todays-topicsactivities" class="section level2">
@@ -665,43 +667,43 @@ h1{font-weight: 400;}
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">56</td>
-<td align="right">5.7</td>
-<td align="right">2.8</td>
-<td align="right">4.5</td>
-<td align="right">1.3</td>
+<td align="left">94</td>
+<td align="right">5.0</td>
+<td align="right">2.3</td>
+<td align="right">3.3</td>
+<td align="right">1.0</td>
 <td align="left">versicolor</td>
 </tr>
 <tr class="even">
-<td align="left">134</td>
-<td align="right">6.3</td>
-<td align="right">2.8</td>
-<td align="right">5.1</td>
-<td align="right">1.5</td>
+<td align="left">110</td>
+<td align="right">7.2</td>
+<td align="right">3.6</td>
+<td align="right">6.1</td>
+<td align="right">2.5</td>
 <td align="left">virginica</td>
 </tr>
 <tr class="odd">
-<td align="left">19</td>
-<td align="right">5.7</td>
-<td align="right">3.8</td>
-<td align="right">1.7</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="left">85</td>
-<td align="right">5.4</td>
-<td align="right">3.0</td>
-<td align="right">4.5</td>
-<td align="right">1.5</td>
+<td align="left">64</td>
+<td align="right">6.1</td>
+<td align="right">2.9</td>
+<td align="right">4.7</td>
+<td align="right">1.4</td>
 <td align="left">versicolor</td>
 </tr>
-<tr class="odd">
-<td align="left">96</td>
-<td align="right">5.7</td>
-<td align="right">3.0</td>
-<td align="right">4.2</td>
+<tr class="even">
+<td align="left">15</td>
+<td align="right">5.8</td>
+<td align="right">4.0</td>
 <td align="right">1.2</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="left">69</td>
+<td align="right">6.2</td>
+<td align="right">2.2</td>
+<td align="right">4.5</td>
+<td align="right">1.5</td>
 <td align="left">versicolor</td>
 </tr>
 </tbody>
