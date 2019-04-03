@@ -7,41 +7,53 @@ output: html_document
 runtime: shiny
 ---
 
-The source `.Rmd` file for this Shiny app can be found downloaded <a href="https://rudeboybert.github.io/SDS293/static/methods/LASSO/LASSO.Rmd" download>here</a>.
-
-
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(glmnet)
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  fig.width = 10
+)
+
 library(tidyverse)
 library(broom)
-library(plotly)
 library(stringr)
+library(knitr)
+library(moderndive)
+library(glmnet)
+library(ISLR)
+library(plotly)
+
+set.seed(76)
 ```
 
 
-## Data
+# Data
 
-Let's consider data for $i=1, \ldots, 400$ individuals (alas, I don't have sampling information)
+Let's consider data for $i=1, \ldots, 400$ individuals' credit card debt. Note this data was simulated and is not real. 
 
-* $y_i$: Credit card balance
+* $y_i$: Credit card balance i.e. credit card debt
 * $x_{1,i}$: Income in $10K
 * $x_{2,i}$: Credit limit in $
 
+```{r}
+credit <- Credit %>%
+  select(Balance, Income, Limit)
+```
+
+
 Here is a random sample of 10 of the 400 rows:
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
-credit <- read_csv("http://www-bcf.usc.edu/~gareth/ISL/Credit.csv") %>%
-  select(-X1) %>%
-  select(Balance, Income, Limit)
+```{r, echo=FALSE}
 credit %>% 
   sample_n(10) %>% 
-  knitr::kable()
+  kable()
 ```
 
 Let's view the points in an interactive 3D plot:
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
+# Define base plotly plot
 base_plot <-
   plot_ly(showlegend=FALSE) %>%
   add_markers(
@@ -49,7 +61,8 @@ base_plot <-
     y = credit$Limit,
     z = credit$Balance,
     hoverinfo = 'text',
-    text = ~paste("x1 - Income: ", credit$Income, "</br> x2 - Limit: ", credit$Limit, "</br> y - Balance: ", credit$Balance)
+    text = ~paste("x1 - Income: ", credit$Income, "</br> x2 - Limit: ", 
+                  credit$Limit, "</br> y - Balance: ", credit$Balance)
   ) %>%
   layout(
     scene = list(
@@ -58,31 +71,78 @@ base_plot <-
       zaxis = list(title = "y - Balance ($)")
     )
   )
-base_plot
+
+# Output base plot
+# base_plot
+
+# Define (x1, x2) grid of values (bottom plane). We'll use this values to 
+# compute all regression planes
+x_grid <- seq(from=min(credit$Income), to=max(credit$Income), length=100)
+y_grid <- seq(from=min(credit$Limit), to=max(credit$Limit), length=200)
 ```
 
 
 
+***
 
 
 
+# Three Models
 
-## Two Simple Models
+Let's now consider three models for credit card `Balance` i.e. credit card debt
 
-Let's now consider two models:
+1. **Naive Model**: Uses no predictor information.
+1. **Simple linear regression model**: Uses only one predictor `Limit`.
+1. **Multiple regression model**: Uses both predictors `Limit` and `Income`.
 
-1. **Naive Model**: Uses no predictor information (in this case Income and Limit)
-1. **Regression Model**: Fits a linear regression
 
-#### 1. Naive Model
 
-The average balance in this data set is $\overline{y}$ = \$`r mean(credit$Balance) %>% round(2)`. So for
-any point $(x_1, x_2)$ we would predict \$`r mean(credit$Balance) %>% round(2)`. Let's view this in an interactive 3D plot:
+***
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
-x_grid <- seq(from=min(credit$Income), to=max(credit$Income), length=100)
-y_grid <- seq(from=min(credit$Limit), to=max(credit$Limit), length=200)
-z_grid <- expand.grid(x_grid, y_grid) %>%
+
+
+# 1. Naive Model
+
+Say we use no predictor information. This corresponds to the following true model $f()$ and error component $\epsilon$.
+
+$$
+\begin{aligned}
+y &= f(\vec{x}) + \epsilon\\
+y &= \beta_0 + \epsilon\\
+\mbox{Balance} &= \beta_0 + \epsilon
+\end{aligned}
+$$
+
+In other words there is only an intercept term. Since the mean credit card balance AKA credit card debt $\bar{y}$ is:
+
+```{r}
+mean(credit$Balance)
+```
+
+We'll estimate/approximate $f()$ with the following fitted model $\widehat{f}()$:
+
+$$
+\begin{aligned}
+\widehat{y} &= \widehat{f}(\vec{x})\\
+\widehat{y} &= \widehat{\beta}_0\\
+\widehat{\mbox{Balance}} &= \widehat{\beta}_0 \\
+\widehat{\mbox{Balance}} &= \overline{y}
+\end{aligned}
+$$
+
+In other words, think of the above fitted model $\widehat{f}(\vec{x})$ as a **minimally viable model**, in other words a "null" model, in other words a "basic baseline model". Using this model, our prediction $\widehat{y}$ of an individual's credit bard balance using no predictor information would be $\bar{y}$ = \$520.01. Let' visualize this in a histogram:
+
+```{r, fig.width=8}
+ggplot(credit, aes(x = Balance)) +
+  geom_histogram(binwidth = 100, boundary = 0) +
+  labs(x = "y = Balance ($)", title = "Histogram of outcome variable: credit card balance") +
+  geom_vline(xintercept = mean(credit$Balance), col = "red", size = 1)
+```
+
+
+```{r, eval = TRUE, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
+# Compute z-axis values for this model. i.e. flat plane. We'll use this later:
+z_grid_1 <- expand.grid(x_grid, y_grid) %>%
   tbl_df() %>%
   rename(
     x_grid = Var1,
@@ -92,74 +152,109 @@ z_grid <- expand.grid(x_grid, y_grid) %>%
   .[["z"]] %>%
   matrix(nrow=length(x_grid)) %>%
   t()
-
-plot_ly(showscale=FALSE) %>%
-  add_markers(
-    x = credit$Income,
-    y = credit$Limit,
-    z = credit$Balance,
-    hoverinfo = 'text',
-    text = ~paste("x1 - Income: ", credit$Income, "</br> x2 - Limit: ", credit$Limit, "</br> y - Balance: ", credit$Balance)
-  ) %>%
-  layout(
-    scene = list(
-      xaxis = list(title = "x1 - Income (in $10K)"),
-      yaxis = list(title = "x2 - Limit ($)"),
-      zaxis = list(title = "y - Balance ($)")
-    )
-  ) %>%
-  add_surface(
-    x = x_grid,
-    y = y_grid,
-    z = z_grid
-  )
 ```
 
+Surely we can do better than this however! We are not using any of the information contained in the predictor variables $x_1$ `Income` and $x_2$ credit `Limit`. In other words, we are predicting $520.01 as the credit card debt irregardless of the individual's income and credit limit. 
 
-#### 2. Regression Model
 
-Let's now fit a linear regression 
+
+***
+
+
+
+# 2. Simple Linear Regression Model
+
+Let's improve on our minimally viable model by using a predictor variable: $x_1$ `Income`. Let's assume the following is the truth: a true model $f()$ and error component $\epsilon$.
 
 $$
-y = \beta_0 + \beta_1 x_1 + \beta_2 x_2\\
-\mbox{Balance} = \beta_0 + \beta_1\mbox{Income} + \beta_2\mbox{Limit}
+\begin{aligned}
+y &= f(\vec{x}) + \epsilon\\
+y &= \beta_0 + \beta_1 x_1 + \epsilon\\
+\mbox{Balance} &= \beta_0 + \beta_1\mbox{Income} + \epsilon
+\end{aligned}
 $$
 
-using `lm(Balance ~ Income + Limit)`. The *least-squares estimates* of the three
-$\beta$ *coefficients* (the intercept and the two slopes) are:
+We'll estimate/approximate $f()$ with the following fitted model $\widehat{f}()$:
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
-model_formula <- as.formula("Balance ~ Income + Limit")
-model_lm <- credit %>% 
-  # mutate(
-  #   Income = Income - mean(Income),
-  #   Limit = Limit - mean(Limit)
-  #   ) %>% 
-  lm(model_formula , data=.)
-tidy(model_lm) %>%
-  select(term, estimate) %>% 
-  knitr::kable(digits=2)
+$$
+\begin{aligned}
+\widehat{y} &= \widehat{f}(\vec{x})\\
+\widehat{y} &= \widehat{\beta}_0 + \widehat{\beta}_1x_1\\
+\widehat{\mbox{Balance}} &= \widehat{\beta}_0 + \widehat{\beta}_1\mbox{Income}\\
+\end{aligned}
+$$
+
+But what are the fitted coefficients/parameters $\widehat{\beta}_0$ and $\widehat{\beta}_0$? You can read them from the estimate column from the regression table below, which we generated using the `get_regression_table()` ["wrapper"](https://moderndive.netlify.com/6-regression.html#fig:moderndive-figure-wrapper){target="_blank"} function to extract regression tables as a data frame:
+
+```{r}
+model_lm <- lm(Balance ~ Income, data = credit)
+model_lm %>% 
+  get_regression_table()
+
+# Compute z-axis values
+z_grid_2 <- expand.grid(x_grid, y_grid) %>%
+  tbl_df() %>%
+  rename(
+    x_grid = Var1,
+    y_grid = Var2
+  ) %>%
+  mutate(z = coef(model_lm)[1] + coef(model_lm)[2]*x_grid) %>%
+  .[["z"]] %>%
+  matrix(nrow=length(x_grid)) %>%
+  t()
 ```
 
-Hence we can computed fitted values:
+In other words, our fitted model $\widehat{f}()$ is:
 
 $$
-\widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1x_1 + \widehat{\beta}_2x_2\\
-\widehat{\mbox{Balance}} = \widehat{\beta}_0 + \widehat{\beta}_1\mbox{Income} + \widehat{\beta}_2\mbox{Limit}\\
-\widehat{\mbox{Balance}} = -385.18 - 7.66 \times \mbox{Income} + 0.26\times\mbox{Limit}\\
+\begin{aligned}
+\widehat{y} &= \widehat{f}(\vec{x})\\
+\widehat{y} &= \widehat{\beta}_0 + \widehat{\beta}_1x_1\\
+\widehat{\mbox{Balance}} &= \widehat{\beta}_0 + \widehat{\beta}_1\mbox{Income}\\
+\widehat{\mbox{Balance}} &= 246.515 + 6.048 \cdot \mbox{Income}
+\end{aligned}
 $$
 
-Note:
+Let's view this simple linear regression model in blue and compare it to our naive model $\widehat{f}(\vec{x}) = \widehat{y}$ = \$520.01 in red:
 
-* Where as in simple linear regression based on observations $(x_i, y_i)$ with a
-single predictor yielding a line
-* We are now dealing with multiple linear regression based on observations $(x_{1,i}, x_{2,i}, y_i)$ with two predictors
-yielding a plane. The plane corresponds to our fitted values. Let's view these in an interactive 3D plot:
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
-x_grid <- seq(from=min(credit$Income), to=max(credit$Income), length=100)
-y_grid <- seq(from=min(credit$Limit), to=max(credit$Limit), length=200)
-z_grid <- expand.grid(x_grid, y_grid) %>%
+```{r, fig.width=8}
+ggplot(credit, aes(x=Income, y=Balance)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(x = "x1 - Income (in $10K)", y = "y - Balance ($)") +
+  geom_hline(yintercept = mean(credit$Balance), col = "red", size = 1)
+```
+
+It "sort of" seems like the blue regression line fits the points better than our naive model of $\widehat{y}$ = \$520.01. But can we do even better by using a second predictor variable $x_2$ `Limit`
+
+
+
+***
+
+
+
+# 3. Multiple Regression Model
+
+Let's now fit a multiple linear regression model with two predictors:
+
+$$
+\begin{aligned}
+y &= f(\vec{x}) + \epsilon\\
+y &= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon\\
+\mbox{Balance} &= \beta_0 + \beta_1\mbox{Income} + \beta_2\mbox{Limit} + \epsilon
+\end{aligned}
+$$
+
+Kind of like before, we'll estimate/approximate $f()$ with a fitted model $\widehat{f}()$ based on the fitted values of the $\beta$'s from the regression table:
+
+```{r}
+model_lm <- lm(Balance ~ Income + Limit, data = credit)
+model_lm %>% 
+  get_regression_table()
+
+# Compute z-axis values
+z_grid_3 <- expand.grid(x_grid, y_grid) %>%
   tbl_df() %>%
   rename(
     x_grid = Var1,
@@ -169,32 +264,57 @@ z_grid <- expand.grid(x_grid, y_grid) %>%
   .[["z"]] %>%
   matrix(nrow=length(x_grid)) %>%
   t()
+```
 
-base_plot %>%
-  add_surface(
-    x = x_grid,
-    y = y_grid,
-    z = z_grid
-    )
+Hence:
+
+$$
+\begin{aligned}
+\widehat{y} &= \widehat{f}(\vec{x})\\
+\widehat{y} &= \widehat{\beta}_0 + \widehat{\beta}_1x_1 + \widehat{\beta}_2x_2\\
+\widehat{\mbox{Balance}} &= \widehat{\beta}_0 + \widehat{\beta}_1\mbox{Income} + \widehat{\beta}_2\mbox{Limit}\\
+\widehat{\mbox{Balance}} &= -385.179 - 7.663  \cdot \mbox{Income} + 0.264 \cdot \mbox{Limit}\\
+\end{aligned}
+$$
+
+Let’s visualize the corresponding regreession plane:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
+# base_plot %>%
+#   # # Naive model:
+#   # add_surface(
+#   #   x = x_grid,
+#   #   y = y_grid,
+#   #   z = z_grid_1
+#   # ) %>% 
+#   # # Simple linear regression:
+#   # add_surface(
+#   #   x = x_grid,
+#   #   y = y_grid,
+#   #   z = z_grid_2
+#   # ) %>% 
+#   # Multiple regression:
+#   add_surface(
+#     x = x_grid,
+#     y = y_grid,
+#     z = z_grid_3
+#   )
 ```
 
 
+***
 
 
-
-
-
-
-
-## Shrinking $\beta$ Coefficients via LASSO
+# Shrinking $\beta$ Coefficients via LASSO
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, cache=TRUE}
+model_formula <- as.formula("Balance ~ Income + Limit")
 X <- model.matrix(model_formula, data = credit)[, -1]
 y <- credit$Balance
 lambda_values <- 10^seq(-3, 10, by=0.05)
-model_ridge <- glmnet(X, y, alpha = 1, lambda = lambda_values)
+model_LASSO <- glmnet(X, y, alpha = 1, lambda = lambda_values)
   coefficients <-
-    model_ridge %>%
+    model_LASSO %>%
     tidy() %>%
     tbl_df() %>%
     # lambda's on x-axis are better viewed on a log-scale:
@@ -252,7 +372,7 @@ to? Hint: We are using no predictor information when $\beta_1=0$ and $\beta_2=0$
 
 
 
-## What Happens at a Particular $\lambda$?
+# What Happens at a Particular $\lambda$?
 
 For example at $\log_{10}(\lambda) = 1$, or equivalently at $\lambda = 10^1 = 10$, we have:
 
@@ -369,7 +489,9 @@ z <- log10(beta_grid$total) %>% matrix(nrow=200) %>% t()
 #   scale_color_gradient(low="red", high="white") +
 #   theme_minimal() +
 #   labs(x="Beta Income", y="Beta Limit")
+```
 
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
 plot_ly(
   x = as.vector(beta_Income_grid), 
   y = as.vector(beta_Limit_grid), 
@@ -382,18 +504,6 @@ plot_ly(
 
 **Question**: For what values of $(\beta_1, \beta_2)$ is Total minimized? Where have we seen this prior?
 
-
-
-
-
-
-
-## Why Are We Doing This?
-
-**Question**: Why are we using such a complicated scheme? Why don't we just use the linear
-regression results, as they are super easy to interpret?
-
-**Answer**: Go over the solutions to `PS06`!
 
 
 

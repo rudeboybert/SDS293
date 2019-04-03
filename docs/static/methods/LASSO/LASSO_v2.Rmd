@@ -73,7 +73,7 @@ base_plot <-
   )
 
 # Output base plot
-# base_plot
+base_plot
 
 # Define (x1, x2) grid of values (bottom plane). We'll use this values to 
 # compute all regression planes
@@ -280,41 +280,81 @@ $$
 Let’s visualize the corresponding regreession plane:
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
-# base_plot %>%
-#   # # Naive model:
-#   # add_surface(
-#   #   x = x_grid,
-#   #   y = y_grid,
-#   #   z = z_grid_1
-#   # ) %>% 
-#   # # Simple linear regression:
-#   # add_surface(
-#   #   x = x_grid,
-#   #   y = y_grid,
-#   #   z = z_grid_2
-#   # ) %>% 
-#   # Multiple regression:
-#   add_surface(
-#     x = x_grid,
-#     y = y_grid,
-#     z = z_grid_3
-#   )
+base_plot %>%
+  # # Naive model:
+  # add_surface(
+  #   x = x_grid,
+  #   y = y_grid,
+  #   z = z_grid_1
+  # ) %>% 
+  # # Simple linear regression:
+  # add_surface(
+  #   x = x_grid,
+  #   y = y_grid,
+  #   z = z_grid_2
+  # ) %>% 
+  # Multiple regression:
+  add_surface(
+    x = x_grid,
+    y = y_grid,
+    z = z_grid_3
+  )
 ```
+
 
 
 ***
 
 
-# Shrinking $\beta$ Coefficients via LASSO
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, cache=TRUE}
+# Comparing all three models
+
+
+Let’s visualize all three models, with the
+
+1. Naive model as a flat plane at y = $520.01 in green/teal
+1. Simple linear regression model in the red/blue spectrum plane
+1. Multiple regression model in the blue/green/yellow spectrum plane
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
+base_plot %>%
+  # Naive model:
+  add_surface(
+    x = x_grid,
+    y = y_grid,
+    z = z_grid_1
+  ) %>% 
+  # Simple linear regression:
+  add_surface(
+    x = x_grid,
+    y = y_grid,
+    z = z_grid_2,
+    colorscale = "RdYlBlu"
+  ) %>%
+  # Multiple regression:
+  add_surface(
+    x = x_grid,
+    y = y_grid,
+    z = z_grid_3
+  )
+```
+
+
+
+***
+
+
+
+## Shrinking $\beta$ Coefficients via LASSO
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
 model_formula <- as.formula("Balance ~ Income + Limit")
 X <- model.matrix(model_formula, data = credit)[, -1]
 y <- credit$Balance
 lambda_values <- 10^seq(-3, 10, by=0.05)
-model_LASSO <- glmnet(X, y, alpha = 1, lambda = lambda_values)
+model_ridge <- glmnet(X, y, alpha = 1, lambda = lambda_values)
   coefficients <-
-    model_LASSO %>%
+    model_ridge %>%
     tidy() %>%
     tbl_df() %>%
     # lambda's on x-axis are better viewed on a log-scale:
@@ -372,7 +412,7 @@ to? Hint: We are using no predictor information when $\beta_1=0$ and $\beta_2=0$
 
 
 
-# What Happens at a Particular $\lambda$?
+## What Happens at a Particular $\lambda$?
 
 For example at $\log_{10}(\lambda) = 1$, or equivalently at $\lambda = 10^1 = 10$, we have:
 
@@ -405,105 +445,3 @@ $$
 \mbox{AKA } &\min_{\beta_0, \ldots, \beta_p} \left( \mbox{RSS} + \mbox{shrinkage penalty} \right)
 \end{align}
 $$
-
-In other words and in our case, we want to find the $\left(\widehat{\beta}_0, \widehat{\beta}_1,
-\widehat{\beta}_2\right)$ combination such that the following value is minimized (let's call it Total):
-
-$$
-\mbox{Total} = \sum_{i=1}^{n} \left(\mbox{Balance}_i -\widehat{\mbox{Balance}}_i\right)^2 + \lambda \left( \left|\widehat{\beta}_1\right| + \left|\widehat{\beta}_2\right|\right)\\
-$$
-
-where
-
-$$
-\widehat{\mbox{Balance}}_i = \widehat{\beta}_0 + \widehat{\beta}_1\mbox{Income}_i + \widehat{\beta}_2\mbox{Limit}_i\\
-$$
-
-How does `glmnet()` find these values? It uses *numerical optimization* 
-techniques, but they are beyond the scope of this class. If you are interested 
-in learning these however, take Prof. Michaela Kubacki's MATH228 Introduction to
-Numerical Analysis. We will however do something much clumsier! We will
-
-* Take a bunch of different combinations of coefficients $\left(\widehat{\beta}_0,
-\widehat{\beta}_1,  \widehat{\beta}_2\right)$
-* Compute Total for each combination
-* Plot these values, but with Total on a $\log_{10}$-scale
-* Observe which combination of coefficients yields the minimal value of Total
-
-We unfortunately cannot plot how Total varies as a function of all 3 coefficients as this 
-is four variables. Let's instead just show how Total varies as a function of the
-two slope coefficients $\widehat{\beta}_1$ and $\widehat{\beta}_2$ corresponding
-to Income and Limit in an interactive 3D plot:
-
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, cache=TRUE}
-coefficients2 <- coefficents2 %>% 
-  spread(term, estimate) %>%
-  rename(
-    beta_Intercept = `(Intercept)`,
-    beta_Income = Income,
-    beta_Limit = Limit
-  )
-
-beta_Income_grid <- seq(from=coefficients2$beta_Income - 100, to=coefficients2$beta_Income + 100, length=200)
-beta_Limit_grid <- seq(from=coefficients2$beta_Limit - 2, to=coefficients2$beta_Limit + 2, length=200)
-
-beta_grid <- expand.grid(beta_Income_grid, beta_Limit_grid) %>%
-  tbl_df() %>%
-  rename(
-    beta_Income_grid = Var1,
-    beta_Limit_grid = Var2
-  ) %>%
-  mutate(
-    beta_Intercept = coefficients2$beta_Intercept
-  ) %>%
-  dplyr::select(beta_Intercept, everything())
-
-RSS_vector <- rep(0, nrow(beta_grid))
-X <- as.matrix(model.matrix(model_formula, data = credit))
-for(i in 1:nrow(beta_grid)){
-  beta <- beta_grid[i, ]
-  predictions <- X %*% t(as.matrix(beta))
-  
-  RSS_vector[i] <- credit %>%
-    mutate(
-      yhat = predictions,
-      resid = Balance-yhat
-    ) %>%
-    summarise(RSS = sum(resid^2)) %>%
-    .[["RSS"]]
-}
-
-beta_grid <- beta_grid %>%
-  mutate(
-    RSS = RSS_vector,
-    sum_beta_sq = abs(beta_Income_grid) + abs(beta_Limit_grid),
-    penalty = sum_beta_sq*lambda_knob,
-    total = RSS + penalty
-  )
-z <- log10(beta_grid$total) %>% matrix(nrow=200) %>% t()
-
-# ggplot(beta_grid, aes(x=beta_Income_grid, y=beta_Limit_grid, z=log(total))) +
-#   geom_contour(aes(colour = ..level..)) +
-#   geom_vline(xintercept = coefficients2$beta_Income, linetype="dashed") +
-#   geom_hline(yintercept = coefficients2$beta_Limit, linetype="dashed") +
-#   scale_color_gradient(low="red", high="white") +
-#   theme_minimal() +
-#   labs(x="Beta Income", y="Beta Limit")
-```
-
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
-plot_ly(
-  x = as.vector(beta_Income_grid), 
-  y = as.vector(beta_Limit_grid), 
-  z = z) %>%
-  add_surface() %>%
-  layout(scene = list(xaxis = list(title = 'Beta1: Income'),
-                      yaxis = list(title = 'Beta2: Limit'),
-                      zaxis = list(title = 'log10(Total)')))
-```
-
-**Question**: For what values of $(\beta_1, \beta_2)$ is Total minimized? Where have we seen this prior?
-
-
-
-

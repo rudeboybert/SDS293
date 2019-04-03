@@ -111,7 +111,7 @@ iris %>%
 
 ### 1. Chalk Talk
 
-
+* Shiny app illustrating how to control "complexity" of a tree <a href="static/methods/CART/CART.Rmd" download>`CART.Rmd`</a>. 
 
 
 
@@ -132,7 +132,6 @@ iris %>%
 * [MP3 solutions](MP.html#MP3-solutions)
 * Wrapping up CART
     + What is multiclass logarithmic loss? A simple example
-    + Shiny app illustrating how to control "complexity" of a tree <a href="static/methods/CART/CART.Rmd" download>`CART.Rmd`</a>
     + Please review on your own: Solutions for Lec 14 CART code exercises. These can be found in [Code](code.html) -> CART -> Lines 116-154.    
 
 

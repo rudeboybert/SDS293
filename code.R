@@ -365,7 +365,7 @@ mtcars <- mtcars %>%
 # Set up validation set framework: create training and test set at random
 set.seed(76)
 mtcars_train <- mtcars %>%
-  sample_frac(0.5)
+  sample_frac(0.75)
 mtcars_test <- mtcars %>%
   anti_join(mtcars_train, by="ID")
 
@@ -448,7 +448,143 @@ predicted_points_2
 
 
 #------------------------------------------------------------------------------
-# Exercises
+# Lec08 Exercises. Solutions at bottom
+
+# 1. What are the test set RMSEs of Models 1 & 2? Which is higher?
+
+# 2. What is the ratio of n/p for our trained Model 2. i.e. the number of points
+# in the training set vs the number of predictors
+
+# 3. Change the train/test validation ratio from 3:1 to 1:1. What are the RMSEs
+# of Models 1 & 2? Which is higher?
+
+# 4. What is the new ratio of n/p for our new trained Model 2?
+
+# 5. How does the difference in test set RMSE for Model 1 & 2 itself differ when the
+# train/test validation ratio went from 3:1 to 1:1
+
+# 6. Try a different combination of variables and see if you can lower your
+# RMSE.
+
+
+#------------------------------------------------------------------------------
+# Lec10: 2019/03/04
+#------------------------------------------------------------------------------
+library(tidyverse)
+library(broom)
+
+# Read in training data from https://www.kaggle.com/c/GiveMeSomeCredit/
+financial_distress_orig <-
+  "https://rudeboybert.github.io/SDS293/static/methods/logisitic/cs-training.csv" %>%
+  read_csv() %>%
+  select(ID = X1, in_financial_distress = SeriousDlqin2yrs, age)
+
+# Let's deliberately tinker and engineer this data for educational purposes
+# only: For those individuals who are in financial distress, let's add an offset
+# of 50 to their ages
+offset <- 50
+financial_distress <- financial_distress_orig %>%
+  mutate(age = ifelse(in_financial_distress == 1, age + offset, age))
+
+# Split data into train and test so that we can fit to train and predict on
+# test. Note that this corresponds to the "validation set" approach that is
+# used mostly for illustrative purposes and not used in practice as using this
+# approach you wouldn't be making predictions on every observation.
+# Be sure to View() these data frames after you create them:
+set.seed(76)
+cs_training <- financial_distress %>%
+  sample_frac(0.25)
+cs_test <- financial_distress %>%
+  anti_join(cs_training, by="ID")
+
+# EDA: Recall that we engineering the two boxplots to not overlap by adding an
+# offset
+ggplot(cs_training, aes(x = as.logical(in_financial_distress), y = age)) +
+  geom_boxplot() +
+  labs(x = "In financial distress?", y = "Age")
+
+# Let's create a scatterplot but with age on the x-axis. Note this plot suffers
+# from overplotting:
+ggplot(cs_training, aes(x = age, y = in_financial_distress)) +
+  geom_point() +
+  labs(x = "Age", y = "In financial distress?")
+
+# Let's "jitter" the plot a little to break up the overplotting. In other words,
+# add random vertical "nudges" to the points so that we can get a sense of how
+# many plots are on top of each other. Note this is only a visualization tool;
+# it does not alter the original values in the data frame.
+# For more info on geom_jitter read:
+# https://moderndive.netlify.com/3-viz.html#overplotting
+ggplot(cs_training, aes(x = age, y = in_financial_distress)) +
+  geom_jitter(height = 0.01) +
+  labs(x = "Age", y = "In financial distress?")
+
+# The best fitting linear regression line in blue is no good in this particular
+# case; you end up with fitted probabilities less than 0
+ggplot(cs_training, aes(x = age, y = in_financial_distress)) +
+  geom_jitter(height = 0.01) +
+  labs(x = "Age", y = "In financial distress?") +
+  geom_smooth(method = "lm", se = FALSE)
+
+# Fit a logistic regression model. Note the use of glm() instead of lm()
+model_logistic <- glm(in_financial_distress ~ age, family = "binomial", data = cs_training)
+
+# 2.a) Extract regression table with confidence intervals
+# Notice coefficient for age. Is it positive or negative?
+model_logistic %>%
+  broom::tidy(conf.int = TRUE)
+
+# 2.b) Extract point-by-point info of points used to fit model
+fitted_points_logistic <- model_logistic %>%
+  broom::augment()
+fitted_points_logistic
+
+# The .fitted values are the fitted log-odds however, NOT fitted probabilities.
+# We convert to fitted probabilities using inverse-logit function:
+fitted_points_logistic <- fitted_points_logistic %>%
+  mutate(fitted_prob = 1/(1 + exp(-.fitted)))
+fitted_points_logistic
+
+# 2.c) Extract model summary info
+model_logistic %>%
+  broom::glance()
+
+# 3. Make predictions on test data. Compare this to use of broom::augment()
+# for fitted_points_logistic
+predicted_points_logistic <- model_logistic %>%
+  broom::augment(newdata = cs_test)
+predicted_points_logistic
+
+# 4. Visualize fitted model only the training data for now:
+ggplot(data = fitted_points_logistic, aes(x = age, y = in_financial_distress)) +
+  # Training data with black points:
+  geom_jitter(height = 0.01) +
+  # Best fitting linear regression line in blue:
+  geom_smooth(method = "lm", se = FALSE) +
+  # Best fitting logistic curve in red:
+  geom_line(data = fitted_points_logistic, mapping = aes(y = fitted_prob), col = "red", size = 1) +
+  labs(x = "Age", y = "In financial distress?")
+
+
+#------------------------------------------------------------------------------
+# Lec10 Exercises. Solutions at bottom
+# 1. Using the visualization above, for what age would you say that there is a
+
+# 2. Compare the visualization above with a scatterplot with:
+# a) x = age
+# b) y = the observed proportion of individuals in cs_training that are in
+# financial
+
+# 3. Change the offset in age to 10 and -50. What do you notice happens to:
+# a) the coefficient for age in the regression table.
+# b) the shape of the logistic curve of the fitted model?
+
+# 4. Challenge question: Change the offset in age to 6.9. Why is the logistic curve
+# flat? At what value is it?
+
+
+#------------------------------------------------------------------------------
+# Lec08 Solutions
 
 # 1. What are the test set RMSEs of Models 1 & 2? Which is higher?
 # Being sure to set.seed(76)
@@ -482,12 +618,57 @@ predicted_points_2 %>%
 
 
 
+#------------------------------------------------------------------------------
+# Lec10 Solutions
 
+# 1. Using the visualization above, for what age would you say that there is a
+# 50% probability that an individual is in financial distress?
+# Maybe around 87?
 
-predicted_points_1 %>%
-  yardstick::rmse(truth = mpg, estimate = .fitted)
-predicted_points_2 %>%
-  yardstick::rmse(truth = mpg, estimate = .fitted)
+# 2. Compare the visualization above with a scatterplot with:
+# a) x = age
+# b) y = the observed proportion of individuals in cs_training that are in
+# financial
+observed_proportions <- cs_training %>%
+  group_by(age) %>%
+  summarize(prop = mean(in_financial_distress))
+
+ggplot(data = fitted_points_logistic, aes(x = age, y = in_financial_distress)) +
+  # Training data with black points:
+  geom_jitter(height = 0.01) +
+  # Best fitting linear regression line in blue:
+  geom_smooth(method = "lm", se = FALSE) +
+  # Best fitting logistic curve in red:
+  geom_line(data = fitted_points_logistic, mapping = aes(y = fitted_prob), col = "red", size = 1) +
+  labs(x = "Age", y = "In financial distress?") +
+  geom_line(data = observed_proportions, aes(x = age, y = prop), col = "orange", size = 1)
+
+# 3. Change the offset in age to 10 and -50. What do you notice happens to:
+# a) the coefficient for age in the regression table.
+# b) the shape of the logistic curve of the fitted model?
+#
+# Offset 50:
+# a) Coefficient = 0.239
+# b) Shape: very S-like,
+
+# Offset 10:
+# a) Coefficient = 0.0132
+# b) Shape: less S-like
+
+# Offset -50:
+# a) Coefficient = -0.467
+# b) Shape: Very inverse S-like. (looks like a "Z" or "2" instead of "S")
+
+# 4. Challenge question: Change the offset in age to 6.9. Why is the logistic curve
+# flat? At what value is it?
+financial_distress %>%
+  group_by(in_financial_distress) %>%
+  summarize(avg_age = mean(age))
+# Both groups have the same mean age, so there is no information provided by
+# the variable age. The red line is at the total proportion of people in
+# financial distress irrespective of group = 0.0668 = 6.68%
+financial_distress %>%
+  summarize(overall_prop = mean(in_financial_distress))
 
 
 
