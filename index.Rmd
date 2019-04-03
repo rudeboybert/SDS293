@@ -67,6 +67,8 @@ h1{font-weight: 400;}
 
 ## Announcements
 
+* If you are interested in being hired to be a note taker for this class, please see the message in `#general` on Slack.
+* Extra office hours this Friday: 2:30pm-4:00pm
 
 ## Todays Topics/Activities  
 
@@ -82,13 +84,6 @@ Those were a little abstract. Here is a second attempt where we
 ![](static/methods/CART/CART.png){ width=500px }
 
 ```{r, echo = FALSE, eval = TRUE, fig.width=6.5}
-# Pre-process iris dataset
-iris <- iris %>%
-  # Convert to tibble data frame:
-  as_tibble() %>%
-  # Add identification variable to uniquely identify each row:
-  rownames_to_column(var="ID")
-
 # Figure from Lec
 region_labels <- tibble(
   Sepal.Length = c(4.5, 4.5, 7, 5.95, 5.7),
@@ -96,7 +91,12 @@ region_labels <- tibble(
   label = c("R1", "R2", "R5", "R3", "R4")
 )
 
-ggplot(iris, aes(x=Sepal.Length, y = Sepal.Width)) +
+iris %>%
+  # Convert to tibble data frame:
+  as_tibble() %>%
+  # Add identification variable to uniquely identify each row:
+  rownames_to_column(var="ID") %>% 
+  ggplot(aes(x=Sepal.Length, y = Sepal.Width)) +
   geom_jitter(aes(col = Species)) +
   annotate("segment", x = 5.45, xend = 5.45, y = 2, yend = 4.5, size = 1) +
   annotate("segment", x = 4, xend = 5.45, y = 2.8, yend = 2.8, size = 1) +
