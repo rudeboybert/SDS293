@@ -66,7 +66,9 @@ h1{font-weight: 400;}
 
 ## Announcements
 
+<!--
 * (Shorter) [MP4 posted](MP.html#MP4)
+-->
 
 ## Todays Topics/Activities  
 
