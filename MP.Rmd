@@ -333,8 +333,9 @@ fitted_points %>%
 # Mini-project 4 {#MP4}
 
 ## Administrative notes
-
+<!--
 * **Executive summary**: You will be making a submission to the [Ghouls, Goblins, and Ghosts... Boo!](https://www.kaggle.com/c/ghouls-goblins-and-ghosts-boo/){target="_blank"} Kaggle competition based on a fitted CART model. The competition's score for leaderboard purposes is the "Categorization Accuracy".
+-->
 * **Due Wednesday 4/17 10pm on Moodle**.
 * You will be given time to work on MP4 in class on Monday 4/15 and Wednesday 4/17.
 * Groups: You must work with a different partner than MP1, MP2, and MP3.
