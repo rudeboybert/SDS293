@@ -97,10 +97,10 @@ Repeat the above and slowly **iterate** to perfection while keeping in mind that
 ![](static/images/BML.png){ width=275px } ![](static/images/MVP.png){ width=525px }
 </center>
 
+## Solutions {#MP1-solutions}
 
-## One possible approach {#MP1-discussion}
-
-There is no one single "right "solution to this MP1, but here is <a href="static/MP1_albert_MVP.Rmd" download>one possible approach</a> (copy this `.Rmd` file to your MP1 RStudio Project folder).
+* [`MP1_albert_MVP.html`](static/MP1_albert_MVP.html){target="_blank"}
+* <a href="static/MP1_albert_MVP.Rmd" download>`MP1_albert_MVP.Rmd`</a>
 
 
 
