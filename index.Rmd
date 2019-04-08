@@ -83,6 +83,8 @@ h1{font-weight: 400;}
 ### 1. Chalk Talk
 
 * Just like CART, the $k$-Nearest Neighbors (kNN) "partitions" the predictor space. This time not with "binary splits" but by dividing up the predictor space based on proximity. See this [sequence of images](static/methods/knn/knn_all_plots.pdf){target="_blank"}.
+    + [Additional reading on knn](http://scott.fortmann-roe.com/docs/BiasVariance.html){target="_blank"}
+    + Optional: Shiny app <a href="static/methods/knn/knn.Rmd" download>`knn.Rmd`</a>
 * Shiny app illustrating how to control the amount of "regularization/shrinkage" in a multiple regression model <a href="static/methods/LASSO/LASSO_v2.Rmd" download>`LASSO_v2.Rmd`</a>. 
 
 

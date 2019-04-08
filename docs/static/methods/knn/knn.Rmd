@@ -7,7 +7,6 @@ output: html_document
 runtime: shiny
 ---
 
-The source `.Rmd` file for this Shiny app can be found downloaded <a href="https://rudeboybert.github.io/SDS293/static/methods/knn/knn.Rmd" download>here</a>.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
