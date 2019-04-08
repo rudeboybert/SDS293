@@ -920,24 +920,35 @@ Ex: Group #1’s leader is BT.</li>
 <li><strong>Minimally viable product:</strong> Grade: 8/10.
 <ul>
 <li>Satisfy all “baseline” criteria.</li>
+<li>Perform the specified exploratory data analyses.</li>
 </ul></li>
-<li><strong>Due diligence:</strong> Grade: 8.5/10.
+<li><strong>Due diligence:</strong> Grade: 9/10.
 <ul>
 <li>Satisfy all “baseline” and “minimally viable product” criteria.</li>
+<li>Fit a CART where:
+<ul>
+<li>You use only the numerical predictors.</li>
+<li>The maximum depth of the tree is 5.</li>
+<li>You use the default “complexity parameter”</li>
 </ul></li>
-<li><strong>Reaching for the stars:</strong> Grade: 9/10.
+<li>Plot the tree.</li>
+<li>Make predictions <code>type_hat</code> on the <code>training</code> data. Hint compare the output of: <code>predict(model_CART, type = &quot;prob&quot;)</code> and <code>predict(model_CART, type = &quot;class&quot;)</code>.</li>
+<li>Compute the “classification accuracy”.</li>
+</ul></li>
+<li><strong>Reaching for the stars:</strong> Grade: 9.5/10.
 <ul>
 <li>Satisfy all “baseline”, “minimally viable product”, and “due diligence” criteria.</li>
+<li>Reusing the MP1 solutions code, for the range of <code>alpha</code> complexity parameters in the <code>alpha_df</code> data frame, return an estimate of the accuracy that Kaggle would return.</li>
+<li>Plot the relationship between the alpha complexity parameter and accuracy.</li>
+<li>Using the optimal <span class="math inline">\(\alpha^*\)</span> complexity parameter, write a <code>submission.csv</code> suitable for submission to Kaggle.</li>
 </ul></li>
-<li><strong>Point of diminishing returns:</strong> Grade: 9.5/10.
+<li><strong>Point of diminishing returns:</strong> Grade: 10/10.
 <ul>
 <li>Satisfy all “baseline”, “minimally viable product”, “due diligence”, and “reaching for the stars” criteria.</li>
+<li>Use one-hot-enconding to fit a predictive CART model using the categorical variable <code>color</code> and plot the tree. Set the maximum depth of the tree to 5 and use the default “complexity parameter”.</li>
+<li>No need to generate an estimate of the accuracy that Kaggle would return.</li>
 </ul></li>
-<li><strong>Polishing the cannonball:</strong> Grade: 10/10.
-<ul>
-<li>Satisfy all “baseline”, “minimally viable product”, “due diligence”, “reaching for the stars”, and “point of diminishing returns” criteria.</li>
-<li>Try to get the highest Kaggle score in the class!</li>
-</ul></li>
+<li><strong>Polishing the cannonball:</strong> None</li>
 </ol>
 </div>
 <div id="suggestions-2" class="section level2">
