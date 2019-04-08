@@ -333,16 +333,15 @@ fitted_points %>%
 # Mini-project 4 {#MP4}
 
 ## Administrative notes
-<!--
-* **Executive summary**: You will be making a submission to the [Ghouls, Goblins, and Ghosts... Boo!](https://www.kaggle.com/c/ghouls-goblins-and-ghosts-boo/){target="_blank"} Kaggle competition based on a fitted CART model. The competition's score for leaderboard purposes is the "Categorization Accuracy".
--->
+
+* **Executive summary**: You will be making a submission to the [Ghouls, Goblins, and Ghosts... Boo!](https://www.kaggle.com/c/ghouls-goblins-and-ghosts-boo/){target="_blank"} Kaggle competition based on a fitted CART model. The competition's score for leaderboard purposes is the "Categorization Accuracy". However you will **not** be making any submissions to Kaggle.
 * **Due Wednesday 4/17 10pm on Moodle**.
 * You will be given time to work on MP4 in class on Monday 4/15 and Wednesday 4/17.
 * Groups: You must work with a different partner than MP1, MP2, and MP3.
     + **If you already have a group**: Designate a team leader and have them fill out this [Google Sheet](https://docs.google.com/spreadsheets/d/1YRlmq4pvrzmtq0iUha4uCwg2Xwiz3l1_e5ji-rWoqlc/){target="_blank"}.
     + **If you need a group**: Please fill out this [Google Form](https://docs.google.com/forms/d/1j8WyIvX9IHhpoNjpkputp065wjS4QgiTvIUDMDJaFW0/) and I'll assign one for you.
 
-## Working on your project {#MP3-working}
+## Working on your project {#MP4-working}
 
 I will post all clarifications and hints in this section.
 
