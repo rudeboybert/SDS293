@@ -236,8 +236,8 @@ Recall the main optimization problem for the LASSO:
 
 $$
 \begin{align}
-&\min_{\beta_0, \ldots, \beta_p} \left( \sum_{i=1}^n \left(y_i -\widehat{y}_i\right)^2 + \lambda \sum_{j=1}^p \left|\beta_j\right| \right)\\
-\mbox{AKA } &\min_{\beta_0, \ldots, \beta_p} \left( \mbox{RSS} + \mbox{shrinkage penalty} \right)
+&\min_{\widehat{\beta}_0, \ldots, \widehat{\beta}_p} \left( \sum_{i=1}^n \left(y_i -\widehat{y}_i\right)^2 + \lambda \sum_{j=1}^p \left|\widehat{\beta}_j\right| \right)\\
+\mbox{AKA } &\min_{\widehat{\beta}_0, \ldots, \widehat{\beta}_p} \left( \mbox{RSS} + \mbox{shrinkage penalty} \right)
 \end{align}
 $$
 
