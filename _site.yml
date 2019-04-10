@@ -19,7 +19,7 @@ navbar:
     href: code.html
   right:
   - text: DataCamp
-    href: datacamp.html
+    href: datacamp.html#quiz
   - text: Mini-Projects
     href: MP.html#MP4
   - text: Midterms
