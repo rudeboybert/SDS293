@@ -72,15 +72,11 @@ h1{font-weight: 400;}
 * Posted information on in-class quiz on Wed 4/24 in [DataCamp](datacamp.html#quiz). This quiz will count as a DataCamp assignment. 
 * Discussion about DataCamp.
 
-<!--
-* Machine learning flashcards
-* Bias-variance tradeoff
--->
-
 ## Todays Topics/Activities  
 
 ### 1. Chalk Talk
 
+* Continuing: Shiny app illustrating how to control the amount of "regularization/shrinkage" in a multiple regression model <a href="static/methods/LASSO/LASSO_v2.Rmd" download>`LASSO_v2.Rmd`</a>.
 * Explaining the optimization inherent to LASSO:* LASSO uses a class of [gradient descent](https://en.wikipedia.org/wiki/Gradient_descent){target="_blank"} optimization methods called [proximal gradient methods](https://en.wikipedia.org/wiki/Proximal_gradient_methods_for_learning#Lasso_regularization){target="_blank"} to find the $\widehat{\beta}_0$ and $\widehat{\beta}_1, \ldots, \widehat{\beta}_p$ that minimizes the following equation:
 
 $$
