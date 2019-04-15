@@ -69,7 +69,8 @@ h1{font-weight: 400;}
 
 ## Announcements
 
-* Posted information on in-class quiz on Wed 4/24 in [DataCamp](datacamp.html#quiz). This quiz will count as a DataCamp assigment. 
+* Posted information on in-class quiz on Wed 4/24 in [DataCamp](datacamp.html#quiz). This quiz will count as a DataCamp assignment. 
+* Discussion about DataCamp.
 
 <!--
 * Machine learning flashcards
@@ -80,7 +81,7 @@ h1{font-weight: 400;}
 
 ### 1. Chalk Talk
 
-*Explaining the optimization inherent to LASSO:* LASSO uses a class of [gradient descent](https://en.wikipedia.org/wiki/Gradient_descent){target="_blank"} optimization methods called [proximal gradient methods](https://en.wikipedia.org/wiki/Proximal_gradient_methods_for_learning#Lasso_regularization){target="_blank"} to find the $\widehat{\beta}_0$ and $\widehat{\beta}_1, \ldots, \widehat{\beta}_p$ that minimizes the following equation:
+* Explaining the optimization inherent to LASSO:* LASSO uses a class of [gradient descent](https://en.wikipedia.org/wiki/Gradient_descent){target="_blank"} optimization methods called [proximal gradient methods](https://en.wikipedia.org/wiki/Proximal_gradient_methods_for_learning#Lasso_regularization){target="_blank"} to find the $\widehat{\beta}_0$ and $\widehat{\beta}_1, \ldots, \widehat{\beta}_p$ that minimizes the following equation:
 
 $$
 \min_{\widehat{\beta}_0, \ldots, \widehat{\beta}_p} \left( \sum_{i=1}^n \left(y_i -\widehat{y}_i\right)^2 + \lambda \sum_{j=1}^p \left|\widehat{\beta}_j\right| \right)
