@@ -392,9 +392,10 @@ I will post all clarifications and hints in this section.
     + Plot the tree.
     + Make predictions `type_hat` on the `training` data. Hint compare the output of: `predict(model_CART, type = "prob")` and `predict(model_CART, type = "class")`.
     + Compute the "classification accuracy".
+    + **Added Mon 4/15 2:30pm** You do not need CV in this phase. 
 1. **Reaching for the stars:** Grade: 9.5/10. 
     + Satisfy all "baseline", "minimally viable product", and "due diligence" criteria.
-    + Reusing the MP1 solutions code, for the range of `alpha` complexity parameters in the `alpha_df` data frame, return an estimate of the accuracy that Kaggle would return.
+    + Reusing the MP1 solutions code, for the range of `alpha` complexity parameters in the `alpha_df` data frame, return an estimate of the accuracy that Kaggle would return. **Added Mon 4/15 2:30pm** Do I need to do CV for this phase? The answer is in directly given in the previous sentence. What does CV return?
     + Plot the relationship between the alpha complexity parameter and accuracy.
     + Using the optimal $\alpha^*$ complexity parameter, write a `submission.csv` suitable for submission to Kaggle.
 1. **Point of diminishing returns:** Grade: 10/10.
