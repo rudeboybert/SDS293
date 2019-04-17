@@ -64,6 +64,24 @@ h1{font-weight: 400;}
 
 ***
 
+# Lec 20: Wed 4/17
+
+## Announcements
+
+* Midterms back on Monday or your each get $10.
+* Preliminary info about MP5 posted. You are free to choose groups of 2-3. 
+
+## Todays Topics/Activities  
+
+### 1. In-class exercise
+
+Work on MP4.
+
+
+
+***
+
+
 
 # Lec 19: Mon 4/15
 

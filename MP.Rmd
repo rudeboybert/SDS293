@@ -418,7 +418,7 @@ I will post all clarifications and hints in this section.
 
 ## Administrative notes
 
-* **Executive summary**: 
+* **Executive summary**: You will be making a submission to the [House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques){target="_blank"} Kaggle competition based on a fitted ~~spline~~, ~~multiple regression~~ LASSO regularized multiple regression model. The competition's score for leaderboard purposes is the "root mean squared logarithmic error" (RMSLE).
 * **Due Thursday 5/2 10pm on Moodle**. 
 * You will be given time to work on MP5 in class on Wednesday 5/1 and Thursday 5/2.
 * Groups of between 2-3 members. There are no restrictions on who you choose to work with.
