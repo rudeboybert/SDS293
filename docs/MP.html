@@ -476,7 +476,7 @@ div.tocify {
   <a href="datacamp.html#quiz">DataCamp</a>
 </li>
 <li>
-  <a href="MP.html#MP4">Mini-Projects</a>
+  <a href="MP.html#MP5">Mini-Projects</a>
 </li>
 <li>
   <a href="midterms.html#midtermII">Midterms</a>
@@ -897,7 +897,6 @@ Ex: Group #1’s leader is BT.</li>
 <li>Feel free to use external sources, but please cite them using R Markdown footnotes. For example adding <code>^[This is my [source](https://www.smith.edu/)]</code> at the end of a sentence in R Markdown will yield: <a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></li>
 </ul></li>
 </ul>
-<hr />
 </div>
 <div id="what-to-submit-3" class="section level2">
 <h2>What to submit</h2>
@@ -951,25 +950,86 @@ Ex: Group #1’s leader is BT.</li>
 </ul></li>
 <li><strong>Polishing the cannonball:</strong> None</li>
 </ol>
-</div>
-<div id="suggestions-2" class="section level2">
-<h2>Suggestions</h2>
-<ul>
-<li></li>
-</ul>
 <hr />
 </div>
 </div>
 <div id="MP5" class="section level1">
-<h1>Mini-project 5</h1>
+<h1>Mini-project 5 (STILL A WORK IN PROGRESS)</h1>
 <div id="administrative-notes-4" class="section level2">
 <h2>Administrative notes</h2>
 <ul>
-<li><strong>Executive summary</strong>: You will be making a submission to the <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques" target="_blank">House Prices: Advanced Regression Techniques</a> Kaggle competition based on a fitted <del>spline</del>, <del>multiple regression</del> LASSO regularized multiple regression model. The competition’s score for leaderboard purposes is the “root mean squared logarithmic error” (RMSLE).</li>
+<li><strong>Executive summary</strong>: You will be making a submission to the <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques" target="_blank">House Prices: Advanced Regression Techniques</a> Kaggle competition based on a fitted <del>spline (MP1)</del>, <del>multiple regression (MP2)</del> LASSO regularized multiple regression model. The competition’s score for leaderboard purposes is the “root mean squared logarithmic error” (RMSLE).</li>
 <li><strong>Due Thursday 5/2 10pm on Moodle</strong>.</li>
-<li>You will be given time to work on MP5 in class on Wednesday 5/1 and Thursday 5/2.</li>
-<li>Groups of between 2-3 members. There are no restrictions on who you choose to work with.</li>
+<li>You will be given time to work on MP5 in class on Wednesday 5/1 and Thursday 5/2 (last day of class).</li>
+<li>Groups of between 2-3 members. There are no restrictions on who you choose to work with.
+<ul>
+<li><strong>If you already have a group</strong>: Designate a team leader and have them fill out this <a href="https://docs.google.com/spreadsheets/d/1YRlmq4pvrzmtq0iUha4uCwg2Xwiz3l1_e5ji-rWoqlc/edit#gid=1918067586" target="_blank">Google Sheet</a>.</li>
+<li><strong>If you need a group</strong>: Please fill out this <a href="https://docs.google.com/forms/d/e/1FAIpQLSeifexbjkXQNgm6d7bvSn0KcYoB6RVH5ab50o-RS6NfAS58AQ/viewform" target="_blank">Google Form</a> and I’ll assign one for you.</li>
+</ul></li>
 </ul>
+</div>
+<div id="MP5-working" class="section level2">
+<h2>Working on your project</h2>
+<p>I will post all clarifications and hints in this section.</p>
+<ul>
+<li>Join the <code>#mp5</code> Slack channel.</li>
+<li>Download the <code>MP5.zip</code> archive file containing the MP5 RStudio Project by clicking <a href="static/MP5.zip" download>here</a>.</li>
+<li><strong>Windows users</strong>: Be sure to “extract” the contents of <code>MP5.zip</code> to a folder on your machine.</li>
+<li>Whenever working on MP5, be sure to be in “RStudio Project mode” either by:
+<ol style="list-style-type: decimal">
+<li>Clicking the <code>MP5.Rproj</code> file</li>
+<li>Selecting <code>MP5</code> from the drop-down menu of RStudio Projects in the top right of RStudio.</li>
+</ol></li>
+<li>Knit the <code>MP5.Rmd</code> file and read over everything once.</li>
+<li>Whenever you’re not working on your project, click the RStudio Project icon in the top right of RStudio and select “Close Project”.</li>
+<li>Policies:
+<ul>
+<li>You may use a function from a package to compute the relevant Kaggle leaderboard score.</li>
+<li>You may not use a function from a packge to perform cross-validation; please code it up manually.</li>
+<li>Feel free to use external sources, but please cite them using R Markdown footnotes. For example adding <code>^[This is my [source](https://www.smith.edu/)]</code> at the end of a sentence in R Markdown will yield: <a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></li>
+</ul></li>
+</ul>
+</div>
+<div id="what-to-submit-4" class="section level2">
+<h2>What to submit</h2>
+<ul>
+<li><strong>Group leader only</strong>: Submit a <code>MP5_Group_XX.zip</code> archive file with the contents of your <code>MP5</code> RStudio Project folder <strong>but not the data files! They are huge!</strong> You can assume I have them.</li>
+<li><strong>Both group members</strong>: Complete the following peer evaluation <strong>and exit survey for the course</strong> <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlJyS-jGry0_nelwgjHJQ14Pu-gCIFao2rTLXFMVtvi04zhg/viewform" target="_blank">Google Form</a>. Both group members must complete the Google Form to receive full credit.</li>
+</ul>
+</div>
+<div id="grading-4" class="section level2">
+<h2>Grading</h2>
+<ol style="list-style-type: decimal">
+<li><strong>Baseline:</strong> Projects that do not satisfy all “baseline” criteria should expect to get a grade of less than 8/10.
+<ul>
+<li>Your <code>MP5.Rmd</code> R Markdown file must absolutely “knit” correctly.</li>
+<li>Regardless of which model you fit, you must output a submission <code>.csv</code> file that returns a valid score on Kaggle. The grader will test this.</li>
+<li>All plots (if any) must be “stand-alone” as possible by having informative labels and titles.</li>
+<li>Remove all superfluous non-informative output from your report that only makes it more painful/tiresome to read.</li>
+<li>Both group members submit their peer evaluations/exit survey info. No extensions will be granted.</li>
+</ul></li>
+<li><strong>Minimally viable product:</strong> Grade: 8/10.
+<ul>
+<li>Satisfy all “baseline” criteria.</li>
+</ul></li>
+<li><strong>Due diligence:</strong> Grade: 9/10.
+<ul>
+<li>Satisfy all “baseline” and “minimally viable product” criteria.</li>
+</ul></li>
+<li><strong>Reaching for the stars:</strong> Grade: 9.5/10.
+<ul>
+<li>Satisfy all “baseline”, “minimally viable product”, and “due diligence” criteria.</li>
+</ul></li>
+<li><strong>Point of diminishing returns:</strong> Grade: 10/10.
+<ul>
+<li>Satisfy all “baseline”, “minimally viable product”, “due diligence”, and “reaching for the stars” criteria.</li>
+</ul></li>
+<li><strong>Polishing the cannonball:</strong>
+<ul>
+<li>Satisfy all “baseline”, “minimally viable product”, “due diligence”, “reaching for the stars”, and “polishing the cannonball” criteria</li>
+<li></li>
+</ul></li>
+</ol>
 </div>
 </div>
 <div class="footnotes">
@@ -979,6 +1039,7 @@ Ex: Group #1’s leader is BT.</li>
 <li id="fn2"><p>This is my <a href="https://www.smith.edu/">source</a><a href="#fnref2" class="footnote-back">↩</a></p></li>
 <li id="fn3"><p>This is my <a href="https://www.smith.edu/">source</a><a href="#fnref3" class="footnote-back">↩</a></p></li>
 <li id="fn4"><p>This is my <a href="https://www.smith.edu/">source</a><a href="#fnref4" class="footnote-back">↩</a></p></li>
+<li id="fn5"><p>This is my <a href="https://www.smith.edu/">source</a><a href="#fnref5" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 

@@ -68,12 +68,15 @@ h1{font-weight: 400;}
 
 ## Announcements
 
+* In-class quiz on Wednesday, info posted in [DataCamp](datacamp.html#quiz).
 * 
+
 
 ## Todays Topics/Activities  
 
 ### 1. In-class exercise
 
+* LASSO
 
 ### 2. Tweet of the day
 

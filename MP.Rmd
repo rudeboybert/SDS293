@@ -285,7 +285,6 @@ fitted_points %>%
 ```
 
 
-
 ## What to submit
 
 * **Group leader only**: Submit a `MP3_Group_XX.zip` archive file with the contents of your `MP3` RStudio Project folder **but not the data files! They are huge!** You can assume I have them.
@@ -324,8 +323,6 @@ fitted_points %>%
 
 
 
-
-
 ***
 
 
@@ -340,6 +337,7 @@ fitted_points %>%
 * Groups: You must work with a different partner than MP1, MP2, and MP3.
     + **If you already have a group**: Designate a team leader and have them fill out this [Google Sheet](https://docs.google.com/spreadsheets/d/1YRlmq4pvrzmtq0iUha4uCwg2Xwiz3l1_e5ji-rWoqlc/){target="_blank"}.
     + **If you need a group**: Please fill out this [Google Form](https://docs.google.com/forms/d/1j8WyIvX9IHhpoNjpkputp065wjS4QgiTvIUDMDJaFW0/) and I'll assign one for you.
+
 
 ## Working on your project {#MP4-working}
 
@@ -359,17 +357,10 @@ I will post all clarifications and hints in this section.
     + Feel free to use external sources, but please cite them using R Markdown footnotes. For example adding `^[This is my [source](https://www.smith.edu/)]` at the end of a sentence in R Markdown will yield: ^[This is my [source](https://www.smith.edu/)]
 
 
-
-
-
-***
-
-
 ## What to submit
 
 * **Group leader only**: Submit a `MP4_Group_XX.zip` archive file with the contents of your `MP4` RStudio Project folder **but not the data files! They are huge!** You can assume I have them.
 * **Both group members**: Complete the following peer evaluation [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSctQmzuqGR7guPJkOZB01NqtdHl-2EtM45cGBGsda0hDOmc0A/viewform){target="_blank"}. Both group members must complete the Google Form to receive full credit.
-
 
 
 ## Grading
@@ -405,21 +396,63 @@ I will post all clarifications and hints in this section.
 1. **Polishing the cannonball:** None
 
 
-## Suggestions
-
-* 
-
 
 ***
 
 
 
-# Mini-project 5 {#MP5}
+# Mini-project 5 (STILL A WORK IN PROGRESS) {#MP5}
 
 ## Administrative notes
 
-* **Executive summary**: You will be making a submission to the [House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques){target="_blank"} Kaggle competition based on a fitted ~~spline~~, ~~multiple regression~~ LASSO regularized multiple regression model. The competition's score for leaderboard purposes is the "root mean squared logarithmic error" (RMSLE).
+* **Executive summary**: You will be making a submission to the [House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques){target="_blank"} Kaggle competition based on a fitted ~~spline (MP1)~~, ~~multiple regression (MP2)~~ LASSO regularized multiple regression model. The competition's score for leaderboard purposes is the "root mean squared logarithmic error" (RMSLE).
 * **Due Thursday 5/2 10pm on Moodle**. 
-* You will be given time to work on MP5 in class on Wednesday 5/1 and Thursday 5/2.
+* You will be given time to work on MP5 in class on Wednesday 5/1 and Thursday 5/2 (last day of class).
 * Groups of between 2-3 members. There are no restrictions on who you choose to work with.
+    + **If you already have a group**: Designate a team leader and have them fill out this [Google Sheet](https://docs.google.com/spreadsheets/d/1YRlmq4pvrzmtq0iUha4uCwg2Xwiz3l1_e5ji-rWoqlc/edit#gid=1918067586){target="_blank"}.
+    + **If you need a group**: Please fill out this [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSeifexbjkXQNgm6d7bvSn0KcYoB6RVH5ab50o-RS6NfAS58AQ/viewform){target="_blank"} and I'll assign one for you.
 
+## Working on your project {#MP5-working}
+
+I will post all clarifications and hints in this section.
+
+* Join the `#mp5` Slack channel.
+* Download the `MP5.zip` archive file containing the MP5 RStudio Project by clicking <a href="static/MP5.zip" download>here</a>.
+* **Windows users**: Be sure to "extract" the contents of `MP5.zip` to a folder on your machine.
+* Whenever working on MP5, be sure to be in "RStudio Project mode" either by:
+    1. Clicking the `MP5.Rproj` file
+    1. Selecting `MP5` from the drop-down menu of RStudio Projects in the top right of RStudio.
+* Knit the `MP5.Rmd` file and read over everything once.
+* Whenever you're not working on your project, click the RStudio Project icon in the top right of RStudio and select "Close Project".
+* Policies:
+    + You may use a function from a package to compute the relevant Kaggle leaderboard score.
+    + You may not use a function from a packge to perform cross-validation; please code it up manually.
+    + Feel free to use external sources, but please cite them using R Markdown footnotes. For example adding `^[This is my [source](https://www.smith.edu/)]` at the end of a sentence in R Markdown will yield: ^[This is my [source](https://www.smith.edu/)]
+
+
+## What to submit
+
+* **Group leader only**: Submit a `MP5_Group_XX.zip` archive file with the contents of your `MP5` RStudio Project folder **but not the data files! They are huge!** You can assume I have them.
+* **Both group members**: Complete the following peer evaluation **and exit survey for the course** [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSdlJyS-jGry0_nelwgjHJQ14Pu-gCIFao2rTLXFMVtvi04zhg/viewform){target="_blank"}. Both group members must complete the Google Form to receive full credit.
+
+
+
+## Grading
+
+1. **Baseline:** Projects that do not satisfy all "baseline" criteria should expect to get a grade of less than 8/10.
+    + Your `MP5.Rmd` R Markdown file must absolutely "knit" correctly. 
+    + Regardless of which model you fit, you must output a submission `.csv` file that returns a valid score on Kaggle. The grader will test this.
+    + All plots (if any) must be "stand-alone" as possible by having informative labels and titles. 
+    + Remove all superfluous non-informative output from your report that only makes it more painful/tiresome to read.
+    + Both group members submit their peer evaluations/exit survey info. No extensions will be granted.
+1. **Minimally viable product:** Grade: 8/10.
+    + Satisfy all "baseline" criteria.
+1. **Due diligence:** Grade: 9/10.
+    + Satisfy all "baseline" and "minimally viable product" criteria.
+1. **Reaching for the stars:** Grade: 9.5/10. 
+    + Satisfy all "baseline", "minimally viable product", and "due diligence" criteria.
+1. **Point of diminishing returns:** Grade: 10/10.
+    + Satisfy all "baseline", "minimally viable product", "due diligence", and "reaching for the stars" criteria.
+1. **Polishing the cannonball:**
+    + Satisfy all "baseline", "minimally viable product", "due diligence", "reaching for the stars", and "polishing the cannonball" criteria
+    + 
