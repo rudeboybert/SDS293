@@ -68,15 +68,20 @@ h1{font-weight: 400;}
 
 ## Announcements
 
-* In-class quiz on Wednesday, info posted in [DataCamp](datacamp.html#quiz).
-* 
+* Wed 4/24:
+    + In-class quiz (info posted in [DataCamp](datacamp.html#quiz)) followed by discussion of ethics in machine learning.
+    + Wrap-up discussion:
+        + What we didn't cover in this course.
+        + What to remember for future.
+    + No office hours during normal 2:45-4pm slot.
+* MP5 [posted](MP.html#MP5). Please fill out your group information/partner requests today if possible.
 
 
 ## Todays Topics/Activities  
 
 ### 1. In-class exercise
 
-* LASSO
+* Go over LASSO example [code](code.html#LASSO).
 
 ### 2. Tweet of the day
 

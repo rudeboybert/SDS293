@@ -25,6 +25,18 @@ h1{font-weight: 400;}
 
 
 
+# LASSO {#LASSO}
+
+Lec21 on LASSO
+
+<script src="https://gist.github.com/rudeboybert/628fa75e074d15f3622a89b954800165.js"></script>
+
+
+
+***
+
+
+
 # Classification and Regression Trees {#regression}
 
 Lec13 on CART

@@ -25,7 +25,7 @@ model_formula <-
 
 # Fit unregularized multiple regression model and output regression table. The
 # unregularized beta-hat coefficients are in the estimate column. Recall from
-# a previous lecture that this is one "extreme". REMEMBER THESE VALUES!!!
+# Lec18 notes that this is one "extreme". REMEMBER THESE VALUES!!!
 lm(model_formula, data = credit) %>%
   tidy(conf.int = TRUE)
 
@@ -35,8 +35,8 @@ lm(model_formula, data = credit) %>%
 mean(credit$Balance)
 
 
-# 3. Based on the above model formula, create "model matrix" of the predictor
-# variables. Note:
+# 3. Based on the above model formula, create "model matrix" representation of
+# the predictor variables. Note:
 # -the model_matrix() function conveniently converts all categorical predictors
 # to numerical ones using one-hot encoding as seen in MP4
 # -we remove the first column corresponding to the intercept because it is
@@ -47,12 +47,13 @@ x_matrix <- credit %>%
   as.matrix()
 
 # Compare the original data to the model matrix. What is different?
-View(credit)
-View(x_matrix)
+credit
+x_matrix
 
 
 # 4.a) Fit a LASSO model. Note the inputs
-# -Instead of inputing a model formula, you input the x_matrix and outcome variable
+# -Instead of inputing a model formula, you input the corresponding x_matrix and
+# outcome variable
 # -Setting alpha = 1 sets the regularization method to be LASSO. Setting it to be 0
 # sets the regularization method to be "ridge regression", another regulization
 # method that we don't have time to cover in this class
@@ -70,26 +71,31 @@ get_LASSO_coefficients <- function(LASSO_fit){
     arrange(desc(lambda))
   return(beta_hats)
 }
-
-# For that value of lambda = 10, we have the beta-hat coefficients that minimizes
-# the equation seen in Lec19 via numerical optimization. Observe how the beta-hats for
-# the Limit variable has been "shrunk" to 0.
 get_LASSO_coefficients(LASSO_fit_a)
 
+# For that value of lambda = 10, we have the beta-hat coefficients that minimizes
+# the equation seen in Lec19 via numerical optimization. Observe how all the
+# beta-hats have been shrunk while the beta-hat for Limit variable has been
+# "shrunk" to 0 and hence is dropped from the model. Compare above output with
+# previously seen "unregularized" regression results
+lm(model_formula, data = credit) %>%
+  tidy(conf.int = TRUE)
 
-# 4.b) Fit a LASSO model considering two lambda tuning/complexity parameters at once
-# and look at beta-hats
+
+# 4.b) Fit a LASSO model considering TWO lambda tuning/complexity parameters at
+# once and look at beta-hats
 lambda_inputs <- c(10, 1000)
 LASSO_fit_b <- glmnet(x = x_matrix, y = credit$Balance, alpha = 1, lambda = lambda_inputs)
 get_LASSO_coefficients(LASSO_fit_b)
 
 # The above output is in tidy/long format, which makes it hard to compare beta-hats
-# for both lambda values. Let's convert it to wide and study the beta-hats
+# for both lambda values. Let's convert it to wide format and compare the beta-hats
 get_LASSO_coefficients(LASSO_fit_b) %>%
   spread(lambda, estimate)
 
 # Notice how for the larger lambda, all non-intercept beta-hats have been shrunk
-# to 0. This is because lambda = 1000 penalizes model complexity more harshly.
+# to 0. All that remains is the intercept, whose value is the mean of the y.
+# This is because lambda = 1000 penalizes complexity more harshly.
 
 
 # 4.c) Fit a LASSO model with several lambda tuning/complexity parameters at once
@@ -124,9 +130,8 @@ get_LASSO_coefficients(LASSO_fit_c) %>%
   geom_line() +
   labs(x = "lambda", y = "beta-hat")
 
-# Now because of the large magnitude of the beta-hat for StudentYes, it's hard
-# to see in what order the beta-hats get shrunk to 0, so let's zoom-in the plot
-# a bit
+# It's hard to see in what order the beta-hats get shrunk to 0, so let's zoom-in
+# the plot a bit
 get_LASSO_coefficients(LASSO_fit_c) %>%
   filter(term != "(Intercept)") %>%
   # Plot:
@@ -146,9 +151,12 @@ get_LASSO_coefficients(LASSO_fit_c) %>%
   coord_cartesian(xlim=c(1, 500), ylim = c(-10, 10)) +
   scale_x_log10()
 
+# Ask yourself, in what order are the variables being shrunk to 0?
+
 
 # 4.d) Fit a LASSO model with a narrower search grid of lambda tuning/complexity
-# parameter values, but also space the lambdas in powers of 10, and look at beta-hats
+# parameter values AND such that the lambdas are spaced by multiplicative powers
+# of 10, instead of additive differences, and look at beta-hats
 lambda_inputs <- 10^seq(from = -5, to = 3, length = 100)
 summary(lambda_inputs)
 LASSO_fit_d <- glmnet(x = x_matrix, y = credit$Balance, alpha = 1, lambda = lambda_inputs)
@@ -169,9 +177,9 @@ LASSO_coefficients_plot +
 
 
 # 5. However, how do we know which lambda value to use? Should we set it to
-# yield a less complex vs more complex model? Let's use the glmnet package's
+# yield a less complex or more complex model? Let's use the glmnet package's
 # built in crossvalidation functionality, using the same search grid of
-# lambda values:
+# lambda_input values:
 lambda_inputs <- 10^seq(from = -5, to = 3, length = 100)
 LASSO_CV <- cv.glmnet(
   x = x_matrix,
@@ -194,8 +202,8 @@ LASSO_CV %>%
   rename(mse = estimate) %>%
   arrange(mse)
 
-# The lambda_star that yields this looks to be approximately 1.48. We can
-# extract this lambda value from LASSO_CV:
+# The lambda_star is in the top row. We can extract this lambda_star value from
+# the LASSO_CV object:
 lambda_star <- LASSO_CV$lambda.min
 lambda_star
 
@@ -215,15 +223,15 @@ CV_plot
 
 # Zoom-in:
 CV_plot +
-  coord_cartesian(xlim=c(10^(-2), 10^2), ylim = c(23000, 27000))
+  coord_cartesian(xlim=c(10^(-2), 10^2), ylim = c(40000, 50000))
 
-# Mark the lambda_star with dashed blue lines
+# Mark the lambda_star with dashed blue line
 CV_plot +
-  coord_cartesian(xlim=c(10^(-2), 10^2), ylim = c(23000, 27000)) +
+  coord_cartesian(xlim=c(10^(-2), 10^2), ylim = c(40000, 50000)) +
   geom_vline(xintercept = lambda_star, linetype = "dashed", col = "blue")
 
 
-# 6. Mark lambda_star in beta-hat vs lambda plot:
+# 6. Now mark lambda_star in beta-hat vs lambda plot:
 LASSO_coefficients_plot +
   geom_vline(xintercept = lambda_star, linetype = "dashed", col = "blue")
 
@@ -232,14 +240,15 @@ LASSO_coefficients_plot +
   geom_vline(xintercept = lambda_star, linetype = "dashed", col = "blue") +
   coord_cartesian(ylim = c(-3, 3))
 
-# What are the beta_hat values? It appears none have bee
+# What are the beta_hat values resulting from lambda_star? Which are shrunk to 0?
 get_LASSO_coefficients(LASSO_fit_d) %>%
   filter(lambda == lambda_star)
 
 
 # 7. Get predictions from f_hat LASSO model using lambda_star_1SE
 credit <- credit %>%
-  mutate(y_hat_LASSO = predict(LASSO_fit_d, newx = x_matrix, s = lambda_star_1SE)[,1])
+  mutate(y_hat_LASSO = predict(LASSO_fit_d, newx = x_matrix, s = lambda_star)[,1])
+credit
 
 
 # 8. Train/test framework
@@ -247,29 +256,39 @@ credit_train <- credit %>%
   slice(1:10)
 credit_test <- credit %>%
   slice(11:20) %>%
+  # Remove outcome variable for test set
   select(-Balance)
 
+# model matrix representation of predictor variables for training set:
 x_matrix_train <- credit_train %>%
   modelr::model_matrix(model_formula, data = .) %>%
   select(-`(Intercept)`) %>%
   as.matrix()
 
+# model matrix representation of predictor variables for test set:
 x_matrix_test <- credit_test %>%
   modelr::model_matrix(model_formula, data = .) %>%
   select(-`(Intercept)`) %>%
   as.matrix()
 
+# The previous didn't work b/c there is no outcome variable Balance in test as
+# specified in model_formula. The solution is to create a temporary dummy
+# variable of 1's (or any value); it makes no difference since ultimately we
+# only care about x values.
 x_matrix_test <- credit_test %>%
-  # Create temporary outcome variance just to get model matrix to work
+  # Create temporary outcome variance just to get model matrix to work:
   mutate(Balance = 1) %>%
   modelr::model_matrix(model_formula, data = .) %>%
   select(-`(Intercept)`) %>%
   as.matrix()
 
+# Fit/train model to training set using arbitrarily chosen lambda = 1-
 LASSO_fit_train <- glmnet(x = x_matrix_train, y = credit_train$Balance, alpha = 1, lambda = 10)
+
+# Predict y_hat's for test data using model and same lambda = 10.
 credit_test <- credit_test %>%
   mutate(y_hat_LASSO = predict(LASSO_fit_train, newx = x_matrix_test, s = 10)[,1])
-
+credit_test
 
 
 
