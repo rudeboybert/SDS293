@@ -245,7 +245,7 @@ get_LASSO_coefficients(LASSO_fit_d) %>%
   filter(lambda == lambda_star)
 
 
-# 7. Get predictions from f_hat LASSO model using lambda_star_1SE
+# 7. Get predictions from f_hat LASSO model using lambda_star
 credit <- credit %>%
   mutate(y_hat_LASSO = predict(LASSO_fit_d, newx = x_matrix, s = lambda_star)[,1])
 credit
