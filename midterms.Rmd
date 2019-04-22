@@ -93,7 +93,7 @@ h1{font-weight: 400;}
 
 ## Question 3 resubmission instructions {#revise}
 
-You can revise and resubmit **only Question 3** for half points back if you do the following:
+You can revise and resubmit **only Question 3** for ~~half~~ ALL points back if you do the following:
 
 * Re-do Question 3 and answer all elements of the question **correctly**.
 * Write in pseudocode, no code. What is pseudocode?
