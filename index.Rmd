@@ -68,6 +68,7 @@ h1{font-weight: 400;}
 
 ## Announcements
 
+* [Instructions](midterms.html#revise) on revising/resubmitting question 3 of midterm II only. 
 * Wed 4/24:
     + In-class quiz (info posted in [DataCamp](datacamp.html#quiz)) followed by discussion of ethics in machine learning.
     + Wrap-up discussion:

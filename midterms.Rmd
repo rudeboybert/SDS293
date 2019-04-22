@@ -91,4 +91,16 @@ h1{font-weight: 400;}
 
 
 
+## Question 3 resubmission instructions {#revise}
+
+You can revise and resubmit **only Question 3** for half points back if you do the following:
+
+* Re-do Question 3 and answer all elements of the question **correctly**.
+* Write in pseudocode, no code. What is pseudocode?
+    + First off, it is not language specific. R and python programmers should be able to understand.
+    + It explicit. Imagine someone is an expert coder, but doesn't understand machine learning. Take should take your "pseudocode recipe" and be able to implement the algorithm.
+    + A good guide is: think of pseudocode as what you would comment your code with.
+* In addition answer the following question: Given an outcome variable $y$, a corresponding "score" (i.e. scoring mechanism that measures prediction quality, like RMSE, RMLSE, AUC, classification accuracy, etc.), and `training` and `test` sets (not necessarily as part of a Kaggle competition), cross-validation returns one value. What is this value? Answer in **one** sentence. 
+* Staple your resubmission to the back of your midterm and submit it no later than the end of next Monday's lecture.    
+* You may consult your peers.
 
