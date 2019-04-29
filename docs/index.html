@@ -494,7 +494,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">SDS/CSC 293: Machine Learning</h1>
 <h4 class="author">Albert Y. Kim</h4>
-<h4 class="date">Last updated on 2019-04-22</h4>
+<h4 class="date">Last updated on 2019-04-29</h4>
 
 </div>
 
@@ -515,9 +515,133 @@ h1{font-weight: 400;}
 -->
 <hr />
 </div>
+<div id="lec-25-thu-52" class="section level1">
+<h1>Lec 25: Thu 5/2</h1>
+<div id="announcements" class="section level2">
+<h2>Announcements</h2>
+</div>
+<div id="todays-topicsactivities" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="in-class-exercise" class="section level3">
+<h3>1. In-class exercise</h3>
+<p>Work on MP5.</p>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-24-wed-51" class="section level1">
+<h1>Lec 24: Wed 5/1</h1>
+<div id="announcements-1" class="section level2">
+<h2>Announcements</h2>
+</div>
+<div id="todays-topicsactivities-1" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="in-class-exercise-1" class="section level3">
+<h3>1. In-class exercise</h3>
+<p>Work on MP5.</p>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-23-mon-429" class="section level1">
+<h1>Lec 23: Mon 4/29</h1>
+<div id="announcements-2" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li>Wrap-up</li>
+<li><a href="midterms.html#revise">Midterm II Q3 resubmission</a> due today. You must follow instructions completely to receive full credit.</li>
+</ul>
+</div>
+<div id="todays-topicsactivities-2" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="chalk-talk-major-topics-we-didnt-cover" class="section level3">
+<h3>1. Chalk Talk: Major topics we didn’t cover</h3>
+<ol style="list-style-type: decimal">
+<li>Image recognition: <a href="https://quickdraw.withgoogle.com/" target="_blank">Google Quick, Draw</a>.</li>
+<li>“Unsupervised learning” where there is no outcome variable <span class="math inline">\(y\)</span>:
+<ol style="list-style-type: lower-alpha">
+<li>Clustering. Ex: k-means clustering <a href="static/methods/k_means/k_means.pdf" target="_blank">PDF</a> and <a href="static/methods/k_means/k_means_plots.R" download>source code</a>.</li>
+<li>Principal components analysis (PCA)
+<ul>
+<li>Simple example: <a href="static/methods/PCA/PCA.html" target="_blank">School funding</a> and <a href="static/methods/PCA/PCA.Rmd" download>source code</a>.</li>
+<li>Facial recognition example: <a href="static/methods/PCA/faces.csv.zip" download>data</a> and <a href="static/methods/PCA/PCA.R" download><code>PCA.R</code></a> code</li>
+</ul></li>
+</ol></li>
+<li>Bias-variance tradeoff. Why do observe this pattern in the “Total Error” black curve below, which is a fitted model’s error on new test data for different levels of model complexity?</li>
+</ol>
+<p><a href="http://scott.fortmann-roe.com/docs/BiasVariance.html"><img border="1" src="http://scott.fortmann-roe.com/docs/docs/BiasVariance/biasvariance.png" width="500"></a></p>
+<p>Because of this probabilistic formula</p>
+<p><span class="math display">\[
+\mbox{MSE}\left[\widehat{f}(x)\right] = \mbox{Var}\left[\widehat{f}(x)\right] +
+\left(\mbox{Bias}\left[\widehat{f}(x)\right]\right)^2 + \sigma^2
+\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(\widehat{y}\)</span> is also denoted <span class="math inline">\(\widehat{f}(x)\)</span>. <span class="math inline">\(\widehat{f}(x)\)</span> is a random variable.</li>
+<li><span class="math inline">\(y=f(x)+\epsilon\)</span> with <span class="math inline">\(\mathbb{E}\left[\epsilon\right] = 0\)</span> and <span class="math inline">\(\mbox{Var}[\epsilon] = \sigma\)</span>. Hence <span class="math inline">\(y\)</span> is random as well.</li>
+<li>The random variation is over sample to sample.</li>
+</ul>
+<p>Why is this true? You need to take MTH/SDS 246 Probability:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mbox{MSE}\left[\widehat{f}(x)\right] &amp;= \mathbb{E}\left[\left( y - \widehat{f}(x) \right)^2\right]= \mathbb{E}\left[\left( y^2 - 2 y\widehat{f}(x) + \widehat{f}(x)^2 \right)\right]\\
+&amp;= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - \left(\mathbb{E}\left[ 2y\widehat{f}(x) \right]\right) \mbox{ by linearity of expectations } \\
+&amp;= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - \left(\mathbb{E}\left[ 2(f(x)+\epsilon)\widehat{f}(x) \right]\right) \mbox{ since } y = f(x)+\epsilon\\
+&amp;= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - \left(\mathbb{E}\left[ 2f(x)\widehat{f}(x) \right] + \mathbb{E}\left[ 2\epsilon\widehat{f}(x) \right]\right)  \\
+&amp;= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] - 2\mathbb{E}\left[ \epsilon\widehat{f}(x) \right]  \mbox{ since } \mathbb{E}\left[aX\right] = a\mathbb{E}\left[X\right] \mbox{ for } a \in \mathbb{R}\\
+&amp;= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] - 2\mathbb{E}\left[\epsilon \right]\mathbb{E}\left[\widehat{f}(x) \right] \mbox{ since } \mathbb{E}\left[XY\right] = \mathbb{E}\left[X\right]\mathbb{E}\left[Y\right] \mbox{ if }X,Y \mbox{ are independent}\\
+&amp;= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] - 0 \mbox{ since } \mathbb{E}\left[\epsilon\right]=0\\
+&amp;= \left( \mbox{Var}\left[ y \right] + \mathbb{E}\left[y\right]^2 \right) + \left(\mbox{Var}\left[ \widehat{f}(x) \right] + \mathbb{E}\left[ \widehat{f}(x) \right]^2\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] \mbox{ since } \mbox{Var}\left[X\right] = \mathbb{E}\left[X^2\right] - \mathbb{E}\left[X\right]^2\\
+&amp;= \left( \mbox{Var}\left[ y \right] + \mathbb{E}\left[f(x) + \epsilon\right]^2 \right) + \left(\mbox{Var}\left[ \widehat{f}(x) \right] + \mathbb{E}\left[ \widehat{f}(x) \right]^2\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right]\\
+&amp;= \left( \mbox{Var}\left[ y \right] + \mathbb{E}\left[f(x)\right]^2 + 0 \right) + \left(\mbox{Var}\left[ \widehat{f}(x) \right] + \mathbb{E}\left[ \widehat{f}(x) \right]^2\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] \mbox{ since } \mathbb{E}\left[\epsilon\right] = 0\\
+&amp;= \mbox{Var}\left[ y \right] + \mbox{Var}\left[ \widehat{f}(x) \right] + \left( f(x)^2  -  2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] + \mathbb{E}\left[ \widehat{f}(x) \right]^2 \right)\\
+&amp;= \mbox{Var}\left[ y \right] + \mbox{Var}\left[ \widehat{f}(x) \right] + \left(  f(x) - \mathbb{E}\left[\widehat{f}(x) \right] \right)^2 \\
+&amp;= \mbox{Var}\left[ y\right] + \mbox{Var}\left[ \widehat{f}(x) \right] + \left(  \mathbb{E}\left[f(x)-\widehat{f}(x) \right] \right)^2 \mbox{ since } \mathbb{E}\left[a + X \right] = a + \mathbb{E}\left[X\right] \mbox{ for } a \in \mathbb{R}\\
+&amp;= \sigma^2 + \mbox{Var}\left[ \widehat{f}(x) \right] + \left( \mbox{Bias}\left[ \widehat{f}(x) \right] \right)^2 \mbox{ since } \mbox{Var}\left[ y\right] = \mbox{Var}\left[ f(x)+\epsilon\right] = \mbox{Var}\left[ \epsilon \right] = \sigma^2\\
+\end{aligned}
+\]</span></p>
+</div>
+<div id="chalk-talk-neural-nets" class="section level3">
+<h3>2. Chalk Talk: Neural nets</h3>
+<p>Based on this <a href="http://neuralnetworksanddeeplearning.com/chap1.html" target="_blank">link</a>, the best layperson’s explanation of neural nets I could find. Other references:</p>
+<ul>
+<li><a href="https://www.amazon.com/Deep-Learning-R-Francois-Chollet/dp/161729554X" target="_blank">Deep Learning with R</a>, which uses the <code>keras</code> package.</li>
+<li>The <code>keras</code> package is included in RStudio’s <a href="https://tensorflow.rstudio.com/tensorflow/" target="_blank">R Interface to Core TensorFlow API</a>.</li>
+<li><a href="https://www.tensorflow.org/" target="_blank">TensorFlow</a> is Google Brain’s open-source library for machine learning applications such as neural networks.</li>
+<li>TensorFlow is one of the elements behind <a href="https://ai.googleblog.com/2016/01/alphago-mastering-ancient-game-of-go.html" target="_blank">AlphaGo</a>:</li>
+</ul>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8tq1C8spV_g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p></br></p>
+</div>
+<div id="example-of-deep-learning" class="section level3">
+<h3>3. Example of Deep Learning</h3>
+<p>Amherst College ’18 graduate and <a href="https://datascience.massmutual.com/dsdp" target="_blank">MassMutual Data Science Development Program</a> member Jennifer Halbleib’s thesis: <a href="static/halbleib.pdf" target="_blank">PDF</a> and <code>thesisdown</code> R Markdown <a href="static/halbleib.zip" download>source code</a>. Data considered is famous <a href="https://en.wikipedia.org/wiki/MNIST_database" target="_blank">MNIST handwritten digit data</a>, available on <a href="https://www.kaggle.com/c/digit-recognizer" target="_blank">Kaggle</a>.</p>
+<p><a href="https://www.kaggle.com/c/digit-recognizer"><img border="1" src="static/images/MNIST_digits.png" width="500"></a></p>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-22-wed-424" class="section level1">
+<h1>Lec 22: Wed 4/24</h1>
+<div id="announcements-3" class="section level2">
+<h2>Announcements</h2>
+<p>None.</p>
+</div>
+<div id="todays-topicsactivities-3" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="in-class-exercise-2" class="section level3">
+<h3>1. In-class exercise</h3>
+<ul>
+<li>Ethics in machine learning discussion. All comments + links posted in <code>#ethics_discussion</code> channel in Slack.</li>
+</ul>
+<hr />
+</div>
+</div>
+</div>
 <div id="lec-21-mon-422" class="section level1">
 <h1>Lec 21: Mon 4/22</h1>
-<div id="announcements" class="section level2">
+<div id="announcements-4" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li><a href="midterms.html#revise">Instructions</a> on revising/resubmitting question 3 of midterm II only.</li>
@@ -534,9 +658,9 @@ h1{font-weight: 400;}
 <li>MP5 <a href="MP.html#MP5">posted</a>. Please fill out your group information/partner requests today if possible.</li>
 </ul>
 </div>
-<div id="todays-topicsactivities" class="section level2">
+<div id="todays-topicsactivities-4" class="section level2">
 <h2>Todays Topics/Activities</h2>
-<div id="in-class-exercise" class="section level3">
+<div id="in-class-exercise-3" class="section level3">
 <h3>1. In-class exercise</h3>
 <ul>
 <li>Go over LASSO example <a href="code.html#LASSO">code</a>.</li>
@@ -557,16 +681,16 @@ We heard you like R so we made a wine called R so you can drink R while you R <a
 </div>
 <div id="lec-20-wed-417" class="section level1">
 <h1>Lec 20: Wed 4/17</h1>
-<div id="announcements-1" class="section level2">
+<div id="announcements-5" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>Midterms back on Monday or your each get $10.</li>
 <li>Preliminary info about MP5 posted. You are free to choose groups of 2-3.</li>
 </ul>
 </div>
-<div id="todays-topicsactivities-1" class="section level2">
+<div id="todays-topicsactivities-5" class="section level2">
 <h2>Todays Topics/Activities</h2>
-<div id="in-class-exercise-1" class="section level3">
+<div id="in-class-exercise-4" class="section level3">
 <h3>1. In-class exercise</h3>
 <p>Work on MP4.</p>
 <hr />
@@ -575,14 +699,14 @@ We heard you like R so we made a wine called R so you can drink R while you R <a
 </div>
 <div id="lec-19-mon-415" class="section level1">
 <h1>Lec 19: Mon 4/15</h1>
-<div id="announcements-2" class="section level2">
+<div id="announcements-6" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>Posted information on in-class quiz on Wed 4/24 in <a href="datacamp.html#quiz">DataCamp</a>. This quiz will count as a DataCamp assignment.</li>
 <li>Discussion about DataCamp.</li>
 </ul>
 </div>
-<div id="todays-topicsactivities-2" class="section level2">
+<div id="todays-topicsactivities-6" class="section level2">
 <h2>Todays Topics/Activities</h2>
 <div id="chalk-talk" class="section level3">
 <h3>1. Chalk Talk</h3>
@@ -599,7 +723,7 @@ We heard you like R so we made a wine called R so you can drink R while you R <a
 \]</span></p>
 <p>Note that the “residual sum of squares” is inversely related to the “shrinkage penalty”.</p>
 </div>
-<div id="in-class-exercise-2" class="section level3">
+<div id="in-class-exercise-5" class="section level3">
 <h3>2. In-class exercise</h3>
 <p>Work on MP4.</p>
 <hr />
@@ -608,7 +732,7 @@ We heard you like R so we made a wine called R so you can drink R while you R <a
 </div>
 <div id="lec-18-mon-48" class="section level1">
 <h1>Lec 18: Mon 4/8</h1>
-<div id="announcements-3" class="section level2">
+<div id="announcements-7" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>(More straight-forward) <a href="MP.html#MP4">MP4 posted</a></li>
@@ -619,7 +743,7 @@ We heard you like R so we made a wine called R so you can drink R while you R <a
 </center></li>
 </ul>
 </div>
-<div id="todays-topicsactivities-3" class="section level2">
+<div id="todays-topicsactivities-7" class="section level2">
 <h2>Todays Topics/Activities</h2>
 <div id="chalk-talk-1" class="section level3">
 <h3>1. Chalk Talk</h3>
@@ -637,14 +761,14 @@ We heard you like R so we made a wine called R so you can drink R while you R <a
 </div>
 <div id="lec-17-wed-42" class="section level1">
 <h1>Lec 17: Wed 4/2</h1>
-<div id="announcements-4" class="section level2">
+<div id="announcements-8" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>If you are interested in being hired to be a note taker for this class, please see the message in <code>#general</code> on Slack.</li>
 <li>Extra office hours this Friday: 2:30pm-4:00pm.</li>
 </ul>
 </div>
-<div id="todays-topicsactivities-4" class="section level2">
+<div id="todays-topicsactivities-8" class="section level2">
 <h2>Todays Topics/Activities</h2>
 <div id="how-cart-partitions-the-predictor-space-take-2" class="section level3">
 <h3>How CART partitions the predictor space, Take 2</h3>
@@ -668,13 +792,13 @@ We heard you like R so we made a wine called R so you can drink R while you R <a
 </div>
 <div id="lec-16-mon-41" class="section level1">
 <h1>Lec 16: Mon 4/1</h1>
-<div id="announcements-5" class="section level2">
+<div id="announcements-9" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>Midterm II this weekend. Review materials under <a href="midterms.html#midtermII">Midterms</a></li>
 </ul>
 </div>
-<div id="todays-topicsactivities-5" class="section level2">
+<div id="todays-topicsactivities-9" class="section level2">
 <h2>Todays Topics/Activities</h2>
 <div id="chalk-talk-3" class="section level3">
 <h3>1. Chalk Talk</h3>
@@ -702,13 +826,13 @@ We heard you like R so we made a wine called R so you can drink R while you R <a
 </div>
 <div id="lec-15-wed-327" class="section level1">
 <h1>Lec 15: Wed 3/27</h1>
-<div id="announcements-6" class="section level2">
+<div id="announcements-10" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li></li>
 </ul>
 </div>
-<div id="todays-topicsactivities-6" class="section level2">
+<div id="todays-topicsactivities-10" class="section level2">
 <h2>Todays Topics/Activities</h2>
 <div id="chalk-talk-4" class="section level3">
 <h3>1. Chalk Talk</h3>
@@ -716,7 +840,7 @@ We heard you like R so we made a wine called R so you can drink R while you R <a
 <li>What is a “minimally <strong>REPR</strong>oducible <strong>EX</strong>ample” AKA a <a href="https://www.tidyverse.org/help/" target="_blank">reprex</a>?</li>
 </ul>
 </div>
-<div id="in-class-exercise-3" class="section level3">
+<div id="in-class-exercise-6" class="section level3">
 <h3>2. In-class exercise</h3>
 <ul>
 <li>MP3 now due at 10pm (as well as MP4 &amp; MP5).</li>
@@ -728,7 +852,7 @@ We heard you like R so we made a wine called R so you can drink R while you R <a
 </div>
 <div id="lec-14-mon-325" class="section level1">
 <h1>Lec 14: Mon 3/25</h1>
-<div id="announcements-7" class="section level2">
+<div id="announcements-11" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>Sit with your MP3 partner</li>
@@ -739,7 +863,7 @@ We heard you like R so we made a wine called R so you can drink R while you R <a
 </br></li>
 </ul>
 </div>
-<div id="todays-topicsactivities-7" class="section level2">
+<div id="todays-topicsactivities-11" class="section level2">
 <h2>Todays Topics/Activities</h2>
 <div id="iris-dataset" class="section level3">
 <h3>1. iris dataset</h3>
@@ -836,7 +960,7 @@ We heard you like R so we made a wine called R so you can drink R while you R <a
 <h3>2. Chalk Talk</h3>
 <p>Classification and Regression Trees (CART) are trees. + “Classification” when outcome variable <span class="math inline">\(y\)</span> is categorical + “Regression” when outcome variable <span class="math inline">\(y\)</span> is numerical</p>
 </div>
-<div id="in-class-exercise-4" class="section level3">
+<div id="in-class-exercise-7" class="section level3">
 <h3>3. In-class exercise</h3>
 <ul>
 <li>See <a href="code.html">Code</a> for CART</li>
@@ -847,7 +971,7 @@ We heard you like R so we made a wine called R so you can drink R while you R <a
 </div>
 <div id="lec-13-wed-320" class="section level1">
 <h1>Lec 13: Wed 3/20</h1>
-<div id="announcements-8" class="section level2">
+<div id="announcements-12" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>No office hours today. I do however have appointments to book on Friday (see syllabus for link, appointment slots vary each week).</li>
@@ -858,9 +982,9 @@ We heard you like R so we made a wine called R so you can drink R while you R <a
 </ul></li>
 </ul>
 </div>
-<div id="todays-topicsactivities-8" class="section level2">
+<div id="todays-topicsactivities-12" class="section level2">
 <h2>Todays Topics/Activities</h2>
-<div id="in-class-exercise-5" class="section level3">
+<div id="in-class-exercise-8" class="section level3">
 <h3>1. In-class exercise</h3>
 <ul>
 <li>Work on MP3</li>
@@ -872,7 +996,7 @@ We heard you like R so we made a wine called R so you can drink R while you R <a
 </div>
 <div id="lec-12-mon-318" class="section level1">
 <h1>Lec 12: Mon 3/18</h1>
-<div id="announcements-9" class="section level2">
+<div id="announcements-13" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>Two events coming up:
@@ -886,7 +1010,7 @@ We heard you like R so we made a wine called R so you can drink R while you R <a
 <center>
 <p></br></p>
 </div>
-<div id="todays-topicsactivities-9" class="section level2">
+<div id="todays-topicsactivities-13" class="section level2">
 <h2>Todays Topics/Activities</h2>
 <div id="chalk-talk-6" class="section level3">
 <h3>1. Chalk Talk</h3>
@@ -915,13 +1039,13 @@ We heard you like R so we made a wine called R so you can drink R while you R <a
 </div>
 <div id="lec-11-wed-36" class="section level1">
 <h1>Lec 11: Wed 3/6</h1>
-<div id="announcements-10" class="section level2">
+<div id="announcements-14" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>Spinelli Center tutoring hours change tomorrow (Thursday 3/7) only: 4:30-6pm and not <del>7-9pm</del>.</li>
 </ul>
 </div>
-<div id="todays-topicsactivities-10" class="section level2">
+<div id="todays-topicsactivities-14" class="section level2">
 <h2>Todays Topics/Activities</h2>
 <div id="chalk-talk-7" class="section level3">
 <h3>1. Chalk Talk</h3>
@@ -929,7 +1053,7 @@ We heard you like R so we made a wine called R so you can drink R while you R <a
 <li>Finishing logistic regression</li>
 </ul>
 </div>
-<div id="in-class-exercise-6" class="section level3">
+<div id="in-class-exercise-9" class="section level3">
 <h3>2. In-class exercise</h3>
 <ul>
 <li>Work on MP2</li>
@@ -940,7 +1064,7 @@ We heard you like R so we made a wine called R so you can drink R while you R <a
 </div>
 <div id="lec-10-mon-34" class="section level1">
 <h1>Lec 10: Mon 3/4</h1>
-<div id="announcements-11" class="section level2">
+<div id="announcements-15" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>Reminder tomorrow is:</li>
@@ -950,7 +1074,7 @@ We heard you like R so we made a wine called R so you can drink R while you R <a
 <center>
 <p><br></p>
 </div>
-<div id="todays-topicsactivities-11" class="section level2">
+<div id="todays-topicsactivities-15" class="section level2">
 <h2>Todays Topics/Activities</h2>
 <div id="chalk-talk-8" class="section level3">
 <h3>1. Chalk Talk</h3>
@@ -975,7 +1099,7 @@ $$
 -->
 <p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="768" /></p>
 </div>
-<div id="in-class-exercise-7" class="section level3">
+<div id="in-class-exercise-10" class="section level3">
 <h3>2. In-class exercise</h3>
 <ul>
 <li>Work on MP2</li>
@@ -986,14 +1110,14 @@ $$
 </div>
 <div id="lec-9-wed-227" class="section level1">
 <h1>Lec 9: Wed 2/27</h1>
-<div id="announcements-12" class="section level2">
+<div id="announcements-16" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>As indicated in the <a href="syllabus.html#policies">syllabus</a>, even if you are done any in-class exercises early, please remain until the end of lecture. It is very disruptive to the class if you pack up and leave early.</li>
 <li>MP2 posted.</li>
 </ul>
 </div>
-<div id="todays-topicsactivities-12" class="section level2">
+<div id="todays-topicsactivities-16" class="section level2">
 <h2>Todays Topics/Activities</h2>
 <div id="chalk-talk-9" class="section level3">
 <h3>1. Chalk Talk</h3>
@@ -1007,14 +1131,14 @@ $$
 </div>
 <div id="lec-8-mon-225" class="section level1">
 <h1>Lec 8: Mon 2/25</h1>
-<div id="announcements-13" class="section level2">
+<div id="announcements-17" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>MP1 grades on Wednesday</li>
 <li>MP2 assigned on Wednesday. It will involve regression modeling on house price data again.</li>
 </ul>
 </div>
-<div id="todays-topicsactivities-13" class="section level2">
+<div id="todays-topicsactivities-17" class="section level2">
 <h2>Todays Topics/Activities</h2>
 <div id="chalk-talk-10" class="section level3">
 <h3>1. Chalk Talk</h3>
@@ -1039,7 +1163,7 @@ Yessss!!! Definitely looking forward to speaking with and learning from the amaz
 </div>
 <div id="lec-7-mon-218" class="section level1">
 <h1>Lec 7: Mon 2/18</h1>
-<div id="announcements-14" class="section level2">
+<div id="announcements-18" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>Wednesday 2/20 is Rally Day: no lecture nor office hours.</li>
@@ -1047,7 +1171,7 @@ Yessss!!! Definitely looking forward to speaking with and learning from the amaz
 <li>Midterm I discussion</li>
 </ul>
 </div>
-<div id="todays-topicsactivities-14" class="section level2">
+<div id="todays-topicsactivities-18" class="section level2">
 <h2>Todays Topics/Activities</h2>
 <div id="chalk-talk-11" class="section level3">
 <h3>1. Chalk Talk</h3>
@@ -1060,7 +1184,7 @@ Yessss!!! Definitely looking forward to speaking with and learning from the amaz
 </div>
 <div id="lec-6-wed-213" class="section level1">
 <h1>Lec 6: Wed 2/13</h1>
-<div id="announcements-15" class="section level2">
+<div id="announcements-19" class="section level2">
 <h2>Announcements</h2>
 <p>Before Lec07 on Monday 2/18:</p>
 <ul>
@@ -1093,7 +1217,7 @@ Yessss!!! Definitely looking forward to speaking with and learning from the amaz
 </tbody>
 </table>
 </div>
-<div id="todays-topicsactivities-15" class="section level2">
+<div id="todays-topicsactivities-19" class="section level2">
 <h2>Todays Topics/Activities</h2>
 <div id="chalk-talk-12" class="section level3">
 <h3>1. Chalk Talk</h3>
@@ -1121,7 +1245,7 @@ Shout-out to people like me who like taking a look at even huge tables of raw da
 </div>
 <div id="lec-5-mon-211" class="section level1">
 <h1>Lec 5: Mon 2/11</h1>
-<div id="announcements-16" class="section level2">
+<div id="announcements-20" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>Slack <code>#general</code> announcement about new <code>#mp1</code> channel. It is your responsibility to stay on top of all messages sent in this channel.</li>
@@ -1129,7 +1253,7 @@ Shout-out to people like me who like taking a look at even huge tables of raw da
 <li>Wednesday’s lecture is devoted to working on MP1</li>
 </ul>
 </div>
-<div id="todays-topicsactivities-16" class="section level2">
+<div id="todays-topicsactivities-20" class="section level2">
 <h2>Todays Topics/Activities</h2>
 <div id="chalk-talk-13" class="section level3">
 <h3>1. Chalk Talk</h3>
@@ -1160,7 +1284,7 @@ Girls need to become tactical about school, to figure out how to get the same go
 </div>
 <div id="lec-4-wed-26" class="section level1">
 <h1>Lec 4: Wed 2/6</h1>
-<div id="announcements-17" class="section level2">
+<div id="announcements-21" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li><a href="http://www.science.smith.edu/datafest/" target="_blank">DataFest</a> is a weekend-long “data science hackathon” for teams of up to 5 students and is at UMass the weekend of March 29-31! <a href="static/other/datafest2019.pdf" target="_blank">Info session</a> by Prof. Randi Garcia today 7-8pm in Sabin-Reed 301!</li>
@@ -1170,7 +1294,7 @@ Girls need to become tactical about school, to figure out how to get the same go
 <img src="static/other/bailey.png" width="600" />
 </center>
 </div>
-<div id="todays-topicsactivities-17" class="section level2">
+<div id="todays-topicsactivities-21" class="section level2">
 <h2>Todays Topics/Activities</h2>
 <div id="chalk-talk-14" class="section level3">
 <h3>1. Chalk Talk</h3>
@@ -1193,7 +1317,7 @@ Girls need to become tactical about school, to figure out how to get the same go
 </div>
 <div id="lec-3-mon-24" class="section level1">
 <h1>Lec 3: Mon 2/4</h1>
-<div id="announcements-18" class="section level2">
+<div id="announcements-22" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>Slack: Go over <code>#questions</code>.</li>
@@ -1202,7 +1326,7 @@ Girls need to become tactical about school, to figure out how to get the same go
 <li>Mini-project 1 groups posted; see <a href="MP.html">Mini-Projects</a> page. MP1 on splines itself will be assigned on Wednesday after we cover crossvalidation.</li>
 </ul>
 </div>
-<div id="todays-topicsactivities-18" class="section level2">
+<div id="todays-topicsactivities-22" class="section level2">
 <h2>Todays Topics/Activities</h2>
 <div id="chalk-talk-15" class="section level3">
 <h3>1. Chalk Talk</h3>
@@ -1213,7 +1337,7 @@ Girls need to become tactical about school, to figure out how to get the same go
 </ul>
 <p><img src="static/images/splines.png" width="700" /></p>
 </div>
-<div id="in-class-exercise-8" class="section level3">
+<div id="in-class-exercise-11" class="section level3">
 <h3>2. In-class exercise</h3>
 <p>Go over code for Lec03 and do the exercises.</p>
 </div>
@@ -1228,7 +1352,7 @@ Girls need to become tactical about school, to figure out how to get the same go
 </div>
 <div id="lec-2-wed-130" class="section level1">
 <h1>Lec 2: Wed 1/30</h1>
-<div id="announcements-19" class="section level2">
+<div id="announcements-23" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>Slack: Vote in two latest <code>#polls</code> and go over <code>#questions</code>.</li>
@@ -1243,7 +1367,7 @@ Girls need to become tactical about school, to figure out how to get the same go
 </ul></li>
 </ul>
 </div>
-<div id="todays-topicsactivities-19" class="section level2">
+<div id="todays-topicsactivities-23" class="section level2">
 <h2>Todays Topics/Activities</h2>
 <div id="chalk-talk-16" class="section level3">
 <h3>1. Chalk Talk</h3>
@@ -1270,14 +1394,14 @@ On campuses across America, the surge in student demand for computer science cou
 </div>
 <div id="lec-1-mon-127" class="section level1">
 <h1>Lec 1: Mon 1/27</h1>
-<div id="announcements-20" class="section level2">
+<div id="announcements-24" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>If you haven’t already, please go over the following <a href="https://docs.google.com/document/d/1NfWkoyeiovkVyMmgmKFGxCMusyxBMYHVvsAUjEZv_fU/" target="_blank">Google Doc</a> with important information about the course and steps you should complete to get setup, in particular the Intro Survey. The whole process should take about 20 minutes.</li>
 <li><strong>Added on Sun 1/27 6PM</strong>: Create an account on Kaggle.com using your Smith (or Five College) email address.</li>
 </ul>
 </div>
-<div id="todays-topicsactivities-20" class="section level2">
+<div id="todays-topicsactivities-24" class="section level2">
 <h2>Todays Topics/Activities</h2>
 <div id="chalk-talk-17" class="section level3">
 <h3>1. Chalk Talk</h3>

@@ -104,14 +104,19 @@ Work on MP5.
 * [Midterm II Q3 resubmission](midterms.html#revise) due today. You must follow instructions completely to
 receive full credit. 
 
+
+
 ## Todays Topics/Activities  
 
 ### 1. Chalk Talk: Major topics we didn't cover
 
-* Unsupervised learning.
-* Image recognition: [Google Quick, Draw](https://quickdraw.withgoogle.com/){target="_blank"}.
-* Anything related to linear algebra.
-* Bias-variance tradeoff. Why do observe this pattern in the Total Error black curve below (error of a trained model on new test data)?
+1. Image recognition: [Google Quick, Draw](https://quickdraw.withgoogle.com/){target="_blank"}.
+1. "Unsupervised learning" where there is no outcome variable $y$:
+    a) Clustering. Ex: k-means clustering [PDF](static/methods/k_means/k_means.pdf){target="_blank"} and <a href="static/methods/k_means/k_means_plots.R" download>source code</a>.
+    a) Principal components analysis (PCA)
+        + Simple example: [School funding](static/methods/PCA/PCA.html){target="_blank"} and <a href="static/methods/PCA/PCA.Rmd" download>source code</a>.
+        + Facial recognition example: <a href="static/methods/PCA/faces.csv.zip" download>data</a> and <a href="static/methods/PCA/PCA.R" download>`PCA.R`</a> code
+1. Bias-variance tradeoff. Why do observe this pattern in the "Total Error" black curve below, which is a fitted model's error on new test data for different levels of model complexity?
 
 <a href="http://scott.fortmann-roe.com/docs/BiasVariance.html"><img border="1" src="http://scott.fortmann-roe.com/docs/docs/BiasVariance/biasvariance.png" width="500"></a>
 
@@ -128,7 +133,7 @@ where:
 * $y=f(x)+\epsilon$ with $\mathbb{E}\left[\epsilon\right] = 0$ and $\mbox{Var}[\epsilon] = \sigma$. Hence $y$ is random as well.
 * The random variation is over sample to sample.
 
-Why is this true? You need to take MTH/SDS 246: Probability:
+Why is this true? You need to take MTH/SDS 246 Probability:
 
 $$
 \begin{aligned}
@@ -153,16 +158,23 @@ $$
 
 ### 2. Chalk Talk: Neural nets
 
-* Amherst College '18 graduate and [MassMutual Data Science Development Program](https://datascience.massmutual.com/dsdp){target="_blank"} member Jennifer Halbleib's thesis: [PDF](static/halbleib.pdf){target="_blank"} and `thesisdown` R Markdown <a href="static/halbleib.zip" download>source code</a>.
-* Uses famous [MNIST handwritten digit data](https://en.wikipedia.org/wiki/MNIST_database){target="_blank"}, available on [Kaggle](https://www.kaggle.com/c/digit-recognizer){target="_blank"}.  
-    <a href="https://www.kaggle.com/c/digit-recognizer"><img border="1" src="static/images/MNIST_digits.png" width="500"></a>
-* Jennifer's thesis is based on the book [Deep Learning with R](https://www.amazon.com/Deep-Learning-R-Francois-Chollet/dp/161729554X){target="_blank"}, which uses the `keras` package.
-    + The `keras` package is included in RStudio's [R Interface to Core TensorFlow API](https://tensorflow.rstudio.com/tensorflow/){target="_blank"}.
-    + [TensorFlow](https://www.tensorflow.org/){target="_blank"} is Google Brain's open-source library for machine learning applications such as neural networks.
-    + TensorFlow is one of the elements behind [AlphaGo](https://ai.googleblog.com/2016/01/alphago-mastering-ancient-game-of-go.html){target="_blank"}:  
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/8tq1C8spV_g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+Based on this [link](http://neuralnetworksanddeeplearning.com/chap1.html){target="_blank"}, the best layperson's explanation of neural nets I could find. Other references:
+
+* [Deep Learning with R](https://www.amazon.com/Deep-Learning-R-Francois-Chollet/dp/161729554X){target="_blank"}, which uses the `keras` package.
+* The `keras` package is included in RStudio's [R Interface to Core TensorFlow API](https://tensorflow.rstudio.com/tensorflow/){target="_blank"}.
+* [TensorFlow](https://www.tensorflow.org/){target="_blank"} is Google Brain's open-source library for machine learning applications such as neural networks.
+* TensorFlow is one of the elements behind [AlphaGo](https://ai.googleblog.com/2016/01/alphago-mastering-ancient-game-of-go.html){target="_blank"}:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8tq1C8spV_g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+</br>
 
 
+### 3. Example of Deep Learning
+
+Amherst College '18 graduate and [MassMutual Data Science Development Program](https://datascience.massmutual.com/dsdp){target="_blank"} member Jennifer Halbleib's thesis: [PDF](static/halbleib.pdf){target="_blank"} and `thesisdown` R Markdown <a href="static/halbleib.zip" download>source code</a>. Data considered is famous [MNIST handwritten digit data](https://en.wikipedia.org/wiki/MNIST_database){target="_blank"}, available on [Kaggle](https://www.kaggle.com/c/digit-recognizer){target="_blank"}.
+
+<a href="https://www.kaggle.com/c/digit-recognizer"><img border="1" src="static/images/MNIST_digits.png" width="500"></a>
 
 
 
