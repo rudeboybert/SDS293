@@ -433,7 +433,11 @@ I will post all clarifications and hints in this section.
 ## What to submit
 
 * **Group leader only**: Submit a `MP5_Group_XX.zip` archive file with the contents of your `MP5` RStudio Project folder **but not the data files! They are huge!** You can assume I have them.
-* **Both group members**: Complete the following peer evaluation **and exit survey for the course** [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSdlJyS-jGry0_nelwgjHJQ14Pu-gCIFao2rTLXFMVtvi04zhg/viewform){target="_blank"}. Both group members must complete the Google Form to receive full credit.
+* **Both group members**: Complete the following peer evaluation **and exit survey for the course** to be posted here shortly.
+
+<!--
+[Google Form](https://docs.google.com/forms/d/e/1FAIpQLSdlJyS-jGry0_nelwgjHJQ14Pu-gCIFao2rTLXFMVtvi04zhg/viewform){target="_blank"}. Both group members must complete the Google Form to receive full credit.
+-->
 
 
 
@@ -454,5 +458,4 @@ I will post all clarifications and hints in this section.
 1. **Point of diminishing returns:** Grade: 10/10.
     + Satisfy all "baseline", "minimally viable product", "due diligence", and "reaching for the stars" criteria.
 1. **Polishing the cannonball:**
-    + Satisfy all "baseline", "minimally viable product", "due diligence", "reaching for the stars", and "polishing the cannonball" criteria
-    + 
+    + Satisfy all "baseline", "minimally viable product", "due diligence", "reaching for the stars", and "polishing the cannonball" criteria.

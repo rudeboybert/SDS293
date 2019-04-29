@@ -64,6 +64,130 @@ h1{font-weight: 400;}
 
 
 
+# Lec 25: Thu 5/2
+
+## Announcements
+
+## Todays Topics/Activities  
+
+### 1. In-class exercise
+
+Work on MP5.
+
+
+
+***
+
+
+
+# Lec 24: Wed 5/1
+
+## Announcements
+
+## Todays Topics/Activities  
+
+### 1. In-class exercise
+
+Work on MP5.
+
+
+
+***
+
+
+
+# Lec 23: Mon 4/29
+
+## Announcements
+
+* Wrap-up
+* [Midterm II Q3 resubmission](midterms.html#revise) due today. You must follow instructions completely to
+receive full credit. 
+
+## Todays Topics/Activities  
+
+### 1. Chalk Talk: Major topics we didn't cover
+
+* Unsupervised learning.
+* Image recognition: [Google Quick, Draw](https://quickdraw.withgoogle.com/){target="_blank"}.
+* Anything related to linear algebra.
+* Bias-variance tradeoff. Why do observe this pattern in the Total Error black curve below (error of a trained model on new test data)?
+
+<a href="http://scott.fortmann-roe.com/docs/BiasVariance.html"><img border="1" src="http://scott.fortmann-roe.com/docs/docs/BiasVariance/biasvariance.png" width="500"></a>
+
+Because of this probabilistic formula
+
+$$
+\mbox{MSE}\left[\widehat{f}(x)\right] = \mbox{Var}\left[\widehat{f}(x)\right] +
+\left(\mbox{Bias}\left[\widehat{f}(x)\right]\right)^2 + \sigma^2
+$$
+
+where:
+
+* $\widehat{y}$ is also denoted $\widehat{f}(x)$. $\widehat{f}(x)$ is a random variable.
+* $y=f(x)+\epsilon$ with $\mathbb{E}\left[\epsilon\right] = 0$ and $\mbox{Var}[\epsilon] = \sigma$. Hence $y$ is random as well.
+* The random variation is over sample to sample.
+
+Why is this true? You need to take MTH/SDS 246: Probability:
+
+$$
+\begin{aligned}
+\mbox{MSE}\left[\widehat{f}(x)\right] &= \mathbb{E}\left[\left( y - \widehat{f}(x) \right)^2\right]= \mathbb{E}\left[\left( y^2 - 2 y\widehat{f}(x) + \widehat{f}(x)^2 \right)\right]\\
+&= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - \left(\mathbb{E}\left[ 2y\widehat{f}(x) \right]\right) \mbox{ by linearity of expectations } \\
+&= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - \left(\mathbb{E}\left[ 2(f(x)+\epsilon)\widehat{f}(x) \right]\right) \mbox{ since } y = f(x)+\epsilon\\
+&= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - \left(\mathbb{E}\left[ 2f(x)\widehat{f}(x) \right] + \mathbb{E}\left[ 2\epsilon\widehat{f}(x) \right]\right)  \\
+&= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] - 2\mathbb{E}\left[ \epsilon\widehat{f}(x) \right]  \mbox{ since } \mathbb{E}\left[aX\right] = a\mathbb{E}\left[X\right] \mbox{ for } a \in \mathbb{R}\\
+&= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] - 2\mathbb{E}\left[\epsilon \right]\mathbb{E}\left[\widehat{f}(x) \right] \mbox{ since } \mathbb{E}\left[XY\right] = \mathbb{E}\left[X\right]\mathbb{E}\left[Y\right] \mbox{ if }X,Y \mbox{ are independent}\\
+&= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] - 0 \mbox{ since } \mathbb{E}\left[\epsilon\right]=0\\
+&= \left( \mbox{Var}\left[ y \right] + \mathbb{E}\left[y\right]^2 \right) + \left(\mbox{Var}\left[ \widehat{f}(x) \right] + \mathbb{E}\left[ \widehat{f}(x) \right]^2\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] \mbox{ since } \mbox{Var}\left[X\right] = \mathbb{E}\left[X^2\right] - \mathbb{E}\left[X\right]^2\\
+&= \left( \mbox{Var}\left[ y \right] + \mathbb{E}\left[f(x) + \epsilon\right]^2 \right) + \left(\mbox{Var}\left[ \widehat{f}(x) \right] + \mathbb{E}\left[ \widehat{f}(x) \right]^2\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right]\\
+&= \left( \mbox{Var}\left[ y \right] + \mathbb{E}\left[f(x)\right]^2 + 0 \right) + \left(\mbox{Var}\left[ \widehat{f}(x) \right] + \mathbb{E}\left[ \widehat{f}(x) \right]^2\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] \mbox{ since } \mathbb{E}\left[\epsilon\right] = 0\\
+&= \mbox{Var}\left[ y \right] + \mbox{Var}\left[ \widehat{f}(x) \right] + \left( f(x)^2  -  2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] + \mathbb{E}\left[ \widehat{f}(x) \right]^2 \right)\\
+&= \mbox{Var}\left[ y \right] + \mbox{Var}\left[ \widehat{f}(x) \right] + \left(  f(x) - \mathbb{E}\left[\widehat{f}(x) \right] \right)^2 \\
+&= \mbox{Var}\left[ y\right] + \mbox{Var}\left[ \widehat{f}(x) \right] + \left(  \mathbb{E}\left[f(x)-\widehat{f}(x) \right] \right)^2 \mbox{ since } \mathbb{E}\left[a + X \right] = a + \mathbb{E}\left[X\right] \mbox{ for } a \in \mathbb{R}\\
+&= \sigma^2 + \mbox{Var}\left[ \widehat{f}(x) \right] + \left( \mbox{Bias}\left[ \widehat{f}(x) \right] \right)^2 \mbox{ since } \mbox{Var}\left[ y\right] = \mbox{Var}\left[ f(x)+\epsilon\right] = \mbox{Var}\left[ \epsilon \right] = \sigma^2\\
+\end{aligned}
+$$
+
+
+
+### 2. Chalk Talk: Neural nets
+
+* Amherst College '18 graduate and [MassMutual Data Science Development Program](https://datascience.massmutual.com/dsdp){target="_blank"} member Jennifer Halbleib's thesis: [PDF](static/halbleib.pdf){target="_blank"} and `thesisdown` R Markdown <a href="static/halbleib.zip" download>source code</a>.
+* Uses famous [MNIST handwritten digit data](https://en.wikipedia.org/wiki/MNIST_database){target="_blank"}, available on [Kaggle](https://www.kaggle.com/c/digit-recognizer){target="_blank"}.  
+    <a href="https://www.kaggle.com/c/digit-recognizer"><img border="1" src="static/images/MNIST_digits.png" width="500"></a>
+* Jennifer's thesis is based on the book [Deep Learning with R](https://www.amazon.com/Deep-Learning-R-Francois-Chollet/dp/161729554X){target="_blank"}, which uses the `keras` package.
+    + The `keras` package is included in RStudio's [R Interface to Core TensorFlow API](https://tensorflow.rstudio.com/tensorflow/){target="_blank"}.
+    + [TensorFlow](https://www.tensorflow.org/){target="_blank"} is Google Brain's open-source library for machine learning applications such as neural networks.
+    + TensorFlow is one of the elements behind [AlphaGo](https://ai.googleblog.com/2016/01/alphago-mastering-ancient-game-of-go.html){target="_blank"}:  
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/8tq1C8spV_g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
+
+
+***
+
+
+
+# Lec 22: Wed 4/24
+
+## Announcements
+
+None.
+
+## Todays Topics/Activities  
+
+### 1. In-class exercise
+
+* Ethics in machine learning discussion. All comments + links posted in `#ethics_discussion` channel in Slack.
+
+
+
+***
+
+
+
 # Lec 21: Mon 4/22
 
 ## Announcements
