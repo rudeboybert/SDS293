@@ -33,7 +33,7 @@
 <style type="text/css" data-origin="pandoc">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -46,11 +46,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -995,18 +997,27 @@ Ex: Group #1’s leader is BT.</li>
 </ul></li>
 </ul>
 </div>
-<div id="what-to-submit-4" class="section level2">
+<div id="MP5-submit" class="section level2">
 <h2>What to submit</h2>
+<p><strong>Group leader only</strong>:</p>
 <ul>
-<li><strong>Group leader only</strong>: Submit a <code>MP5_Group_XX.zip</code> archive file with the contents of your <code>MP5</code> RStudio Project folder <strong>but not the data files! They are huge!</strong> You can assume I have them.</li>
-<li><strong>Both group members</strong>: Complete the following peer evaluation <strong>and exit survey for the course</strong> to be posted here shortly.</li>
+<li>Submit a <code>MP5_Group_XX.zip</code> archive file with the contents of your <code>MP5</code> RStudio Project folder.</li>
 </ul>
-<!--
-[Google Form](https://docs.google.com/forms/d/e/1FAIpQLSdlJyS-jGry0_nelwgjHJQ14Pu-gCIFao2rTLXFMVtvi04zhg/viewform){target="_blank"}. Both group members must complete the Google Form to receive full credit.
--->
+<p><strong>All group members</strong>:</p>
+<ul>
+<li>Complete the MP5 peer evaluation and exit survey. All group members must complete the Google Form to receive full credit. There are four sections:
+<ol style="list-style-type: decimal">
+<li>Questions about you.</li>
+<li>Peer evaluations for MP5.</li>
+<li>Questions about the use of Slack.</li>
+<li>General questions about the course.</li>
+</ol></li>
+<li>You can find the MP5 peer evaluation and exit survey <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWkLC1ik5ccYLjbobyS0KlLduoj5rlPSoRQopTXwpwG1h0XQ/viewform" target="_blank">here</a>.</li>
+</ul>
 </div>
 <div id="grading-4" class="section level2">
 <h2>Grading</h2>
+<p><strong>Added on Tue 4/30</strong>: In order to minimize redundancy, I won’t re-write the specific criteria for each phase here. Please follow what’s written in <code>MP5.Rmd</code>.</p>
 <ol style="list-style-type: decimal">
 <li><strong>Baseline:</strong> Projects that do not satisfy all “baseline” criteria should expect to get a grade of less than 8/10.
 <ul>

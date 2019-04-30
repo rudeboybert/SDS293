@@ -32,7 +32,7 @@
 <style type="text/css" data-origin="pandoc">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -45,11 +45,13 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -534,10 +536,24 @@ h1{font-weight: 400;}
 <h1>Lec 24: Wed 5/1</h1>
 <div id="announcements-1" class="section level2">
 <h2>Announcements</h2>
+<ul>
+<li>Joint MP5 peer evaluation &amp; exit survey <a href="MP.html#MP5-submit">posted</a>. All group members must complete this to receive full credit.</li>
+<li>In particular questions relating to use of Slack, as at the Symposium on Data Science and Statistics (SDSS) I’ll be presenting <a href="https://ww2.amstat.org/meetings/sdss/2019/onlineprogram/AbstractDetails.cfm?AbstractID=305068" target="_blank">“Using Slack for Communication and Collaboration in the Classroom”</a><br />
+</br>
+<center>
+<a href="https://ww2.amstat.org/meetings/sdss/2019/onlineprogram/Program.cfm?TrackID=28" target="_blank"><img border="1" src="static/events/SDSS.png" width="750px"></a>
+</center>
+</br></li>
+<li>FYI other SDS faculty will be presenting at SDSS as well:
+<ul>
+<li>Prof. Katherine Kinnaird: <a href="https://ww2.amstat.org/meetings/sdss/2019/onlineprogram/AbstractDetails.cfm?AbstractID=305072" target="_blank">“Data Physicalizations: Where Art, Data, and Domain Applications Combine”</a></li>
+<li>Prof. Miles Ott: <a href="https://ww2.amstat.org/meetings/sdss/2019/onlineprogram/AbstractDetails.cfm?AbstractID=305016" target="_blank">“Ethics in an Advanced Undergraduate Seminar: Statistical Analysis of Social Network Data”</a></li>
+</ul></li>
+</ul>
 </div>
 <div id="todays-topicsactivities-1" class="section level2">
 <h2>Todays Topics/Activities</h2>
-<p><a href="static/MP4_solutions.html" target="_blank">HTML Solutions</a> to MP4 posted (<code>.Rmd</code> source code available <a href="MP.html#MP4-solutions">here</a>). Things to note:</p>
+<p><a href="static/MP4_solutions.html" target="_blank">HTML Solutions</a> to MP4 posted as well as <a href="MP.html#MP4-solutions"><code>.Rmd</code> source code</a>. Things to note:</p>
 <ol style="list-style-type: decimal">
 <li>Figure 1: Plot of <span class="math inline">\(y\)</span> = estimated accuracy over <span class="math inline">\(x\)</span> = <span class="math inline">\(\alpha\)</span> complexity parameter
 <ul>
@@ -582,7 +598,7 @@ h1{font-weight: 400;}
 </ol></li>
 <li>Bias-variance tradeoff. Why do observe this pattern in the “Total Error” black curve below, which is a fitted model’s error on new test data for different levels of model complexity?</li>
 </ol>
-<p><a href="http://scott.fortmann-roe.com/docs/BiasVariance.html"><img border="1" src="http://scott.fortmann-roe.com/docs/docs/BiasVariance/biasvariance.png" width="500"></a></p>
+<p><a href="http://scott.fortmann-roe.com/docs/BiasVariance.html" target="_blank"><img border="1" src="http://scott.fortmann-roe.com/docs/docs/BiasVariance/biasvariance.png" width="500"></a></p>
 <p>Because of this probabilistic formula</p>
 <p><span class="math display">\[
 \mbox{MSE}\left[\widehat{f}(x)\right] = \mbox{Var}\left[\widehat{f}(x)\right] +
@@ -630,7 +646,7 @@ h1{font-weight: 400;}
 <div id="example-of-deep-learning" class="section level3">
 <h3>3. Example of Deep Learning</h3>
 <p>Amherst College ’18 graduate and <a href="https://datascience.massmutual.com/dsdp" target="_blank">MassMutual Data Science Development Program</a> member Jennifer Halbleib’s thesis: <a href="static/halbleib.pdf" target="_blank">PDF</a> and <code>thesisdown</code> R Markdown <a href="static/halbleib.zip" download>source code</a>. Data considered is famous <a href="https://en.wikipedia.org/wiki/MNIST_database" target="_blank">MNIST handwritten digit data</a>, available on <a href="https://www.kaggle.com/c/digit-recognizer" target="_blank">Kaggle</a>.</p>
-<p><a href="https://www.kaggle.com/c/digit-recognizer"><img border="1" src="static/images/MNIST_digits.png" width="500"></a></p>
+<p><a href="https://www.kaggle.com/c/digit-recognizer" target="_blank"><img border="1" src="static/images/MNIST_digits.png" width="500"></a></p>
 <hr />
 </div>
 </div>
@@ -926,43 +942,43 @@ We heard you like R so we made a wine called R so you can drink R while you R <a
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">56</td>
-<td align="right">5.7</td>
-<td align="right">2.8</td>
-<td align="right">4.5</td>
-<td align="right">1.3</td>
+<td align="left">94</td>
+<td align="right">5.0</td>
+<td align="right">2.3</td>
+<td align="right">3.3</td>
+<td align="right">1.0</td>
 <td align="left">versicolor</td>
 </tr>
 <tr class="even">
-<td align="left">134</td>
-<td align="right">6.3</td>
-<td align="right">2.8</td>
-<td align="right">5.1</td>
-<td align="right">1.5</td>
+<td align="left">110</td>
+<td align="right">7.2</td>
+<td align="right">3.6</td>
+<td align="right">6.1</td>
+<td align="right">2.5</td>
 <td align="left">virginica</td>
 </tr>
 <tr class="odd">
-<td align="left">19</td>
-<td align="right">5.7</td>
-<td align="right">3.8</td>
-<td align="right">1.7</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="left">85</td>
-<td align="right">5.4</td>
-<td align="right">3.0</td>
-<td align="right">4.5</td>
-<td align="right">1.5</td>
+<td align="left">64</td>
+<td align="right">6.1</td>
+<td align="right">2.9</td>
+<td align="right">4.7</td>
+<td align="right">1.4</td>
 <td align="left">versicolor</td>
 </tr>
-<tr class="odd">
-<td align="left">96</td>
-<td align="right">5.7</td>
-<td align="right">3.0</td>
-<td align="right">4.2</td>
+<tr class="even">
+<td align="left">15</td>
+<td align="right">5.8</td>
+<td align="right">4.0</td>
 <td align="right">1.2</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="left">69</td>
+<td align="right">6.2</td>
+<td align="right">2.2</td>
+<td align="right">4.5</td>
+<td align="right">1.5</td>
 <td align="left">versicolor</td>
 </tr>
 </tbody>
