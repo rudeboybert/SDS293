@@ -86,11 +86,22 @@ Work on MP5.
 
 ## Announcements
 
+* Joint MP5 peer evaluation & exit survey posted. In particular questions relating to use of Slack, as at the Symposium on Data Science and Statistics (SDSS) I'll be presenting ["Using Slack for Communication and Collaboration in the Classroom"](https://ww2.amstat.org/meetings/sdss/2019/onlineprogram/AbstractDetails.cfm?AbstractID=305068){target="_blank"}  
+</br>
+<center>
+<a href="https://ww2.amstat.org/meetings/sdss/2019/onlineprogram/Program.cfm?TrackID=28" target="_blank"><img border="1" src="static/events/SDSS.png" width="750px"></a>
+</center>
+</br>
+* FYI other SDS faculty will be presenting at SDSS as well:
+    + Prof. Katherine Kinnaird: ["Data Physicalizations: Where Art, Data, and Domain Applications Combine"](https://ww2.amstat.org/meetings/sdss/2019/onlineprogram/AbstractDetails.cfm?AbstractID=305072){target="_blank"}
+    + Prof. Miles Ott: ["Ethics in an Advanced Undergraduate Seminar: Statistical Analysis of Social Network Data"](https://ww2.amstat.org/meetings/sdss/2019/onlineprogram/AbstractDetails.cfm?AbstractID=305016){target="_blank"}
+
+
 
 
 ## Todays Topics/Activities  
 
-[HTML Solutions](static/MP4_solutions.html){target="_blank"} to MP4 posted (`.Rmd` source code available [here](MP.html#MP4-solutions)). Things to note:
+[HTML Solutions](static/MP4_solutions.html){target="_blank"} to MP4 posted; `.Rmd` source code available [here](MP.html#MP4-solutions). Things to note:
 
 1. Figure 1: Plot of $y$ = estimated accuracy over $x$ = $\alpha$ complexity parameter
     * Why does it look like steps and not a smooth curve like with previous MSE vs complexity plots?
@@ -134,7 +145,7 @@ receive full credit.
         + Facial recognition example: <a href="static/methods/PCA/faces.csv.zip" download>data</a> and <a href="static/methods/PCA/PCA.R" download>`PCA.R`</a> code
 1. Bias-variance tradeoff. Why do observe this pattern in the "Total Error" black curve below, which is a fitted model's error on new test data for different levels of model complexity?
 
-<a href="http://scott.fortmann-roe.com/docs/BiasVariance.html"><img border="1" src="http://scott.fortmann-roe.com/docs/docs/BiasVariance/biasvariance.png" width="500"></a>
+<a href="http://scott.fortmann-roe.com/docs/BiasVariance.html" target="_blank"><img border="1" src="http://scott.fortmann-roe.com/docs/docs/BiasVariance/biasvariance.png" width="500"></a>
 
 Because of this probabilistic formula
 
@@ -190,7 +201,7 @@ Based on this [link](http://neuralnetworksanddeeplearning.com/chap1.html){target
 
 Amherst College '18 graduate and [MassMutual Data Science Development Program](https://datascience.massmutual.com/dsdp){target="_blank"} member Jennifer Halbleib's thesis: [PDF](static/halbleib.pdf){target="_blank"} and `thesisdown` R Markdown <a href="static/halbleib.zip" download>source code</a>. Data considered is famous [MNIST handwritten digit data](https://en.wikipedia.org/wiki/MNIST_database){target="_blank"}, available on [Kaggle](https://www.kaggle.com/c/digit-recognizer){target="_blank"}.
 
-<a href="https://www.kaggle.com/c/digit-recognizer"><img border="1" src="static/images/MNIST_digits.png" width="500"></a>
+<a href="https://www.kaggle.com/c/digit-recognizer" target="_blank"><img border="1" src="static/images/MNIST_digits.png" width="500"></a>
 
 
 
