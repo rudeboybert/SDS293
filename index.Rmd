@@ -86,7 +86,8 @@ Work on MP5.
 
 ## Announcements
 
-* Joint MP5 peer evaluation & exit survey posted. In particular questions relating to use of Slack, as at the Symposium on Data Science and Statistics (SDSS) I'll be presenting ["Using Slack for Communication and Collaboration in the Classroom"](https://ww2.amstat.org/meetings/sdss/2019/onlineprogram/AbstractDetails.cfm?AbstractID=305068){target="_blank"}  
+* Joint MP5 peer evaluation & exit survey [posted](MP.html#MP5-submit). All group members must complete this to receive full credit.
+* In particular questions relating to use of Slack, as at the Symposium on Data Science and Statistics (SDSS) I'll be presenting ["Using Slack for Communication and Collaboration in the Classroom"](https://ww2.amstat.org/meetings/sdss/2019/onlineprogram/AbstractDetails.cfm?AbstractID=305068){target="_blank"}  
 </br>
 <center>
 <a href="https://ww2.amstat.org/meetings/sdss/2019/onlineprogram/Program.cfm?TrackID=28" target="_blank"><img border="1" src="static/events/SDSS.png" width="750px"></a>
@@ -101,7 +102,7 @@ Work on MP5.
 
 ## Todays Topics/Activities  
 
-[HTML Solutions](static/MP4_solutions.html){target="_blank"} to MP4 posted; `.Rmd` source code available [here](MP.html#MP4-solutions). Things to note:
+[HTML Solutions](static/MP4_solutions.html){target="_blank"} to MP4 posted as well as [`.Rmd` source code](MP.html#MP4-solutions). Things to note:
 
 1. Figure 1: Plot of $y$ = estimated accuracy over $x$ = $\alpha$ complexity parameter
     * Why does it look like steps and not a smooth curve like with previous MSE vs complexity plots?

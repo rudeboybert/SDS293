@@ -436,18 +436,25 @@ I will post all clarifications and hints in this section.
     + Feel free to use external sources, but please cite them using R Markdown footnotes. For example adding `^[This is my [source](https://www.smith.edu/)]` at the end of a sentence in R Markdown will yield: ^[This is my [source](https://www.smith.edu/)]
 
 
-## What to submit
+## What to submit {#MP5-submit}
 
-* **Group leader only**: Submit a `MP5_Group_XX.zip` archive file with the contents of your `MP5` RStudio Project folder **but not the data files! They are huge!** You can assume I have them.
-* **Both group members**: Complete the following peer evaluation **and exit survey for the course** to be posted here shortly.
+**Group leader only**: 
 
-<!--
-[Google Form](https://docs.google.com/forms/d/e/1FAIpQLSdlJyS-jGry0_nelwgjHJQ14Pu-gCIFao2rTLXFMVtvi04zhg/viewform){target="_blank"}. Both group members must complete the Google Form to receive full credit.
--->
+* Submit a `MP5_Group_XX.zip` archive file with the contents of your `MP5` RStudio Project folder.
 
+**All group members**:
+
+* Complete the MP5 peer evaluation and exit survey. All group members must complete the Google Form to receive full credit. There are four sections:
+    1. Questions about you.
+    1. Peer evaluations for MP5.
+    1. Questions about the use of Slack.
+    1. General questions about the course.
+* You can find the MP5 peer evaluation and exit survey [here](https://docs.google.com/forms/d/e/1FAIpQLSeWkLC1ik5ccYLjbobyS0KlLduoj5rlPSoRQopTXwpwG1h0XQ/viewform){target="_blank"}.
 
 
 ## Grading
+
+**Added on Tue 4/30**: In order to minimize redundancy, I won't re-write the specific criteria for each phase here. Please follow what's written in `MP5.Rmd`.
 
 1. **Baseline:** Projects that do not satisfy all "baseline" criteria should expect to get a grade of less than 8/10.
     + Your `MP5.Rmd` R Markdown file must absolutely "knit" correctly. 
