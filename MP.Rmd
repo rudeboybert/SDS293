@@ -396,6 +396,12 @@ I will post all clarifications and hints in this section.
 1. **Polishing the cannonball:** None
 
 
+## Solutions {#MP4-solutions}
+
+* [`MP4_solutions.html`](static/MP4_solutions.html){target="_blank"}
+* <a href="static/MP4_solutions.Rmd" download>`MP4_solutions.Rmd`</a>
+
+
 
 ***
 

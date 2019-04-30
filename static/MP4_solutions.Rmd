@@ -1,0 +1,355 @@
+---
+title: "SDS/CSC 293 Mini-Project 4: CART"
+author: "Group XX: WRITE YOUR NAMES HERE"
+date: "Wednesday, April 17^th^, 2019"
+output:
+  html_document:
+    highlight: tango
+    theme: cosmo
+    toc: yes
+    toc_depth: 2
+    toc_float:
+      collapsed: true
+    df_print: kable
+---
+
+```{r setup, include=FALSE}
+# Load all your packages here:
+library(tidyverse)
+library(GGally)
+library(rpart)
+
+# Set default behavior for all code chunks here:
+knitr::opts_chunk$set(
+  echo = TRUE, warning = FALSE, message = FALSE,
+  fig.width = 16/2, fig.height = 9/2
+)
+
+# Set seed value of random number generator here. This is in order to get
+# "replicable" randomness, so that any results based on random sampling or
+# resampling are replicable everytime you knit this file. Why use a seed value
+# of 76? For no other reason than 76 is one of my favorite numbers:
+# https://www.youtube.com/watch?v=xjJ7FheCkCU
+set.seed(76)
+```
+
+You will be fitting CART models to the data from the [Ghouls, Goblins, and Ghosts... Boo!](https://www.kaggle.com/c/ghouls-goblins-and-ghosts-boo/){target="_blank"} Kaggle competition. The competition's score for leaderboard purposes is the "Categorization Accuracy". However you will **NOT** be making any submissions to Kaggle.
+
+
+
+***
+
+
+
+# Load data
+
+Read in data provided by Kaggle for this competition. They are organized in the `data/` folder of this RStudio project:
+
+```{r}
+training <- read_csv("data/train.csv")
+test <- read_csv("data/test.csv")
+sample_submission <- read_csv("data/sample_submission.csv")
+```
+
+
+## Look at your data!
+
+Always, ALWAYS, **ALWAYS** start by looking at your raw data. This gives you visual sense of what information you have to help build your predictive models. To get a full description of each variable, read the data dictionary in the `data_description.txt` file in the `data/` folder.
+
+Note that the following code chunk has `eval = FALSE` meaning "don't evaluate this chunk with knitting" because `.Rmd` files won't knit if they include a `View()`:
+
+```{r, eval = FALSE}
+View(training)
+glimpse(training)
+
+View(test)
+glimpse(test)
+```
+
+In particular, pay close attention to the variables and variable types in the
+`sample_submission.csv`. Your submission must match this exactly.
+
+```{r}
+glimpse(sample_submission)
+```
+
+
+
+***
+
+
+
+# Minimally viable product
+
+Perform the following exploratory data analyses:
+
+## Univariate explorations
+
+**Categorical predictor**: Create a visualization of the categorical predictor variable `color`.
+
+```{r}
+ggplot(training, aes(x = color)) +
+  geom_bar() + 
+  labs(x = "color", title = "Distribution of categorical predictor color")
+```
+
+
+**Outcome variable**: Create a visualization of the categorical predictor variable `type`.
+
+```{r}
+ggplot(training, aes(x = type)) +
+  geom_bar() + 
+  labs(x = "type", title = "Distribution of outcome variable type")
+```
+
+
+## Mutlivariate explorations
+
+**Numerical predictors**: Create a visualization of the relationship of all four numerical predictor variables at once (`bone_length`, `rotting_flesh`, `hair_length`, `has_soul`) using the `ggpairs()` function from the `GGally` [package](http://ggobi.github.io/ggally/#ggallyggpairs). 
+
+```{r}
+training %>% 
+  select(bone_length, rotting_flesh, hair_length, has_soul) %>% 
+  ggpairs()
+```
+
+**Relationship of categorical predictor and outcome variable**: Create a visualization of the relationship between the categorical outcome variable `type` and any predictor varible of your choosing.
+
+
+
+***
+
+
+
+# Due diligence
+
+1. Fit a CART where:
+    * You use only the numerical predictors.
+    * The maximum depth of the tree is 5.
+    * You use the default "complexity parameter" 
+1. Plot the tree.
+1. Make predictions `type_hat` on the `training` data. Hint compare the output of `predict(model_CART, type = "prob")` and `predict(model_CART, type = "class")`.
+1. Compute the "classification accuracy".
+
+```{r, fig.height = 9/1.5, fig.width=16/1.5}
+# Fit CART model
+model_formula <- as.formula(type ~ bone_length + rotting_flesh + hair_length + has_soul)
+tree_parameters <- rpart.control(maxdepth = 5)
+model_CART <- rpart(model_formula, data = training, control = tree_parameters)
+
+# Plot tree
+plot(model_CART, margin=0.25)
+text(model_CART, use.n = TRUE)
+title("Classfication of monster type")
+box()
+
+# Fitted probabilities p_hat
+p_hat_matrix_train <- model_CART %>%
+  predict(type = "prob") %>%
+  as_tibble()
+
+# Show first 5 rows of p_hats
+p_hat_matrix_train %>% 
+  slice(1:5)
+
+# Predicted type_hat based on p_hat_matrix_train, with ties broken at random
+training$type_hat <- predict(model_CART, type = "class")
+
+# Show first 5 predicted class. See how they correspond to 5 rows of p_hats above
+training$type_hat[1:5]
+
+# Compute classification accuracy: proportion correct
+training %>% 
+  dplyr::summarize(accuracy = mean(type == type_hat))
+```
+
+
+
+
+***
+
+
+
+# Reaching for the stars
+
+Note that the $\alpha$ complexity parameter is the `cp` argument to `rpart.control()`.
+
+1. Reusing the MP1 solutions code, for the range of `alpha` complexity parameters in the `alpha_df` data frame, return an estimate of the accuracy/error that Kaggle would return.
+1. Plot the relationship between the alpha complexity parameter and accuracy.
+1. Using the optimal $\alpha^*$ complexity parameter, write a `submission.csv` suitable for submission to Kaggle.
+
+```{r}
+alpha_df <- tibble(
+  alpha = seq(from = 0, to = 0.05, length = 100),
+  accuracy = 0
+)
+
+set.seed(76)
+# Randomly assign folds only once i.e. outside of for loop
+training <- training %>% 
+  sample_frac(1) %>% 
+  mutate(fold = rep(1:5, length = n())) %>% 
+  arrange(fold)
+
+# For a search grid of alpha complexity parameters
+for(i in 1:nrow(alpha_df)){
+  alpha <- alpha_df$alpha[i]
+  accuracy_per_fold <- rep(0, 5)
+  
+  # For all folds
+  for(j in 1:5){
+    # Set pretend training and pretend test that mimics the train vs test
+    # relationship
+    pretend_training <- training %>% 
+      filter(fold != j)
+    pretend_test <- training %>% 
+      filter(fold == j)
+    
+    # Fit model on pretend training
+    tree_parameters <- rpart.control(maxdepth = 5, cp = alpha)
+    model_CART <- rpart(model_formula, data = pretend_training, control = tree_parameters)
+
+    # Make predictions on pretend test and save
+    pretend_test$type_hat <- predict(model_CART, newdata = pretend_test, type = "class")
+
+    # Compute classification accuracy: proportion correct
+    accuracy_per_fold[j] <- pretend_test %>% 
+      summarize(accuracy = mean(type == type_hat)) %>% 
+      pull(accuracy)
+  }
+  
+  # Compute average accuracy across all 5 folds
+  alpha_df$accuracy[i] <- mean(accuracy_per_fold) 
+}
+
+# Plot the relationship between alpha complexity parameter and estimated
+# accuracy
+ggplot(alpha_df, aes(alpha, accuracy)) +
+  geom_point() +
+  labs(x = "alpha complexity parameter", y = "Estimated accuracy")
+```
+
+It appears for $\alpha$ complexity values of just under 0.01 we achieve the highest accuracy of around 69.2%. But which of the 10 $\alpha$ values should we use? It's a rough principle that "all things being equal simpler models are to be preferred over complex ones" (this is called [Occam's Razor](https://en.wikipedia.org/wiki/Occam%27s_razor)). Since larger $\alpha$ values penalize complexity more and hence yield simpler models, we should take the largest $\alpha$ that achieves a classification accuracy of 69.2%
+
+```{r}
+best_accuracy <- alpha_df %>% 
+  arrange(desc(accuracy), desc(alpha)) %>% 
+  slice(1) 
+best_accuracy
+alpha_star <- best_accuracy %>% 
+  pull(alpha)
+```
+
+Let's now mark two $\alpha$ complexity parameters in Figure 1, which is the same plot as above but zoomed-in on the x-axis:
+
+* The default $\alpha$ = `cp` = complexity parameter in `rpart.control()` of 0.01 (marked with vertical solid line)
+* The optimal $\alpha^*$ we chose above (marked with vertical dashed line). Rather coincidentally, they are nearly the same value.
+
+```{r}
+# Plot the relationship between alpha complexity parameter and estimated
+# accuracy
+ggplot(alpha_df, aes(alpha, accuracy)) +
+  geom_point() +
+  labs(x = "alpha complexity parameter", y = "Estimated accuracy", title = "Figure 1: Estimated accuracy vs complexity parameter") +
+  geom_vline(xintercept = alpha_star, linetype = "dashed") +
+  geom_vline(xintercept = 0.01) +
+  coord_cartesian(xlim = c(0, 0.02))
+```
+
+Note how the vertical solid line corresponding to the default $\alpha$ = 0.01 indicates a classification accuracy of 69.2%. Compare this to the 80.3% you computed earlier.
+
+
+Let's now use this $\alpha^*$ to fit a CART on all the `training` data, make predictions on `test`, and create a `submisssion.csv` suitable for submission to Kaggle.
+
+```{r}
+tree_parameters <- rpart.control(maxdepth = 5, cp = alpha_star)
+model_CART <- rpart(model_formula, data = training, control = tree_parameters)
+test$type_hat <- predict(model_CART, newdata = test, type = "class")
+
+test %>% 
+  select(id, type = type_hat) %>% 
+  write_csv("data/submisssion.csv")
+```
+
+
+
+***
+
+
+
+# Point of diminishing returns
+
+* Use one-hot-enconding to fit a predictive CART model using the categorical variable `color` and plot the tree. Set the maximum depth of the tree to 5 and use the default "complexity parameter".
+* No need to generate an estimate of the accuracy that Kaggle would return. 
+
+![](one_hot_encoding.png)
+
+
+Why are we using one-hot-encoding? Because binary splits can only occur on a numerical variable. Since our one-hot-encoded variables are 0 if `FALSE` and 1 if `TRUE`, the splits occur on whether or not the monster is of a certain color.
+
+```{r, fig.height = 9/1.5, fig.width=16/1.5}
+training <- training %>% 
+  mutate(
+    black = as.numeric(color == "black"),
+    blood = as.numeric(color == "blood"),
+    blue = as.numeric(color == "blue"),
+    clear = as.numeric(color == "clear"),
+    green = as.numeric(color == "green"),
+    white = as.numeric(color == "white")   
+  )
+
+# Fit CART model
+model_formula <- as.formula(
+  type ~ bone_length + rotting_flesh + hair_length + has_soul + 
+    black + blood + blue + clear + green + white
+)
+tree_parameters <- rpart.control(maxdepth = 5)
+model_CART <- rpart(model_formula, data = training, control = tree_parameters)
+
+# Plot tree
+plot(model_CART, margin=0.25)
+text(model_CART, use.n = TRUE)
+title("Classfication of monster type with one-hot-encoded color")
+box()
+```
+
+Interesting. It seems even though we added our one-hot-encoded variables `black`, `blood`, `blue`, `clear`, `green`, and `white` to our model formula, we see no splits involving these `color` variables. 
+
+Just for fun, let's fit a CART using only the color variables, using the default `cp` complexity parameter of 0.01 in Figure 2:
+
+```{r}
+# Fit CART model
+model_formula <- as.formula(type ~ black + blood + blue + clear + green + white)
+tree_parameters <- rpart.control(maxdepth = 5)
+model_CART <- rpart(model_formula, data = training, control = tree_parameters)
+
+# Plot tree
+plot(model_CART, margin=0.25)
+text(model_CART, use.n = TRUE)
+title("Figure 2: Classfication of monster type with one-hot-encoded color")
+box()
+```
+
+Now let's set a different `cp` complexity parameter in the `rpart.control()`: a value of 0. In other words, complexity is not penalized at all! Your tree can grow as much as it wants! (subject to the other restrictions in `rpart.control()`)
+
+```{r}
+# Fit different CART model
+model_formula <- as.formula(type ~ black + blood + blue + clear + green + white)
+tree_parameters <- rpart.control(maxdepth = 5, cp = 0)
+model_CART <- rpart(model_formula, data = training, control = tree_parameters)
+
+# Plot different tree
+plot(model_CART, margin=0.25)
+text(model_CART, use.n = TRUE)
+title("Classfication of monster type with one-hot-encoded color")
+box()
+```
+
+
+
+***
+
+
+# Polishing the cannonball
+
+None

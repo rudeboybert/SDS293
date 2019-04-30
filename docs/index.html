@@ -32,7 +32,7 @@
 <style type="text/css" data-origin="pandoc">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -45,13 +45,11 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -494,7 +492,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">SDS/CSC 293: Machine Learning</h1>
 <h4 class="author">Albert Y. Kim</h4>
-<h4 class="date">Last updated on 2019-04-29</h4>
+<h4 class="date">Last updated on 2019-04-30</h4>
 
 </div>
 
@@ -522,6 +520,9 @@ h1{font-weight: 400;}
 </div>
 <div id="todays-topicsactivities" class="section level2">
 <h2>Todays Topics/Activities</h2>
+<ul>
+<li>Final thoughts</li>
+</ul>
 <div id="in-class-exercise" class="section level3">
 <h3>1. In-class exercise</h3>
 <p>Work on MP5.</p>
@@ -536,6 +537,18 @@ h1{font-weight: 400;}
 </div>
 <div id="todays-topicsactivities-1" class="section level2">
 <h2>Todays Topics/Activities</h2>
+<p><a href="static/MP4_solutions.html" target="_blank">HTML Solutions</a> to MP4 posted (<code>.Rmd</code> source code available <a href="MP.html#MP4-solutions">here</a>). Things to note:</p>
+<ol style="list-style-type: decimal">
+<li>Figure 1: Plot of <span class="math inline">\(y\)</span> = estimated accuracy over <span class="math inline">\(x\)</span> = <span class="math inline">\(\alpha\)</span> complexity parameter
+<ul>
+<li>Why does it look like steps and not a smooth curve like with MSE vs complexity?</li>
+<li>What is “optimal” <span class="math inline">\(\alpha^*\)</span> when many values of <span class="math inline">\(\alpha\)</span> achieve the same “best” accuracy of 69.2%</li>
+<li>Compare the crossvalidated estimate of accuracy of using default <span class="math inline">\(\alpha = 0.01\)</span> of 69.2%, to the accuracy of 80.3% you got in the “Due Dilligence” phase when not performing crossvalidation.</li>
+<li>In other words, if you don’t do CV, due to overfitting your uncrossvalidated classification accuracy is incorrectly “overly optimistic”: your accuracy on “new” data is actually much worse!</li>
+<li>Recall <a href="http://rudeboybert.rbind.io/talk/2019-01-13-Williams.pdf#page=36" target="_blank">Lec01 Slide 36</a></li>
+</ul></li>
+<li>Figure 2: Why does tree using only one-hot-encoded color variables only split on one variable: “is clear”?</li>
+</ol>
 <div id="in-class-exercise-1" class="section level3">
 <h3>1. In-class exercise</h3>
 <p>Work on MP5.</p>
@@ -913,43 +926,43 @@ We heard you like R so we made a wine called R so you can drink R while you R <a
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">94</td>
-<td align="right">5.0</td>
-<td align="right">2.3</td>
-<td align="right">3.3</td>
-<td align="right">1.0</td>
+<td align="left">56</td>
+<td align="right">5.7</td>
+<td align="right">2.8</td>
+<td align="right">4.5</td>
+<td align="right">1.3</td>
 <td align="left">versicolor</td>
 </tr>
 <tr class="even">
-<td align="left">110</td>
-<td align="right">7.2</td>
-<td align="right">3.6</td>
-<td align="right">6.1</td>
-<td align="right">2.5</td>
+<td align="left">134</td>
+<td align="right">6.3</td>
+<td align="right">2.8</td>
+<td align="right">5.1</td>
+<td align="right">1.5</td>
 <td align="left">virginica</td>
 </tr>
 <tr class="odd">
-<td align="left">64</td>
-<td align="right">6.1</td>
-<td align="right">2.9</td>
-<td align="right">4.7</td>
-<td align="right">1.4</td>
-<td align="left">versicolor</td>
-</tr>
-<tr class="even">
-<td align="left">15</td>
-<td align="right">5.8</td>
-<td align="right">4.0</td>
-<td align="right">1.2</td>
-<td align="right">0.2</td>
+<td align="left">19</td>
+<td align="right">5.7</td>
+<td align="right">3.8</td>
+<td align="right">1.7</td>
+<td align="right">0.3</td>
 <td align="left">setosa</td>
 </tr>
-<tr class="odd">
-<td align="left">69</td>
-<td align="right">6.2</td>
-<td align="right">2.2</td>
+<tr class="even">
+<td align="left">85</td>
+<td align="right">5.4</td>
+<td align="right">3.0</td>
 <td align="right">4.5</td>
 <td align="right">1.5</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="odd">
+<td align="left">96</td>
+<td align="right">5.7</td>
+<td align="right">3.0</td>
+<td align="right">4.2</td>
+<td align="right">1.2</td>
 <td align="left">versicolor</td>
 </tr>
 </tbody>
@@ -1408,8 +1421,9 @@ On campuses across America, the surge in student demand for computer science cou
 <p><em>Why chalk talks? Read the <a href="https://twitter.com/FieldNotesBrand" target="_blank">Field Notes</a> slogan.</em></p>
 <p><a href="http://rudeboybert.rbind.io/talk/2019-01-13-Williams.pdf" target="_blank">Lec01 slides</a> + 2 chalk talks.</p>
 </div>
-<div id="background-i-will-assume" class="section level3">
-<h3>2. Background I will assume</h3>
+<div id="backgro" class="section level3">
+<h3>2. Backgro</h3>
+<p>nd I will assume</p>
 <ol style="list-style-type: decimal">
 <li>You have seen multiple regression before (not necessarily taken a class on it).</li>
 <li>The <code>tidyverse</code> suite of R packages for data science, in particular <code>ggplot2</code> and <code>dplyr</code>.</li>

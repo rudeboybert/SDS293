@@ -70,6 +70,8 @@ h1{font-weight: 400;}
 
 ## Todays Topics/Activities  
 
+* Final thoughts
+
 ### 1. In-class exercise
 
 Work on MP5.
@@ -84,7 +86,21 @@ Work on MP5.
 
 ## Announcements
 
+
+
 ## Todays Topics/Activities  
+
+[HTML Solutions](static/MP4_solutions.html){target="_blank"} to MP4 posted (`.Rmd` source code available [here](MP.html#MP4-solutions)). Things to note:
+
+1. Figure 1: Plot of $y$ = estimated accuracy over $x$ = $\alpha$ complexity parameter
+    * Why does it look like steps and not a smooth curve like with MSE vs complexity?
+    * What is "optimal" $\alpha^*$ when many values of $\alpha$ achieve the same "best" accuracy of 69.2%
+    * Compare the crossvalidated estimate of accuracy of using default $\alpha = 0.01$ of 69.2%, to the accuracy of 80.3% you got in the "Due Dilligence" phase when not performing crossvalidation.
+    * In other words, if you don't do CV, due to overfitting your uncrossvalidated classification accuracy is incorrectly "overly optimistic": your accuracy on "new" data is actually much worse!
+    * Recall [Lec01 Slide 36](http://rudeboybert.rbind.io/talk/2019-01-13-Williams.pdf#page=36){target="_blank"}
+1. Figure 2: Why does tree using only one-hot-encoded color variables only split on one variable: "is clear"?
+
+
 
 ### 1. In-class exercise
 
@@ -915,7 +931,8 @@ This class is just part of a larger phenomenon of resources spread *very* thin:
 [Lec01 slides](http://rudeboybert.rbind.io/talk/2019-01-13-Williams.pdf){target="_blank"} + 2 chalk talks. 
 
 
-### 2. Background I will assume
+### 2. Backgro
+nd I will assume
 
 1. You have seen multiple regression before (not necessarily taken a class on it).
 1. The `tidyverse` suite of R packages for data science, in particular `ggplot2` and `dplyr`.
