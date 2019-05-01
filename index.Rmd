@@ -64,30 +64,12 @@ h1{font-weight: 400;}
 
 
 
-# Lec 25: Thu 5/2
-
-## Announcements
-
-## Todays Topics/Activities  
-
-* Final thoughts
-
-### 1. In-class exercise
-
-Work on MP5.
-
-
-
-***
-
-
-
 # Lec 24: Wed 5/1
 
 ## Announcements
 
-* Joint MP5 peer evaluation & exit survey [posted](MP.html#MP5-submit). All group members must complete this to receive full credit.
-* In particular questions relating to use of Slack, as at the Symposium on Data Science and Statistics (SDSS) I'll be presenting ["Using Slack for Communication and Collaboration in the Classroom"](https://ww2.amstat.org/meetings/sdss/2019/onlineprogram/AbstractDetails.cfm?AbstractID=305068){target="_blank"}  
+* Today's lecture: Final thoughts. Tomorrow's lecture: 80 minutes of office hours.
+* Joint MP5 peer evaluation & exit survey [posted](MP.html#MP5-submit). All group members must complete this to receive full credit. In particular there are questions relating to use of Slack, because at the Symposium on Data Science and Statistics (SDSS) I'll be presenting ["Using Slack for Communication and Collaboration in the Classroom"](https://ww2.amstat.org/meetings/sdss/2019/onlineprogram/AbstractDetails.cfm?AbstractID=305068){target="_blank"}  
 </br>
 <center>
 <a href="https://ww2.amstat.org/meetings/sdss/2019/onlineprogram/Program.cfm?TrackID=28" target="_blank"><img border="1" src="static/events/SDSS.png" width="750px"></a>
