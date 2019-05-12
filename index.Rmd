@@ -780,7 +780,7 @@ These are the most fundamental steps to take before any modeling or data analysi
 * Recap of Lec04: crossvalidation
 * Regression
 
-### 2. Tweet of the day
+### 2. Tweet of the day {#work-life-balance}
 
 Shared with me by Dr. Jenny Smetzer. I agree with Ms. Damour's opinion.  You don't have to, but her ideas are still worth thinking about. They relate to "points of diminishing returns" and "polishing the cannonball" as discussed for mini-project 1. Here are some excerpts:
 
