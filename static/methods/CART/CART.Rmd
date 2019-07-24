@@ -8,16 +8,14 @@ runtime: shiny
 ---
 
 ```{r, message=FALSE, warning=FALSE}
-library(ggplot2)
-library(dplyr)
+library(tidyverse)
 library(shiny)
 library(rpart)
 iris <- iris %>%
-  as_tibble() %>%
-  # Add ID column:
-  mutate(ID = 1:n()) %>% 
-  select(ID, Species, Sepal.Length, Sepal.Width)
-model_formula <- as.formula(Species ~ Sepal.Length + Sepal.Width)
+  # Convert to "tibble" tidy data frame:
+  as_tibble() %>% 
+  # Add identification variable to uniquely identify each row.
+  rownames_to_column(var="ID")
 ```
 
 
@@ -35,15 +33,17 @@ where
 * The $k$ different levels of the categorical outcome variable are indexed with $k=1, \ldots, K$.
 * $T$ is the tree. $|T|$ is the "cardinality" of the tree (a term from set theory); it denotes the "complexity" of the tree as measured by the number of terminal nodes AKA leafs. These leafs are indexed with $m=1, \ldots, |T|$
 * $\widehat{p}_{mk}$ are the fitted probabilities for each of the $k = 1, \ldots, K$ categories at a particular leaf $m$
-* G = ["Gini impurity"](https://en.wikipedia.org/wiki/Decision_tree_learning#Gini_impurity) is a measure of "fit" where smaller values indicate better fit (see ISLR p.312).
+* G = ["Gini impurity"](https://en.wikipedia.org/wiki/Decision_tree_learning#Gini_impurity) is a measure of "fit" where smaller values indicate better fit (see [ISLR](http://faculty.marshall.usc.edu/gareth-james/ISL/) p.312).
 * $\alpha$ here is the "complexity parameter", which you can set using the `cp` argument in `rpart.control()`.
 
-For example using $\alpha$ = `cp=0.01`, which is the default value (see `?rpart.control`), the code is:
+For example explicitly setting $\alpha$ = `cp=0.01` (which is the default value; see `?rpart.control`), the code is:
 
 ```{r, eval=FALSE}
 # Define tree
-tree_parameters <- rpart.control(maxdepth = 3, cp = 0.01)
-model_CART <- rpart(model_formula, data = iris, control = tree_parameters)
+tree_parameters <- rpart.control(cp = 0.01)
+model_CART <- rpart(Species ~ Sepal.Length + Sepal.Width, 
+                    data = iris, 
+                    control = tree_parameters)
 
 # Plot
 plot(model_CART, margin=0.25)
@@ -72,7 +72,7 @@ tuning parameter that controls the complexity of the model.
 renderPlot({
   # Create tree
   tree_parameters <- rpart.control(maxdepth = 3, cp=input$cp)
-  model_CART <- rpart(model_formula, data = iris, control=tree_parameters)
+  model_CART <- rpart(Species ~ Sepal.Length + Sepal.Width, data = iris, control=tree_parameters)
   
   # Plot
   plot(model_CART, margin=0.25)
