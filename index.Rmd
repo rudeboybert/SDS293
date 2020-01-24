@@ -1,5 +1,5 @@
 ---
-title: "SDS/CSC 293: Machine Learning"
+title: "SDS 293: Modeling for Machine Learning"
 author: "Albert Y. Kim"
 date: "Last updated on `r Sys.Date()`"
 output:
@@ -8,6 +8,8 @@ output:
     toc_depth: 2
     toc_float: true
     df_print: kable
+    includes:
+      in_header: "favicon.html"
 ---
 
 <style>
