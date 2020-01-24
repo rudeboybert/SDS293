@@ -14,15 +14,13 @@ navbar:
   title: "SDS/CSC 293"
   left:
   - icon: fa-slack fa-lg
-    href: https://sds-csc-293-2019-jan.slack.com/
+    href: https://sds-293-2020-01.slack.com/
   - text: Code
     href: code.html
   right:
-  - text: DataCamp
-    href: datacamp.html#quiz
   - text: Mini-Projects
-    href: MP.html#MP5
+    href: MP.html
   - text: Midterms
-    href: midterms.html#midtermII
+    href: midterms.html
   - text: Syllabus
     href: syllabus.html
