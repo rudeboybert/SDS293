@@ -1,0 +1,96 @@
+
+---
+title: "k-Nearest Neighbors"
+author: "Albert Y. Kim"
+date: "Last updated on `r Sys.Date()`"
+output: html_document
+runtime: shiny
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(class)
+```
+
+
+## Background
+
+
+```{r, echo=FALSE, message=FALSE}
+# Load data
+data("iris")
+iris <- iris %>%
+  tbl_df() %>% 
+  select(Sepal.Length, Sepal.Width, Species)
+
+```
+
+The `iris` data contains 50 of each of three species: setosa, versicolor, and
+virginica. This is a random selection of 7 of the `r nrow(iris)` rows of the
+`iris` data:
+
+```{r, echo=FALSE, message=FALSE}
+iris %>% 
+  sample_n(7) %>% 
+  knitr::kable()
+```
+
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# Define training/test sets
+train <- iris
+train_input <- train %>%
+  select(Sepal.Length, Sepal.Width)
+test <- expand.grid(
+  Sepal.Length = seq(3.3, 8.7, by=0.1),
+  Sepal.Width = seq(1, 5.4, by=0.1)
+) %>% 
+  tbl_df()
+# Assign categorical outcome variable:
+classifications <- train$Species
+```
+
+
+## Varying k
+
+We use the `r nrow(iris)` observations in `iris` as the *training data* (denoted by the points
+below, with random noise added to address overplotting) and define a cartesian grid as the *test data*. 
+
+**Key Points**:
+
+* Majority rules with ties broken at random.
+* Observe probabilities in legend. Note the data set is 33% setosa, 33% versicolor, and 33% virginica.
+
+```{r eruptions, echo=FALSE, fig.width=10}
+inputPanel(
+  sliderInput("k", label = "k: # of Nearest Neighbors", min = 1, max = nrow(iris), value = 3, step = 1)
+)
+
+renderPlot({
+  test_input <- test %>% 
+    select(Sepal.Length, Sepal.Width)
+  
+  # Fit model:
+  model_knn <- 
+    class::knn(train=train_input, test=test_input, cl=classifications, k = input$k, prob=TRUE)
+  
+  # Add predictions and probabilities to test set
+  test <- test %>% 
+    mutate(
+      Species = model_knn,
+      Probability = attr(model_knn, "prob")
+    )
+  
+  set.seed(76)
+  ggplot(NULL, aes(x=Sepal.Length, y=Sepal.Width)) + 
+    scale_fill_brewer(palette = "Dark2") + 
+    geom_tile(data=test, aes(fill=Species, alpha=Probability)) +
+    labs(title=paste("k =", input$k, "Nearest Neighbors")) + 
+    geom_jitter(data=train, aes(fill=Species), size=3, shape=21, stroke=0.5)
+})
+```
+
+

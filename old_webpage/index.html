@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Albert Y. Kim" />
+
+
+<title>SDS 293: Modeling for Machine Learning</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link rel="shortcut icon" href="293.png">
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">SDS/CSC 293</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="https://sds-293-2020-01.slack.com/">
+    <span class="fa fa-slack fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="code.html">Code</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="MP.html">Mini-Projects</a>
+</li>
+<li>
+  <a href="midterms.html">Midterms</a>
+</li>
+<li>
+  <a href="syllabus.html">Syllabus</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">SDS 293: Modeling for Machine Learning</h1>
+<h4 class="author">Albert Y. Kim</h4>
+<h4 class="date">Last updated on 2020-01-24</h4>
+
+</div>
+
+
+<style>
+h1{font-weight: 400;}
+</style>
+<style>
+h1{font-weight: 400;}
+</style>
+<hr />
+<div id="schedule" class="section level1">
+<h1>Schedule</h1>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vToPV6gfDlIq5ni1qezMcPy3ZdyIN1MtSSKZ3GABeBvf9LYu3_1XE7DOEQh4Dg02bKG5YF0XpSFO_-B/pubhtml?gid=2021662517&amp;single=true&amp;widget=true&amp;headers=false" width="80%" height="600">
+</iframe>
+<!--
+{target="_blank"}
+-->
+<hr />
+</div>
+<div id="lec-24-wed-51" class="section level1">
+<h1>Lec 24: Wed 5/1</h1>
+<div id="announcements" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li>Today’s lecture: Final thoughts. Tomorrow’s lecture: 80 minutes of office hours.</li>
+<li>Joint MP5 peer evaluation &amp; exit survey <a href="MP.html#MP5-submit">posted</a>. All group members must complete this to receive full credit. In particular there are questions relating to use of Slack, because at the Symposium on Data Science and Statistics (SDSS) I’ll be presenting <a href="https://ww2.amstat.org/meetings/sdss/2019/onlineprogram/AbstractDetails.cfm?AbstractID=305068" target="_blank">“Using Slack for Communication and Collaboration in the Classroom”</a><br />
+</br>
+<center>
+<a href="https://ww2.amstat.org/meetings/sdss/2019/onlineprogram/Program.cfm?TrackID=28" target="_blank"><img border="1" src="static/events/SDSS.png" width="750px"></a>
+</center>
+</br></li>
+<li>FYI other SDS faculty will be presenting at SDSS as well:
+<ul>
+<li>Prof. Katherine Kinnaird: <a href="https://ww2.amstat.org/meetings/sdss/2019/onlineprogram/AbstractDetails.cfm?AbstractID=305072" target="_blank">“Data Physicalizations: Where Art, Data, and Domain Applications Combine”</a></li>
+<li>Prof. Miles Ott: <a href="https://ww2.amstat.org/meetings/sdss/2019/onlineprogram/AbstractDetails.cfm?AbstractID=305016" target="_blank">“Ethics in an Advanced Undergraduate Seminar: Statistical Analysis of Social Network Data”</a></li>
+</ul></li>
+</ul>
+</div>
+<div id="todays-topicsactivities" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<p><a href="static/MP4_solutions.html" target="_blank">HTML Solutions</a> to MP4 posted as well as <a href="MP.html#MP4-solutions"><code>.Rmd</code> source code</a>. Things to note:</p>
+<ol style="list-style-type: decimal">
+<li>Figure 1: Plot of <span class="math inline">\(y\)</span> = estimated accuracy over <span class="math inline">\(x\)</span> = <span class="math inline">\(\alpha\)</span> complexity parameter
+<ul>
+<li>Why does it look like steps and not a smooth curve like with previous MSE vs complexity plots?</li>
+<li>What is “optimal” <span class="math inline">\(\alpha^*\)</span> when many values of <span class="math inline">\(\alpha\)</span> achieve the same “best” accuracy of 69.2%</li>
+<li>Compare the crossvalidated estimate of accuracy of using default <span class="math inline">\(\alpha\)</span> = 0.01 of 69.2%, to the accuracy of 80.3% you got in the “Due Dilligence” phase when not performing crossvalidation.</li>
+<li>In other words, if you don’t do CV, due to overfitting your uncrossvalidated classification accuracy is incorrectly “overly optimistic”: your accuracy on “new” data is actually much worse!</li>
+<li>Recall <a href="http://rudeboybert.rbind.io/talk/2019-01-13-Williams.pdf#page=36" target="_blank">Lec01 Slide 36</a></li>
+</ul></li>
+<li>Figure 2: Why does tree using only one-hot-encoded color variables only split on one variable: “is clear”?</li>
+</ol>
+<div id="in-class-exercise" class="section level3">
+<h3>1. In-class exercise</h3>
+<p>Work on MP5.</p>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-23-mon-429" class="section level1">
+<h1>Lec 23: Mon 4/29</h1>
+<div id="announcements-1" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li>Wrap-up</li>
+<li><a href="midterms.html#revise">Midterm II Q3 resubmission</a> due today. You must follow instructions completely to receive full credit.</li>
+</ul>
+</div>
+<div id="todays-topicsactivities-1" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="chalk-talk-major-topics-we-didnt-cover" class="section level3">
+<h3>1. Chalk Talk: Major topics we didn’t cover</h3>
+<ol style="list-style-type: decimal">
+<li>Image recognition: <a href="https://quickdraw.withgoogle.com/" target="_blank">Google Quick, Draw</a>.</li>
+<li>“Unsupervised learning” where there is no outcome variable <span class="math inline">\(y\)</span>:
+<ol style="list-style-type: lower-alpha">
+<li>Clustering. Ex: k-means clustering <a href="static/methods/k_means/k_means.pdf" target="_blank">PDF</a> and <a href="static/methods/k_means/k_means_plots.R" download>source code</a>.</li>
+<li>Principal components analysis (PCA)
+<ul>
+<li>Simple example: <a href="static/methods/PCA/PCA.html" target="_blank">School funding</a> and <a href="static/methods/PCA/PCA.Rmd" download>source code</a>.</li>
+<li>Facial recognition example: <a href="static/methods/PCA/faces.csv.zip" download>data</a> and <a href="static/methods/PCA/PCA.R" download><code>PCA.R</code></a> code</li>
+</ul></li>
+</ol></li>
+<li>Bias-variance tradeoff. Why do observe this pattern in the “Total Error” black curve below, which is a fitted model’s error on new test data for different levels of model complexity?</li>
+</ol>
+<p><a href="http://scott.fortmann-roe.com/docs/BiasVariance.html" target="_blank"><img border="1" src="http://scott.fortmann-roe.com/docs/docs/BiasVariance/biasvariance.png" width="500"></a></p>
+<p>Because of this probabilistic formula</p>
+<p><span class="math display">\[
+\mbox{MSE}\left[\widehat{f}(x)\right] = \mbox{Var}\left[\widehat{f}(x)\right] +
+\left(\mbox{Bias}\left[\widehat{f}(x)\right]\right)^2 + \sigma^2
+\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(\widehat{y}\)</span> is also denoted <span class="math inline">\(\widehat{f}(x)\)</span>. <span class="math inline">\(\widehat{f}(x)\)</span> is a random variable.</li>
+<li><span class="math inline">\(y=f(x)+\epsilon\)</span> with <span class="math inline">\(\mathbb{E}\left[\epsilon\right] = 0\)</span> and <span class="math inline">\(\mbox{Var}[\epsilon] = \sigma\)</span>. Hence <span class="math inline">\(y\)</span> is random as well.</li>
+<li>The random variation is over sample to sample.</li>
+</ul>
+<p>Why is this true? You need to take MTH/SDS 246 Probability:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mbox{MSE}\left[\widehat{f}(x)\right] &amp;= \mathbb{E}\left[\left( y - \widehat{f}(x) \right)^2\right]= \mathbb{E}\left[\left( y^2 - 2 y\widehat{f}(x) + \widehat{f}(x)^2 \right)\right]\\
+&amp;= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - \left(\mathbb{E}\left[ 2y\widehat{f}(x) \right]\right) \mbox{ by linearity of expectations } \\
+&amp;= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - \left(\mathbb{E}\left[ 2(f(x)+\epsilon)\widehat{f}(x) \right]\right) \mbox{ since } y = f(x)+\epsilon\\
+&amp;= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - \left(\mathbb{E}\left[ 2f(x)\widehat{f}(x) \right] + \mathbb{E}\left[ 2\epsilon\widehat{f}(x) \right]\right)  \\
+&amp;= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] - 2\mathbb{E}\left[ \epsilon\widehat{f}(x) \right]  \mbox{ since } \mathbb{E}\left[aX\right] = a\mathbb{E}\left[X\right] \mbox{ for } a \in \mathbb{R}\\
+&amp;= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] - 2\mathbb{E}\left[\epsilon \right]\mathbb{E}\left[\widehat{f}(x) \right] \mbox{ since } \mathbb{E}\left[XY\right] = \mathbb{E}\left[X\right]\mathbb{E}\left[Y\right] \mbox{ if }X,Y \mbox{ are independent}\\
+&amp;= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] - 0 \mbox{ since } \mathbb{E}\left[\epsilon\right]=0\\
+&amp;= \left( \mbox{Var}\left[ y \right] + \mathbb{E}\left[y\right]^2 \right) + \left(\mbox{Var}\left[ \widehat{f}(x) \right] + \mathbb{E}\left[ \widehat{f}(x) \right]^2\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] \mbox{ since } \mbox{Var}\left[X\right] = \mathbb{E}\left[X^2\right] - \mathbb{E}\left[X\right]^2\\
+&amp;= \left( \mbox{Var}\left[ y \right] + \mathbb{E}\left[f(x) + \epsilon\right]^2 \right) + \left(\mbox{Var}\left[ \widehat{f}(x) \right] + \mathbb{E}\left[ \widehat{f}(x) \right]^2\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right]\\
+&amp;= \left( \mbox{Var}\left[ y \right] + \mathbb{E}\left[f(x)\right]^2 + 0 \right) + \left(\mbox{Var}\left[ \widehat{f}(x) \right] + \mathbb{E}\left[ \widehat{f}(x) \right]^2\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] \mbox{ since } \mathbb{E}\left[\epsilon\right] = 0\\
+&amp;= \mbox{Var}\left[ y \right] + \mbox{Var}\left[ \widehat{f}(x) \right] + \left( f(x)^2  -  2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] + \mathbb{E}\left[ \widehat{f}(x) \right]^2 \right)\\
+&amp;= \mbox{Var}\left[ y \right] + \mbox{Var}\left[ \widehat{f}(x) \right] + \left(  f(x) - \mathbb{E}\left[\widehat{f}(x) \right] \right)^2 \\
+&amp;= \mbox{Var}\left[ y\right] + \mbox{Var}\left[ \widehat{f}(x) \right] + \left(  \mathbb{E}\left[f(x)-\widehat{f}(x) \right] \right)^2 \mbox{ since } \mathbb{E}\left[a + X \right] = a + \mathbb{E}\left[X\right] \mbox{ for } a \in \mathbb{R}\\
+&amp;= \sigma^2 + \mbox{Var}\left[ \widehat{f}(x) \right] + \left( \mbox{Bias}\left[ \widehat{f}(x) \right] \right)^2 \mbox{ since } \mbox{Var}\left[ y\right] = \mbox{Var}\left[ f(x)+\epsilon\right] = \mbox{Var}\left[ \epsilon \right] = \sigma^2\\
+\end{aligned}
+\]</span></p>
+</div>
+<div id="chalk-talk-neural-nets" class="section level3">
+<h3>2. Chalk Talk: Neural nets</h3>
+<p>Based on this <a href="http://neuralnetworksanddeeplearning.com/chap1.html" target="_blank">link</a>, the best layperson’s explanation of neural nets I could find. Other references:</p>
+<ul>
+<li><a href="https://www.amazon.com/Deep-Learning-R-Francois-Chollet/dp/161729554X" target="_blank">Deep Learning with R</a>, which uses the <code>keras</code> package.</li>
+<li>The <code>keras</code> package is included in RStudio’s <a href="https://tensorflow.rstudio.com/tensorflow/" target="_blank">R Interface to Core TensorFlow API</a>.</li>
+<li><a href="https://www.tensorflow.org/" target="_blank">TensorFlow</a> is Google Brain’s open-source library for machine learning applications such as neural networks.</li>
+<li>TensorFlow is one of the elements behind <a href="https://ai.googleblog.com/2016/01/alphago-mastering-ancient-game-of-go.html" target="_blank">AlphaGo</a>:</li>
+</ul>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8tq1C8spV_g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p></br></p>
+</div>
+<div id="example-of-deep-learning" class="section level3">
+<h3>3. Example of Deep Learning</h3>
+<p>Amherst College ’18 graduate and <a href="https://datascience.massmutual.com/dsdp" target="_blank">MassMutual Data Science Development Program</a> member Jennifer Halbleib’s thesis: <a href="static/halbleib.pdf" target="_blank">PDF</a> and <code>thesisdown</code> R Markdown <a href="static/halbleib.zip" download>source code</a>. Data considered is famous <a href="https://en.wikipedia.org/wiki/MNIST_database" target="_blank">MNIST handwritten digit data</a>, available on <a href="https://www.kaggle.com/c/digit-recognizer" target="_blank">Kaggle</a>.</p>
+<p><a href="https://www.kaggle.com/c/digit-recognizer" target="_blank"><img border="1" src="static/images/MNIST_digits.png" width="500"></a></p>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-22-wed-424" class="section level1">
+<h1>Lec 22: Wed 4/24</h1>
+<div id="announcements-2" class="section level2">
+<h2>Announcements</h2>
+<p>None.</p>
+</div>
+<div id="todays-topicsactivities-2" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="in-class-exercise-1" class="section level3">
+<h3>1. In-class exercise</h3>
+<ul>
+<li>Ethics in machine learning discussion. All comments + links posted in <code>#ethics_discussion</code> channel in Slack.</li>
+</ul>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-21-mon-422" class="section level1">
+<h1>Lec 21: Mon 4/22</h1>
+<div id="announcements-3" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li><a href="midterms.html#revise">Instructions</a> on revising/resubmitting question 3 of midterm II only.</li>
+<li>Wed 4/24:
+<ul>
+<li>In-class quiz (info posted in <a href="datacamp.html#quiz">DataCamp</a>) followed by discussion of ethics in machine learning.</li>
+<li>Wrap-up discussion:
+<ul>
+<li>What we didn’t cover in this course.</li>
+<li>What to remember for future.</li>
+</ul></li>
+<li>No office hours during normal 2:45-4pm slot.</li>
+</ul></li>
+<li>MP5 <a href="MP.html#MP5">posted</a>. Please fill out your group information/partner requests today if possible.</li>
+</ul>
+</div>
+<div id="todays-topicsactivities-3" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="in-class-exercise-2" class="section level3">
+<h3>1. In-class exercise</h3>
+<ul>
+<li>Go over LASSO example <a href="code.html#LASSO">code</a>.</li>
+</ul>
+</div>
+<div id="tweet-of-the-day" class="section level3">
+<h3>2. Tweet of the day</h3>
+<blockquote class="twitter-tweet" data-lang="en">
+<p lang="en" dir="ltr">
+We heard you like R so we made a wine called R so you can drink R while you R <a href="https://t.co/D6cPTHEdq6">pic.twitter.com/D6cPTHEdq6</a>
+</p>
+— R Memes for Statistical Fiends (<span class="citation">@rstatsmemes</span>) <a href="https://twitter.com/rstatsmemes/status/1117231358143864832?ref_src=twsrc%5Etfw">April 14, 2019</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-20-wed-417" class="section level1">
+<h1>Lec 20: Wed 4/17</h1>
+<div id="announcements-4" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li>Midterms back on Monday or your each get $10.</li>
+<li>Preliminary info about MP5 posted. You are free to choose groups of 2-3.</li>
+</ul>
+</div>
+<div id="todays-topicsactivities-4" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="in-class-exercise-3" class="section level3">
+<h3>1. In-class exercise</h3>
+<p>Work on MP4.</p>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-19-mon-415" class="section level1">
+<h1>Lec 19: Mon 4/15</h1>
+<div id="announcements-5" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li>Posted information on in-class quiz on Wed 4/24 in <a href="datacamp.html#quiz">DataCamp</a>. This quiz will count as a DataCamp assignment.</li>
+<li>Discussion about DataCamp.</li>
+</ul>
+</div>
+<div id="todays-topicsactivities-5" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="chalk-talk" class="section level3">
+<h3>1. Chalk Talk</h3>
+<ul>
+<li>Continuing: Shiny app illustrating how to control the amount of “regularization/shrinkage” in a multiple regression model <a href="static/methods/LASSO/LASSO_v2.Rmd" download><code>LASSO_v2.Rmd</code></a>.</li>
+<li>Explaining the optimization inherent to LASSO:* LASSO uses a class of <a href="https://en.wikipedia.org/wiki/Gradient_descent" target="_blank">gradient descent</a> optimization methods called <a href="https://en.wikipedia.org/wiki/Proximal_gradient_methods_for_learning#Lasso_regularization" target="_blank">proximal gradient methods</a> to find the <span class="math inline">\(\widehat{\beta}_0\)</span> and <span class="math inline">\(\widehat{\beta}_1, \ldots, \widehat{\beta}_p\)</span> that minimizes the following equation:</li>
+</ul>
+<p><span class="math display">\[
+\min_{\widehat{\beta}_0, \ldots, \widehat{\beta}_p} \left( \sum_{i=1}^n \left(y_i -\widehat{y}_i\right)^2 + \lambda \sum_{j=1}^p \left|\widehat{\beta}_j\right| \right)
+\]</span></p>
+<p>in other words find the <span class="math inline">\(\widehat{\beta}_0\)</span> and <span class="math inline">\(\widehat{\beta}_1, \ldots, \widehat{\beta}_p\)</span> that minimizes</p>
+<p><span class="math display">\[
+\min_{\widehat{\beta}_0, \ldots, \widehat{\beta}_p} \left( \mbox{residual sum of squares} + \mbox{shrinkage penalty} \right)
+\]</span></p>
+<p>Note that the “residual sum of squares” is inversely related to the “shrinkage penalty”.</p>
+</div>
+<div id="in-class-exercise-4" class="section level3">
+<h3>2. In-class exercise</h3>
+<p>Work on MP4.</p>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-18-mon-48" class="section level1">
+<h1>Lec 18: Mon 4/8</h1>
+<div id="announcements-6" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li>(More straight-forward) <a href="MP.html#MP4">MP4 posted</a></li>
+<li>Talk on Thursday April 18th 6pm in Seelye 106<br />
+
+<center>
+<img src="static/events/StephanieHicks.png" width="650" />
+</center></li>
+</ul>
+</div>
+<div id="todays-topicsactivities-6" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="chalk-talk-1" class="section level3">
+<h3>1. Chalk Talk</h3>
+<ul>
+<li>Just like CART, the <span class="math inline">\(k\)</span>-Nearest Neighbors (kNN) “partitions” the predictor space. This time not with “binary splits” but by dividing up the predictor space based on proximity. See this <a href="static/methods/knn/knn_all_plots.pdf" target="_blank">sequence of images</a>.
+<ul>
+<li>Optional: <a href="http://scott.fortmann-roe.com/docs/BiasVariance.html" target="_blank">Additional reading on knn</a></li>
+<li>Optional: Shiny app <a href="static/methods/knn/knn.Rmd" download><code>knn.Rmd</code></a></li>
+</ul></li>
+<li>Shiny app illustrating how to control the amount of “regularization/shrinkage” in a multiple regression model <a href="static/methods/LASSO/LASSO_v2.Rmd" download><code>LASSO_v2.Rmd</code></a>.</li>
+</ul>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-17-wed-42" class="section level1">
+<h1>Lec 17: Wed 4/2</h1>
+<div id="announcements-7" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li>If you are interested in being hired to be a note taker for this class, please see the message in <code>#general</code> on Slack.</li>
+<li>Extra office hours this Friday: 2:30pm-4:00pm.</li>
+</ul>
+</div>
+<div id="todays-topicsactivities-7" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="how-cart-partitions-the-predictor-space-take-2" class="section level3">
+<h3>How CART partitions the predictor space, Take 2</h3>
+<p>Recall from Lec14 Chalk Talk the drawings of regions R1, R2, R3, R4, and R5 based on splits t1, t2, t3, and t4 drawings? Those were a first attempt at illustrating the idea of “partitioning the predictor space”, where in the drawings the predictor space (x1, x2) was two dimensional.</p>
+<p>Those were a little abstract. Here is a second attempt where we</p>
+<ol style="list-style-type: decimal">
+<li>Show the tree first! Not second! Then</li>
+<li>Show the corresponding scatterplot where we make the two dimensional predictor space explicit: (x1 = Sepal Length, x2 = Sepal Width). Notice how the color of the points in each of the 5 regions corresponds to the terminal nodes/leafs of the tree.</li>
+</ol>
+<p><img src="static/methods/CART/CART.png" width="500" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="624" /></p>
+</div>
+<div id="chalk-talk-2" class="section level3">
+<h3>1. Chalk Talk</h3>
+<ul>
+<li>Shiny app illustrating how to control “complexity” of a tree <a href="static/methods/CART/CART.Rmd" download><code>CART.Rmd</code></a>.</li>
+</ul>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-16-mon-41" class="section level1">
+<h1>Lec 16: Mon 4/1</h1>
+<div id="announcements-8" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li>Midterm II this weekend. Review materials under <a href="midterms.html#midtermII">Midterms</a></li>
+</ul>
+</div>
+<div id="todays-topicsactivities-8" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="chalk-talk-3" class="section level3">
+<h3>1. Chalk Talk</h3>
+<ul>
+<li><a href="MP.html#MP3-solutions">MP3 solutions</a></li>
+<li>Wrapping up CART
+<ul>
+<li>What is multiclass logarithmic loss? A simple example</li>
+<li>Please review on your own: Solutions for Lec 14 CART code exercises. These can be found in <a href="code.html">Code</a> -&gt; CART -&gt; Lines 116-154.</li>
+</ul></li>
+</ul>
+</div>
+<div id="tweet-of-the-day-1" class="section level3">
+<h3>2. Tweet of the day</h3>
+<blockquote class="twitter-tweet" data-lang="en">
+<p lang="en" dir="ltr">
+👏Give me an E👏! … E!<br>👏Give me a D👏! … D!<br>👏Give me an A👏! … A!<br>What does that spell? Exploratory data analysis! 👏👏👏 <a href="https://t.co/FuUKZxH0Vk">https://t.co/FuUKZxH0Vk</a>
+</p>
+— Albert Y. Kim (<span class="citation">@rudeboybert</span>) <a href="https://twitter.com/rudeboybert/status/1110897733177671680?ref_src=twsrc%5Etfw">March 27, 2019</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-15-wed-327" class="section level1">
+<h1>Lec 15: Wed 3/27</h1>
+<div id="announcements-9" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li></li>
+</ul>
+</div>
+<div id="todays-topicsactivities-9" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="chalk-talk-4" class="section level3">
+<h3>1. Chalk Talk</h3>
+<ul>
+<li>What is a “minimally <strong>REPR</strong>oducible <strong>EX</strong>ample” AKA a <a href="https://www.tidyverse.org/help/" target="_blank">reprex</a>?</li>
+</ul>
+</div>
+<div id="in-class-exercise-5" class="section level3">
+<h3>2. In-class exercise</h3>
+<ul>
+<li>MP3 now due at 10pm (as well as MP4 &amp; MP5).</li>
+<li>Note reprex of AUC computation on <a href="MP.html#MP3-working">MP3</a> page.</li>
+</ul>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-14-mon-325" class="section level1">
+<h1>Lec 14: Mon 3/25</h1>
+<div id="announcements-10" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li>Sit with your MP3 partner</li>
+<li>Tomorrow 12:15-1:05pm in Ford Hall Atrium: Presentation of SDS major
+<center>
+<img src="static/events/SDS_major.png" width="650" />
+<center>
+</br></li>
+</ul>
+</div>
+<div id="todays-topicsactivities-10" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="iris-dataset" class="section level3">
+<h3>1. iris dataset</h3>
+<p>The iris dataset is a canonical dataset in statistics and machine learning (<a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">Wikipedia</a>). Introduced by Fisher in his 1936 paper “The use of multiple measurements in taxonomic problems as an example of linear discriminant analysis.” For 150 iris flowers it has</p>
+<p><strong>Categorical outcome <span class="math inline">\(y\)</span></strong>: One of three species of iris flower</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Setosa</th>
+<th align="center">Versicolor</th>
+<th align="center">Virginica</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><img src="static/images/iris_setosa.png" alt="Drawing" style="width: 200px;"/></td>
+<td align="center"><img src="static/images/iris_versicolor.png" alt="Drawing" style="width: 200px;"/></td>
+<td align="center"><img src="static/images/iris_virginica.png" alt="Drawing" style="width: 200px;"/></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Four predictor variables <span class="math inline">\(\vec{X}\)</span></strong>: Sepal length, sepal width, petal length, and petal width, all in cm.</p>
+<center>
+<img src="static/images/petals_sepals.jpg" alt="Drawing" style="width: 400px;"/>
+</center>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">iris &lt;-<span class="st"> </span>iris <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="st">  </span><span class="co"># Convert to tibble data frame:</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="st">  </span><span class="co"># Add identification variable to uniquely identify each row:</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="st">  </span><span class="kw">rownames_to_column</span>(<span class="dt">var=</span><span class="st">&quot;ID&quot;</span>) </a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co"># Show random sample of 5 rows:</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">iris <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="st">  </span><span class="kw">sample_n</span>(<span class="dv">5</span>)</a></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">ID</th>
+<th align="right">Sepal.Length</th>
+<th align="right">Sepal.Width</th>
+<th align="right">Petal.Length</th>
+<th align="right">Petal.Width</th>
+<th align="left">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">58</td>
+<td align="right">4.9</td>
+<td align="right">2.4</td>
+<td align="right">3.3</td>
+<td align="right">1.0</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="even">
+<td align="left">51</td>
+<td align="right">7.0</td>
+<td align="right">3.2</td>
+<td align="right">4.7</td>
+<td align="right">1.4</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="odd">
+<td align="left">55</td>
+<td align="right">6.5</td>
+<td align="right">2.8</td>
+<td align="right">4.6</td>
+<td align="right">1.5</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="even">
+<td align="left">96</td>
+<td align="right">5.7</td>
+<td align="right">3.0</td>
+<td align="right">4.2</td>
+<td align="right">1.2</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="odd">
+<td align="left">133</td>
+<td align="right">6.4</td>
+<td align="right">2.8</td>
+<td align="right">5.6</td>
+<td align="right">2.2</td>
+<td align="left">virginica</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="chalk-talk-5" class="section level3">
+<h3>2. Chalk Talk</h3>
+<p>Classification and Regression Trees (CART) are trees. + “Classification” when outcome variable <span class="math inline">\(y\)</span> is categorical + “Regression” when outcome variable <span class="math inline">\(y\)</span> is numerical</p>
+</div>
+<div id="in-class-exercise-6" class="section level3">
+<h3>3. In-class exercise</h3>
+<ul>
+<li>See <a href="code.html">Code</a> for CART</li>
+</ul>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-13-wed-320" class="section level1">
+<h1>Lec 13: Wed 3/20</h1>
+<div id="announcements-11" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li>No office hours today. I do however have appointments to book on Friday (see syllabus for link, appointment slots vary each week).</li>
+<li>ROC curve shiny app. Please:
+<ul>
+<li>Delete the <code>ROC.Rmd</code> file to generate the interactive Shiny App for ROC curves I shared over Slack on Monday 3/18.</li>
+<li>Replace it with this <a href="static/methods/ROC/ROC_v2.Rmd" download><code>ROC_v2.Rmd</code></a> updated-and-improved version!</li>
+</ul></li>
+</ul>
+</div>
+<div id="todays-topicsactivities-11" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="in-class-exercise-7" class="section level3">
+<h3>1. In-class exercise</h3>
+<ul>
+<li>Work on MP3</li>
+<li>See added grading rubric and clarifications for <a href="MP.html#MP3">MP3</a></li>
+</ul>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-12-mon-318" class="section level1">
+<h1>Lec 12: Mon 3/18</h1>
+<div id="announcements-12" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li>Two events coming up:
+<ul>
+<li>Fri 3/22 12:15-1:00pm in McConnell B15: Gina DelCorazon ’04, Director of Data &amp; Analytics at The National Math and Science Initiative</li>
+<li>Tue 3/26 12:15-1:05pm in Ford Hall Atrium: Presentation of SDS major</li>
+</ul></li>
+</ul>
+<center>
+<img src="static/events/delcorazon.png" width="650" />
+<center>
+<p></br></p>
+</div>
+<div id="todays-topicsactivities-12" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="chalk-talk-6" class="section level3">
+<h3>1. Chalk Talk</h3>
+<ul>
+<li>Scores/measures for binary outcome variables</li>
+<li>ROC curves</li>
+</ul>
+</div>
+<div id="tweet-of-the-day-2" class="section level3">
+<h3>2. Tweet of the Day</h3>
+<p>Even though the <code>yardstick</code> package already existed, the developers of <code>tidyroc</code> know that they still learned a ton about R package developement. They will leverage these new skills for their next project!</p>
+<p><strong>Moral of the story</strong>: Turn your disappointments into your next success! From Dariya Sydykova’s blog post:</p>
+<blockquote>
+<p>In conclusion, I do not regret the time and effort it took me to work on <code>tidyroc</code>… As a believer in the growth mindset, I like to focus on the things that I have learned and on the ways that I have improved myself. I got to implement <code>devtools</code>, <code>usethis</code>, and <code>roxygen2</code> and to learn a little more about how these work.</p>
+</blockquote>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/ClausWilke?ref_src=twsrc%5Etfw"><span class="citation">@ClausWilke</span></a> and I decided that we will not be developing <a href="https://twitter.com/hashtag/tidyroc?src=hash&amp;ref_src=twsrc%5Etfw">#tidyroc</a> any further. We were informed about an R package <a href="https://twitter.com/hashtag/yardstick?src=hash&amp;ref_src=twsrc%5Etfw">#yardstick</a> that calculates ROC curves, and it is integrated with the <a href="https://twitter.com/hashtag/tidyverse?src=hash&amp;ref_src=twsrc%5Etfw">#tidyverse</a>. See my blog post for more details:<a href="https://t.co/raWMstEZy6">https://t.co/raWMstEZy6</a>
+</p>
+— Dariya Sydykova (<span class="citation">@dariyasydykova</span>) <a href="https://twitter.com/dariyasydykova/status/1105960285947523077?ref_src=twsrc%5Etfw">March 13, 2019</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-11-wed-36" class="section level1">
+<h1>Lec 11: Wed 3/6</h1>
+<div id="announcements-13" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li>Spinelli Center tutoring hours change tomorrow (Thursday 3/7) only: 4:30-6pm and not <del>7-9pm</del>.</li>
+</ul>
+</div>
+<div id="todays-topicsactivities-13" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="chalk-talk-7" class="section level3">
+<h3>1. Chalk Talk</h3>
+<ul>
+<li>Finishing logistic regression</li>
+</ul>
+</div>
+<div id="in-class-exercise-8" class="section level3">
+<h3>2. In-class exercise</h3>
+<ul>
+<li>Work on MP2</li>
+</ul>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-10-mon-34" class="section level1">
+<h1>Lec 10: Mon 3/4</h1>
+<div id="announcements-14" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li>Reminder tomorrow is:</li>
+</ul>
+<center>
+<img src="static/events/emma_benn_2.png" width="650" />
+<center>
+<p><br></p>
+</div>
+<div id="todays-topicsactivities-14" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="chalk-talk-8" class="section level3">
+<h3>1. Chalk Talk</h3>
+<ul>
+<li>Intro to logistic regression</li>
+<li>Transforming probability space to log-odds/logit space. The following two plots are the same but with the axes flipped. In other words:
+<ul>
+<li>The left plot visualizes how we map from probability space <span class="math inline">\([0,1]\)</span> to log-odds space <span class="math inline">\((-\infty, \infty)\)</span></li>
+<li>The right plot visualizes how we map from log-odds space <span class="math inline">\((-\infty, \infty)\)</span> back to probability space <span class="math inline">\([0,1]\)</span></li>
+</ul></li>
+<li><a href="code.html">Code</a></li>
+</ul>
+<!--
+Here are the two equations:
+
+$$
+\begin{align}
+\mbox{left function} = \mbox{log-odds} = \mbox{logit}(p) &= \log\left(\frac{p}{1-p}\right) = \alpha\\
+\mbox{right function} = \mbox{inverse-logit}(\alpha) &= \frac{\exp(\alpha)}{\exp(\alpha) + 1} = \frac{1}{1+ \exp(-\alpha)} = p
+\end{align}
+$$
+-->
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="768" /></p>
+</div>
+<div id="in-class-exercise-9" class="section level3">
+<h3>2. In-class exercise</h3>
+<ul>
+<li>Work on MP2</li>
+</ul>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-9-wed-227" class="section level1">
+<h1>Lec 9: Wed 2/27</h1>
+<div id="announcements-15" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li>As indicated in the <a href="syllabus.html#policies">syllabus</a>, even if you are done any in-class exercises early, please remain until the end of lecture. It is very disruptive to the class if you pack up and leave early.</li>
+<li>MP2 posted.</li>
+</ul>
+</div>
+<div id="todays-topicsactivities-15" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="chalk-talk-9" class="section level3">
+<h3>1. Chalk Talk</h3>
+<ul>
+<li>Start MP2 today.</li>
+<li>We’ll go solutions to Lec 8 regression exercises and start logistic regression during the first half of Monday’s lecture.</li>
+</ul>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-8-mon-225" class="section level1">
+<h1>Lec 8: Mon 2/25</h1>
+<div id="announcements-16" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li>MP1 grades on Wednesday</li>
+<li>MP2 assigned on Wednesday. It will involve regression modeling on house price data again.</li>
+</ul>
+</div>
+<div id="todays-topicsactivities-16" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="chalk-talk-10" class="section level3">
+<h3>1. Chalk Talk</h3>
+<ul>
+<li>Regression</li>
+<li>See <a href="code.html#regression">code</a></li>
+</ul>
+</div>
+<div id="tweet-of-the-day-3" class="section level3">
+<h3>2. Tweet of the day</h3>
+<p>Dr. Benn is excited for her talk at Smith College SDS. <strong>Are you?</strong></p>
+<blockquote class="twitter-tweet" data-lang="en">
+<p lang="en" dir="ltr">
+Yessss!!! Definitely looking forward to speaking with and learning from the amazing <a href="https://twitter.com/SmithCollegeSDS?ref_src=twsrc%5Etfw"><span class="citation">@SmithCollegeSDS</span></a> faculty and students! 🤗💃🏾🤗💃🏾 <a href="https://t.co/te01giEvXv">https://t.co/te01giEvXv</a>
+</p>
+— Emma Benn (<span class="citation">@EKTBenn</span>) <a href="https://twitter.com/EKTBenn/status/1098396480719572993?ref_src=twsrc%5Etfw">February 21, 2019</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-7-mon-218" class="section level1">
+<h1>Lec 7: Mon 2/18</h1>
+<div id="announcements-17" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li>Wednesday 2/20 is Rally Day: no lecture nor office hours.</li>
+<li>Extra office hours Friday 2/22 3:00pm-4:15pm.</li>
+<li>Midterm I discussion</li>
+</ul>
+</div>
+<div id="todays-topicsactivities-17" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="chalk-talk-11" class="section level3">
+<h3>1. Chalk Talk</h3>
+<ul>
+<li>MP1 discussion</li>
+</ul>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-6-wed-213" class="section level1">
+<h1>Lec 6: Wed 2/13</h1>
+<div id="announcements-18" class="section level2">
+<h2>Announcements</h2>
+<p>Before Lec07 on Monday 2/18:</p>
+<ul>
+<li>I will post <del>solutions</del> one of many possible approaches to doing <code>MP1.Rmd</code> in the <a href="MP.html">Mini-Projects</a> page by Friday afternoon. Please read these.</li>
+<li>Delete the minimally viable <code>regression.Rmd</code> file I sent on Slack during Lec05 on Monday, replace it with this improved file <a href="static/methods/regression/regression_v2.Rmd" download><code>regression_v2.Rmd</code></a>, and please read it.</li>
+</ul>
+<p>Also, I fixed the error in Lec03 exercises solutions in <a href="code.html">Code</a> page. The issue was inconsistent converting from °F to °C in all <code>training</code> and <code>test</code> sets; I commented all such code out. The correct visualization of a spline model “trained on June and predicting December temperatures” is below. Observe that the predictions (in blue) overpredict the actual December temperatures (black dots).</p>
+<p><img src="static/images/train_june_test_december.png" width="600" /></p>
+<p>Remember:</p>
+<blockquote>
+<p>For your predictions to be valid, the data used to train your model must be at least somewhat representative of the test data you’re making predictions on!</p>
+</blockquote>
+<p>In other words:</p>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">If you only train your self-driving car here:</th>
+<th align="center">Don’t expect it to drive well here:</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><img src="static/images/driving_in_circles.jpg" /></td>
+<td align="center"><img src="static/images/BOS_streets.png" height="1" /></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="todays-topicsactivities-18" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="chalk-talk-12" class="section level3">
+<h3>1. Chalk Talk</h3>
+<p>Brief discussion on “looking at your data” inspired by tweet of the day below.</p>
+</div>
+<div id="tweet-of-the-day-4" class="section level3">
+<h3>2. Tweet of the day</h3>
+<p>Why is important to <code>glimpse()</code> and <code>View()</code> your data frames? Because <strong>looking at your data</strong> is so deceptively simple that many people forget or ignore this step, even analysts/engineers with PhD’s at Google! Before any modeling, you must getting a sense of:</p>
+<ol style="list-style-type: decimal">
+<li><strong>What types of variables you have in your columns?</strong> Numerical, categorical, text, dates?</li>
+<li><strong>What values you have in your cells?</strong> Units of any measurements?</li>
+<li><strong>What is the quality of your data?</strong> Do you have missing data? Are there crazy outliers?</li>
+</ol>
+<p>These are the most fundamental steps to take before any modeling or data analysis!</p>
+<blockquote class="twitter-tweet" data-lang="en">
+<p lang="en" dir="ltr">
+Shout-out to people like me who like taking a look at even huge tables of raw data before summarizing or transforming, to get a sense of what's in there and spot potential data quality issues. Step 1 in data exploration! <a href="https://t.co/wVLHWcVNWA">pic.twitter.com/wVLHWcVNWA</a>
+</p>
+— Data Science Renee (<span class="citation">@BecomingDataSci</span>) <a href="https://twitter.com/BecomingDataSci/status/1095421569428529153?ref_src=twsrc%5Etfw">February 12, 2019</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-5-mon-211" class="section level1">
+<h1>Lec 5: Mon 2/11</h1>
+<div id="announcements-19" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li>Slack <code>#general</code> announcement about new <code>#mp1</code> channel. It is your responsibility to stay on top of all messages sent in this channel.</li>
+<li>Added clarification on what external sources you can use in <a href="MP.html#MP1-working">MP1 project instructions</a>.</li>
+<li>Wednesday’s lecture is devoted to working on MP1</li>
+</ul>
+</div>
+<div id="todays-topicsactivities-19" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="chalk-talk-13" class="section level3">
+<h3>1. Chalk Talk</h3>
+<ul>
+<li>Discussion of solutions to Lec03 code exercises.</li>
+<li>Recap of Lec04: crossvalidation</li>
+<li>Regression</li>
+</ul>
+</div>
+<div id="work-life-balance" class="section level3">
+<h3>2. Tweet of the day</h3>
+<p>Shared with me by Dr. Jenny Smetzer. I agree with Ms. Damour’s opinion. You don’t have to, but her ideas are still worth thinking about. They relate to “points of diminishing returns” and “polishing the cannonball” as discussed for mini-project 1. Here are some excerpts:</p>
+<ul>
+<li>“Overqualified and overprepared, too many women still hold back. Women feel confident only when they are perfect.” IMO this applies to more demographic groups than just women.</li>
+<li>“First, parents and teachers can stop praising inefficient overwork, even if it results in good grades.”</li>
+<li>“A colleague of mine likes to remind teenagers that in classes where any score above 90 counts as an A, the different between a 91 and a 99 is a life.” In other words, <a href="syllabus.html#work-life-balance">work-life balance</a>.
+<blockquote class="twitter-tweet" data-lang="en">
+<p lang="en" dir="ltr">
+Girls need to become tactical about school, to figure out how to get the same good grades, while doing a little bit less <a href="https://t.co/Achouetew6">https://t.co/Achouetew6</a>
+</p>
+— NYT Opinion (<span class="citation">@nytopinion</span>) <a href="https://twitter.com/nytopinion/status/1093605420244049920?ref_src=twsrc%5Etfw">February 7, 2019</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
+</ul>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-4-wed-26" class="section level1">
+<h1>Lec 4: Wed 2/6</h1>
+<div id="announcements-20" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li><a href="http://www.science.smith.edu/datafest/" target="_blank">DataFest</a> is a weekend-long “data science hackathon” for teams of up to 5 students and is at UMass the weekend of March 29-31! <a href="static/other/datafest2019.pdf" target="_blank">Info session</a> by Prof. Randi Garcia today 7-8pm in Sabin-Reed 301!</li>
+<li>“Multiple Imputation Methods in Cluster Randomzied Trials” talk by Prof. Brittney Bailey from Amherst College is tomorrow 12:10pm in McConnell B15. Free 🍕!!!</li>
+</ul>
+<center>
+<img src="static/other/bailey.png" width="600" />
+</center>
+</div>
+<div id="todays-topicsactivities-20" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="chalk-talk-14" class="section level3">
+<h3>1. Chalk Talk</h3>
+<ul>
+<li>Mini-project 1 is now assigned; see <a href="MP.html">Mini-Projects</a> page.</li>
+<li>Recap of Lec03 + exercise solutions.</li>
+<li>Crossvalidation. See images:
+<ul>
+<li><strong>Image 1: Validation set approach</strong>:<br />
+<img src="static/images/validation_set.png" width="500" /></li>
+<li><strong>Image 2: k = 5 fold crossvalidation</strong>:<br />
+<img src="static/images/k-fold-CV.png" width="500" /></li>
+<li><strong>Image 3: Leave-one-out crossvalidation (LOOCV)</strong>:<br />
+<img src="static/images/LOOCV.png" width="500" /></li>
+</ul></li>
+</ul>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-3-mon-24" class="section level1">
+<h1>Lec 3: Mon 2/4</h1>
+<div id="announcements-21" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li>Slack: Go over <code>#questions</code>.</li>
+<li>Syllabus finalized</li>
+<li>Explanation of readings in schedule above.</li>
+<li>Mini-project 1 groups posted; see <a href="MP.html">Mini-Projects</a> page. MP1 on splines itself will be assigned on Wednesday after we cover crossvalidation.</li>
+</ul>
+</div>
+<div id="todays-topicsactivities-21" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="chalk-talk-15" class="section level3">
+<h3>1. Chalk Talk</h3>
+<ul>
+<li>Recap of Lec02.</li>
+<li>Splines are piecewise continuous cubic polynomials with <a href="https://en.wikipedia.org/wiki/Smoothness">smoothness</a> constraints (1<sup>st</sup> and 2<sup>nd</sup> derivatives are 0 at all knots) See bottom-left plot below.</li>
+<li>Optional reading only if you’re curious: How are splines fit? Linear algebra! See page 93-94 of this <a href="https://people.cs.clemson.edu/~dhouse/courses/405/notes/splines.pdf" target="_blank">PDF</a>.</li>
+</ul>
+<p><img src="static/images/splines.png" width="700" /></p>
+</div>
+<div id="in-class-exercise-10" class="section level3">
+<h3>2. In-class exercise</h3>
+<p>Go over code for Lec03 and do the exercises.</p>
+</div>
+<div id="screencast-on-splines" class="section level3">
+<h3>3. Screencast on splines</h3>
+<p>The code this screencast was based on can be found <a href="http://bit.ly/rudeboybert_splines" target="_blank">here</a>.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bESJ81dyYro" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-2-wed-130" class="section level1">
+<h1>Lec 2: Wed 1/30</h1>
+<div id="announcements-22" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li>Slack: Vote in two latest <code>#polls</code> and go over <code>#questions</code>.</li>
+<li>Go over updated schedule above, in particular “Important Dates”</li>
+<li>DataCamp “Modeling with Data in the tidyverse” assigned:
+<ul>
+<li>Make sure you can see the class DataCamp group by clicking <a href="https://www.datacamp.com/enterprise/2019-01-machine-learning-293" target="_blank">here</a>. If you cannot, then read the Google Doc in Lec01</li>
+<li>Due Wed 2/6 at 1pm. Should take about 4 hours.</li>
+<li>Only thing that is graded is whether you complete it, not the number of points.</li>
+<li>This assumes familiarity with the <code>tidyverse</code> suite of R packages; see the December email in the Google Doc in Lec01.</li>
+<li>The DataCamp course builds up to Chapter 4’s “Validation set prediction framework”</li>
+</ul></li>
+</ul>
+</div>
+<div id="todays-topicsactivities-22" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="chalk-talk-16" class="section level3">
+<h3>1. Chalk Talk</h3>
+<ul>
+<li>Recap of Lec01: <span class="math inline">\(f(\vec{x})\)</span> and <span class="math inline">\(\hat{f}(\vec{x})\)</span></li>
+<li>Based on code for <code>Lec02</code> posted in <a href="code.html">Code</a> tab of menu bar for course webpage.</li>
+<li>Check out <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques" target="_blank">House Prices: Advanced Regression Techniques</a> Kaggle competition.</li>
+<li><strong>Added after lecture</strong>: Link to ModernDive chapter with an example on <a href="https://moderndive.netlify.com/12-thinking-with-data.html#log10-transformations" target="_blank">logarithmic transformations</a>. You’ll also be seeing log-transformations in this week’s DataCamp assignment!</li>
+</ul>
+</div>
+<div id="tweet-of-the-day-5" class="section level3">
+<h3>2. Tweet of the day</h3>
+<p>This class is just part of a larger phenomenon of resources spread <em>very</em> thin:</p>
+<blockquote class="twitter-tweet" data-lang="en">
+<p lang="en" dir="ltr">
+On campuses across America, the surge in student demand for computer science courses is far outstripping the supply of professors <a href="https://t.co/9dwUMZ0eg8">https://t.co/9dwUMZ0eg8</a>
+</p>
+— The New York Times (<span class="citation">@nytimes</span>) <a href="https://twitter.com/nytimes/status/1088440053796356107?ref_src=twsrc%5Etfw">January 24, 2019</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<hr />
+</div>
+</div>
+</div>
+<div id="lec-1-mon-127" class="section level1">
+<h1>Lec 1: Mon 1/27</h1>
+<div id="announcements-23" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li>If you haven’t already, please go over the following <a href="https://docs.google.com/document/d/1NfWkoyeiovkVyMmgmKFGxCMusyxBMYHVvsAUjEZv_fU/" target="_blank">Google Doc</a> with important information about the course and steps you should complete to get setup, in particular the Intro Survey. The whole process should take about 20 minutes.</li>
+<li><strong>Added on Sun 1/27 6PM</strong>: Create an account on Kaggle.com using your Smith (or Five College) email address.</li>
+</ul>
+</div>
+<div id="todays-topicsactivities-23" class="section level2">
+<h2>Todays Topics/Activities</h2>
+<div id="chalk-talk-17" class="section level3">
+<h3>1. Chalk Talk</h3>
+<p><em>Why chalk talks? Read the <a href="https://twitter.com/FieldNotesBrand" target="_blank">Field Notes</a> slogan.</em></p>
+<p><a href="http://rudeboybert.rbind.io/talk/2019-01-13-Williams.pdf" target="_blank">Lec01 slides</a> + 2 chalk talks.</p>
+</div>
+<div id="background-i-will-assume" class="section level3">
+<h3>2. Background I will assume</h3>
+<ol style="list-style-type: decimal">
+<li>You have seen multiple regression before (not necessarily taken a class on it).</li>
+<li>The <code>tidyverse</code> suite of R packages for data science, in particular <code>ggplot2</code> and <code>dplyr</code>.</li>
+</ol>
+<p>For more information about what level you should know this, please see the <a href="https://docs.google.com/document/d/1NfWkoyeiovkVyMmgmKFGxCMusyxBMYHVvsAUjEZv_fU/" target="_blank">Google Doc</a> -&gt; Email from December.</p>
+</div>
+<div id="prepartion-for-lec02" class="section level3">
+<h3>3. Prepartion for Lec02</h3>
+<p>I <strong>highly</strong> recommend you start these steps as soon as you can, so that you’ll have two chances to go to the Spinelli tutoring hours if you need help before Wednesday’s lecture. Note the Spinelli tutoring hours are Sun-Thurs 7-9pm in Sabin-Reed 301.</p>
+<ol style="list-style-type: decimal">
+<li>Have R and RStudio installed on your laptops.</li>
+<li>Install some extra tools:
+<ul>
+<li>macOS users: Go to Apple’s <a href="https://developer.apple.com/download/more/" target="_blank">developer page</a> and install the appropriate version of Command Line Tools. Hint: Google “How do I know what version of macOS I have?”</li>
+<li>Windows users: Install <a href="https://cran.r-project.org/bin/windows/Rtools/" target="_blank"><code>Rtools35.exe</code></a>.</li>
+</ul></li>
+<li>Install the standard versions of the <code>tidyverse</code> and <code>devtools</code> packages as you normally would.</li>
+<li>Install the <em>development version</em> of the <code>moderndive</code> package by running: <code>devtools::install_github(&quot;moderndive/moderndive&quot;)</code></li>
+<li>Run the code below. If you get no errors and a file <code>submission.csv</code> gets saved to your computer, you’re ready for Lec02!</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">library</span>(moderndive)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co"># 1. Load in training and test data</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">train &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://rudeboybert.github.io/SDS293/static/train.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">test &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://rudeboybert.github.io/SDS293/static/test.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co"># 2. Fit model on training data</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">house_model &lt;-<span class="st"> </span><span class="kw">lm</span>(SalePrice <span class="op">~</span><span class="st"> </span>YrSold, <span class="dt">data =</span> train)</a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co"># 3. Apply fitted model to get predictions for test data</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12">submission &lt;-<span class="st"> </span><span class="kw">get_regression_points</span>(house_model, <span class="dt">newdata =</span> test, <span class="dt">ID =</span> <span class="st">&quot;Id&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="st">  </span><span class="kw">select</span>(Id, <span class="dt">SalePrice =</span> SalePrice_hat)</a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co"># 4. Output predictions to CSV</span></a>
+<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="kw">write_csv</span>(submission, <span class="st">&quot;submission.csv&quot;</span>)</a></code></pre></div>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

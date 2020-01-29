@@ -1,0 +1,350 @@
+
+---
+title: "Multiple Regression"
+author: "Albert Y. Kim"
+date: "Last updated on `r Sys.Date()`"
+output:
+  html_document:
+    theme: cosmo
+    highlight: tango
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    df_print: kable
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  fig.width = 10
+)
+
+library(tidyverse)
+library(broom)
+library(stringr)
+library(knitr)
+library(moderndive)
+library(glmnet)
+library(ISLR)
+library(plotly)
+
+set.seed(76)
+```
+
+
+# Data
+
+Let's consider data for $i=1, \ldots, 400$ individuals' credit card debt. Note this data was simulated and is not real. 
+
+* $y_i$: Credit card balance i.e. credit card debt
+* $x_{1,i}$: Income in $10K
+* $x_{2,i}$: Credit limit in $
+
+```{r}
+credit <- Credit %>%
+  select(Balance, Income, Limit)
+```
+
+
+Here is a random sample of 10 of the 400 rows:
+
+```{r, echo=FALSE}
+credit %>% 
+  sample_n(10) %>% 
+  kable()
+```
+
+Let's view the points in an interactive 3D plot:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
+# Define base plotly plot
+base_plot <-
+  plot_ly(showlegend=FALSE) %>%
+  add_markers(
+    x = credit$Income,
+    y = credit$Limit,
+    z = credit$Balance,
+    hoverinfo = 'text',
+    text = ~paste("x1 - Income: ", credit$Income, "</br> x2 - Limit: ", 
+                  credit$Limit, "</br> y - Balance: ", credit$Balance)
+  ) %>%
+  layout(
+    scene = list(
+      xaxis = list(title = "x1 - Income (in $10K)"),
+      yaxis = list(title = "x2 - Limit ($)"),
+      zaxis = list(title = "y - Balance ($)")
+    )
+  )
+
+# Output base plot
+base_plot
+
+# Define (x1, x2) grid of values (bottom plane). We'll use this values to 
+# compute all regression planes
+x_grid <- seq(from=min(credit$Income), to=max(credit$Income), length=100)
+y_grid <- seq(from=min(credit$Limit), to=max(credit$Limit), length=200)
+```
+
+
+
+***
+
+
+
+# Three Models
+
+Let's now consider three models for credit card `Balance` i.e. credit card debt
+
+1. **Naive Model**: Uses no predictor information.
+1. **Simple linear regression model**: Uses only one predictor `Limit`.
+1. **Multiple regression model**: Uses both predictors `Limit` and `Income`.
+
+
+
+***
+
+
+
+# 1. Naive Model
+
+Say we use no predictor information. This corresponds to the following true model $f()$ and error component $\epsilon$.
+
+$$
+\begin{aligned}
+y &= f(\vec{x}) + \epsilon\\
+y &= \beta_0 + \epsilon\\
+\mbox{Balance} &= \beta_0 + \epsilon
+\end{aligned}
+$$
+
+In other words there is only an intercept term. Since the mean credit card balance AKA credit card debt $\bar{y}$ is:
+
+```{r}
+mean(credit$Balance)
+```
+
+We'll estimate/approximate $f()$ with the following fitted model $\widehat{f}()$:
+
+$$
+\begin{aligned}
+\widehat{y} &= \widehat{f}(\vec{x})\\
+\widehat{y} &= \widehat{\beta}_0\\
+\widehat{\mbox{Balance}} &= \widehat{\beta}_0 \\
+\widehat{\mbox{Balance}} &= \overline{y}
+\end{aligned}
+$$
+
+In other words, think of the above fitted model $\widehat{f}(\vec{x})$ as a **minimally viable model**, in other words a "null" model, in other words a "basic baseline model". Using this model, our prediction $\widehat{y}$ of an individual's credit bard balance using no predictor information would be $\bar{y}$ = \$520.01. Let' visualize this in a histogram:
+
+```{r, fig.width=8}
+ggplot(credit, aes(x = Balance)) +
+  geom_histogram(binwidth = 100, boundary = 0) +
+  labs(x = "y = Balance ($)", title = "Histogram of outcome variable: credit card balance") +
+  geom_vline(xintercept = mean(credit$Balance), col = "red", size = 1)
+```
+
+
+```{r, eval = TRUE, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
+# Compute z-axis values for this model. i.e. flat plane. We'll use this later:
+z_grid_1 <- expand.grid(x_grid, y_grid) %>%
+  tbl_df() %>%
+  rename(
+    x_grid = Var1,
+    y_grid = Var2
+  ) %>%
+  mutate(z = mean(credit$Balance)) %>%
+  .[["z"]] %>%
+  matrix(nrow=length(x_grid)) %>%
+  t()
+```
+
+Surely we can do better than this however! We are not using any of the information contained in the predictor variables $x_1$ `Income` and $x_2$ credit `Limit`. In other words, we are predicting $520.01 as the credit card debt irregardless of the individual's income and credit limit. 
+
+
+
+***
+
+
+
+# 2. Simple Linear Regression Model
+
+Let's improve on our minimally viable model by using a predictor variable: $x_1$ `Income`. Let's assume the following is the truth: a true model $f()$ and error component $\epsilon$.
+
+$$
+\begin{aligned}
+y &= f(\vec{x}) + \epsilon\\
+y &= \beta_0 + \beta_1 x_1 + \epsilon\\
+\mbox{Balance} &= \beta_0 + \beta_1\mbox{Income} + \epsilon
+\end{aligned}
+$$
+
+We'll estimate/approximate $f()$ with the following fitted model $\widehat{f}()$:
+
+$$
+\begin{aligned}
+\widehat{y} &= \widehat{f}(\vec{x})\\
+\widehat{y} &= \widehat{\beta}_0 + \widehat{\beta}_1x_1\\
+\widehat{\mbox{Balance}} &= \widehat{\beta}_0 + \widehat{\beta}_1\mbox{Income}\\
+\end{aligned}
+$$
+
+But what are the fitted coefficients/parameters $\widehat{\beta}_0$ and $\widehat{\beta}_0$? You can read them from the estimate column from the regression table below, which we generated using the `get_regression_table()` ["wrapper"](https://moderndive.netlify.com/6-regression.html#fig:moderndive-figure-wrapper){target="_blank"} function to extract regression tables as a data frame:
+
+```{r}
+model_lm <- lm(Balance ~ Income, data = credit)
+model_lm %>% 
+  get_regression_table()
+
+# Compute z-axis values
+z_grid_2 <- expand.grid(x_grid, y_grid) %>%
+  tbl_df() %>%
+  rename(
+    x_grid = Var1,
+    y_grid = Var2
+  ) %>%
+  mutate(z = coef(model_lm)[1] + coef(model_lm)[2]*x_grid) %>%
+  .[["z"]] %>%
+  matrix(nrow=length(x_grid)) %>%
+  t()
+```
+
+In other words, our fitted model $\widehat{f}()$ is:
+
+$$
+\begin{aligned}
+\widehat{y} &= \widehat{f}(\vec{x})\\
+\widehat{y} &= \widehat{\beta}_0 + \widehat{\beta}_1x_1\\
+\widehat{\mbox{Balance}} &= \widehat{\beta}_0 + \widehat{\beta}_1\mbox{Income}\\
+\widehat{\mbox{Balance}} &= 246.515 + 6.048 \cdot \mbox{Income}
+\end{aligned}
+$$
+
+Let's view this simple linear regression model in blue and compare it to our naive model $\widehat{f}(\vec{x}) = \widehat{y}$ = \$520.01 in red:
+
+
+```{r, fig.width=8}
+ggplot(credit, aes(x=Income, y=Balance)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(x = "x1 - Income (in $10K)", y = "y - Balance ($)") +
+  geom_hline(yintercept = mean(credit$Balance), col = "red", size = 1)
+```
+
+It "sort of" seems like the blue regression line fits the points better than our naive model of $\widehat{y}$ = \$520.01. But can we do even better by using a second predictor variable $x_2$ `Limit`
+
+
+
+***
+
+
+
+# 3. Multiple Regression Model
+
+Let's now fit a multiple linear regression model with two predictors:
+
+$$
+\begin{aligned}
+y &= f(\vec{x}) + \epsilon\\
+y &= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon\\
+\mbox{Balance} &= \beta_0 + \beta_1\mbox{Income} + \beta_2\mbox{Limit} + \epsilon
+\end{aligned}
+$$
+
+Kind of like before, we'll estimate/approximate $f()$ with a fitted model $\widehat{f}()$ based on the fitted values of the $\beta$'s from the regression table:
+
+```{r}
+model_lm <- lm(Balance ~ Income + Limit, data = credit)
+model_lm %>% 
+  get_regression_table()
+
+# Compute z-axis values
+z_grid_3 <- expand.grid(x_grid, y_grid) %>%
+  tbl_df() %>%
+  rename(
+    x_grid = Var1,
+    y_grid = Var2
+  ) %>%
+  mutate(z = coef(model_lm)[1] + coef(model_lm)[2]*x_grid + coef(model_lm)[3]*y_grid) %>%
+  .[["z"]] %>%
+  matrix(nrow=length(x_grid)) %>%
+  t()
+```
+
+Hence:
+
+$$
+\begin{aligned}
+\widehat{y} &= \widehat{f}(\vec{x})\\
+\widehat{y} &= \widehat{\beta}_0 + \widehat{\beta}_1x_1 + \widehat{\beta}_2x_2\\
+\widehat{\mbox{Balance}} &= \widehat{\beta}_0 + \widehat{\beta}_1\mbox{Income} + \widehat{\beta}_2\mbox{Limit}\\
+\widehat{\mbox{Balance}} &= -385.179 - 7.663  \cdot \mbox{Income} + 0.264 \cdot \mbox{Limit}\\
+\end{aligned}
+$$
+
+Let’s visualize the corresponding regreession plane:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
+base_plot %>%
+  # # Naive model:
+  # add_surface(
+  #   x = x_grid,
+  #   y = y_grid,
+  #   z = z_grid_1
+  # ) %>% 
+  # # Simple linear regression:
+  # add_surface(
+  #   x = x_grid,
+  #   y = y_grid,
+  #   z = z_grid_2
+  # ) %>% 
+  # Multiple regression:
+  add_surface(
+    x = x_grid,
+    y = y_grid,
+    z = z_grid_3
+  )
+```
+
+
+
+***
+
+
+
+# Comparing all three models
+
+
+Let’s visualize all three models, with the
+
+1. Naive model as a flat plane at y = $520.01 in green/teal
+1. Simple linear regression model in the red/blue spectrum plane
+1. Multiple regression model in the blue/green/yellow spectrum plane
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10}
+base_plot %>%
+  # Naive model:
+  add_surface(
+    x = x_grid,
+    y = y_grid,
+    z = z_grid_1
+  ) %>% 
+  # Simple linear regression:
+  add_surface(
+    x = x_grid,
+    y = y_grid,
+    z = z_grid_2,
+    colorscale = "RdYlBlu"
+  ) %>%
+  # Multiple regression:
+  add_surface(
+    x = x_grid,
+    y = y_grid,
+    z = z_grid_3
+  )
+```
+
+
+
+

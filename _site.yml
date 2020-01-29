@@ -15,12 +15,12 @@ navbar:
   left:
   - icon: fa-slack fa-lg
     href: https://sds-293-2020-01.slack.com/
-  - text: Code
-    href: code.html
+#  - text: Code
+#    href: code.html
   right:
-  - text: Mini-Projects
-    href: MP.html
-  - text: Midterms
-    href: midterms.html
+#  - text: Mini-Projects
+#    href: MP.html
+#  - text: Midterms
+#    href: midterms.html
   - text: Syllabus
     href: syllabus.html

@@ -22,16 +22,15 @@ h1{font-weight: 400;}
 
 # Basic information {#basicinfo}
 
-* **Course title:** SDS/CSC 293: Machine Learning
+* **Course title:** SDS 293: Modeling for Machine Learning
 * **Instructor:** [Albert Y. Kim](https://rudeboybert.rbind.io/) - Assistant Professor of Statistical & Data Sciences
 * **~~Email:~~ Slack team**: Click hashtag icon in navbar for the browser interface or use the [desktop app](https://slack.com/downloads/){target="_blank"}.
 * **Meeting locations/times:** 
-    + **Lectures**: MW 1:10-2:30 - McConnell Hall 103
+    + **Lectures**: MWF Sabin-Reed 220.
 * **Outside help**:
     + The `#questions` channel on Slack.
     + Spinelli Center for Quantitative Learning [Tutoring](https://www.smith.edu/qlc/tutoring.html?colStats=open#PanelStats){target="_blank"}: Sunday thru Thursday 7-9pm in Sabin-Reed 301. 
-    + Albert's office hours in McConnell Hall 215: Mon & Wed 2:45-4:00 and by apppointment (click [here](https://calendar.google.com/calendar/selfsched?sstoken=UVBidEVzZlJ3a2dYfGRlZmF1bHR8NmExNDk4OGM5ZWZiYWNmOWYxYWRkZDM0NmU3ZGRmMzE){target="_blank"} to book). **If you're having R or RStudio issues, please have your computer and RStudio loaded and ready to go.**
-    + Spinelli Center Data Counselor Vahab Khademi in Seelye 207: By [appointment](https://www.smith.edu/qlc/tutoring.html?colDataCnslr=open#PanelDataCnslr){target="_blank"}.
+    + Albert's office hours in McConnell Hall 215: TBD and by apppointment (click [here](https://calendar.google.com/calendar/selfsched?sstoken=UVBidEVzZlJ3a2dYfGRlZmF1bHR8NmExNDk4OGM5ZWZiYWNmOWYxYWRkZDM0NmU3ZGRmMzE){target="_blank"} to book). **If you're having R or RStudio issues, please have your computer and RStudio loaded and ready to go.**
     
 
 ## Instructor work-life balance {#work-life-balance}
@@ -39,7 +38,6 @@ h1{font-weight: 400;}
 * I will respond to Slack messages sent during the week within 24h. I will respond to Slack messages sent during the weekend at my own discretion.
 * If possible, please only Slack me with briefer and administrative questions; I prefer having more substantive conversations in person as it takes me less energy to understand where you are at.
 * I will do my best to return all grading as promptly as possible.
-* I will rarely be on campus on Thursdays as this is my self-care day.
 
 
 
@@ -56,15 +54,11 @@ Ask yourself:
     + *"Am I asking questions on Slack in `#questions`?"* Even better: *"Am I answering my peers' questions on Slack?"*
     + *"Having I been going to the Spinelli tutoring center for help on R and the tidyverse?"*
     + *"Have I been coming to office hours?"*
-* **Lectures, labs, and readings:**
+* **Lectures:**
     + *"Am I staying on top Slack notifications sent between lectures?"* If you need help developing a notification strategy that best suits your lifestyle, please speak to me. 
     + *"Am I attending lectures consistently?"*
     + *"Am I actually running the code and studying the outputs in R during in-class exercises, or am I just going through the motions?"*
     + *"During in-class exercises, am I taking full advantage that I'm in the same place at the same time with the instructor, the lab assistants, and most importantly your peers, or am I browsing the web/texting the whole time?"*
-    + *"Have I been doing the associated readings for each lecture?"*
-* **Mini-Projects and DataCamp:**
-    + *"Am I actually contributing in my mini-project work?"*
-    + *"Have I been attempting a good faith balance between to push myself during DataCamp exercises while not banging my head on the wall, or am I just taking the hints/solutions without any effort?"*
 
 
 
@@ -95,53 +89,7 @@ the use of tools for data visualization, data wrangling, and data modeling.
 
 # Topic Schedule and Readings {#topicschedule}
 
-We will cover the topics below; the schedule and associated readings can be found on the [main page](index.html) of this course webpage.
-
-1. Background
-    * The modeling framework
-    * The machine learning framework
-    * Baby's first model: splines
-    * Out-of-sample prediction, sampling vs resampling, crossvalidation
-    * Bias-variance tradeoff?
-1. Continuous outcome models part I
-    * Multiple regression for prediction
-1. Categorical outcome models AKA classification
-    * Logistic regression for prediction
-    * ROC curves for evaluating binary classifiers
-    * k-Nearest Neighbors
-    * Classification and regression trees
-1. Continuous outcome models part II
-    * Regularization/shrinkage methods: Ridge regression and LASSO
-    * Classification and regression trees
-1. Unsupervised learning (no outcome variable)
-    * Principal components analysis
-    * k-Means clustering
-1. More methods
-    * Neural nets
-    * Ensemble methods: random forests
-
-We will draw from the following sources:
-
-1. [An Introduction to Statistical Learning with Applications in R](http://www-bcf.usc.edu/~gareth/ISL/){target="_blank"}.
-1. DataCamp: an online interactive environment for learning data science currently via R and Python. On top of the DataCamp courses we'll cover this semester, you have free access to [all their courses](https://www.datacamp.com/courses/all){target="_blank"} for 6 months. 
-
-<!--
-
-We will use chiefly use the following available textbooks:
-
-1. ["Happy Git and GitHub for the useR"](http://happygitwithr.com/) by Jenny Bryan.
-1. ["An Introduction to Statistical Learning"](http://www-bcf.usc.edu/~gareth/ISL/) by James, Witten, Hastie, and Tibshirani. We'll refer to this as "ISLR.""
-1. ["Computer Age Statistical Inference"](https://web.stanford.edu/~hastie/CASI/) by Efron and Tibshirani. We'll refer to this as "CASI."
-1. ["The Elements of Statitiscal Learning"](https://web.stanford.edu/~hastie/ElemStatLearn/) by Hastie, Tibshirani, and Friedman. We'll refer to this as "ESL."
-
-The latter three are all supplemental resources: use these if you find chalk talks and the course main page are lacking in any
-regard. That being said, here is a rough hierarchy of how I much I refer to them:
-
-1. ISLR: Most of my notes center around this text, which is targeted at undergraduates.
-1. ESL: This is the graduate version of ISLR, and predates ISLR by a few years.
-1. CASI: A 30,000 foot overview of the past, present, and future of statistics/data science/machine learning. We'll refer to this occationally.
-
--->
+We will cover the topics below; the schedule can be found on the [main page](index.html) of this course webpage. We will draw from [An Introduction to Statistical Learning with Applications in R](http://www-bcf.usc.edu/~gareth/ISL/){target="_blank"}. While I have not explicitly assigned readings, please use the book as a resource.
 
 
 
@@ -160,12 +108,6 @@ regard. That being said, here is a rough hierarchy of how I much I refer to them
 
 # Evaluation
 
-## DataCamp assignments 5% {#datacamp}
-
-* DataCamp is meant to be low stakes-practice, so the only thing that matters for your grade is whether you complete the course. So while things like the number of hints/solutions taken don't factor into your grade, it is important to make a good faith effort to answer these questions the best you can.
-* While you may do them in advance if you are curious, it is most definitely not required. Note that the DataCamp schedule may change, with certain courses dropped/added.
-
-
 ## Engagement 10% {#engagement}
 
 It is difficult to explicit codify what constitutes "an engaged student," so
@@ -176,7 +118,7 @@ pathways for you to stay engaged in this class:
 * Asking and answering questions in class.
 * Coming to office hours.
 * Posting questions on Slack. Even better, responding to questions on Slack.
-* Your peer evaluations for your mini-projects.
+* Your peer evaluations for your group work.
 
 
 ## Midterms 35%
@@ -185,13 +127,11 @@ pathways for you to stay engaged in this class:
 * Lower score weighted 15% and higher score weighted 20%.
 
 
-## Five mini-projects 50%
+## Group work 55%
 
-* Mini-project 1: 5% - Groups of 2 selected by instructor.
-* Mini-project 2: 7.5% - Groups of 2 selected by yourselves, must be a new partner.
-* Mini-project 3: 10% - Groups of 2 selected by instructor, you'll be assigned a new partner.
-* Mini-project 4: 12.5% - Groups of 2 selected by yourselves, must be a new partner.
-* Mini-project 5: 15% - Groups of 2-3 freely chosen by yourselves.
+
+
+
 
 
 ## Policies
@@ -207,7 +147,7 @@ in particular all external sources must be cited in your submissions.
     + No extensions will be granted without a dean's note.
 1. **Midterms/quizzes**:
     + No make-up quizzes or midterms will be allowed without a dean's note. 
-    + Timestamps for all midterms will be strictly enforced.
+    + Timestamps for all midterms will be strictly enforced. Honor board cases will be submitted wherever called for.
 1. **Grading**: I reserve the right to not discuss any grading issues in class and instead direct you to office hours. 
 
 

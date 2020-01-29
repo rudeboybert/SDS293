@@ -346,18 +346,9 @@ div.tocify {
      
   </a>
 </li>
-<li>
-  <a href="code.html">Code</a>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="MP.html">Mini-Projects</a>
-</li>
-<li>
-  <a href="midterms.html">Midterms</a>
-</li>
-<li>
   <a href="syllabus.html">Syllabus</a>
 </li>
       </ul>
@@ -380,19 +371,18 @@ h1{font-weight: 400;}
 <div id="basicinfo" class="section level1">
 <h1>Basic information</h1>
 <ul>
-<li><strong>Course title:</strong> SDS/CSC 293: Machine Learning</li>
+<li><strong>Course title:</strong> SDS 293: Modeling for Machine Learning</li>
 <li><strong>Instructor:</strong> <a href="https://rudeboybert.rbind.io/">Albert Y. Kim</a> - Assistant Professor of Statistical &amp; Data Sciences</li>
 <li><strong><del>Email:</del> Slack team</strong>: Click hashtag icon in navbar for the browser interface or use the <a href="https://slack.com/downloads/" target="_blank">desktop app</a>.</li>
 <li><strong>Meeting locations/times:</strong>
 <ul>
-<li><strong>Lectures</strong>: MW 1:10-2:30 - McConnell Hall 103</li>
+<li><strong>Lectures</strong>: MWF Sabin-Reed 220.</li>
 </ul></li>
 <li><strong>Outside help</strong>:
 <ul>
 <li>The <code>#questions</code> channel on Slack.</li>
 <li>Spinelli Center for Quantitative Learning <a href="https://www.smith.edu/qlc/tutoring.html?colStats=open#PanelStats" target="_blank">Tutoring</a>: Sunday thru Thursday 7-9pm in Sabin-Reed 301.</li>
-<li>Albert’s office hours in McConnell Hall 215: Mon &amp; Wed 2:45-4:00 and by apppointment (click <a href="https://calendar.google.com/calendar/selfsched?sstoken=UVBidEVzZlJ3a2dYfGRlZmF1bHR8NmExNDk4OGM5ZWZiYWNmOWYxYWRkZDM0NmU3ZGRmMzE" target="_blank">here</a> to book). <strong>If you’re having R or RStudio issues, please have your computer and RStudio loaded and ready to go.</strong></li>
-<li>Spinelli Center Data Counselor Vahab Khademi in Seelye 207: By <a href="https://www.smith.edu/qlc/tutoring.html?colDataCnslr=open#PanelDataCnslr" target="_blank">appointment</a>.</li>
+<li>Albert’s office hours in McConnell Hall 215: TBD and by apppointment (click <a href="https://calendar.google.com/calendar/selfsched?sstoken=UVBidEVzZlJ3a2dYfGRlZmF1bHR8NmExNDk4OGM5ZWZiYWNmOWYxYWRkZDM0NmU3ZGRmMzE" target="_blank">here</a> to book). <strong>If you’re having R or RStudio issues, please have your computer and RStudio loaded and ready to go.</strong></li>
 </ul></li>
 </ul>
 <div id="work-life-balance" class="section level2">
@@ -401,7 +391,6 @@ h1{font-weight: 400;}
 <li>I will respond to Slack messages sent during the week within 24h. I will respond to Slack messages sent during the weekend at my own discretion.</li>
 <li>If possible, please only Slack me with briefer and administrative questions; I prefer having more substantive conversations in person as it takes me less energy to understand where you are at.</li>
 <li>I will do my best to return all grading as promptly as possible.</li>
-<li>I will rarely be on campus on Thursdays as this is my self-care day.</li>
 </ul>
 <hr />
 </div>
@@ -417,18 +406,12 @@ h1{font-weight: 400;}
 <li><em>“Having I been going to the Spinelli tutoring center for help on R and the tidyverse?”</em></li>
 <li><em>“Have I been coming to office hours?”</em></li>
 </ul></li>
-<li><strong>Lectures, labs, and readings:</strong>
+<li><strong>Lectures:</strong>
 <ul>
 <li><em>“Am I staying on top Slack notifications sent between lectures?”</em> If you need help developing a notification strategy that best suits your lifestyle, please speak to me.</li>
 <li><em>“Am I attending lectures consistently?”</em></li>
 <li><em>“Am I actually running the code and studying the outputs in R during in-class exercises, or am I just going through the motions?”</em></li>
 <li><em>“During in-class exercises, am I taking full advantage that I’m in the same place at the same time with the instructor, the lab assistants, and most importantly your peers, or am I browsing the web/texting the whole time?”</em></li>
-<li><em>“Have I been doing the associated readings for each lecture?”</em></li>
-</ul></li>
-<li><strong>Mini-Projects and DataCamp:</strong>
-<ul>
-<li><em>“Am I actually contributing in my mini-project work?”</em></li>
-<li><em>“Have I been attempting a good faith balance between to push myself during DataCamp exercises while not banging my head on the wall, or am I just taking the hints/solutions without any effort?”</em></li>
 </ul></li>
 </ul>
 <hr />
@@ -443,65 +426,7 @@ h1{font-weight: 400;}
 </div>
 <div id="topicschedule" class="section level1">
 <h1>Topic Schedule and Readings</h1>
-<p>We will cover the topics below; the schedule and associated readings can be found on the <a href="index.html">main page</a> of this course webpage.</p>
-<ol style="list-style-type: decimal">
-<li>Background
-<ul>
-<li>The modeling framework</li>
-<li>The machine learning framework</li>
-<li>Baby’s first model: splines</li>
-<li>Out-of-sample prediction, sampling vs resampling, crossvalidation</li>
-<li>Bias-variance tradeoff?</li>
-</ul></li>
-<li>Continuous outcome models part I
-<ul>
-<li>Multiple regression for prediction</li>
-</ul></li>
-<li>Categorical outcome models AKA classification
-<ul>
-<li>Logistic regression for prediction</li>
-<li>ROC curves for evaluating binary classifiers</li>
-<li>k-Nearest Neighbors</li>
-<li>Classification and regression trees</li>
-</ul></li>
-<li>Continuous outcome models part II
-<ul>
-<li>Regularization/shrinkage methods: Ridge regression and LASSO</li>
-<li>Classification and regression trees</li>
-</ul></li>
-<li>Unsupervised learning (no outcome variable)
-<ul>
-<li>Principal components analysis</li>
-<li>k-Means clustering</li>
-</ul></li>
-<li>More methods
-<ul>
-<li>Neural nets</li>
-<li>Ensemble methods: random forests</li>
-</ul></li>
-</ol>
-<p>We will draw from the following sources:</p>
-<ol style="list-style-type: decimal">
-<li><a href="http://www-bcf.usc.edu/~gareth/ISL/" target="_blank">An Introduction to Statistical Learning with Applications in R</a>.</li>
-<li>DataCamp: an online interactive environment for learning data science currently via R and Python. On top of the DataCamp courses we’ll cover this semester, you have free access to <a href="https://www.datacamp.com/courses/all" target="_blank">all their courses</a> for 6 months.</li>
-</ol>
-<!--
-
-We will use chiefly use the following available textbooks:
-
-1. ["Happy Git and GitHub for the useR"](http://happygitwithr.com/) by Jenny Bryan.
-1. ["An Introduction to Statistical Learning"](http://www-bcf.usc.edu/~gareth/ISL/) by James, Witten, Hastie, and Tibshirani. We'll refer to this as "ISLR.""
-1. ["Computer Age Statistical Inference"](https://web.stanford.edu/~hastie/CASI/) by Efron and Tibshirani. We'll refer to this as "CASI."
-1. ["The Elements of Statitiscal Learning"](https://web.stanford.edu/~hastie/ElemStatLearn/) by Hastie, Tibshirani, and Friedman. We'll refer to this as "ESL."
-
-The latter three are all supplemental resources: use these if you find chalk talks and the course main page are lacking in any
-regard. That being said, here is a rough hierarchy of how I much I refer to them:
-
-1. ISLR: Most of my notes center around this text, which is targeted at undergraduates.
-1. ESL: This is the graduate version of ISLR, and predates ISLR by a few years.
-1. CASI: A 30,000 foot overview of the past, present, and future of statistics/data science/machine learning. We'll refer to this occationally.
-
--->
+<p>We will cover the topics below; the schedule can be found on the <a href="index.html">main page</a> of this course webpage. We will draw from <a href="http://www-bcf.usc.edu/~gareth/ISL/" target="_blank">An Introduction to Statistical Learning with Applications in R</a>. While I have not explicitly assigned readings, please use the book as a resource.</p>
 <div id="policies" class="section level2">
 <h2>Policies</h2>
 <ul>
@@ -515,13 +440,6 @@ regard. That being said, here is a rough hierarchy of how I much I refer to them
 </div>
 <div id="evaluation" class="section level1">
 <h1>Evaluation</h1>
-<div id="datacamp" class="section level2">
-<h2>DataCamp assignments 5%</h2>
-<ul>
-<li>DataCamp is meant to be low stakes-practice, so the only thing that matters for your grade is whether you complete the course. So while things like the number of hints/solutions taken don’t factor into your grade, it is important to make a good faith effort to answer these questions the best you can.</li>
-<li>While you may do them in advance if you are curious, it is most definitely not required. Note that the DataCamp schedule may change, with certain courses dropped/added.</li>
-</ul>
-</div>
 <div id="engagement" class="section level2">
 <h2>Engagement 10%</h2>
 <p>It is difficult to explicit codify what constitutes “an engaged student,” so instead I present the following rough principle I will follow: <em>you’ll only get out of this class as much as you put in</em>. That being said, here are multiple pathways for you to stay engaged in this class:</p>
@@ -529,7 +447,7 @@ regard. That being said, here is a rough hierarchy of how I much I refer to them
 <li>Asking and answering questions in class.</li>
 <li>Coming to office hours.</li>
 <li>Posting questions on Slack. Even better, responding to questions on Slack.</li>
-<li>Your peer evaluations for your mini-projects.</li>
+<li>Your peer evaluations for your group work.</li>
 </ul>
 </div>
 <div id="midterms-35" class="section level2">
@@ -539,15 +457,8 @@ regard. That being said, here is a rough hierarchy of how I much I refer to them
 <li>Lower score weighted 15% and higher score weighted 20%.</li>
 </ul>
 </div>
-<div id="five-mini-projects-50" class="section level2">
-<h2>Five mini-projects 50%</h2>
-<ul>
-<li>Mini-project 1: 5% - Groups of 2 selected by instructor.</li>
-<li>Mini-project 2: 7.5% - Groups of 2 selected by yourselves, must be a new partner.</li>
-<li>Mini-project 3: 10% - Groups of 2 selected by instructor, you’ll be assigned a new partner.</li>
-<li>Mini-project 4: 12.5% - Groups of 2 selected by yourselves, must be a new partner.</li>
-<li>Mini-project 5: 15% - Groups of 2-3 freely chosen by yourselves.</li>
-</ul>
+<div id="group-work-55" class="section level2">
+<h2>Group work 55%</h2>
 </div>
 <div id="policies-1" class="section level2">
 <h2>Policies</h2>
@@ -561,7 +472,7 @@ regard. That being said, here is a rough hierarchy of how I much I refer to them
 <li><strong>Midterms/quizzes</strong>:
 <ul>
 <li>No make-up quizzes or midterms will be allowed without a dean’s note.</li>
-<li>Timestamps for all midterms will be strictly enforced.</li>
+<li>Timestamps for all midterms will be strictly enforced. Honor board cases will be submitted wherever called for.</li>
 </ul></li>
 <li><strong>Grading</strong>: I reserve the right to not discuss any grading issues in class and instead direct you to office hours.</li>
 </ol>
