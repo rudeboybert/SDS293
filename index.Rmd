@@ -17,8 +17,14 @@ h1{font-weight: 400;}
 </style>
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, eval=FALSE, 
-                      cache=TRUE, fig.width=16/2, fig.height=9/2)
+knitr::opts_chunk$set(
+  echo=TRUE, 
+  message=FALSE, 
+  warning=FALSE, 
+  eval=FALSE, 
+  fig.width=16/2, 
+  fig.height=9/2
+)
 library(tidyverse)
 library(broom)
 library(knitr)
@@ -26,14 +32,12 @@ library(modelr)
 library(lubridate)
 library(forcats)
 library(nycflights13)
-# devtools::install_github("thomasp85/patchwork")
 library(patchwork)
 library(okcupiddata)
 # devtools::install_github("hadley/emo")
 library(emo)
 
 # Set seed value of random number generator to get "replicable" random numbers.
-# Why 76? Because of https://www.youtube.com/watch?v=xjJ7FheCkCU
 set.seed(76)
 ```
 
@@ -66,12 +70,29 @@ h1{font-weight: 400;}
 
 
 
-# Lec 01: Mon 1/27
+# Lec 02: Wed 1/29
 
 ## Announcements
 
 * On Sun 1/26 I sent an email including links to join Slack and a Intro Survey Google Form. If you did not receive this email, please come see me after class.
+* Syllabus [posted](syllabus.html)
+
 
 ## Topics
 
-Went over
+* In [MassMutual Google Doc](https://docs.google.com/document/d/1kBl8ivTeNyVfbV0gvXjBpwnlRWXvZkKuSe0SMTjFB38/edit#heading=h.4llig2jamgry){target="_blank"}: Tuesday AM.
+
+
+
+***
+
+
+
+# Lec 01: Mon 1/27
+
+## Announcements
+
+
+## Topics
+
+* Went over "What is Machine Learning?" [slides](static/what_is_ML.pdf){target="_blank"}.
