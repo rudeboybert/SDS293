@@ -15,6 +15,8 @@ navbar:
   left:
   - icon: fa-slack fa-lg
     href: https://sds-293-2020-01.slack.com/
+  - icon: fa-github fa-lg
+    href: https://github.com/orgs/293-2020-01-Fall/teams
 #  - text: Code
 #    href: code.html
   right:

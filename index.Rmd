@@ -83,6 +83,7 @@ h1{font-weight: 400;}
     + You post your full name
     + A profile picture that you are comfortable being public facing. It doesn't have to be an image of you, it can be an image.
     + Affiliation
+    + Please don't change your GitHub ID's mid-semester!
 * Terminology:
     + Git vs GitHub. Other online interfaces to Git exist, like BitBucket and GitLab. GitHub is not without [controversy](https://techcrunch.com/2019/11/13/github-faces-more-resignations-in-light-of-ice-contract/){target="_blank"}. 
     + Cloning a repo. In our case, they correspond to RStudio Project folders
@@ -95,7 +96,6 @@ h1{font-weight: 400;}
 * GitHub Classroom:
     + Layer around standard GitHub organization
     + Based on [GitHub organization](https://github.com/293-2020-01-Fall){target="_blank"}. Accept membership please!
-
 
 
 ***
