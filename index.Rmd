@@ -70,6 +70,38 @@ h1{font-weight: 400;}
 
 
 
+# Lec 03: Fri 1/31
+
+## Announcements
+
+* 
+
+
+## Topics
+
+* GitHub profile. Think of it as an extension of your resume. I highly encourage (but do not require)
+    + You post your full name
+    + A profile picture that you are comfortable being public facing. It doesn't have to be an image of you, it can be an image.
+    + Affiliation
+* Terminology:
+    + Git vs GitHub. Other online interfaces to Git exist, like BitBucket and GitLab. GitHub is not without [controversy](https://techcrunch.com/2019/11/13/github-faces-more-resignations-in-light-of-ice-contract/){target="_blank"}. 
+    + Cloning a repo. In our case, they correspond to RStudio Project folders
+    + local vs remote
+    + commit/push and pull. Commits as units of change.
+    + master branch
+    + When on the inside: branch + pull request
+    + When on the outside: fork + pull request
+    + Oh shit, git! Ex: merge conflicts.
+* GitHub Classroom:
+    + Layer around standard GitHub organization
+    + Based on [GitHub organization](https://github.com/293-2020-01-Fall){target="_blank"}. Accept membership please!
+
+
+
+***
+
+
+
 # Lec 02: Wed 1/29
 
 ## Announcements
