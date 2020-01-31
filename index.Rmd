@@ -74,28 +74,35 @@ h1{font-weight: 400;}
 
 ## Announcements
 
-* 
-
+* GitHub organization for this class:
+    + Access it by clicking the "octocat" icon on the top left of this page
+    + Ensure you are a member (I sent an email invite yesterday)
+* GitHub profile. Think of it as an extension of your resume. I highly encourage, but do not require, you to:
+    + Post your full name
+    + Post your affiliation
+    + Post a public-facing profile picture (it doesn't have to be an image of you, it can be any picture).
+    + Please don't change your GitHub ID's mid-semester!
+* FYI: GitHub is not without [controversy](https://techcrunch.com/2019/11/13/github-faces-more-resignations-in-light-of-ice-contract/){target="_blank"}
 
 ## Topics
 
-* GitHub profile. Think of it as an extension of your resume. I highly encourage (but do not require)
-    + You post your full name
-    + A profile picture that you are comfortable being public facing. It doesn't have to be an image of you, it can be an image.
-    + Affiliation
-    + Please don't change your GitHub ID's mid-semester!
-* Terminology:
-    + Git vs GitHub. Other online interfaces to Git exist, like BitBucket and GitLab. GitHub is not without [controversy](https://techcrunch.com/2019/11/13/github-faces-more-resignations-in-light-of-ice-contract/){target="_blank"}. 
-    + Cloning a repo. In our case, they correspond to RStudio Project folders
-    + local vs remote
-    + commit/push and pull. Commits as units of change.
-    + master branch
-    + When on the inside: branch + pull request
-    + When on the outside: fork + pull request
-    + Oh shit, git! Ex: merge conflicts.
-* GitHub Classroom:
-    + Layer around standard GitHub organization
-    + Based on [GitHub organization](https://github.com/293-2020-01-Fall){target="_blank"}. Accept membership please!
+GitHub has many definitions that are unforunately not straight forward. Using [`fivethirtyeight`](https://github.com/rudeboybert/fivethirtyeight){target="_blank"} R package as an example.
+
+* Git vs GitHub
+* Local vs remote
+* Cloning a repo locally (which in our case correspond to RStudio Projects). Ex: Big green "Clone or download" button on top right.
+* Commit/push and pull. Commits as units of change. Ex: Click "commits" tab on top left (currently at 523 commits)
+* Branches: `master` branch is what you see. Ex: Click "Branch" button on top left 
+* Making contributions to `master`
+    + When on the inside: Create a new branch, make edits in branch, then make pull request
+    + When on the outside: Fork the repo (similar to creating a branch), make edits in your forked copye of repo, then make pull request
+    + Ex: Click on Insights tab on top right -> Network -> Scroll to earlier dates. 
+* Learning git has a steep learning curve. This is normal:
+    + [xkcd](https://xkcd.com/1597/){target="_blank"}
+    + [Oh shit, git!](https://gumroad.com/l/oh-shit-git){target="_blank"}
+    + In this class: I'll (gently) force you to practice merge conflicts
+
+
 
 
 ***
