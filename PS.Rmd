@@ -1,0 +1,86 @@
+---
+title: "Problem sets"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 2
+    toc_float: true
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  echo=TRUE, 
+  message=FALSE, 
+  warning=FALSE, 
+  eval=FALSE, 
+  fig.width=16/2, 
+  fig.height=9/2
+)
+
+# Set seed value of random number generator to get "replicable" random numbers.
+set.seed(76)
+```
+
+<style>
+h1{font-weight: 400;}
+</style>
+
+
+<!--
+{target="_blank"}
+-->
+
+
+
+***
+
+
+
+# Problem set 1 {#PS1}
+
+The goal of this problem set is merely to take your first steps collaborating via GitHub. All group problem sets this semester will be based on this workflow.
+
+## Identify your team
+
+Go to the class GitHub organization and find:
+
++ Under Teams:
+    + Find your team number and your teammate (team17 has 3 members).
+    + Say hi and make eye contact with your teammate!
+    + For next week's lecture, sit next to your teammate!
++ Under Repositories:
+    + Locate your team's repository. As an example, say yours is `ps1-team76`. 
+
+
+## Get set up
+
+In this section, you'll be installing git on your computer and syncing it with RStudio.
+
+* If you have previously synced git and RStudio on your computer, you won't need to complete all these steps
+* If not, **I highly recommend you start early so that you have time to visit the Spinelli Center evening tutoring hours** .
+
+You will be using the ["Happy Git and GitHub for the useR"](https://happygitwithr.com/){target="_blank"} book to:
+
+1. Get familiar with GitHub. Read:
+    + Chapter 1: Why Git? Why GitHub?
+1. Install GitHub on your computers and set it up. Read and perform all steps in:
+    + ~~Chapter 4: Register a GitHub account~~ You've already done this
+    + ~~Chapter 5: Install or upgrade R and RStudio~~ You've already done this
+    + Chatper 6: Install Git
+    + Chapter 7: Introduce yourself to Git
+1. "Clone" your team's repository onto your computer. As an example, say yours is `ps1-team76`.  Read and perform all steps in:
+    + Chapter 12: Connect RStudio to Git and GitHub. **For Section 12.2** ignore what's in the book and do the following:
+        1. You will not "Make a repo on GitHub," but rather use the `ps1-team76` repo from the previous step. 
+        1. Click the big green button "Create repository."
+        1. Copy the HTTPS clone URL to your clipboard via the green "Clone or Download" button.
+
+
+## Work on your problem set
+
+Jointly edit **only** the `README.md` file:
+
+1. Add all your names to the 4th line of the bulleted list.
+1. Make other markdown based edits.
+
+
+

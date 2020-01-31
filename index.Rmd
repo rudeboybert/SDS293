@@ -90,6 +90,7 @@ GitHub has many definitions that are unforunately not straight forward. Using [`
 
 * Git vs GitHub
 * Local vs remote
+* Repos & `README.md` files as cover pages
 * Cloning a repo locally (which in our case correspond to RStudio Projects). Ex: Big green "Clone or download" button on top right.
 * Commit/push and pull. Commits as units of change. Ex: Click "commits" tab on top left (currently at 523 commits)
 * Branches: `master` branch is what you see. Ex: Click "Branch" button on top left 
