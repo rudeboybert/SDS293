@@ -68,6 +68,54 @@ h1{font-weight: 400;}
 
 ***
 
+# Lec 04: Mon 2/3
+
+## Announcements
+
+* For this week's lectures, sit with your PS1 teammate. The groups are posted on Slack under `#general`
+* Lecture policies
+    + You don't need to inform me about occasional absenses, but please give your teammate a heads up as a curtesy.
+    + Please do not leave in the middle lecture, unless you get prior approval from me, as this can be very distracting. After you get prior approval, please sit near the exit.
+* [PS1 is now ready!](PS.html#PS1)
+
+
+## What is a minimally viable product?
+
+When building a product, in my opinion (IMO):
+
+* **Don't**: Try to do everything completely and perfectly from the beginning. This leads perfectionism, which leads to procrastination and "analysis paralysis."
+* **Do**: Start by finishing a [minimially viable product](https://www.interaction-design.org/literature/article/minimum-viable-product-mvp-and-design-balancing-risk-to-gain-reward){target="_blank"} ASAP!
+
+<center>
+![](static/images/MVP.png){ width=525px }
+</center>
+
+Once you're done your MVP, iterate and improve by slowly adding complexity that work:
+
+<center>
+![](static/images/MVP2.png){ width=525px }
+</center>
+
+In other words:
+
+* [Done is better than perfect](https://lifehacker.com/done-is-better-than-perfect-5870379){target="_blank"}
+* [Don't let the perfect be the enemy of the good](https://www.huffpost.com/entry/dont-let-the-perfect-be-t_b_158673){target="_blank"}
+* [Think big, start small](https://www.forbes.com/sites/chunkamui/2016/01/03/6-words/#15457a371a3b){target="_blank"}
+
+
+## Topics
+
+* In-class demo
+* Open `MassMutual` RStudio Project -> `coding.Rmd` -> `# Tuesday, July 23 2019` -> `## Gentle Introduction to Kaggle Competitions`. Discussion on:
+    + "Minimally viable product" model $\widehat{y} = \overline{y}$ for *all* houses.
+    + log10-transformations:
+        * A [discussion on orders of magnitude](https://moderndive.com/A-appendixA.html#appendix-log10-transformations){target="_blank"} as well as another [house prices example](https://moderndive.netlify.com/11-thinking-with-data.html#house-prices-EDA-I){target="_blank"} of a log10-transformation.
+        * [Powers of Ten](https://youtu.be/0fKBhvDjuy0?t=40){target="_blank"} movie by Charles and Ray Eames.
+
+
+
+***
+
 
 
 # Lec 03: Fri 1/31

@@ -81,6 +81,9 @@ Jointly edit **only** the `README.md` file:
 
 1. Add all your names to the 4th line of the bulleted list.
 1. Make other markdown based edits.
+1. Each team member should make at least two commits.
+1. Later on, we'll practice merge conflicts and branching.
 
+For an example, check out [team18](https://github.com/293-2020-01-Fall/ps1-team18){target="_blank"} consisting of me and Guy Incognito.
 
 
