@@ -68,6 +68,40 @@ h1{font-weight: 400;}
 
 ***
 
+
+
+# Lec 06: Fri 2/7
+
+## Announcements
+
+
+## Topics
+
+* 
+
+
+
+***
+
+
+
+# Lec 05: Wed 2/5
+
+## Announcements
+
+* Added two notes to [PS1](PS.html#PS1)
+
+
+## Topics
+
+* 
+
+
+
+***
+
+
+
 # Lec 04: Mon 2/3
 
 ## Announcements

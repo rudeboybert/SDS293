@@ -38,7 +38,7 @@ h1{font-weight: 400;}
 
 # Problem set 1 {#PS1}
 
-The goal of this problem set is merely to take your first steps collaborating via GitHub. All group problem sets this semester will be based on this workflow.
+The goal of this problem set is merely to take your first steps collaborating via GitHub. All group problem sets this semester will be based on this workflow. **Added on Mon 2/3 at 8pm**: Due on GitHub by Friday 2/7 at the start of lecture.
 
 ## Identify your team
 
@@ -80,7 +80,7 @@ You will be using the ["Happy Git and GitHub for the useR"](https://happygitwith
 Jointly edit **only** the `README.md` file:
 
 1. Add all your names to the 4th line of the bulleted list.
-1. Make other markdown based edits.
+1. Make other markdown-based edits. **Added on Mon 2/3 at 8pm**: For examples of markdown-based edits, see RStudio -> Menu bar on top -> Help -> Markdown quick reference.
 1. Each team member should make at least two commits.
 1. Later on, we'll practice merge conflicts and branching.
 
