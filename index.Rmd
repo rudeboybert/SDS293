@@ -74,11 +74,19 @@ h1{font-weight: 400;}
 
 ## Announcements
 
+* Office hours posted under [syllabus](syllabus.html).
+* Problem set 2 posted
 
 ## Topics
 
-* 
-
+<!--
+* Discussion on exercise from Lec05:
+    + Missing data
+    + Other issues
+    + What variables used
+* In [MassMutual Google Doc](https://docs.google.com/document/d/1kBl8ivTeNyVfbV0gvXjBpwnlRWXvZkKuSe0SMTjFB38/edit#heading=h.4llig2jamgry){target="_blank"} -> Tuesday PM -> Classification and Regression Trees (CART).
+* `iris` dataset
+-->
 
 
 ***
@@ -94,7 +102,8 @@ h1{font-weight: 400;}
 
 ## Topics
 
-* 
+* Multiple regression
+* In MassMutual RStudio Project -> Tuesday -> Kaggle -> Exercise on Kaggle submission.
 
 
 

@@ -37,7 +37,7 @@ Lec21 on LASSO
 
 
 
-# Classification and Regression Trees {#regression}
+# Classification and Regression Trees {#cart}
 
 Lec13 on CART
 
