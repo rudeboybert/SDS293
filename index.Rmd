@@ -72,20 +72,24 @@ h1{font-weight: 400;}
 
 # Lec 06: Fri 2/7
 
+<!--
+
 ## Announcements
 
 * Office hours posted under [syllabus](syllabus.html).
-* Problem set 2 posted
+* Problem set 2 posted, along with groups.
 
 ## Topics
 
-<!--
 * Discussion on exercise from Lec05:
     + Missing data
     + Other issues
     + What variables used
+    + `GGally` and `skimr` packages for EDA
+* GitHub merge conflicts
 * In [MassMutual Google Doc](https://docs.google.com/document/d/1kBl8ivTeNyVfbV0gvXjBpwnlRWXvZkKuSe0SMTjFB38/edit#heading=h.4llig2jamgry){target="_blank"} -> Tuesday PM -> Classification and Regression Trees (CART).
 * `iris` dataset
+
 -->
 
 
