@@ -72,25 +72,57 @@ h1{font-weight: 400;}
 
 # Lec 06: Fri 2/7
 
-<!--
-
 ## Announcements
 
-* Office hours posted under [syllabus](syllabus.html).
-* Problem set 2 posted, along with groups.
+* Problem set
+    + Sit next to your PS1 teammate for today's in-class exercise
+    + Albert will go over some PS1 highlights
+    + Problem set 2 groups posted, but do not clone PS2 repos until I say so.
+* Open [syllabus](syllabus.html): office hours calendar posted on top. 
+* If you haven't already, please change your default GitHub profile picture. It doesn't have to be a picture of you, but please put an image. This will help me quickly identify who's who. 
+
 
 ## Topics
 
-* Discussion on exercise from Lec05:
-    + Missing data
-    + Other issues
-    + What variables used
-    + `GGally` and `skimr` packages for EDA
-* GitHub merge conflicts
-* In [MassMutual Google Doc](https://docs.google.com/document/d/1kBl8ivTeNyVfbV0gvXjBpwnlRWXvZkKuSe0SMTjFB38/edit#heading=h.4llig2jamgry){target="_blank"} -> Tuesday PM -> Classification and Regression Trees (CART).
-* `iris` dataset
+### 1. Lec05 Recap
 
--->
+Exercise from Lec05 -> MassMutual RStudio Project -> Tuesday -> Exercise: Submit Kaggle predictions using linear regression model.
+
+1. What issues did you encounter?
+1. What variables did you use? Did you not use? 
+    
+    
+### 2. Git merge conflicts
+
+In-class exercise. A screencast will be posted after lecture.
+
+1. Open:
+    + RStudio -> PS1 RStudio Project
+    + GitHub organization for this class (click octocat button on top)
+1. Both of you, "pull" your repo to update it
+1. Both of you, edit *the same line* in `README.md`, but write something different.
+1. Both of you, commit your change but do not push it yet.
+1. Only one of you (call them person A), push your commit.
+1. Person B: Try to push your commit. You won't be able to because you have a *merge conflict*. You need to resolve it.
+1. Person B: "Pull" your repo to bring in the merge conflict.
+1. Both of you, resolve the merge conflict together.
+
+
+### 3. Ethical discussion
+
+The `iris` dataset has historically been one of the most widely used datasets in statistics, first collected by Ronald A. Fisher. Type `?iris` in the console and look at "Source." While Fisher has done a lot to advance the field, some of his views were IMO [problematic](https://njoselson.github.io/Fisher-Pearson/){target="_blank"}.
+
+
+### 4. Classification & Regression Trees
+
+Open:
+
+* [MassMutual Google Doc](https://docs.google.com/document/d/1kBl8ivTeNyVfbV0gvXjBpwnlRWXvZkKuSe0SMTjFB38/edit#heading=h.4llig2jamgry){target="_blank"} -> Tuesday PM -> Classification and Regression Trees (CART).
+* MassMutual RStudio Project
+    + `coding.Rmd` -> Tuesday -> `iris` Dataset
+    + `CART.Rmd` shiny app
+
+
 
 
 ***
