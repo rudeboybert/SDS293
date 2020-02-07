@@ -96,7 +96,7 @@ Exercise from Lec05 -> MassMutual RStudio Project -> Tuesday -> Exercise: Submit
     
 ### 2. Git merge conflicts
 
-In-class exercise. A screencast will be posted after lecture.
+In-class exercise. The screencast is posted [here](https://www.loom.com/share/83499c93430c4ff6a9f3d08478606a88){target="_blank"}.
 
 1. Open:
     + RStudio -> PS1 RStudio Project
