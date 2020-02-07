@@ -74,10 +74,12 @@ h1{font-weight: 400;}
 
 ## Announcements
 
-* Problem set
+* PS1
     + Sit next to your PS1 teammate for today's in-class exercise
     + Albert will go over some PS1 highlights
-    + Problem set 2 groups posted, but do not clone PS2 repos until I say so.
+* PS2: Groups posted, but do not clone PS2 repos until I say so. It will involve:
+    1. Creating a model with 3 numerical & 3 categorical variables
+    1. Applying your fitted model to the training data, comparing $y$ and $\hat{y}$, and computing RMLSE using `mutate()`
 * Open [syllabus](syllabus.html): office hours calendar posted on top. 
 * If you haven't already, please change your default GitHub profile picture. It doesn't have to be a picture of you, but please put an image. This will help me quickly identify who's who. 
 
@@ -117,6 +119,7 @@ The `iris` dataset has historically been one of the most widely used datasets in
 
 Open:
 
+* This link from the [New York Times](https://www.nytimes.com/interactive/2019/08/08/opinion/sunday/party-polarization-quiz.html?te=1&nl=morning-briefing&emc=edit_NN_p_20190809&section=topNews%3Fcampaign_id%3D9&instance_id=11514&segment_id=16009&user_id=72a007dc8873739dc83c86c9ac359d5e&regi_id=78908535tion%3DtopNews&fbclid=IwAR1YNFu3T03WYMo1ygEcZoYvemUEQk_BVjBmS1dLL5aBWXB2rnGl-gzFUOM){target="_blank"}
 * [MassMutual Google Doc](https://docs.google.com/document/d/1kBl8ivTeNyVfbV0gvXjBpwnlRWXvZkKuSe0SMTjFB38/edit#heading=h.4llig2jamgry){target="_blank"} -> Tuesday PM -> Classification and Regression Trees (CART).
 * MassMutual RStudio Project
     + `coding.Rmd` -> Tuesday -> `iris` Dataset
