@@ -69,6 +69,41 @@ h1{font-weight: 400;}
 ***
 
 
+# Lec 07: Mon 2/10
+
+## Announcements
+
+* Open 293 GitHub organization -> look at PS2
+
+
+
+## Topics
+
+Today's chalk talk on CART is based on the Tuesday PM topics in the [MassMutual Google Doc](https://docs.google.com/document/d/1kBl8ivTeNyVfbV0gvXjBpwnlRWXvZkKuSe0SMTjFB38/edit#heading=h.4llig2jamgry){target="_blank"}. 
+
+Open the MassMutual RStudio Project:
+  
+**First:** Based on `coding.Rmd` -> Tuesday -> `iris` dataset. (Note: You might have to do a little debugging to get this to knit, like setting `eval = TRUE` for all code blocks.)
+
+1. What is classification?
+1. How do I interpret trees? Binary splits on:
+    + Numerical predictors
+    + Categorical predictors that have been *one-hot encoded*. Note: many statistical software packages will do this automatically for you.  
+    ![](static/images/One-Hot_Encoding_web.png){ width=50% }
+1. Works for both types of outcomes $y$
+
+
+
+**Second:** Based on `CART.Rmd` Shiny app. (Note: after you install the necessary packages, this should knit.) 
+
+1. On what variable and where along selected variable do the splits occur?
+1. How many splits, i.e. how far do we "grow" the tree? Or in other words, how *complex* do we make the tree?
+
+
+
+***
+
+
 
 # Lec 06: Fri 2/7
 
@@ -117,13 +152,7 @@ The `iris` dataset has historically been one of the most widely used datasets in
 
 ### 4. Classification & Regression Trees
 
-Open:
-
-* This link from the [New York Times](https://www.nytimes.com/interactive/2019/08/08/opinion/sunday/party-polarization-quiz.html?te=1&nl=morning-briefing&emc=edit_NN_p_20190809&section=topNews%3Fcampaign_id%3D9&instance_id=11514&segment_id=16009&user_id=72a007dc8873739dc83c86c9ac359d5e&regi_id=78908535tion%3DtopNews&fbclid=IwAR1YNFu3T03WYMo1ygEcZoYvemUEQk_BVjBmS1dLL5aBWXB2rnGl-gzFUOM){target="_blank"}
-* [MassMutual Google Doc](https://docs.google.com/document/d/1kBl8ivTeNyVfbV0gvXjBpwnlRWXvZkKuSe0SMTjFB38/edit#heading=h.4llig2jamgry){target="_blank"} -> Tuesday PM -> Classification and Regression Trees (CART).
-* MassMutual RStudio Project
-    + `coding.Rmd` -> Tuesday -> `iris` Dataset
-    + `CART.Rmd` shiny app
+What are classification and regression trees? Here is one example from the [New York Times](https://www.nytimes.com/interactive/2019/08/08/opinion/sunday/party-polarization-quiz.html){target="_blank"}. Note: Smith students can get free access to the New York Times and Wall Street Journal via [Smith Libraries](https://libraries.smith.edu/news/2019/09/new-online-access-new-york-times-and-wall-street-journal){target="_blank"}.
 
 
 

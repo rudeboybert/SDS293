@@ -365,7 +365,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">SDS 293: Modeling for Machine Learning</h1>
 <h4 class="author">Albert Y. Kim</h4>
-<h4 class="date">Last updated on 2020-02-07</h4>
+<h4 class="date">Last updated on 2020-02-10</h4>
 
 </div>
 
@@ -386,9 +386,40 @@ h1{font-weight: 400;}
 -->
 <hr />
 </div>
+<div id="lec-07-mon-210" class="section level1">
+<h1>Lec 07: Mon 2/10</h1>
+<div id="announcements" class="section level2">
+<h2>Announcements</h2>
+<ul>
+<li>Open 293 GitHub organization -&gt; look at PS2</li>
+</ul>
+</div>
+<div id="topics" class="section level2">
+<h2>Topics</h2>
+<p>Today’s chalk talk on CART is based on the Tuesday PM topics in the <a href="https://docs.google.com/document/d/1kBl8ivTeNyVfbV0gvXjBpwnlRWXvZkKuSe0SMTjFB38/edit#heading=h.4llig2jamgry" target="_blank">MassMutual Google Doc</a>.</p>
+<p>Open the MassMutual RStudio Project:</p>
+<p><strong>First:</strong> Based on <code>coding.Rmd</code> -&gt; Tuesday -&gt; <code>iris</code> dataset. (Note: You might have to do a little debugging to get this to knit, like setting <code>eval = TRUE</code> for all code blocks.)</p>
+<ol style="list-style-type: decimal">
+<li>What is classification?</li>
+<li>How do I interpret trees? Binary splits on:
+<ul>
+<li>Numerical predictors</li>
+<li>Categorical predictors that have been <em>one-hot encoded</em>. Note: many statistical software packages will do this automatically for you.<br />
+<img src="static/images/One-Hot_Encoding_web.png" style="width:50.0%" /></li>
+</ul></li>
+<li>Works for both types of outcomes <span class="math inline">\(y\)</span></li>
+</ol>
+<p><strong>Second:</strong> Based on <code>CART.Rmd</code> Shiny app. (Note: after you install the necessary packages, this should knit.)</p>
+<ol style="list-style-type: decimal">
+<li>On what variable and where along selected variable do the splits occur?</li>
+<li>How many splits, i.e. how far do we “grow” the tree? Or in other words, how <em>complex</em> do we make the tree?</li>
+</ol>
+<hr />
+</div>
+</div>
 <div id="lec-06-fri-27" class="section level1">
 <h1>Lec 06: Fri 2/7</h1>
-<div id="announcements" class="section level2">
+<div id="announcements-1" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>PS1
@@ -405,7 +436,7 @@ h1{font-weight: 400;}
 <li>If you haven’t already, please change your default GitHub profile picture. It doesn’t have to be a picture of you, but please put an image. This will help me quickly identify who’s who.</li>
 </ul>
 </div>
-<div id="topics" class="section level2">
+<div id="topics-1" class="section level2">
 <h2>Topics</h2>
 <div id="lec05-recap" class="section level3">
 <h3>1. Lec05 Recap</h3>
@@ -439,29 +470,20 @@ h1{font-weight: 400;}
 </div>
 <div id="classification-regression-trees" class="section level3">
 <h3>4. Classification &amp; Regression Trees</h3>
-<p>Open:</p>
-<ul>
-<li>This link from the <a href="https://www.nytimes.com/interactive/2019/08/08/opinion/sunday/party-polarization-quiz.html?te=1&amp;nl=morning-briefing&amp;emc=edit_NN_p_20190809&amp;section=topNews%3Fcampaign_id%3D9&amp;instance_id=11514&amp;segment_id=16009&amp;user_id=72a007dc8873739dc83c86c9ac359d5e&amp;regi_id=78908535tion%3DtopNews&amp;fbclid=IwAR1YNFu3T03WYMo1ygEcZoYvemUEQk_BVjBmS1dLL5aBWXB2rnGl-gzFUOM" target="_blank">New York Times</a></li>
-<li><a href="https://docs.google.com/document/d/1kBl8ivTeNyVfbV0gvXjBpwnlRWXvZkKuSe0SMTjFB38/edit#heading=h.4llig2jamgry" target="_blank">MassMutual Google Doc</a> -&gt; Tuesday PM -&gt; Classification and Regression Trees (CART).</li>
-<li>MassMutual RStudio Project
-<ul>
-<li><code>coding.Rmd</code> -&gt; Tuesday -&gt; <code>iris</code> Dataset</li>
-<li><code>CART.Rmd</code> shiny app</li>
-</ul></li>
-</ul>
+<p>What are classification and regression trees? Here is one example from the <a href="https://www.nytimes.com/interactive/2019/08/08/opinion/sunday/party-polarization-quiz.html" target="_blank">New York Times</a>. Note: Smith students can get free access to the New York Times and Wall Street Journal via <a href="https://libraries.smith.edu/news/2019/09/new-online-access-new-york-times-and-wall-street-journal" target="_blank">Smith Libraries</a>.</p>
 <hr />
 </div>
 </div>
 </div>
 <div id="lec-05-wed-25" class="section level1">
 <h1>Lec 05: Wed 2/5</h1>
-<div id="announcements-1" class="section level2">
+<div id="announcements-2" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>Added two notes to <a href="PS.html#PS1">PS1</a></li>
 </ul>
 </div>
-<div id="topics-1" class="section level2">
+<div id="topics-2" class="section level2">
 <h2>Topics</h2>
 <ul>
 <li>Multiple regression</li>
@@ -472,7 +494,7 @@ h1{font-weight: 400;}
 </div>
 <div id="lec-04-mon-23" class="section level1">
 <h1>Lec 04: Mon 2/3</h1>
-<div id="announcements-2" class="section level2">
+<div id="announcements-3" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>For this week’s lectures, sit with your PS1 teammate. The groups are posted on Slack under <code>#general</code></li>
@@ -505,7 +527,7 @@ h1{font-weight: 400;}
 <li><a href="https://www.forbes.com/sites/chunkamui/2016/01/03/6-words/#15457a371a3b" target="_blank">Think big, start small</a></li>
 </ul>
 </div>
-<div id="topics-2" class="section level2">
+<div id="topics-3" class="section level2">
 <h2>Topics</h2>
 <ul>
 <li>In-class demo</li>
@@ -524,7 +546,7 @@ h1{font-weight: 400;}
 </div>
 <div id="lec-03-fri-131" class="section level1">
 <h1>Lec 03: Fri 1/31</h1>
-<div id="announcements-3" class="section level2">
+<div id="announcements-4" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>GitHub organization for this class:
@@ -542,7 +564,7 @@ h1{font-weight: 400;}
 <li>FYI: GitHub is not without <a href="https://techcrunch.com/2019/11/13/github-faces-more-resignations-in-light-of-ice-contract/" target="_blank">controversy</a></li>
 </ul>
 </div>
-<div id="topics-3" class="section level2">
+<div id="topics-4" class="section level2">
 <h2>Topics</h2>
 <p>GitHub has many definitions that are unforunately not straight forward. Using <a href="https://github.com/rudeboybert/fivethirtyeight" target="_blank"><code>fivethirtyeight</code></a> R package as an example.</p>
 <ul>
@@ -570,14 +592,14 @@ h1{font-weight: 400;}
 </div>
 <div id="lec-02-wed-129" class="section level1">
 <h1>Lec 02: Wed 1/29</h1>
-<div id="announcements-4" class="section level2">
+<div id="announcements-5" class="section level2">
 <h2>Announcements</h2>
 <ul>
 <li>On Sun 1/26 I sent an email including links to join Slack and a Intro Survey Google Form. If you did not receive this email, please come see me after class.</li>
 <li>Syllabus <a href="syllabus.html">posted</a></li>
 </ul>
 </div>
-<div id="topics-4" class="section level2">
+<div id="topics-5" class="section level2">
 <h2>Topics</h2>
 <ul>
 <li>In <a href="https://docs.google.com/document/d/1kBl8ivTeNyVfbV0gvXjBpwnlRWXvZkKuSe0SMTjFB38/edit#heading=h.4llig2jamgry" target="_blank">MassMutual Google Doc</a>: Tuesday AM.</li>
@@ -587,10 +609,10 @@ h1{font-weight: 400;}
 </div>
 <div id="lec-01-mon-127" class="section level1">
 <h1>Lec 01: Mon 1/27</h1>
-<div id="announcements-5" class="section level2">
+<div id="announcements-6" class="section level2">
 <h2>Announcements</h2>
 </div>
-<div id="topics-5" class="section level2">
+<div id="topics-6" class="section level2">
 <h2>Topics</h2>
 <ul>
 <li>Went over “What is Machine Learning?” <a href="static/what_is_ML.pdf" target="_blank">slides</a>.</li>
