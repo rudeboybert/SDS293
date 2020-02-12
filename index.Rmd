@@ -68,6 +68,29 @@ h1{font-weight: 400;}
 
 ***
 
+
+
+
+
+# Lec 09: Fri 2/14
+
+## Announcements
+
+*
+
+
+## Topics
+
+* Tie in Tree with Lec01 slides -> Slide 20. Complexity vs fit.
+* Explain $p_{mk}$ notation.
+
+
+
+***
+
+
+
+
 # Lec 08: Wed 2/12
 
 ## Announcements
