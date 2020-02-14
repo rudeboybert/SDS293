@@ -76,14 +76,27 @@ h1{font-weight: 400;}
 
 ## Announcements
 
-* Check out [Machine Learning Flashcards](https://gumroad.com/l/machinelearningflashcards){target="_blank"} posted on Slack in `#general`
+1. Check out [Machine Learning Flashcards](https://gumroad.com/l/machinelearningflashcards){target="_blank"} posted on Slack in `#general`
+1. Open Slack and please join the `#questions` channel. Ask all non-private questions here.
 
 
 ## Topics
 
-* Tie in Tree with Lec01 slides -> Slide 20. Complexity vs fit.
-* Explain $p_{mk}$ notation.
+1. RMSE vs RMSLE. What's the difference? Recall from Lec04 our [discussion on orders of magnitude](https://moderndive.com/A-appendixA.html#appendix-log10-transformations){target="_blank"}.
+1. CART wrap-up
+    a) Open MassMutual RStudio Project -> `CART.Rmd` -> Explain $\widehat{p}_{mk}$, in particular how it plays into "Gini Index".  
+    ![](static/images/ML_Flashcards/Gini_Index_web.png){ width=50% }
+    a) What does the equation become when $y$ is numerical
+    a) Tie-in CART "complexity parameter" $\alpha$ with Lec01 "What is Machine Learning?" [slide 20](static/what_is_ML.pdf#page=20){target="_blank"}.
+1. Two possible model outcomes: Underfitting vs overfitting:  
+![](static/images/ML_Flashcards/Underfitting_web.png){ width=50% }![](static/images/ML_Flashcards/Overfitting_web.png){ width=50% }  
+1. Open MassMutual RStudio Project -> `coding.Rmd` -> `# Wednesday, July 24 2019` -> `Demonstration of overfitting`
+    a) `model_CART_3` corresponds to a HELLA overfit model. i.e. it doesn't generalize.
+    b) Exercise: Fit the same model but to only half the data, predict on the other half.  
+    ![](static/images/validation_set.png){ width=75% }  
 
+    
+    
 
 
 ***
@@ -103,7 +116,7 @@ h1{font-weight: 400;}
 ### Special cases
 
 1. How do I do binary splits on categorical predictors that have been *one-hot encoded*. Note: many statistical software packages will do this automatically for you.  
-![](static/images/One-Hot_Encoding_web.png){ width=50% }
+![](static/images/ML_Flashcards/One-Hot_Encoding_web.png){ width=50% }
 1. Works for both types of outcomes $y$: numerical & categorical. Show code
 
 
@@ -197,6 +210,7 @@ The `iris` dataset has historically been one of the most widely used datasets in
 
 What are classification and regression trees? Here is one example from the [New York Times](https://www.nytimes.com/interactive/2019/08/08/opinion/sunday/party-polarization-quiz.html){target="_blank"}. Note: Smith students can get free access to the New York Times and Wall Street Journal via [Smith Libraries](https://libraries.smith.edu/news/2019/09/new-online-access-new-york-times-and-wall-street-journal){target="_blank"}.
 
+![](static/images/ML_Flashcards/Decision_Trees_web.png){ width=50% }
 
 
 
