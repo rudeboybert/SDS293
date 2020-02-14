@@ -76,7 +76,7 @@ h1{font-weight: 400;}
 
 ## Announcements
 
-*
+* Check out [Machine Learning Flashcards](https://gumroad.com/l/machinelearningflashcards){target="_blank"} posted on Slack in `#general`
 
 
 ## Topics
@@ -95,7 +95,7 @@ h1{font-weight: 400;}
 
 ## Announcements
 
-*
+* None
 
 
 ## Topics
