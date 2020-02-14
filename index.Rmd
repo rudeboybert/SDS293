@@ -69,6 +69,20 @@ h1{font-weight: 400;}
 ***
 
 
+# Lec 10: Mon 2/17
+
+## Announcements
+
+*
+
+## Topics
+
+* Go over solutions to Exercise from Lec09 on showing consequences (on RMSLE) of making predictions on separate `test` data using a model that is HELLA overfit.
+* 
+
+
+
+***
 
 
 
