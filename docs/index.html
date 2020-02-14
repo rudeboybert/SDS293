@@ -391,6 +391,7 @@ h1{font-weight: 400;}
 <div id="announcements" class="section level2">
 <h2>Announcements</h2>
 <ol style="list-style-type: decimal">
+<li>I’m almost finished PS3. A large part of it will involve fitting a CART model to the same house prices data as in PS2.</li>
 <li>Check out <a href="https://gumroad.com/l/machinelearningflashcards" target="_blank">Machine Learning Flashcards</a> posted on Slack in <code>#general</code></li>
 <li>Open Slack and please join the <code>#questions</code> channel. Ask all non-private questions here.</li>
 </ol>
@@ -398,7 +399,12 @@ h1{font-weight: 400;}
 <div id="topics" class="section level2">
 <h2>Topics</h2>
 <ol style="list-style-type: decimal">
+<li>PS2 recap
+<ul>
+<li>Two TODO’s for this PS: 1) compute RMSLE and 2) submit Kaggle predictions. Where do I use <code>train</code> and where do I use <code>test</code>?</li>
 <li>RMSE vs RMSLE. What’s the difference? Recall from Lec04 our <a href="https://moderndive.com/A-appendixA.html#appendix-log10-transformations" target="_blank">discussion on orders of magnitude</a>.</li>
+<li>Halp! I got a negative house price prediction <span class="math inline">\(\widehat{y}\)</span> using <code>OverallQual</code> as a predictor! What do I do?</li>
+</ul></li>
 <li>CART wrap-up
 <ol style="list-style-type: lower-alpha">
 <li>Open MassMutual RStudio Project -&gt; <code>CART.Rmd</code> -&gt; Explain <span class="math inline">\(\widehat{p}_{mk}\)</span>, in particular how it plays into “Gini Index”.<br />
@@ -459,7 +465,7 @@ h1{font-weight: 400;}
 </div>
 <div id="topics-2" class="section level2">
 <h2>Topics</h2>
-<p>Today’s chalk talk on CART is based on the Tuesday PM topics in the <a href="https://docs.google.com/document/d/1kBl8ivTeNyVfbV0gvXjBpwnlRWXvZkKuSe0SMTjFB38/edit#heading=h.4llig2jamgry" target="_blank">MassMutual Google Doc</a>.</p>
+<p>Today’s chalk talk on CART is based on the Tuesday PM topics in the <a href="https://docs.google.com/document/d/1kBl8ivTeNyVfbV0gvXjBpwnlRWXvZkKuSe0SMTjFB38/edit#heading=h.4llig2jamgry" target="_blank">MassMutual Google Doc</a>. <img src="static/images/ML_Flashcards/Decision_Trees_web.png" style="width:50.0%" /></p>
 <p>Open the MassMutual RStudio Project:</p>
 <p><strong>First:</strong> Based on <code>coding.Rmd</code> -&gt; Tuesday -&gt; <code>iris</code> dataset. (Note: You might have to do a little debugging to get this to knit, like setting <code>eval = TRUE</code> for all code blocks.)</p>
 <ol style="list-style-type: decimal">
@@ -524,7 +530,6 @@ h1{font-weight: 400;}
 <div id="classification-regression-trees" class="section level3">
 <h3>4. Classification &amp; Regression Trees</h3>
 <p>What are classification and regression trees? Here is one example from the <a href="https://www.nytimes.com/interactive/2019/08/08/opinion/sunday/party-polarization-quiz.html" target="_blank">New York Times</a>. Note: Smith students can get free access to the New York Times and Wall Street Journal via <a href="https://libraries.smith.edu/news/2019/09/new-online-access-new-york-times-and-wall-street-journal" target="_blank">Smith Libraries</a>.</p>
-<p><img src="static/images/ML_Flashcards/Decision_Trees_web.png" style="width:50.0%" /></p>
 <hr />
 </div>
 </div>
