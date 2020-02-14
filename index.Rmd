@@ -78,7 +78,7 @@ h1{font-weight: 400;}
 ## Topics
 
 * Halp! In PS2 I got a negative house price predictions $\widehat{y}$ using, for example, `OverallQual` as a predictor! What do I do?
-* Go over solutions to Exercise from Lec09 on showing consequences (on RMSLE) of making predictions on separate `test` data using a model that is HELLA overfit.
+* Go over solutions to Exercise from Lec09 on showing consequences (on RMSLE) of making predictions on separate `test` data using a model that is HELLA overfit to the `training` data.
 * 
 
 
