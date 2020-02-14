@@ -77,6 +77,7 @@ h1{font-weight: 400;}
 
 ## Topics
 
+* Halp! In PS2 I got a negative house price predictions $\widehat{y}$ using, for example, `OverallQual` as a predictor! What do I do?
 * Go over solutions to Exercise from Lec09 on showing consequences (on RMSLE) of making predictions on separate `test` data using a model that is HELLA overfit.
 * 
 
@@ -99,7 +100,6 @@ h1{font-weight: 400;}
 1. PS2 recap
     + Two TODO's for this PS: 1) compute RMSLE and 2) submit Kaggle predictions. Where do I use `train` and where do I use `test`?
     + RMSE vs RMSLE. What's the difference? Recall from Lec04 our [discussion on orders of magnitude](https://moderndive.com/A-appendixA.html#appendix-log10-transformations){target="_blank"}.
-    + Halp! I got a negative house price prediction $\widehat{y}$ using `OverallQual` as a predictor! What do I do?
 1. CART wrap-up
     a) Open MassMutual RStudio Project -> `CART.Rmd` -> Explain $\widehat{p}_{mk}$, in particular how it plays into "Gini Index".  
     ![](static/images/ML_Flashcards/Gini_Index_web.png){ width=50% }
