@@ -68,6 +68,24 @@ h1{font-weight: 400;}
 
 ***
 
+# Lec 11: Wed 2/19
+
+## Announcements
+
+* 
+
+
+## Topics
+
+1. Recap of Lec10: Idea of validation sets: fit/train model to one set of data, but evaluate predictive performance on another set of data. Recall Lec01 "What is Machine Learning?" [slide 26](static/what_is_ML.pdf#page=27){target="_blank"} on training a self-driving car versus evaluating it's performance.
+1. Create a table comparing 3 types of RMSLE scores for two `cp` values: `cp=0` & `cp=1` (i.e. a less complex tree)
+1. Comparing performance of underfit vs overfit models as a function of model complexity. See Lec01 "What is Machine Learning?" [slide 27](static/what_is_ML.pdf#page=27){target="_blank"}.
+
+
+
+
+***
+
 
 
 # Lec 10: Mon 2/17
@@ -91,8 +109,6 @@ h1{font-weight: 400;}
 1. Why is overfitting a problem?
     + Solutions to Lec09 Exercise are posted on Slack: showing the consequences on RMSLE of making predictions on separate `test` data using a model that is HELLA overfit to the `training` data using `cp = 0`.
     + What are validation sets? Train your model on one set of data, but evaluate your predictions on a separate set of data. Recall Lec01 "What is Machine Learning?" [slide 26](static/what_is_ML.pdf#page=27){target="_blank"} on training a self-driving car versus evaluating it's performance.
-    + Repeat above exercise but with `cp = 0.1` i.e. fit less complex trees.
-    + Comparing performance of underfit vs overfit models as a function of model complexity. See Lec01 "What is Machine Learning?" [slide 27](static/what_is_ML.pdf#page=27){target="_blank"}.
 
 
 
