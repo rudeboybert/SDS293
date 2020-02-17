@@ -365,7 +365,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">SDS 293: Modeling for Machine Learning</h1>
 <h4 class="author">Albert Y. Kim</h4>
-<h4 class="date">Last updated on 2020-02-14</h4>
+<h4 class="date">Last updated on 2020-02-17</h4>
 
 </div>
 
@@ -391,16 +391,33 @@ h1{font-weight: 400;}
 <div id="announcements" class="section level2">
 <h2>Announcements</h2>
 <ul>
-<li></li>
+<li>Sit next to your PS3 partner</li>
+<li>Problem sets:
+<ul>
+<li>PS3 posted</li>
+<li>I’m still coordinating with grader. You’ll get PS1 scores shortly.</li>
+<li>Great common student question: “Why are randomizing groups? Why can’t we just pick our own?”</li>
+</ul></li>
 </ul>
 </div>
 <div id="topics" class="section level2">
 <h2>Topics</h2>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\log\)</span>-transformations (you’ll be doing this in PS3)
 <ul>
-<li>Halp! In PS2 I got a negative house price predictions <span class="math inline">\(\widehat{y}\)</span> using, for example, <code>OverallQual</code> as a predictor! What do I do?</li>
-<li>Go over solutions to Exercise from Lec09 on showing consequences (on RMSLE) of making predictions on separate <code>test</code> data using a model that is HELLA overfit to the <code>training</code> data.</li>
-<li></li>
-</ul>
+<li>Problem: many students who used <code>OverallQual</code> as a predictor, ended up with a negative prediction <span class="math inline">\(\widehat{y}\)</span> = <span class="math inline">\(\hat{\text{SalePrice}}\)</span></li>
+<li>Solution: Transforming the outcome variable space, then fitting your model, then predicting, then returning to the original variable space</li>
+</ul></li>
+<li>Recap of underfitting vs overfitting:<br />
+<img src="static/images/ML_Flashcards/Underfitting_web.png" style="width:50.0%" /><img src="static/images/ML_Flashcards/Overfitting_web.png" style="width:50.0%" /></li>
+<li>Why is overfitting a problem?
+<ul>
+<li>Solutions to Lec09 Exercise are posted on Slack: showing the consequences on RMSLE of making predictions on separate <code>test</code> data using a model that is HELLA overfit to the <code>training</code> data using <code>cp = 0</code>.</li>
+<li>What are validation sets? Train your model on one set of data, but evaluate your predictions on a separate set of data. Recall Lec01 “What is Machine Learning?” <a href="static/what_is_ML.pdf#page=27" target="_blank">slide 26</a> on training a self-driving car versus evaluating it’s performance.</li>
+<li>Repeat above exercise but with <code>cp = 0.1</code> i.e. fit less complex trees.</li>
+<li>Comparing performance of underfit vs overfit models as a function of model complexity. See Lec01 “What is Machine Learning?” <a href="static/what_is_ML.pdf#page=27" target="_blank">slide 27</a>.</li>
+</ul></li>
+</ol>
 <hr />
 </div>
 </div>
@@ -427,7 +444,7 @@ h1{font-weight: 400;}
 <li>Open MassMutual RStudio Project -&gt; <code>CART.Rmd</code> -&gt; Explain <span class="math inline">\(\widehat{p}_{mk}\)</span>, in particular how it plays into “Gini Index”.<br />
 <img src="static/images/ML_Flashcards/Gini_Index_web.png" style="width:50.0%" /></li>
 <li>What does the equation become when <span class="math inline">\(y\)</span> is numerical</li>
-<li>Tie-in CART “complexity parameter” <span class="math inline">\(\alpha\)</span> with Lec01 “What is Machine Learning?” <a href="static/what_is_ML.pdf#page=20" target="_blank">slide 20</a>.</li>
+<li>Tie-in CART “complexity parameter” <span class="math inline">\(\alpha\)</span> with Lec01 “What is Machine Learning?” <a href="static/what_is_ML.pdf#page=20" target="_blank">slide 20</a> on under vs overfit models.</li>
 </ol></li>
 <li>Two possible model outcomes: Underfitting vs overfitting:<br />
 <img src="static/images/ML_Flashcards/Underfitting_web.png" style="width:50.0%" /><img src="static/images/ML_Flashcards/Overfitting_web.png" style="width:50.0%" /><br />

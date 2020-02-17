@@ -69,17 +69,30 @@ h1{font-weight: 400;}
 ***
 
 
+
 # Lec 10: Mon 2/17
 
 ## Announcements
 
-*
+* Sit next to your PS3 partner
+* Problem sets:
+    + PS3 posted
+    + I'm still coordinating with grader. You'll get PS1 scores shortly.
+    + Great common student question: "Why are randomizing groups? Why can't we just pick our own?"
+
 
 ## Topics
 
-* Halp! In PS2 I got a negative house price predictions $\widehat{y}$ using, for example, `OverallQual` as a predictor! What do I do?
-* Go over solutions to Exercise from Lec09 on showing consequences (on RMSLE) of making predictions on separate `test` data using a model that is HELLA overfit to the `training` data.
-* 
+1. $\log$-transformations (you'll be doing this in PS3)
+    + Problem: many students who used `OverallQual` as a predictor, ended up with a negative prediction $\widehat{y}$ = $\hat{\text{SalePrice}}$
+    + Solution: Transforming the outcome variable space, then fitting your model, then predicting, then returning to the original variable space
+1. Recap of underfitting vs overfitting:  
+![](static/images/ML_Flashcards/Underfitting_web.png){ width=50% }![](static/images/ML_Flashcards/Overfitting_web.png){ width=50% } 
+1. Why is overfitting a problem?
+    + Solutions to Lec09 Exercise are posted on Slack: showing the consequences on RMSLE of making predictions on separate `test` data using a model that is HELLA overfit to the `training` data using `cp = 0`.
+    + What are validation sets? Train your model on one set of data, but evaluate your predictions on a separate set of data. Recall Lec01 "What is Machine Learning?" [slide 26](static/what_is_ML.pdf#page=27){target="_blank"} on training a self-driving car versus evaluating it's performance.
+    + Repeat above exercise but with `cp = 0.1` i.e. fit less complex trees.
+    + Comparing performance of underfit vs overfit models as a function of model complexity. See Lec01 "What is Machine Learning?" [slide 27](static/what_is_ML.pdf#page=27){target="_blank"}.
 
 
 
@@ -104,7 +117,7 @@ h1{font-weight: 400;}
     a) Open MassMutual RStudio Project -> `CART.Rmd` -> Explain $\widehat{p}_{mk}$, in particular how it plays into "Gini Index".  
     ![](static/images/ML_Flashcards/Gini_Index_web.png){ width=50% }
     a) What does the equation become when $y$ is numerical
-    a) Tie-in CART "complexity parameter" $\alpha$ with Lec01 "What is Machine Learning?" [slide 20](static/what_is_ML.pdf#page=20){target="_blank"}.
+    a) Tie-in CART "complexity parameter" $\alpha$ with Lec01 "What is Machine Learning?" [slide 20](static/what_is_ML.pdf#page=20){target="_blank"} on under vs overfit models.
 1. Two possible model outcomes: Underfitting vs overfitting:  
 ![](static/images/ML_Flashcards/Underfitting_web.png){ width=50% }![](static/images/ML_Flashcards/Overfitting_web.png){ width=50% }  
 1. Open MassMutual RStudio Project -> `coding.Rmd` -> `# Wednesday, July 24 2019` -> `Demonstration of overfitting`
@@ -112,12 +125,9 @@ h1{font-weight: 400;}
     b) Exercise: Fit the same model but to only half the data, predict on the other half.  
     ![](static/images/validation_set.png){ width=75% }  
 
-    
-    
 
 
 ***
-
 
 
 
