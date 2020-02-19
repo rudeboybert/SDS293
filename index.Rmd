@@ -81,10 +81,11 @@ h1{font-weight: 400;}
 
 * 
 
+<!--
 <center>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/2v27t-oYnjE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </center>
-
+-->
 
 
 ***
@@ -95,7 +96,7 @@ h1{font-weight: 400;}
 
 ## Announcements
 
-* `NA`
+![](static/events/DataFest.png){ width=75% }  
 
 
 ## Topics
