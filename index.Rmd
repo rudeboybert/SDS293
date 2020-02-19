@@ -68,7 +68,9 @@ h1{font-weight: 400;}
 
 ***
 
-# Lec 11: Wed 2/19
+
+
+# Lec 12: Fri 2/21
 
 ## Announcements
 
@@ -77,10 +79,37 @@ h1{font-weight: 400;}
 
 ## Topics
 
-1. Recap of Lec10: Idea of validation sets: fit/train model to one set of data, but evaluate predictive performance on another set of data. Recall Lec01 "What is Machine Learning?" [slide 26](static/what_is_ML.pdf#page=27){target="_blank"} on training a self-driving car versus evaluating it's performance.
-1. Create a table comparing 3 types of RMSLE scores for two `cp` values: `cp=0` & `cp=1` (i.e. a less complex tree)
-1. Comparing performance of underfit vs overfit models as a function of model complexity. See Lec01 "What is Machine Learning?" [slide 27](static/what_is_ML.pdf#page=27){target="_blank"}.
+* 
 
+
+
+***
+
+
+
+# Lec 11: Wed 2/19
+
+## Announcements
+
+* `NA`
+
+
+## Topics
+
+Recap of Lec10:
+
+1. Idea of "validation sets"
+<!--
+fit/train model to one set of data, but evaluate it's predictive performance on another set of data. In other words, *validate* the fitted model on another set of data.
+-->
+1. Lec01 "What is Machine Learning?" [slide 26](static/what_is_ML.pdf#page=26){target="_blank"} stresses importance of "validation sets" when training a self-driving car.
+    
+Today:
+    
+1. Create a table comparing 3 types of RMSLE scores for two `cp` values: `cp=0` (relatively more complex tree)  & `cp=0.2` (relatively less complex tree)
+1. Comparing performance of underfit vs overfit models as a function of model complexity. See Lec01 "What is Machine Learning?" [slide 27](static/what_is_ML.pdf#page=27){target="_blank"}.
+1. We want to know the proportion of the sampling bowl's balls that are red. We don't have the energy to do a census, so we take a sample. Why is important to mix the bowl first?  
+![](static/images/sampling_bowl_2.jpg){ width=50% }
 
 
 
@@ -151,7 +180,7 @@ h1{font-weight: 400;}
 
 ## Announcements
 
-* None
+* `NA`
 
 
 ## Topics
