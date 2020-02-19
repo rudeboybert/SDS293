@@ -414,17 +414,24 @@ h1{font-weight: 400;}
 <h2>Topics</h2>
 <p>Recap of Lec10:</p>
 <ol style="list-style-type: decimal">
-<li>Idea of “validation sets” <!--
+<li>Idea of “validation sets”:<br />
+<img src="static/images/validation_set.png" style="width:75.0%" /><br />
+<!--
 fit/train model to one set of data, but evaluate it's predictive performance on another set of data. In other words, *validate* the fitted model on another set of data.
 --></li>
+<li>We want to know the proportion of the sampling bowl’s balls that are red. We don’t have the energy to do a census, so we take a sample. Why is important to mix the bowl first?<br />
+<img src="static/images/sampling_bowl_2.jpg" style="width:50.0%" /></li>
 <li>Lec01 “What is Machine Learning?” <a href="static/what_is_ML.pdf#page=26" target="_blank">slide 26</a> stresses importance of “validation sets” when training a self-driving car.</li>
 </ol>
 <p>Today:</p>
 <ol style="list-style-type: decimal">
 <li>Create a table comparing 3 types of RMSLE scores for two <code>cp</code> values: <code>cp=0</code> (relatively more complex tree) &amp; <code>cp=0.2</code> (relatively less complex tree)</li>
 <li>Comparing performance of underfit vs overfit models as a function of model complexity. See Lec01 “What is Machine Learning?” <a href="static/what_is_ML.pdf#page=27" target="_blank">slide 27</a>.</li>
-<li>We want to know the proportion of the sampling bowl’s balls that are red. We don’t have the energy to do a census, so we take a sample. Why is important to mix the bowl first?<br />
-<img src="static/images/sampling_bowl_2.jpg" style="width:50.0%" /></li>
+<li>How do we figure out what is “optimal” model complexity?
+<ul>
+<li>In other words, the best setting of the “complexity” dial aka knob?</li>
+<li>For example in MassMutual RStudio Project -&gt; <code>CART.Rmd</code> -&gt; best slider value of <span class="math inline">\(\alpha\)</span> = <code>cp</code> complexity parameter?</li>
+</ul></li>
 </ol>
 <hr />
 </div>

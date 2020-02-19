@@ -81,6 +81,10 @@ h1{font-weight: 400;}
 
 * 
 
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2v27t-oYnjE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
+
 
 
 ***
@@ -98,18 +102,22 @@ h1{font-weight: 400;}
 
 Recap of Lec10:
 
-1. Idea of "validation sets"
+1. Idea of "validation sets":  
+![](static/images/validation_set.png){ width=75% }  
 <!--
 fit/train model to one set of data, but evaluate it's predictive performance on another set of data. In other words, *validate* the fitted model on another set of data.
 -->
+1. We want to know the proportion of the sampling bowl's balls that are red. We don't have the energy to do a census, so we take a sample. Why is important to mix the bowl first?  
+![](static/images/sampling_bowl_2.jpg){ width=50% }
 1. Lec01 "What is Machine Learning?" [slide 26](static/what_is_ML.pdf#page=26){target="_blank"} stresses importance of "validation sets" when training a self-driving car.
     
 Today:
     
 1. Create a table comparing 3 types of RMSLE scores for two `cp` values: `cp=0` (relatively more complex tree)  & `cp=0.2` (relatively less complex tree)
 1. Comparing performance of underfit vs overfit models as a function of model complexity. See Lec01 "What is Machine Learning?" [slide 27](static/what_is_ML.pdf#page=27){target="_blank"}.
-1. We want to know the proportion of the sampling bowl's balls that are red. We don't have the energy to do a census, so we take a sample. Why is important to mix the bowl first?  
-![](static/images/sampling_bowl_2.jpg){ width=50% }
+1. How do we figure out what is "optimal" model complexity?
+    + In other words, the best setting of the "complexity" dial aka knob?
+    + For example in MassMutual RStudio Project -> `CART.Rmd` -> best slider value of $\alpha$ = `cp` complexity parameter?
 
 
 
