@@ -74,18 +74,16 @@ h1{font-weight: 400;}
 
 ## Announcements
 
-* 
+* `NA`
 
 
 ## Topics
 
-* 
+1. In-class exercise
+1. Lec01 "What is Machine Learning?" [slide 28](static/what_is_ML.pdf#page=28){target="_blank"} 
+1. MassMutual RStudio Project -> `coding.Rmd` -> `# Wednesday, July 24 2019` -> `## Cross-validation`  
 
-<!--
-<center>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2v27t-oYnjE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</center>
--->
+
 
 
 ***
@@ -99,7 +97,7 @@ h1{font-weight: 400;}
 ![](static/events/DataFest.png){ width=75% }  
 
 
-## Topics
+## Chalk Talk
 
 Recap of Lec10:
 
@@ -137,7 +135,7 @@ Today:
     + Great common student question: "Why are randomizing groups? Why can't we just pick our own?"
 
 
-## Topics
+## Chalk Talk
 
 1. $\log$-transformations (you'll be doing this in PS3)
     + Problem: many students who used `OverallQual` as a predictor, ended up with a negative prediction $\widehat{y}$ = $\hat{\text{SalePrice}}$
@@ -162,7 +160,7 @@ Today:
 1. Check out [Machine Learning Flashcards](https://gumroad.com/l/machinelearningflashcards){target="_blank"} posted on Slack in `#general`
 1. Open Slack and please join the `#questions` channel. Ask all non-private questions here.
 
-## Topics
+## Chalk Talk
 
 1. PS2 recap
     + Two TODO's for this PS: 1) compute RMSLE and 2) submit Kaggle predictions. Where do I use `train` and where do I use `test`?
@@ -192,7 +190,7 @@ Today:
 * `NA`
 
 
-## Topics
+## Chalk Talk
 
 ### Special cases
 
@@ -224,7 +222,7 @@ Open the MassMutual RStudio Project -> `CART.Rmd` Shiny app. (Note: after you in
 * Open 293 GitHub organization -> look at PS2
 
 
-## Topics
+## Chalk Talk
 
 Today's chalk talk on CART is based on the Tuesday PM topics in the [MassMutual Google Doc](https://docs.google.com/document/d/1kBl8ivTeNyVfbV0gvXjBpwnlRWXvZkKuSe0SMTjFB38/edit#heading=h.4llig2jamgry){target="_blank"}. 
 ![](static/images/ML_Flashcards/Decision_Trees_web.png){ width=50% }
@@ -258,7 +256,7 @@ Open the MassMutual RStudio Project:
 * If you haven't already, please change your default GitHub profile picture. It doesn't have to be a picture of you, but please put an image. This will help me quickly identify who's who. 
 
 
-## Topics
+## Chalk Talk
 
 ### 1. Lec05 Recap
 
@@ -306,7 +304,7 @@ What are classification and regression trees? Here is one example from the [New 
 * Added two notes to [PS1](PS.html#PS1)
 
 
-## Topics
+## Chalk Talk
 
 * Multiple regression
 * In MassMutual RStudio Project -> Tuesday -> Kaggle -> Exercise on Kaggle submission.
@@ -352,7 +350,7 @@ In other words:
 * [Think big, start small](https://www.forbes.com/sites/chunkamui/2016/01/03/6-words/#15457a371a3b){target="_blank"}
 
 
-## Topics
+## Chalk Talk
 
 * In-class demo
 * Open `MassMutual` RStudio Project -> `coding.Rmd` -> `# Tuesday, July 23 2019` -> `## Gentle Introduction to Kaggle Competitions`. Discussion on:
@@ -381,7 +379,7 @@ In other words:
     + Please don't change your GitHub ID's mid-semester!
 * FYI: GitHub is not without [controversy](https://techcrunch.com/2019/11/13/github-faces-more-resignations-in-light-of-ice-contract/){target="_blank"}
 
-## Topics
+## Chalk Talk
 
 GitHub has many definitions that are unforunately not straight forward. Using [`fivethirtyeight`](https://github.com/rudeboybert/fivethirtyeight){target="_blank"} R package as an example.
 
@@ -415,7 +413,7 @@ GitHub has many definitions that are unforunately not straight forward. Using [`
 * Syllabus [posted](syllabus.html)
 
 
-## Topics
+## Chalk Talk
 
 * In [MassMutual Google Doc](https://docs.google.com/document/d/1kBl8ivTeNyVfbV0gvXjBpwnlRWXvZkKuSe0SMTjFB38/edit#heading=h.4llig2jamgry){target="_blank"}: Tuesday AM.
 
@@ -430,6 +428,6 @@ GitHub has many definitions that are unforunately not straight forward. Using [`
 ## Announcements
 
 
-## Topics
+## Chalk Talk
 
 * Went over "What is Machine Learning?" [slides](static/what_is_ML.pdf){target="_blank"}.
