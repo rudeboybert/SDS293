@@ -69,6 +69,39 @@ h1{font-weight: 400;}
 ***
 
 
+# Lec 13: Mon 2/24
+
+## Announcements
+
+1. [SDS talk this week](https://smithcollege-sds.github.io/sds-www/speaker_Hu.html#public_lecture:_generating_synthetic_family_income_for_the_consumer_expenditure_surveys){target="_blank"} 
+    + What: "Generating Synthetic Family Income for the Consumer Expenditure Surveys"
+    + Who: Prof. Jingchen (Monika) Hu, Vassar College
+    + When: Thursday Feb 27, 5pm
+    + Where: McConnell Hall 103
+    
+
+
+## Chalk Talk
+
+1. Lec01 "What is Machine Learning?" [slide 28](static/what_is_ML.pdf#page=28){target="_blank"}
+1. $k$ fold cross-validation  
+![](static/images/ML_Flashcards/K-Fold_Cross-Validation_web.png){ width=50% }
+1. Pseudocode for:
+    a) Using crossvalidation to estimate error
+    b) Using crossvalidation error estimates to find "optimal" level of complexity ("optimal" with respect to over-fitting)  
+    ![](static/images/ML_Flashcards/Avoid_Overfitting_web.png){ width=50% }
+    c) Using "optimal" level of complexity to make predictions
+
+
+## In-class Exercise
+
+1. Pair-programming for PS4
+
+
+
+***
+
+
 
 # Lec 12: Fri 2/21
 
