@@ -73,7 +73,7 @@ h1{font-weight: 400;}
 
 ## Announcements
 
-1. [SDS talk this week](https://smithcollege-sds.github.io/sds-www/speaker_Hu.html#public_lecture:_generating_synthetic_family_income_for_the_consumer_expenditure_surveys){target="_blank"} 
+1. [SDS talk this week](https://smithcollege-sds.github.io/sds-www/speaker_Hu.html#public_lecture:_generating_synthetic_family_income_for_the_consumer_expenditure_surveys){target="_blank"} on balancing between "having useful data" and "maintinaing sufficient privacy protection":
     + What: "Generating Synthetic Family Income for the Consumer Expenditure Surveys"
     + Who: Prof. Jingchen (Monika) Hu, Vassar College
     + When: Thursday Feb 27, 5pm
