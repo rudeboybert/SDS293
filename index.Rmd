@@ -69,6 +69,24 @@ h1{font-weight: 400;}
 ***
 
 
+
+# Lec 14: Wed 2/26
+
+## Announcements
+
+* Step back: Recall cross-valiation is a generalization of "validation set" idea to ensure we are not fitting over-fit models  
+![](static/images/ML_Flashcards/Avoid_Overfitting_web.png){ width=50% }
+
+
+## Chalk Talk
+
+
+
+
+***
+
+
+
 # Lec 13: Mon 2/24
 
 ## Announcements
@@ -88,8 +106,7 @@ h1{font-weight: 400;}
 ![](static/images/ML_Flashcards/K-Fold_Cross-Validation_web.png){ width=50% }
 1. Pseudocode for:
     a) Using crossvalidation to estimate error
-    b) Using crossvalidation error estimates to find "optimal" level of complexity ("optimal" with respect to over-fitting)  
-    ![](static/images/ML_Flashcards/Avoid_Overfitting_web.png){ width=50% }
+    b) Using crossvalidation error estimates to find "optimal" level of complexity
     c) Using "optimal" level of complexity to make predictions
 
 
