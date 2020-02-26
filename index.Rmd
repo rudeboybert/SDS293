@@ -93,22 +93,11 @@ h1{font-weight: 400;}
 
 1. Step back: Recall cross-valiation is a generalization of the "validation set" idea to ensure we are not over-fitting models  
 ![](static/images/ML_Flashcards/Avoid_Overfitting_web.png){ width=50% }
-1. Intro to logistic regression
+1. Intro to logistic regression  
+![](static/images/ML_Flashcards/Logistic_Regression_web.png){ width=50% }![](static/images/ML_Flashcards/Logistic_Regression_Vs_Linear_Regression_web.png){ width=50% }
 1. Transforming probability space to log-odds/logit space. The following two plots are the same but with the axes flipped. In other words:
     + The left plot visualizes how we map from probability space $[0,1]$ to log-odds space $(-\infty, \infty)$
-    + The right plot visualizes how we map from log-odds space $(-\infty, \infty)$ back to probability space $[0,1]$
-
-<!--
-Here are the two equations:
-
-$$
-\begin{align}
-\mbox{left function} = \mbox{log-odds} = \mbox{logit}(p) &= \log\left(\frac{p}{1-p}\right) = \alpha\\
-\mbox{right function} = \mbox{inverse-logit}(\alpha) &= \frac{\exp(\alpha)}{\exp(\alpha) + 1} = \frac{1}{1+ \exp(-\alpha)} = p
-\end{align}
-$$
--->
-
+    + The right plot visualizes how we map from log-odds space $(-\infty, \infty)$ back to probability space $[0,1]$  
 ```{r, echo=FALSE, eval=TRUE}
 eps <- 0.0001
 values <- tibble(
@@ -135,13 +124,20 @@ plot2 <- plot1 +
   labs(x="Probability p", y="log-odds", title="probability over log-odds")
 plot1 + plot2
 ```
+1. Go over MassMutual -> `logistic_regression.Rmd`
+1. At 10:10, 30 minutes of paired programming for PS5 but now with other person typing.
 
 
+<!--
+Here are the two equations:
 
-ROC.Rmd
-
-<script src="https://gist.github.com/rudeboybert/3d5d983420fec2acb19981d7fbd85f3a.js"></script>
-
+$$
+\begin{align}
+\mbox{left function} = \mbox{log-odds} = \mbox{logit}(p) &= \log\left(\frac{p}{1-p}\right) = \alpha\\
+\mbox{right function} = \mbox{inverse-logit}(\alpha) &= \frac{\exp(\alpha)}{\exp(\alpha) + 1} = \frac{1}{1+ \exp(-\alpha)} = p
+\end{align}
+$$
+-->
 
 
 
@@ -158,7 +154,7 @@ ROC.Rmd
     + Who: Prof. Jingchen (Monika) Hu, Vassar College
     + When: Thursday Feb 27, 5pm
     + Where: McConnell Hall 103
-    
+![](static/events/hu.png){ width=100% }
 
 
 ## Chalk Talk
