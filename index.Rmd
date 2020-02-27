@@ -73,13 +73,15 @@ h1{font-weight: 400;}
 
 ## Announcements
 
-1. `NA`
+1. Midterm I is a Seelye self-scheduled exam from next Fri 3/6 5pm thru Mon 3/9 11pm. We'll discuss on Monday Lec 16.
+1. PS5 on logistic regression assigned.
+1. PS6 assigned on Fri 3/6 will relate to ethics in machine learning and will not involve any coding.
 
 ## Chalk Talk
 
+1. In-class demo of possible approach to PS4: implementing algorithm to obtain the "optimal" complexity parameter `cp` value using cross-validation (we will be verifying that your PS4 submissions on GitHub are all before 9am today).
 1. Go over MassMutual -> `logistic_regression.Rmd`
-1. Start ROC curves
-1. PS5 on logistic regression
+1. Time permitting start ROC curves: `ROC.Rmd` Shiny app
 
 
 
