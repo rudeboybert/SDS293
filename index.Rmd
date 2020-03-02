@@ -68,6 +68,25 @@ h1{font-weight: 400;}
 
 ***
 
+# Lec 16: Mon 3/2
+
+## Announcements
+
+1. Discuss Midterm I
+1. PS5
+
+## Chalk Talk
+
+1. Go over MassMutual -> `logistic_regression.Rmd`
+1. Time permitting start ROC curves: `ROC.Rmd` Shiny app
+
+
+
+
+***
+
+
+
 
 # Lec 15: Fri 2/28
 
