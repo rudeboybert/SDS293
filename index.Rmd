@@ -87,10 +87,11 @@ h1{font-weight: 400;}
 ## Chalk Talk
 
 1. What curve does logistic regression fit?
-1. ROC curves:
-    + [Sensitivity and Specificity](https://en.wikipedia.org/wiki/Sensitivity_and_specificity){target="_blank"}
+1. Binary classification problems ROC curves:
     + Decision rule for $\widehat{y}$ based on $\widehat{p}$
-    + [Parametric curve/equation](https://en.wikipedia.org/wiki/Parametric_equation){target="_blank"}
+    + Contingency tables for a given threshold $p^*$
+    + Based on contingency table for a given threshold $p^*$, we need a score for [Sensitivity and Specificity](https://en.wikipedia.org/wiki/Sensitivity_and_specificity){target="_blank"}
+    + Math theory: [Parametric curve/equation](https://en.wikipedia.org/wiki/Parametric_equation){target="_blank"}
     + MassMutual RStudio Project -> `ROC.Rmd` Shiny App
 
 
