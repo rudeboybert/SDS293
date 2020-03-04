@@ -86,7 +86,12 @@ h1{font-weight: 400;}
 
 ## Chalk Talk
 
-1. 
+1. What curve does logistic regression fit?
+1. ROC curves:
+    + [Sensitivity and Specificity](https://en.wikipedia.org/wiki/Sensitivity_and_specificity){target="_blank"}
+    + Decision rule for $\widehat{y}$ based on $\widehat{p}$
+    + [Parametric curve/equation](https://en.wikipedia.org/wiki/Parametric_equation){target="_blank"}
+    + MassMutual RStudio Project -> `ROC.Rmd` Shiny App
 
 
 
