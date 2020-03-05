@@ -70,7 +70,7 @@ h1{font-weight: 400;}
 
 
 
-# Lec 17: Wed 3/4
+# Lec 18: Fri 3/6
 
 ## Announcements
 
