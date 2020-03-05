@@ -74,13 +74,40 @@ h1{font-weight: 400;}
 
 ## Announcements
 
+1. FYI: you will not be penalized for missing class due to illness.
+1. Shorter PS6 assigned today.
+
+
+## Recap
+
+1. Based on a decision threshold $p^*$, contingency table for 2x2 possible truth vs prediction scenarios. 
+1. An ROC curve is a parametric curve based on $p^*$ onto $(x(p^*), y(p^*))$.
+1. The AUC is the area under the ROC curve. Always between 0 & 1.
+
+
+## Chalk Talk
+
+1. Go over solutions to PS5
+1. Different ROC curves and AUC's for different prediction scenarios.
+1. In-class activity
+
+
+
+***
+
+
+
+# Lec 17: Wed 3/4
+
+## Announcements
+
 <center>
 ![](static/events/Catherine_D_Ignazio.jpg){ width=100% }
 </center>
 
 ## Recap
 
-1. 
+1. `NA`
 
 
 
@@ -89,10 +116,9 @@ h1{font-weight: 400;}
 1. What curve does logistic regression fit?
 1. Binary classification problems ROC curves:
     + Decision rule for $\widehat{y}$ based on $\widehat{p}$
-    + Contingency tables for a given threshold $p^*$
-    + Based on contingency table for a given threshold $p^*$, we need a score for [Sensitivity and Specificity](https://en.wikipedia.org/wiki/Sensitivity_and_specificity){target="_blank"}
+    + 2x2 contingency tables for a given threshold $p^*$. Then based on a contingency table for a given threshold $p^*$, some examples of table summaries include [Sensitivity and Specificity](https://en.wikipedia.org/wiki/Sensitivity_and_specificity){target="_blank"}
     + Math theory: [Parametric curve/equation](https://en.wikipedia.org/wiki/Parametric_equation){target="_blank"}
-    + MassMutual RStudio Project -> `ROC.Rmd` Shiny App
+    + MassMutual RStudio Project -> `ROC.Rmd` Shiny App. In particular, using
 
 
 
