@@ -75,7 +75,11 @@ h1{font-weight: 400;}
 ## Announcements
 
 1. FYI: you will not be penalized for missing class due to illness.
-1. Shorter PS6 assigned today.
+1. Shorter PS6: Listen to New Economics Founding 58m [podcast interview](https://neweconomics.org/2019/11/weekly-economics-podcast-algorithms-of-oppression-live){target="_blank"} of [Safiya Umoja Noble](safiyaunoble){target="_blank"}, author of [Algorithms of Oppression](https://en.wikipedia.org/wiki/Algorithms_of_Oppression){target="_blank"}. Then on Friday 3/13:
+    1. In-class quiz. Not meant to be difficult, rather just to ensure you actually listen to podcast.
+    1. In-class discussion.
+
+![](static/images/algorithms_of_oppression.jpg){ width=30% }
 
 
 ## Recap
