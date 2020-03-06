@@ -70,6 +70,28 @@ h1{font-weight: 400;}
 
 
 
+# Lec 19: Mon 3/9
+
+## Announcements
+
+1. 
+
+
+## Recap
+
+1. Closing comments about StitchFix exercise. 
+
+
+## Chalk Talk
+
+1. 
+
+
+
+***
+
+
+
 # Lec 18: Fri 3/6
 
 ## Announcements
