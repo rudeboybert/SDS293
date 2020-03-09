@@ -68,9 +68,7 @@ h1{font-weight: 400;}
 
 ***
 
-
-
-# Lec 19: Mon 3/9
+# Lec 21: Fri 3/13
 
 ## Announcements
 
@@ -79,12 +77,63 @@ h1{font-weight: 400;}
 
 ## Recap
 
-1. Closing comments about StitchFix exercise. 
+1. 
 
 
 ## Chalk Talk
 
 1. 
+
+
+
+***
+
+
+
+# Lec 20: Wed 3/11
+
+## Announcements
+
+1. 
+
+
+## Recap
+
+1. 
+
+
+## Chalk Talk
+
+1. 
+
+
+
+***
+
+
+
+
+# Lec 19: Mon 3/9
+
+## Announcements
+
+1. Midterm I is still going on. Honor Code still applies.
+
+
+## Recap
+
+1. StitchFix exercise
+    1. Slack `#general` message
+    1. Closing comments
+
+
+## Chalk Talk
+
+1. Finishing ROC curves:
+    1. Open MassMutual.Rproj -> `ROC.Rmd` -> `## Background` -> first code chuck where `values` csv is loaded. Replace its contents with what I just shared on Slack.
+    1. 4 alternative scenarios of ROC curves
+1. Starting LASSO: L1 regularization for adjusting model complexity of linear models
+    1. Open MassMutual.Rproj -> `LASSO.Rmd`
 
 
 
