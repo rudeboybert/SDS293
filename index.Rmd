@@ -94,22 +94,24 @@ h1{font-weight: 400;}
 
 ## Announcements
 
-1. 
+1. Testing Zoom video conferencing.
+1. In-class quiz for PS6 on Friday (see Lec 18 for details). Note PS6 will not be weighted equally as the others given lower workload.
 
 
 ## Recap
 
-1. 
+1. Open MassMutual.Rproj -> `LASSO.Rmd`:
+    1. Naive model
+    1. Multiple regression model
 
 
 ## Chalk Talk
 
-1. 
+1. Theory behind LASSO
 
 
 
 ***
-
 
 
 
@@ -193,7 +195,7 @@ h1{font-weight: 400;}
     + Decision rule for $\widehat{y}$ based on $\widehat{p}$
     + 2x2 contingency tables for a given threshold $p^*$. Then based on a contingency table for a given threshold $p^*$, some examples of table summaries include [Sensitivity and Specificity](https://en.wikipedia.org/wiki/Sensitivity_and_specificity){target="_blank"}
     + Math theory: [Parametric curve/equation](https://en.wikipedia.org/wiki/Parametric_equation){target="_blank"}
-    + MassMutual RStudio Project -> `ROC.Rmd` Shiny App. In particular, using
+    + MassMutual RStudio Project -> `ROC.Rmd` Shiny App.
 
 
 
