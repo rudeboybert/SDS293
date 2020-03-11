@@ -94,20 +94,22 @@ h1{font-weight: 400;}
 
 ## Announcements
 
-1. Testing Zoom video conferencing.
-1. In-class quiz for PS6 on Friday (see Lec 18 for details). Note PS6 will not be weighted equally as the others given lower workload.
+1. PS06 Quiz on Friday is cancelled until things settle down.
+1. Fill out [Remote Learning Preparedness Survey](https://docs.google.com/forms/d/e/1FAIpQLSephAwln2B1SA1jQPpHCzGr2vT5G0ctfASq5FTIwngXHBxBDw/viewform){target="_blank"}
+1. Testing Zoom video conferencing
+    1. Testing lecture format
+    1. Practice run of creating meetings
 
 
 ## Recap
 
-1. Open MassMutual.Rproj -> `LASSO.Rmd`:
-    1. Naive model
-    1. Multiple regression model
+1. 
 
 
 ## Chalk Talk
 
-1. Theory behind LASSO
+1. 
+
 
 
 
