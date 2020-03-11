@@ -68,6 +68,8 @@ h1{font-weight: 400;}
 
 ***
 
+
+<!--
 # Lec 21: Fri 3/13
 
 ## Announcements
@@ -87,6 +89,7 @@ h1{font-weight: 400;}
 
 
 ***
+-->
 
 
 
@@ -94,22 +97,13 @@ h1{font-weight: 400;}
 
 ## Announcements
 
-1. PS06 Quiz on Friday is cancelled until things settle down.
+1. PS06 Quiz on Friday is cancelled until things settle down
+1. Acknowledgement of situation
+1. Issue of communication
 1. Fill out [Remote Learning Preparedness Survey](https://docs.google.com/forms/d/e/1FAIpQLSephAwln2B1SA1jQPpHCzGr2vT5G0ctfASq5FTIwngXHBxBDw/viewform){target="_blank"}
 1. Testing Zoom video conferencing
     1. Testing lecture format
     1. Practice run of creating meetings
-
-
-## Recap
-
-1. 
-
-
-## Chalk Talk
-
-1. 
-
 
 
 
