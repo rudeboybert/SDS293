@@ -20,6 +20,8 @@ navbar:
 #  - text: Code
 #    href: code.html
   right:
+  - text: COVID-19
+    href: https://docs.google.com/document/d/1G2t84-HaNE0pI6cWDttpGx0m-OMYziqnGRJvOnN-u28/
   - text: Problem sets
     href: PS.html
 #  - text: Midterms
