@@ -74,7 +74,7 @@ h1{font-weight: 400;}
 
 ## Announcements
 
-1. If you haven't already, please _carefully_ read my update from Friday 3/27 in the "COVID-19" tab above.
+1. If you haven't already, please read my update from Friday 3/27 in the "COVID-19" tab above.
 1. Problem sets:
     1. We're going to resume our problem set schedule with PS6 as originally posted under [Lec18](#Lec18). A quiz on Moodle will be available from Friday 4/3 12:01am EDT to Saturday 4/4 11:59pm EDT
     1. PS7 on LASSO will be distributed as usual on Friday 4/3. More details, including groups, will come on Friday.
@@ -93,9 +93,9 @@ h1{font-weight: 400;}
     1. Introduction to LASSO (13m05s)  
     <iframe width="560" height="315" src="https://www.youtube.com/embed/0g9aren7w48" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 1. If you have questions, ask in the `#questions` Slack channel indicating where your question is referring to. For example: "Video for Lec22.a) 10:52 Shouldn't that be y-hat = y-bar?" (the answer is yes)
-1. Please give **any** feedback about your video viewing experience in `#general`. Please do not be shy with your criticisms; for remote lectures to work production values matter. For example, I already know I need to work on improving
-    1. Equalize the sound
-    1. Stabilizing the focus of camera
+1. Please give **any** feedback about your video viewing experience in `#general`. Please do not be shy with your criticisms; for remote lectures to work production values matter. For example, I already know I need to work on
+    1. Equalizing the sound better
+    1. Stabilizing the focus of the camera
 
 
 ## Coding exercise
