@@ -58,7 +58,7 @@ h1{font-weight: 400;}
 
 # Schedule 
 
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vToPV6gfDlIq5ni1qezMcPy3ZdyIN1MtSSKZ3GABeBvf9LYu3_1XE7DOEQh4Dg02bKG5YF0XpSFO_-B/pubhtml?gid=2021662517&amp;single=true&amp;widget=true&amp;headers=false" width="100%" height="775"></iframe>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vToPV6gfDlIq5ni1qezMcPy3ZdyIN1MtSSKZ3GABeBvf9LYu3_1XE7DOEQh4Dg02bKG5YF0XpSFO_-B/pubhtml?gid=402165754&amp;single=true&amp;widget=true&amp;headers=false" width="100%" height="740"></iframe>
 
 <!--
 {target="_blank"}
@@ -69,27 +69,58 @@ h1{font-weight: 400;}
 ***
 
 
-<!--
-# Lec 21: Fri 3/13
+
+# Lec 22: Mon 3/30
 
 ## Announcements
 
-1. 
-
-
-## Recap
-
-1. 
+1. If you haven't already, please _carefully_ read my update from Friday 3/27 in the "COVID-19" tab above.
+1. Problem sets:
+    1. We're going to resume our problem set schedule with PS6 as originally posted under [Lec18](#Lec18). A quiz on Moodle will be available from Friday 4/3 12:01am EDT to Saturday 4/4 11:59pm EDT
+    1. PS7 on LASSO will be distributed as usual on Friday 4/3. More details, including groups, will come on Friday.
+1. Zoom office hours and appointments: Posted on the [syllabus](syllabus.html). I will post more office hours once I read over all your survey responses.
 
 
 ## Chalk Talk
 
-1. 
+1. Open your MassMutual RStudio Projects and open:
+    1. `regression.Rmd`
+    1. `CART.Rmd`
+    1. `LASSO.Rmd`
+1. Watch the following two videos. Today has a little more video content that you can expect because we need to recap. 
+    1. A recap of regression and CART (16m37s)  
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/0WC7MZ74hk0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    1. Introduction to LASSO (13m05s)  
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/0g9aren7w48" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+1. If you have questions, ask in the `#questions` Slack channel indicating where your question is referring to. For example: "Video for Lec22.a) 10:52 Shouldn't that be y-hat = y-bar?" (the answer is yes)
+1. Please give **any** feedback about your video viewing experience in `#general`. Please do not be shy with your criticisms; for remote lectures to work production values matter. For example, I already know I need to work on improving
+    1. Equalize the sound
+    1. Stabilizing the focus of camera
+
+
+## Coding exercise
+
+1. Go to `LASSO.R` on [GitHub](https://github.com/293-master/MassMutual/blob/master/LASSO.R)
+1. Copy the contents of this file and save it in a file `LASSO.R` in your MassMutual RStudio Project
+1. Go over the code up to and including section 4.d), or lines 1-174
+1. If you have questions, ask in the `#questions` Slack channel indicating where your question is referring to. For example: "Lec22 `LASSO.R` around line 142 where it says `get_LASSO_coefficients()` what is that?" 
 
 
 
 ***
--->
+
+
+
+# Lec 21: Fri 3/13
+
+## Announcements
+
+1. More COVID-19 preparations
+
+
+
+***
+
 
 
 
@@ -139,9 +170,9 @@ h1{font-weight: 400;}
 
 
 
-# Lec 18: Fri 3/6
+# Lec 18: Fri 3/6 {#Lec18}
 
-## Announcements
+## Announcements 
 
 1. FYI: you will not be penalized for missing class due to illness.
 1. Shorter PS6: Listen to New Economics Founding 58m [podcast interview](https://neweconomics.org/2019/11/weekly-economics-podcast-algorithms-of-oppression-live){target="_blank"} of [Safiya Umoja Noble](https://safiyaunoble.com/){target="_blank"}, author of [Algorithms of Oppression](https://en.wikipedia.org/wiki/Algorithms_of_Oppression){target="_blank"}. Then on Friday 3/13:

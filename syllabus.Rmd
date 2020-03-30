@@ -20,17 +20,16 @@ set.seed(76)
 h1{font-weight: 400;}
 </style>
 
-# Basic information {#basicinfo}
+# Revised: Basic information {#basicinfo}
 
 * **Course title:** SDS 293: Modeling for Machine Learning
 * **Instructor:** [Albert Y. Kim](https://rudeboybert.rbind.io/) - Assistant Professor of Statistical & Data Sciences
 * **~~Email:~~ Slack team**: Click hashtag icon in navbar for the browser interface or use the [desktop app](https://slack.com/downloads/){target="_blank"}.
-* **Meeting locations/times:** 
-    + **Lectures**: MWF Sabin-Reed 220.
-* **Outside help**:
-    + The `#questions` channel on Slack.
-    + Spinelli Center for Quantitative Learning [Tutoring](https://www.smith.edu/qlc/tutoring.html?colStats=open#PanelStats){target="_blank"}: Sunday thru Thursday 7-9pm in Sabin-Reed 301. 
-    + Albert's office hours in McConnell Hall 215: Posted under [Kim Office Hours (Tue, Wed, and Fri)](https://calendar.google.com/calendar/embed?src=smith.edu_qd5sufjufbms2430ielqeego24%40group.calendar.google.com&ctz=America%2FToronto){target="_blank"} and by apppointment (click [here](https://calendar.google.com/calendar/selfsched?sstoken=UVBidEVzZlJ3a2dYfGRlZmF1bHR8NmExNDk4OGM5ZWZiYWNmOWYxYWRkZDM0NmU3ZGRmMzE){target="_blank"} to book). **If you're having R or RStudio issues, please have your computer and RStudio loaded and ready to go.**
+* **Getting help**:
+    + Ask questions in the `#questions` channel on Slack.
+    + Check the drop-in Zoom office hours [Google Calendar](https://calendar.google.com/calendar/b/1/embed?src=smith.edu_ivog3nudshpuig75e2um21tkec@group.calendar.google.com&ctz=America/Toronto){target="_blank"}.
+    + Schedule one-on-one appointments with a Spinelli Tutor. Instructions will be posted here shortly.
+    + Schedule one-on-one appointments with Albert at [bit.ly/meet_with_albert](https://calendar.google.com/calendar/selfsched?sstoken=UVBidEVzZlJ3a2dYfGRlZmF1bHR8NmExNDk4OGM5ZWZiYWNmOWYxYWRkZDM0NmU3ZGRmMzE){target="_blank"}. In the interest of keeping everyone in the loop, we ask as much as possible to limit these appointments to private/individual concerns.
     
 
 ## Instructor work-life balance {#work-life-balance}
@@ -127,7 +126,7 @@ pathways for you to stay engaged in this class:
 * Lower score weighted 15% and higher score weighted 20%.
 
 
-## Group work 55%
+## Problem Sets 55%
 
 
 
