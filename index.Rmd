@@ -70,7 +70,41 @@ h1{font-weight: 400;}
 
 
 
-# Lec 22: Mon 3/30
+# Lec 23: Wed 4/1
+
+## Announcements
+
+1. Problem sets: See [Lec22](#Lec22) for announcement about upcoming problem sets.
+1. Zoom office hours and appointments:
+    1. Posted on the [syllabus](syllabus.html). I will post more office hours once I read over all your survey responses.
+
+
+## Chalk Talk
+
+1. Recall from Lec01 "What is Machine Learning?" [slide 27](static/what_is_ML.pdf#page=27){target="_blank"}, the 3 models visualized in blue in the bottom three plots:
+    1. The left model (straight line) is very low complexity, but it really doesn't fit the points well. The lack of fit can be measured with the *residual sum of squares (RSS)*: the vertical distances between the black points and the blue lines, all squared, and then summed. Note the formula for RSS is the "heart" of the formula for RMSE.
+    1. The right model (very squiggly line) fits the data well and thus has a very small RSS, but this comes at the cost of a model with very high complexity. Accordingly, this model probably does not generalize well to other data points coming from the same population.
+    1. The middle model (bimodal curve) is the right balance of complexity and fit.
+1. The theory behind LASSO:
+    1. Go to the MassMutual RStudio Project and open `CART.Rmd` and `LASSO.Rmd` and look at the optimization formulas for both cases. 
+    1. Watch the following (20m29s) video    
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/65jwXCYMYIg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+1. If you have questions, ask in the `#questions` Slack channel indicating where your question is referring to. For example: "Video for Lec22.a) 10:52 Shouldn't that be y-hat = y-bar?"
+1. Please give any feedback about your video viewing experience in `#general`. Please do not be shy with your criticisms; for remote lectures to work production values matter.
+
+
+## Coding exercise
+
+1. Using the same `LASSO.R` from Lec22, go over the remainder of the code: section 5, or roughly lines 183-295
+1. If you have questions, ask in the `#questions` Slack channel indicating where your question is referring to. For example: "Lec22 `LASSO.R` around line 142 where it says `get_LASSO_coefficients()` what is that?" 
+
+
+
+***
+
+
+
+# Lec 22: Mon 3/30 {#Lec22}
 
 ## Announcements
 
@@ -102,7 +136,7 @@ h1{font-weight: 400;}
 
 1. Go to `LASSO.R` on [GitHub](https://github.com/293-master/MassMutual/blob/master/LASSO.R)
 1. Copy the contents of this file and save it in a file `LASSO.R` in your MassMutual RStudio Project
-1. Go over the code up to and including section 4.d), or lines 1-174
+1. Go over the code up to and including section 4.d), or roughly lines 1-174
 1. If you have questions, ask in the `#questions` Slack channel indicating where your question is referring to. For example: "Lec22 `LASSO.R` around line 142 where it says `get_LASSO_coefficients()` what is that?" 
 
 
