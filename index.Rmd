@@ -70,6 +70,24 @@ h1{font-weight: 400;}
 
 
 
+# Lec 24: Fri 4/3
+
+## Announcements
+
+1. Please setup access for the [Deep Learning Illustrated](https://www.deeplearningillustrated.com/){target="_blank"} eBook we'll be using later in the semester:
+    1. Go to [RedShelf](http://redshelf.com/){target="_blank"} and create an account using your Smith email.
+    1. Go to this [page](https://studentresponse.redshelf.com/book/1192517){target="_blank"} and add the book to your shelf. You'll have free access until May 25th.
+    1. I will start assigning readings the week before.
+1. 
+
+
+
+
+
+***
+
+
+
 # Lec 23: Wed 4/1
 
 ## Announcements
