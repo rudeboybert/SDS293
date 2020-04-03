@@ -74,13 +74,13 @@ h1{font-weight: 400;}
 
 ## Announcements
 
+1. PS6 Quiz is now live on Moodle until Saturday 4/4 11:59pm EDT.
 1. Please setup access for the [Deep Learning Illustrated](https://www.deeplearningillustrated.com/){target="_blank"} eBook we'll be using later in the semester:
     1. Go to [RedShelf](http://redshelf.com/){target="_blank"} and create an account using your Smith email.
     1. Go to this [page](https://studentresponse.redshelf.com/book/1192517){target="_blank"} and add the book to your shelf. You'll have free access until May 25th.
     1. I will start assigning readings the week before.
-1. 
-
-
+1. No video lecture today.
+1. PS6 is now posted in the class GitHub organization. If you want to work in groups, look at the PS7 `README.md` ASAP. This is an excellent opportunity to practice remote collaboration using a combination of Slack, GitHub, and Zoom. These are professional skills that I have found invaluable for my career.
 
 
 
