@@ -70,6 +70,30 @@ h1{font-weight: 400;}
 
 
 
+# Lec 25: Mon 4/6
+
+## Announcements
+
+1. Midterm I has been graded and distributed.
+    1. You have the option to re-do Question 2 during Midterm II. As such, there are two grades on Moodle: one for Question 2 and one for the rest.
+    1. Watch the screencast below for a discussion on all the questions. I *highly* recommend you watch this because some variation of some of the questions will likely occur for Midterm II.
+
+<center>
+<iframe src="https://www.showme.com/sma/embed/?s=cW0RpIm" width="578" height="433" frameborder="0"></iframe>
+</center>
+
+
+## Chalk Talk
+
+
+
+    
+    
+
+***
+
+
+
 # Lec 24: Fri 4/3
 
 ## Announcements
