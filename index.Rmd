@@ -104,13 +104,13 @@ A "Previously on SDS293" episode recap in images:
 <iframe src="https://www.showme.com/sma/embed/?s=hcRSQiW" width="578" height="433" frameborder="0"></iframe>
 </center>
 
-1. Image 1: LASSO for model selection AKA variable/feature selection:  
+1. **Image 1:** LASSO for model selection AKA variable/feature selection:  
 ![](static/images/ML_Flashcards/Lasso_For_Feature_Selection_web.png){ width=50% }
-1. Image 2: More on feature selection:  
+1. **Image 2:** More on feature selection:  
 ![](static/images/ML_Flashcards/Feature_Selection_Strategies_web.png){ width=50% }
-1. Image 3: LASSO is almost identical to another regularization method called "ridge regression."  
+1. **Image 3:** LASSO is almost identical to another regularization method called "ridge regression."  
 ![](static/images/ML_Flashcards/Ridge_Regression_web.png){ width=50% }
-1. Image 4: The alpha you see below is akin to $\lambda$ in LASSO  
+1. **Image 4:** The alpha you see below is akin to $\lambda$ in LASSO  
 ![](static/images/ML_Flashcards/Alpha_In_Ridge_Regression_web.png){ width=50% }
 
 
@@ -123,15 +123,15 @@ A "Next time on SDS293" episode sneak peak in images:
 <iframe src="https://www.showme.com/sma/embed/?s=vkdJQwq" width="578" height="433" frameborder="0"></iframe>
 </center>
 
-1. Image 1: General class of methods called "ensemble" methods:  
+1. **Image 1:** General class of methods called "ensemble" methods:  
 ![](static/images/ML_Flashcards/Ensemble_Methods_web.png){ width=50% }
-1. Image 2:  Random forests are one such "ensemble" method:  
+1. **Image 2:**  Random forests are one such "ensemble" method:  
 ![](static/images/ML_Flashcards/Random_Forest_web.png){ width=50% }
-1. Image 3:  Bootstrap resampling with replacement:  
+1. **Image 3:**  Bootstrap resampling with replacement:  
 ![](static/images/ML_Flashcards/Bootstrap_web.png){ width=50% }
-1. Image 4: Bagging is another class of methods that uses bootstrapping: 
+1. **Image 4:** Bagging is another class of methods that uses bootstrapping: 
 ![](static/images/ML_Flashcards/Bagging_web.png){ width=50% }
-1. Image 5: But wait, there's more! Injecting a second source of variation
+1. **Image 5:** But wait, there's more! Injecting a second source of variation
 ![](static/images/ML_Flashcards/The_Random_In_Random_Forest_web.png){ width=50% }
 
 Here is a preview of the `random_forests.Rmd` file I'll be sharing with you for Wednesday's Lec26
