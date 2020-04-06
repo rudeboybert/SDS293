@@ -31,7 +31,7 @@ h1{font-weight: 400;}
         * MWF 9:30am - 10:30am EDT. My goal is to have lectures posted by 9:30am.
         * TuTh 4:15pm - 5:00pm EDT
     1. If a particular question gets too involved to explain over Slack, we'll jump into a Zoom room as needed.
-    1. For more private discussions, please book an appointment at [bit.ly/meet_with_albert](https://calendar.google.com/calendar/selfsched?sstoken=UVBidEVzZlJ3a2dYfGRlZmF1bHR8NmExNDk4OGM5ZWZiYWNmOWYxYWRkZDM0NmU3ZGRmMzE){target="_blank"}.
+    1. For more private discussions, please book an appointment at [bit.ly/meet_with_albert](https://calendar.google.com/calendar/selfsched?sstoken=UVBidEVzZlJ3a2dYfGRlZmF1bHR8NmExNDk4OGM5ZWZiYWNmOWYxYWRkZDM0NmU3ZGRmMzE){target="_blank"}. If none of the times work for you or does not align with your timezone, please Slack me. 
     
 
 ## Instructor work-life balance {#work-life-balance}
