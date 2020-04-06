@@ -70,6 +70,36 @@ h1{font-weight: 400;}
 
 
 
+# Lec 26: Wed 4/8
+
+**Work in progress. I hope to complete Wednesday's lecture by Wed 9:30**
+
+## Announcements
+
+1. "Office hours" format and times are set (this information has been updated in the [syllabus](syllabus.html) as well):
+    1. I will be "live answering" questions in the `#questions` channel on Slack at the following times:
+        * MWF 9:30am - 10:30am EDT. My goal is to have lectures posted by 9:30am.
+        * TuTh 4:15pm - 5:00pm EDT
+    1. If a particular question gets too involved to explain over Slack, we'll jump into a Zoom room as needed.
+    1. For more private discussions, please book an appointment at [bit.ly/meet_with_albert](https://calendar.google.com/calendar/selfsched?sstoken=UVBidEVzZlJ3a2dYfGRlZmF1bHR8NmExNDk4OGM5ZWZiYWNmOWYxYWRkZDM0NmU3ZGRmMzE){target="_blank"}.
+1. 
+
+
+
+## Chalk Talk
+
+More on Random forests:
+
+1. Feature importance
+1. I will distribute `random_forests.Rmd` to put into your MassMutual RStudio Projects
+
+
+
+
+***
+
+
+
 # Lec 25: Mon 4/6
 
 ## Announcements
@@ -87,7 +117,6 @@ Midterm I has been graded and distributed.
 
 
 ## Chalk Talk
-
 
 1. ICYMI: The "An Introduction to Statistical Learning with Applications in R" (ISLR) is a good reference to have in case you want additional explanation. You can download a PDF [here](http://faculty.marshall.usc.edu/gareth-james/ISL/){target="_blank"}. For example, today's lecture on Random Forests is based on book page 316 (corresponding to PDF page 330).
 1. Have the following ready before you watch the screencast:
@@ -116,7 +145,7 @@ A "Previously on SDS293" episode recap in images:
 
 
 
-## 2. Random Forests
+### 2. Random Forests
 
 A "Next time on SDS293" episode sneak peak in images:
 

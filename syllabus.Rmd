@@ -26,10 +26,12 @@ h1{font-weight: 400;}
 * **Instructor:** [Albert Y. Kim](https://rudeboybert.rbind.io/) - Assistant Professor of Statistical & Data Sciences
 * **~~Email:~~ Slack team**: Click hashtag icon in navbar for the browser interface or use the [desktop app](https://slack.com/downloads/){target="_blank"}.
 * **Getting help**:
-    + Ask questions in the `#questions` channel on Slack.
-    + Check the drop-in Zoom office hours [Google Calendar](https://calendar.google.com/calendar/b/1/embed?src=smith.edu_ivog3nudshpuig75e2um21tkec@group.calendar.google.com&ctz=America/Toronto){target="_blank"}.
-    + Schedule one-on-one appointments with a Spinelli Tutor. Instructions will be posted here shortly.
-    + Schedule one-on-one appointments with Albert at [bit.ly/meet_with_albert](https://calendar.google.com/calendar/selfsched?sstoken=UVBidEVzZlJ3a2dYfGRlZmF1bHR8NmExNDk4OGM5ZWZiYWNmOWYxYWRkZDM0NmU3ZGRmMzE){target="_blank"}. In the interest of keeping everyone in the loop, we ask as much as possible to limit these appointments to private/individual concerns.
+    1. Ask questions in the `#questions` channel on Slack.
+    1. I will be "live answering" questions in the `#questions` channel on Slack at the following times:
+        * MWF 9:30am - 10:30am EDT. My goal is to have lectures posted by 9:30am.
+        * TuTh 4:15pm - 5:00pm EDT
+    1. If a particular question gets too involved to explain over Slack, we'll jump into a Zoom room as needed.
+    1. For more private discussions, please book an appointment at [bit.ly/meet_with_albert](https://calendar.google.com/calendar/selfsched?sstoken=UVBidEVzZlJ3a2dYfGRlZmF1bHR8NmExNDk4OGM5ZWZiYWNmOWYxYWRkZDM0NmU3ZGRmMzE){target="_blank"}.
     
 
 ## Instructor work-life balance {#work-life-balance}
