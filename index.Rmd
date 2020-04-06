@@ -98,7 +98,11 @@ Midterm I has been graded and distributed.
 
 ### 1. Closing out LASSO
 
-A "Previously on SDS293" episode recap in images:
+A "Previously on SDS293" episode recap in images:  
+
+<center>
+<iframe src="https://www.showme.com/sma/embed/?s=hcRSQiW" width="578" height="433" frameborder="0"></iframe>
+</center>
 
 1. Image 1: LASSO for model selection AKA variable/feature selection:  
 ![](static/images/ML_Flashcards/Lasso_For_Feature_Selection_web.png){ width=50% }
@@ -114,6 +118,10 @@ A "Previously on SDS293" episode recap in images:
 ## 2. Random Forests
 
 A "Next time on SDS293" episode sneak peak in images:
+
+<center>
+<iframe src="https://www.showme.com/sma/embed/?s=vkdJQwq" width="578" height="433" frameborder="0"></iframe>
+</center>
 
 1. Image 1: General class of methods called "ensemble" methods:  
 ![](static/images/ML_Flashcards/Ensemble_Methods_web.png){ width=50% }
