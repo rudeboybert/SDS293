@@ -93,7 +93,8 @@ Midterm I has been graded and distributed.
 1. Have the following ready before you watch the screencast:
     1. In your browser, easy access to the images below
     1. In another tab of your browser, ModernDive [Chapter 8 on Bootstrapping](https://moderndive.com/8-confidence-intervals.html){target="_blank"}. In particular, the beginning of Chapter 8 until the end of section 8.2 acts as a refresher on Bootstrapping.
-1. Then watch the screencast below (to be posted by Mon 9:30am)
+    1. MassMutual -> `LASSO.R`. Load all the package then go to around line 59 where you fit a LASSO model with `glmnet(..., alpha = 1, ...)`. Then load the help file by running `?glmnet`
+    
 
 ### 1. Closing out LASSO
 
