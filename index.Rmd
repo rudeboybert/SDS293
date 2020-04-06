@@ -76,6 +76,8 @@ h1{font-weight: 400;}
 
 1. Midterm I has been graded and distributed.
     1. You have the option to re-do Question 2 during Midterm II. As such, there are two grades on Moodle: one for Question 2 and one for the rest.
+    1. Distribution of scores:  
+    ![](static/midtermI.png){ width=90% }
     1. Watch the screencast below for a discussion on all the questions. I *highly* recommend you watch this because some variation of some of the questions will likely occur for Midterm II.
 
 <center>
