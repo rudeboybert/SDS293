@@ -74,11 +74,12 @@ h1{font-weight: 400;}
 
 ## Announcements
 
-1. Midterm I has been graded and distributed.
-    1. You have the option to re-do Question 2 during Midterm II. As such, there are two grades on Moodle: one for Question 2 and one for the rest.
-    1. Distribution of scores:  
-    ![](static/midtermI.png){ width=90% }
-    1. Watch the screencast below for a discussion on all the questions. I *highly* recommend you watch this because some variation of some of the questions will likely occur for Midterm II.
+Midterm I has been graded and distributed.
+
+1. You have the option to re-do Question 2 during Midterm II. As such, there are two grades on Moodle: one for Question 2 and one for the rest.
+1. Distribution of scores:  
+![](static/midtermI.png){ width=90% }
+1. When studying for midterm II, I *highly* recommend you watch this screencast going over the solutions because some variation of some of the questions will likely occur for Midterm II.
 
 <center>
 <iframe src="https://www.showme.com/sma/embed/?s=cW0RpIm" width="578" height="433" frameborder="0"></iframe>
@@ -88,9 +89,90 @@ h1{font-weight: 400;}
 ## Chalk Talk
 
 
+1. ICYMI: The "An Introduction to Statistical Learning with Applications in R" is a good reference to have in case you want additional explanation. You can download a PDF [here](http://faculty.marshall.usc.edu/gareth-james/ISL/){target="_blank"}. For example, today's lecture on Random Forests is based on book page 316 (corresponding to PDF page 330).
+1. Have the following ready before you watch the screencast:
+    1. In your browser, easy access to the images below
+    1. In another tab of your browser, ModernDive [Chapter 8 on Bootstrapping](https://moderndive.com/8-confidence-intervals.html){target="_blank"}. In particular, the beginning of Chapter 8 until the end of section 8.2 acts as a refresher on Bootstrapping.
+1. Then watch the screencast below (to be posted by Mon 9:30am)
 
-    
-    
+### 1. Closing out LASSO
+
+A "Previously on SDS293" episode recap in images:
+
+1. Image 1: LASSO for model selection AKA variable/feature selection:  
+![](static/images/ML_Flashcards/Lasso_For_Feature_Selection_web.png){ width=50% }
+1. Image 2: More on feature selection:  
+![](static/images/ML_Flashcards/Feature_Selection_Strategies_web.png){ width=50% }
+1. Image 3: LASSO is almost identical to another regularization method called "ridge regression."  
+![](static/images/ML_Flashcards/Ridge_Regression_web.png){ width=50% }
+1. Image 4: The alpha you see below is akin to $\lambda$ in LASSO  
+![](static/images/ML_Flashcards/Alpha_In_Ridge_Regression_web.png){ width=50% }
+
+
+
+## 2. Random Forests
+
+A "Next time on SDS293" episode sneak peak in images:
+
+1. Image 1: General class of methods called "ensemble" methods:  
+![](static/images/ML_Flashcards/Ensemble_Methods_web.png){ width=50% }
+1. Image 2:  Random forests are one such "ensemble" method:  
+![](static/images/ML_Flashcards/Random_Forest_web.png){ width=50% }
+1. Image 3:  Bootstrap resampling with replacement:  
+![](static/images/ML_Flashcards/Bootstrap_web.png){ width=50% }
+1. Image 4: Bagging is another class of methods that uses bootstrapping: 
+![](static/images/ML_Flashcards/Bagging_web.png){ width=50% }
+1. Image 5: But wait, there's more! Injecting a second source of variation
+![](static/images/ML_Flashcards/The_Random_In_Random_Forest_web.png){ width=50% }
+
+Here is a preview of the `random_forests.Rmd` file I'll be sharing with you for Wednesday's Lec26
+
+```{r, eval=FALSE}
+library(tidyverse)
+library(randomForest)
+
+# Load data and select only subset of variables:
+train <- read_csv("https://rudeboybert.github.io/SDS293/static/train.csv") %>% 
+  select(Id, CentralAir, Fireplaces, GrLivArea, YearBuilt, FullBath, SalePrice) %>% 
+  # Convert to 1/0
+  mutate(CentralAir = ifelse(CentralAir == "Y", 1, 0))
+test <- read_csv("https://rudeboybert.github.io/SDS293/static/test.csv") %>% 
+  select(Id, CentralAir, Fireplaces, GrLivArea, YearBuilt, FullBath) %>% 
+  # Convert to 1/0
+  mutate(CentralAir = ifelse(CentralAir == "Y", 1, 0))
+
+# Transform outcome variable space:
+train <- train %>% 
+  mutate(logSalePrice = log(SalePrice + 1))
+
+# Define model formula
+model_formula <-
+  "logSalePrice ~ CentralAir + Fireplaces + GrLivArea + YearBuilt + FullBath" %>%
+  as.formula()
+
+# Fit random forest:
+model_rf <- randomForest(
+  # Model formula
+  form = model_formula,
+  # Training data
+  data = train, 
+  # At each node of tree, number of features/predictor variables to randomly
+  # choose from for splitting:
+  mtry = 2,
+  # Number of trees in your forest
+  ntree = 100 
+)
+
+# Predict on test data
+test <- test %>% 
+  mutate(
+    logSalePrice_hat = predict(object = model_rf, newdata = test),
+    SalePrice_hat = exp(logSalePrice_hat) -1
+  )
+```
+
+
+
 
 ***
 
@@ -135,6 +217,7 @@ h1{font-weight: 400;}
     <iframe width="560" height="315" src="https://www.youtube.com/embed/65jwXCYMYIg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 1. If you have questions, ask in the `#questions` Slack channel indicating where your question is referring to. For example: "Video for Lec22.a) 10:52 Shouldn't that be y-hat = y-bar?"
 1. Please give any feedback about your video viewing experience in `#general`. Please do not be shy with your criticisms; for remote lectures to work production values matter.
+
 
 
 ## Coding exercise
