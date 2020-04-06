@@ -89,7 +89,7 @@ Midterm I has been graded and distributed.
 ## Chalk Talk
 
 
-1. ICYMI: The "An Introduction to Statistical Learning with Applications in R" is a good reference to have in case you want additional explanation. You can download a PDF [here](http://faculty.marshall.usc.edu/gareth-james/ISL/){target="_blank"}. For example, today's lecture on Random Forests is based on book page 316 (corresponding to PDF page 330).
+1. ICYMI: The "An Introduction to Statistical Learning with Applications in R" (ISLR) is a good reference to have in case you want additional explanation. You can download a PDF [here](http://faculty.marshall.usc.edu/gareth-james/ISL/){target="_blank"}. For example, today's lecture on Random Forests is based on book page 316 (corresponding to PDF page 330).
 1. Have the following ready before you watch the screencast:
     1. In your browser, easy access to the images below
     1. In another tab of your browser, ModernDive [Chapter 8 on Bootstrapping](https://moderndive.com/8-confidence-intervals.html){target="_blank"}. In particular, the beginning of Chapter 8 until the end of section 8.2 acts as a refresher on Bootstrapping.
@@ -130,9 +130,9 @@ A "Next time on SDS293" episode sneak peak in images:
 ![](static/images/ML_Flashcards/Random_Forest_web.png){ width=50% }
 1. **Image 3:**  Bootstrap resampling with replacement:  
 ![](static/images/ML_Flashcards/Bootstrap_web.png){ width=50% }
-1. **Image 4:** Bagging is another class of methods that uses bootstrapping: 
+1. **Image 5:** Bagging is another class of methods that uses bootstrapping: 
 ![](static/images/ML_Flashcards/Bagging_web.png){ width=50% }
-1. **Image 5:** But wait, there's more! Injecting a second source of variation
+1. **Image 6:** But wait, there's more! Injecting a second source of variation
 ![](static/images/ML_Flashcards/The_Random_In_Random_Forest_web.png){ width=50% }
 
 Here is a preview of the `random_forests.Rmd` file I'll be sharing with you for Wednesday's Lec26
