@@ -89,13 +89,14 @@ h1{font-weight: 400;}
 
 1. Have the following ready:
     1. Save the `random_forests.Rmd` file I've distributed over Slack into your MassMutual RStudio Project.
-    1. Run all the code upto line 86 where we view the train data
+    1. Run all the code up to line 86 where we view the train data
     1. Have this [link](https://datascience.stackexchange.com/questions/20304/why-do-we-pick-random-features-in-random-forest){target="_blank"} about what `mtry` does open in your browser.
-1. Then watch this 7m screencast:
+1. Then watch this 7m screencast
 
 <center>
-<iframe src="https://www.loom.com/embed/746c01c7f538428d8bc7e74240298635" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen width="578" height="433">
+<iframe src="https://www.loom.com/embed/746c01c7f538428d8bc7e74240298635" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen width="578" height="433"></iframe>
 </center>
+
 
 
 
