@@ -72,8 +72,6 @@ h1{font-weight: 400;}
 
 # Lec 26: Wed 4/8
 
-**Work in progress. I hope to complete Wednesday's lecture by Wed 9:30**
-
 ## Announcements
 
 1. Let's all catch our breath on Friday 4/10:
@@ -87,14 +85,15 @@ h1{font-weight: 400;}
     1. For more private discussions, please book an appointment at [bit.ly/meet_with_albert](https://calendar.google.com/calendar/selfsched?sstoken=UVBidEVzZlJ3a2dYfGRlZmF1bHR8NmExNDk4OGM5ZWZiYWNmOWYxYWRkZDM0NmU3ZGRmMzE){target="_blank"}. If none of the times work for you or does not align with your timezone, please Slack me. 
 
 
-
-
 ## Chalk Talk
 
-More on Random forests:
+1. Have the following ready:
+    1. Save the `random_forests.Rmd` file I've distributed over Slack into your MassMutual RStudio Project.
+    1. Run all the code upto line 86 where we view the train data
+    1. Have this [link](https://datascience.stackexchange.com/questions/20304/why-do-we-pick-random-features-in-random-forest){target="_blank"} about what `mtry` does open in your browser.
+1. Then watch this 7m screencast:
 
-1. I will post video lecture on feature importance
-1. I will distribute `random_forests.Rmd` to put into your MassMutual RStudio Projects
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/746c01c7f538428d8bc7e74240298635" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 
 
@@ -166,53 +165,6 @@ A "Next time on SDS293" episode sneak peak in images:
 ![](static/images/ML_Flashcards/Bagging_web.png){ width=50% }
 1. **Image 6:** But wait, there's more! Injecting a second source of variation
 ![](static/images/ML_Flashcards/The_Random_In_Random_Forest_web.png){ width=50% }
-
-Here is a preview of the `random_forests.Rmd` file I'll be sharing with you for Wednesday's Lec26
-
-```{r, eval=FALSE}
-library(tidyverse)
-library(randomForest)
-
-# Load data and select only subset of variables:
-train <- read_csv("https://rudeboybert.github.io/SDS293/static/train.csv") %>% 
-  select(Id, CentralAir, Fireplaces, GrLivArea, YearBuilt, FullBath, SalePrice) %>% 
-  # Convert to 1/0
-  mutate(CentralAir = ifelse(CentralAir == "Y", 1, 0))
-test <- read_csv("https://rudeboybert.github.io/SDS293/static/test.csv") %>% 
-  select(Id, CentralAir, Fireplaces, GrLivArea, YearBuilt, FullBath) %>% 
-  # Convert to 1/0
-  mutate(CentralAir = ifelse(CentralAir == "Y", 1, 0))
-
-# Transform outcome variable space:
-train <- train %>% 
-  mutate(logSalePrice = log(SalePrice + 1))
-
-# Define model formula
-model_formula <-
-  "logSalePrice ~ CentralAir + Fireplaces + GrLivArea + YearBuilt + FullBath" %>%
-  as.formula()
-
-# Fit random forest:
-model_rf <- randomForest(
-  # Model formula
-  form = model_formula,
-  # Training data
-  data = train, 
-  # At each node of tree, number of features/predictor variables to randomly
-  # choose from for splitting:
-  mtry = 2,
-  # Number of trees in your forest
-  ntree = 100 
-)
-
-# Predict on test data
-test <- test %>% 
-  mutate(
-    logSalePrice_hat = predict(object = model_rf, newdata = test),
-    SalePrice_hat = exp(logSalePrice_hat) -1
-  )
-```
-
 
 
 
