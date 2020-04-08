@@ -93,8 +93,9 @@ h1{font-weight: 400;}
     1. Have this [link](https://datascience.stackexchange.com/questions/20304/why-do-we-pick-random-features-in-random-forest){target="_blank"} about what `mtry` does open in your browser.
 1. Then watch this 7m screencast:
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/746c01c7f538428d8bc7e74240298635" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
-
+<center>
+<iframe src="https://www.loom.com/embed/746c01c7f538428d8bc7e74240298635" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen width="578" height="433">
+</center>
 
 
 
