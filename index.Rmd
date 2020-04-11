@@ -70,6 +70,69 @@ h1{font-weight: 400;}
 
 
 
+# Lec 27: Mon 4/13
+
+## Announcements
+
+1. See Midterm II details below.
+1. PS10 lite on Deep learning/neural nets is now cancelled. So after you submit PS9 lite on Fri 4/24 at 9pm EDT, you have completed all evaluative components of this course. 
+1. The last two weeks will be a "book club" of [Deep Learning Illustrated](https://www.deeplearningillustrated.com/){target="_blank"}. Please see [Lec24](#Lec24) for how to obtain free access to the eBook. Before being thrown into a massive task, I always find it helpful to set some goals and define a purpose. This helps me stay focused and not get lost in the weeds.
+    1. **Micro goal of book club**: Understand to what researchers mean when they say deep learning is a ["black box"](Safiya Noble){target="_blank"} where nobody really understands how these algorithms work. Prof. Safiya Umoja Noble stated in the podcast on "Algorithms of Oppression" from [Lec18](#Lec18) that this lack of interpretability will be problematic for society as more of our lives becomes dependent on such algorithms.
+    1. **Macro goal of book club**: To develop you into ambassadors in your communities who can explain to laypeople roughly how these algorithms work and what impact they can have if developed and implemented recklessly.
+
+
+## Midterm II
+
+Here is my plan for Midterm II. However, I am open to discussion and dialogue. If any of this does not work for you, your learning environment, or your living situation, **please let me know on Slack ASAP**.
+
+### a) Administrative
+
+* Open-book and no time limit. However by the Honor Code, you must complete your work individually.
+* Time window:
+    + The midterm will be available on Moodle on Fri 4/17 at 8am EDT
+    + You must submit your work on Moodle before Tue 4/21 11pm EDT
+* What you will need:
+    + A laptop to view the midterm. You do not need to print it.
+    + 8.5 x 11 inch blank sheets of paper where you will write your responses. Preferably solid white, but lined/grided works too.
+    + Some device to convert your responses to electronic format for submission on Moodle (see next point). 
+* Here are three ways to convert your responses to electronic format for submission on Moodle:
+    1. If you have one, use a scanner to create a PDF. I'm assuming that most of you don't have one.
+    1. Use the [CamScanner app](https://www.camscanner.com/user/download){target="_blank"} on your phones to create PDF's. I'm assuming that this will work for most of you. Note: they will be pushing you to purchase the premium version, but you don't need to buy it. Using the freemium version will suffice. 
+    1. At last resort, take pictures with your phone and submit those.
+
+
+### b) Topics covered:
+
+1. You will be given an optional opportunity to re-do Midterm I Question 2. It is important for *everyone* in this course to master the themes in this question in particular. Feel free to discuss with your peers.
+1. Some form of the other questions in Midterm I may re-appear in Midterm II, so I suggest you go over Midterm I.
+1. LASSO Regularization: Lec 19-24. In particular, you should compare-and-contrast LASSO with CART. While the details of these two methods differ slightly, they are almost identical in spirit.
+1. Random Forests: Lec 25-26. 
+
+
+
+## Chalk Talk
+
+<!--
+
+1. "Unsupervised learning" are machine learning methods where there is no outcome variable $y$. Two of the main methods for unsupervised learning are:
+    1. Principal Component Analysis (PCA): A method for dimension reduction of your $p$ predictor variables to a smaller number.
+    1. Cluster analysis: Assigning observations to "clusters" whereby *within* cluster variation is minimized while *between* cluster variation is maximized.
+1. PCA relies heavily on linear algebra
+
+-->
+
+(Note: the following will be completed by Monday 4/13 9:30am)
+
+1. Download `PCA.Rmd` and `sat.csv` from Slack and put them in your MassMutual RStudio Project.
+1. Watch this screencast summarizing the overall ideas in `PCA.Rmd`:
+1. Then go over all of `PCA.Rmd`
+
+
+
+***
+
+
+
 # Lec XX: Fri 4/10
 
 ## Announcements
@@ -122,7 +185,6 @@ None
 <iframe src="https://www.loom.com/embed/746c01c7f538428d8bc7e74240298635" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen width="578" height="433"></iframe>
 </center>
 1. Then go over all of `random_forests.Rmd`
-
 
 
 
@@ -200,7 +262,7 @@ A "Next time on SDS293" episode sneak peak in images:
 
 
 
-# Lec 24: Fri 4/3
+# Lec 24: Fri 4/3 {#Lec24}
 
 ## Announcements
 
