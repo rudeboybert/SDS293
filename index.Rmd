@@ -77,7 +77,7 @@ h1{font-weight: 400;}
 1. See Midterm II details below.
 1. PS10 lite on Deep learning/neural nets is now cancelled. So after you submit PS9 lite on Fri 4/24 at 9pm EDT, you have completed all evaluative components of this course. 
 1. The last two weeks will be a "book club" of [Deep Learning Illustrated](https://www.deeplearningillustrated.com/){target="_blank"}. Please see [Lec24](#Lec24) for how to obtain free access to the eBook. Before being thrown into a massive task, I always find it helpful to set some goals and define a purpose. This helps me stay focused and not get lost in the weeds.
-    1. **Micro goal of book club**: Understand to what researchers mean when they say deep learning is a ["black box"](Safiya Noble){target="_blank"} where nobody really understands how these algorithms work. Prof. Safiya Umoja Noble stated in the podcast on "Algorithms of Oppression" from [Lec18](#Lec18) that this lack of interpretability will be problematic for society as more of our lives becomes dependent on such algorithms.
+    1. **Micro goal of book club**: Understand to what researchers mean when they say deep learning is a ["black box"](https://towardsdatascience.com/the-black-box-metaphor-in-machine-learning-4e57a3a1d2b0){target="_blank"} where nobody really understands how these algorithms work. Prof. Safiya Umoja Noble stated in the podcast on "Algorithms of Oppression" from [Lec18](#Lec18) that this lack of interpretability will be problematic for society as more of our lives becomes dependent on such algorithms.
     1. **Macro goal of book club**: To develop you into ambassadors in your communities who can explain to laypeople roughly how these algorithms work and what impact they can have if developed and implemented recklessly.
 
 
