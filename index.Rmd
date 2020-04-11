@@ -80,6 +80,11 @@ h1{font-weight: 400;}
     1. **Micro goal of book club**: Understand to what researchers mean when they say deep learning is a ["black box"](https://towardsdatascience.com/the-black-box-metaphor-in-machine-learning-4e57a3a1d2b0){target="_blank"} where nobody really understands how these algorithms work. Prof. Safiya Umoja Noble stated in the podcast on "Algorithms of Oppression" from [Lec18](#Lec18) that this lack of interpretability will be problematic for society as more of our lives becomes dependent on such algorithms.
     1. **Macro goal of book club**: To develop you into ambassadors in your communities who can explain to laypeople roughly how these algorithms work and what impact they can have if developed and implemented recklessly.
 
+<center>
+![](static/images/deep_learning_illustrated.jpg){ width=30% }
+</center>
+
+
 
 ## Midterm II
 
@@ -139,9 +144,9 @@ Here is my plan for Midterm II. However, I am open to discussion and dialogue. I
 
 1. We'll talk about Midterm II on Lec27 on Monday.
 1. PS7 is due tonight at 9pm EDT.
-1. PS8lite is now posted in the GitHub organization for this course:
+1. PS8 lite is now posted in the GitHub organization for this course:
     1. This PS is very quick: just fit ONE random forests model using any approach of your choice.
-    1. However, the submission format is a little different. You will be "forking" a copy of PS8lite and then making a "GitHub Pull Request." Please watch this 6min video on how before you start working:
+    1. However, the submission format is a little different. You will be "forking" a copy of PS8 lite and then making a "GitHub Pull Request." Please watch this 6min video on how before you start working:
 
 <center>
 <iframe src="https://www.loom.com/embed/88b00641608f49bab411d06903303355" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen width="578" height="433"></iframe>
