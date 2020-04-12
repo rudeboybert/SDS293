@@ -112,6 +112,7 @@ Here is my plan for Midterm II. However, I am open to discussion and dialogue. I
 1. Some form of the other questions in Midterm I may re-appear in Midterm II, so I suggest you go over Midterm I.
 1. LASSO Regularization: Lec 19-24. In particular, you should compare-and-contrast LASSO with CART. While the details of these two methods differ slightly, they are almost identical in spirit.
 1. Random Forests: Lec 25-26. 
+1. PS7 on LASSO: Please save the `PS7_solutions.Rmd` file I will distribute over Slack in your `PS7` RStudio Project folder and knit it.
 
 
 
