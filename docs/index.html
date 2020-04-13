@@ -368,7 +368,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">SDS 293: Modeling for Machine Learning</h1>
 <h4 class="author">Albert Y. Kim</h4>
-<h4 class="date">Last updated on 2020-04-12</h4>
+<h4 class="date">Last updated on 2020-04-13</h4>
 
 </div>
 
@@ -396,7 +396,8 @@ h1{font-weight: 400;}
 <ol style="list-style-type: decimal">
 <li>See Midterm II details below.</li>
 <li>PS10 lite on Deep learning/neural nets is now cancelled. So after you submit PS9 lite on Fri 4/24 at 9pm EDT, you have completed all evaluative components of this course.</li>
-<li>The last two weeks will be a <strong>book club</strong> of <a href="https://www.deeplearningillustrated.com/" target="_blank">Deep Learning Illustrated</a>. Please see <a href="#Lec24">Lec24</a> for how to obtain free access to the eBook. Before being thrown into a massive task, I always find it helpful to set some goals and define a purpose. This helps me stay focused and not get lost in the weeds:
+<li>The last two weeks will be an optional <strong>book club</strong> on <a href="https://www.deeplearningillustrated.com/" target="_blank">Deep Learning Illustrated</a> (see <a href="#Lec24">Lec24</a> for how to obtain free access to the eBook). Please let me know if you have ideas for the format.</li>
+<li>Before being thrown into a massive task, I always find it helpful to set some goals and define a purpose. This helps me stay focused and not get lost in the weeds:
 <ol style="list-style-type: decimal">
 <li><strong>Micro goal of book club</strong>: Understand to what researchers mean when they say deep learning is a <a href="https://towardsdatascience.com/the-black-box-metaphor-in-machine-learning-4e57a3a1d2b0" target="_blank">“black box”</a> where nobody really understands how these algorithms work. Prof. Safiya Umoja Noble stated in the podcast on “Algorithms of Oppression” from <a href="#Lec18">Lec18</a> that this lack of interpretability will be problematic for society as more of our lives becomes dependent on such algorithms.</li>
 <li><strong>Macro goal of book club</strong>: To develop you into ambassadors in your communities who can explain to laypeople roughly how these algorithms work and what impact they can have if developed and implemented recklessly.</li>
@@ -445,21 +446,21 @@ h1{font-weight: 400;}
 </div>
 <div id="chalk-talk" class="section level2">
 <h2>Chalk Talk</h2>
-<!--
-
-1. "Unsupervised learning" are machine learning methods where there is no outcome variable $y$. Two of the main methods for unsupervised learning are:
-    1. Principal Component Analysis (PCA): A method for dimension reduction of your $p$ predictor variables to a smaller number.
-    1. Cluster analysis: Assigning observations to "clusters" whereby *within* cluster variation is minimized while *between* cluster variation is maximized.
-1. PCA relies heavily on linear algebra
-
--->
-<p>(Note: the following will be completed by Monday 4/13 9:30am)</p>
 <ol style="list-style-type: decimal">
-<li>Download <code>PCA.Rmd</code> and <code>sat.csv</code> from Slack and put them in your MassMutual RStudio Project.</li>
-<li>Watch this screencast summarizing the overall ideas in <code>PCA.Rmd</code>:</li>
-<li>Then go over all of <code>PCA.Rmd</code></li>
+<li>Note that: “Unsupervised learning” are machine learning methods where there is no outcome variable <span class="math inline">\(y\)</span>. Two of the main methods for unsupervised learning are:
+<ol style="list-style-type: decimal">
+<li>Principal Component Analysis (PCA): A method for dimension reduction of your <span class="math inline">\(p\)</span> predictor variables to a smaller number.</li>
+<li>Cluster analysis: Assigning observations to “clusters” whereby <em>within</em> cluster variation.</li>
+</ol></li>
+<li>Download <code>PCA.Rmd</code> and <code>sat.csv</code> from Slack and put them in your MassMutual RStudio Project and go over <code>PCA.Rmd</code></li>
+<li>Note that conveying all the theory is very difficult without doing an actual “chalk talk.” So please try to focus on the ideas in a general and qualitative sense and not get bogged down in the details:
+<ol style="list-style-type: decimal">
+<li>A <strong>basis</strong>: A set of vectors that <strong>span</strong> a space. In this case, some combination of the blue and red vectors (i.e. arrows) allow you to “reach” anywhere in the 2D space.</li>
+<li>An <strong>orthogonal basis</strong>: A basis where the vectors are perpendicular, i.e. form a 90 degree angle, i.e. have a dot product of 0.</li>
+<li>PCA as a <strong>linear transformation</strong> as represented by a matrix. In this case, the transformation is a “rotation.”</li>
+<li>“Eigen” is German for “its own.” In this case an <strong>eigenvalue</strong> is a number telling you how much variance there is in the data along a particular dimension. The particular dimension for an particular eigenvalue is the <strong>eigenvector</strong>.</li>
+</ol></li>
 </ol>
-<p>Share PS7 solutions</p>
 <hr />
 </div>
 </div>

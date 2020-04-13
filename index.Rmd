@@ -76,7 +76,8 @@ h1{font-weight: 400;}
 
 1. See Midterm II details below.
 1. PS10 lite on Deep learning/neural nets is now cancelled. So after you submit PS9 lite on Fri 4/24 at 9pm EDT, you have completed all evaluative components of this course. 
-1. The last two weeks will be a **book club** of [Deep Learning Illustrated](https://www.deeplearningillustrated.com/){target="_blank"}. Please see [Lec24](#Lec24) for how to obtain free access to the eBook. Before being thrown into a massive task, I always find it helpful to set some goals and define a purpose. This helps me stay focused and not get lost in the weeds:
+1. The last two weeks will be an optional **book club** on [Deep Learning Illustrated](https://www.deeplearningillustrated.com/){target="_blank"} (see [Lec24](#Lec24) for how to obtain free access to the eBook). Please let me know if you have ideas for the format.
+1. Before being thrown into a massive task, I always find it helpful to set some goals and define a purpose. This helps me stay focused and not get lost in the weeds:
     1. **Micro goal of book club**: Understand to what researchers mean when they say deep learning is a ["black box"](https://towardsdatascience.com/the-black-box-metaphor-in-machine-learning-4e57a3a1d2b0){target="_blank"} where nobody really understands how these algorithms work. Prof. Safiya Umoja Noble stated in the podcast on "Algorithms of Oppression" from [Lec18](#Lec18) that this lack of interpretability will be problematic for society as more of our lives becomes dependent on such algorithms.
     1. **Macro goal of book club**: To develop you into ambassadors in your communities who can explain to laypeople roughly how these algorithms work and what impact they can have if developed and implemented recklessly.
 
@@ -118,20 +119,16 @@ Here is my plan for Midterm II. However, I am open to discussion and dialogue. I
 
 ## Chalk Talk
 
-<!--
 
-1. "Unsupervised learning" are machine learning methods where there is no outcome variable $y$. Two of the main methods for unsupervised learning are:
+1. Note that: "Unsupervised learning" are machine learning methods where there is no outcome variable $y$. Two of the main methods for unsupervised learning are:
     1. Principal Component Analysis (PCA): A method for dimension reduction of your $p$ predictor variables to a smaller number.
-    1. Cluster analysis: Assigning observations to "clusters" whereby *within* cluster variation is minimized while *between* cluster variation is maximized.
-1. PCA relies heavily on linear algebra
-
--->
-
-(Note: the following will be completed by Monday 4/13 9:30am)
-
-1. Download `PCA.Rmd` and `sat.csv` from Slack and put them in your MassMutual RStudio Project.
-1. Watch this screencast summarizing the overall ideas in `PCA.Rmd`:
-1. Then go over all of `PCA.Rmd`
+    1. Cluster analysis: Assigning observations to "clusters" whereby *within* cluster variation.
+1. Download `PCA.Rmd` and `sat.csv` from Slack and put them in your MassMutual RStudio Project and go over `PCA.Rmd`
+1. Note that conveying all the theory is very difficult without doing an actual "chalk talk." So please try to focus on the ideas in a general and qualitative sense and not get bogged down in the details:
+    1. A **basis**: A set of vectors that **span** a space. In this case, some combination of the blue and red vectors (i.e. arrows) allow you to "reach" anywhere in the 2D space.
+    1. An **orthogonal basis**: A basis where the vectors are perpendicular, i.e. form a 90 degree angle, i.e. have a dot product of 0. 
+    1. PCA as a **linear transformation** as represented by a matrix. In this case, the transformation is a "rotation."
+    1. "Eigen" is German for "its own." In this case an **eigenvalue** is a number telling you how much variance there is in the data along a particular dimension. The particular dimension for an particular eigenvalue is the **eigenvector**.
 
 
 
