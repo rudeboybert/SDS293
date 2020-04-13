@@ -122,7 +122,7 @@ Here is my plan for Midterm II. However, I am open to discussion and dialogue. I
 
 1. Note that: "Unsupervised learning" are machine learning methods where there is no outcome variable $y$. Two of the main methods for unsupervised learning are:
     1. Principal Component Analysis (PCA): A method for dimension reduction of your $p$ predictor variables to a smaller number.
-    1. Cluster analysis: Assigning observations to "clusters" whereby *within* cluster variation.
+    1. Cluster analysis: Assigning observations to "clusters" whereby *within* cluster differences are minimized, but *between* cluster differences are maximized. 
 1. Download `PCA.Rmd` and `sat.csv` from Slack and put them in your MassMutual RStudio Project and go over `PCA.Rmd`
 1. Note that conveying all the theory is very difficult without doing an actual "chalk talk." So please try to focus on the ideas in a general and qualitative sense and not get bogged down in the details:
     1. A **basis**: A set of vectors that **span** a space. In this case, some combination of the blue and red vectors (i.e. arrows) allow you to "reach" anywhere in the 2D space.
