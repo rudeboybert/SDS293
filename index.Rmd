@@ -70,9 +70,48 @@ h1{font-weight: 400;}
 
 
 
-# Lec 27: Mon 4/13
+# Lec 29: Fri 4/17
 
 ## Announcements
+
+1. Book club readings posted
+
+
+## Chalk Talk
+
+
+
+
+***
+
+
+
+# Lec 28: Wed 4/15
+
+## Announcements
+
+1. Today is your last chance to let me know if our plan for Midterm II this Friday does not work for you. See [Midterm II](#midtermII) for more information.
+1. I will post a plan for our "Deep Learning" book club on Friday. See [Lec27](#bookclub) for more information.
+
+
+## Chalk Talk
+
+1. First watch the screencast on "simple linear regression as matrix algebra" I've posted below.
+1. Then go over the `regression_linear_algebra.Rmd` file I will distribute on Slack. Here you will study the effects of **collinearity** in regression (which you learned in SDS 291 Multiple Regression), but from a linear algebra perspective.
+
+<center>
+<iframe src="https://www.showme.com/sma/embed/?s=12ejGF6" width="578" height="433" frameborder="0"></iframe>
+</center>
+
+
+
+***
+
+
+
+# Lec 27: Mon 4/13
+
+## Announcements {#bookclub}
 
 1. See Midterm II details below.
 1. PS10 lite on Deep learning/neural nets is now cancelled. So after you submit PS9 lite on Fri 4/24 at 9pm EDT, you have completed all evaluative components of this course. 
@@ -87,7 +126,7 @@ h1{font-weight: 400;}
 
 
 
-## Midterm II
+## Midterm II {#midtermII}
 
 Here is my plan for Midterm II. However, I am open to discussion and dialogue. If any of this does not work for you, your learning environment, or your living situation, **please let me know on Slack ASAP**.
 
@@ -128,7 +167,7 @@ Here is my plan for Midterm II. However, I am open to discussion and dialogue. I
     1. A **basis**: A set of vectors that **span** a space. In this case, some combination of the blue and red vectors (i.e. arrows) allow you to "reach" anywhere in the 2D space.
     1. An **orthogonal basis**: A basis where the vectors are perpendicular, i.e. form a 90 degree angle, i.e. have a dot product of 0. 
     1. PCA as a **linear transformation** as represented by a matrix. In this case, the transformation is a "rotation."
-    1. "Eigen" is German for "its own." In this case an **eigenvalue** is a number telling you how much variance there is in the data along a particular dimension. The particular dimension for an particular eigenvalue is the **eigenvector**.
+    1. "Eigen" is German for "its own." In this case an **eigenvalue** is a number telling you how much variance there is in the data along a particular dimension. The particular dimension for a particular eigenvalue is the **eigenvector**.
 
 
 
