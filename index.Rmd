@@ -69,7 +69,7 @@ h1{font-weight: 400;}
 ***
 
 
-
+<!--
 # Lec 29: Fri 4/17
 
 ## Announcements
@@ -83,6 +83,7 @@ h1{font-weight: 400;}
 
 
 ***
+--> 
 
 
 
@@ -542,6 +543,10 @@ A "Next time on SDS293" episode sneak peak in images:
 1. Midterm I is a Seelye self-scheduled exam from next Fri 3/6 5pm thru Mon 3/9 11pm. We'll discuss on Monday Lec 16.
 1. PS5 on logistic regression assigned.
 1. PS6 assigned on Fri 3/6 will relate to ethics in machine learning and will not involve any coding.
+1. Recorded screencast of PS3 solutions: picking the "optimal" complexity paramemter $\alpha$ via cross-validation
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-SQEbwfRVPA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Chalk Talk
 
