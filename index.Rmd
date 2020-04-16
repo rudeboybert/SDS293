@@ -136,7 +136,7 @@ Here is my plan for Midterm II. However, I am open to discussion and dialogue. I
 * Open-book and no time limit. However by the Honor Code, you must complete your work individually.
 * Time window:
     + The midterm will be available on Moodle on Fri 4/17 at 8am EDT
-    + You must submit your work on Moodle before Tue 4/21 11pm EDT
+    + You must submit your work on Moodle before ~~Tue 4/21~~ Wed 4/22 11pm EDT
 * What you will need:
     + A laptop to view the midterm. You do not need to print it.
     + 8.5 x 11 inch blank sheets of paper where you will write your responses. Preferably solid white, but lined/grided works too.
@@ -235,7 +235,7 @@ None
 
 
 
-# Lec 25: Mon 4/6
+# Lec 25: Mon 4/6 {#Lec25}
 
 ## Announcements
 
