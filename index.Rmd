@@ -69,21 +69,31 @@ h1{font-weight: 400;}
 ***
 
 
-<!--
+
 # Lec 29: Fri 4/17
 
 ## Announcements
 
-1. Book club readings posted
+1. PS9 lite on "linear regression via linear algebra" is now posted in the GitHub organization for this course. This is the final problem set for the course. Because it is *very* short, you'll be working individually.
+1. Book club readings posted in the schedule above. For example Monday's readings are Chapters 1-2. By Monday 9:30am EDT I will post a brief video summarizing my thoughts on the readings. We can then discuss the readings in `#questions` on Slack.
+
+
 
 
 ## Chalk Talk
 
+Last one for the semester! Watch this brief screencast on two types of clustering:
+
+1. Dendrograms: See this [PDF](static/tree_dendrogram.pdf){target="_blank"} of a dendrogram of tree species
+1. k-means clustering: See this [PDF](static/methods/k_means/k_means.pdf){target="_blank"}
+
+<center>
+<iframe src="https://www.showme.com/sma/embed/?s=mrOOisS" width="578" height="433" frameborder="0"></iframe>
+</center>
 
 
 
 ***
---> 
 
 
 
